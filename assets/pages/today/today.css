@@ -1,0 +1,43 @@
+@import '/assets/components/header/header.css';
+@import '/assets/components/realtime/realtime.css';
+@import '/assets/components/todays-forecast/todays-forecast.css';
+@import '/assets/components/weather-today/weather-today.css';
+
+@media screen and (max-width: 767px) {
+	.section {
+		padding: 1rem 0;
+	}
+
+	.nav__menu,
+	.nav__buttons {
+		display: none;
+	}
+
+	.header {
+		flex-direction: row;
+	}
+
+	.nav__open_menu {
+		display: flex;
+	}
+
+	.nav__open_menu {
+		display: flex;
+	}
+
+	.nav__two {
+		display: none;
+	}
+
+	.nav .nav__search {
+		display: none;
+	}
+
+	.nav .nav__cf {
+		display: none;
+	}
+
+	.realtime {
+		margin-top: 72px;
+	}
+}
