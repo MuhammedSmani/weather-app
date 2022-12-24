@@ -22,7 +22,7 @@
 	--sixth-color: #414572;
 	--body-color: #fff;
 	--body-secondary-color: #f5f5f7;
-	--text-color: #030a0c;
+	--text-color: #2b2b2b;
 	--title-color: #3c4048;
 }
 
@@ -84,19 +84,30 @@ input:focus {
 	top: 144px;
 } */
 
-.container__title {
-	font-size: var(--big-font-size);
-	font-weight: var(--font-bold);
+.content__title {
 	color: var(--text-color);
-	text-align: center;
+	font-size: var(--h2-font-size);
+	font-weight: var(--font-semi-bold);
 }
 
-.container__para {
-	color: var(--primary-color);
-	font-size: var(--normal-font-size);
-	font-weight: var(--medium-font-size);
-	padding-bottom: 4rem;
-	text-align: center;
+.content__para {
+	color: var(--text-color);
+	font-size: var(--h3-font-size);
+}
+
+.button a {
+	font-size: var(--medium-font-size);
+	color: var(--text-color);
+	font-weight: var(--font-medium);
+	transition: 0.3s ease;
+	padding: 0.5rem 1rem;
+	border-radius: 2rem;
+	border: 1px solid var(--sixth-color);
+}
+
+.button a:hover {
+	color: var(--body-color);
+	background-color: var(--sixth-color);
 }
 
 /*==================== REUSABLE CSS CLASSES ====================*/
@@ -121,7 +132,21 @@ input:focus {
 /*==================== FOOTER ====================*/
 
 footer {
-	background-color: var(--body-secondary-color);
+	background-color: var(--body-color);
 	text-align: center;
 	padding: 1rem 0;
+	margin-top: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+	.content__title {
+		color: var(--text-color);
+		font-size: var(--h3-font-size);
+		font-weight: var(--font-semi-bold);
+	}
+
+	.content__para {
+		color: var(--text-color);
+		font-size: var(--normal-font-size);
+	}
 }

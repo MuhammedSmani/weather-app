@@ -2,17 +2,13 @@
 
 /*==================== HEADER ====================*/
 
-body {
-	background-color: var(--first-color);
-}
-
 .header {
 	width: 100%;
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: var(--z-fixed);
-	background-color: var(--fourth-color);
+	background-color: var(--third-color);
 	z-index: 100;
 	-webkit-box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.1);
@@ -111,6 +107,8 @@ body {
 .nav__cf {
 	display: flex;
 	gap: 1rem;
+	align-items: center;
+	justify-content: center;
 }
 
 .nav__cf a {
@@ -118,7 +116,17 @@ body {
 	color: var(--text-color);
 	font-weight: var(--font-medium);
 	transition: 0.3s ease;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
+
+/* .nav__cf-active {
+	background-color: var(--body-color);
+} */
 
 .nav__open_menu {
 	position: relative;
