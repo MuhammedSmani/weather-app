@@ -1,94 +1,99 @@
 @import '/main.css';
+@import '/assets/components/header/header.css';
+@import '/assets/components/footer/footer.css';
 
 .hourly__section {
-    background: var(--third-color);
-    background: linear-gradient(180deg, var(--third-color) 0%, var(--first-color) 100%);
+	background: var(--third-color);
+	background: linear-gradient(180deg, var(--third-color) 0%, var(--first-color) 100%);
+	margin-top: 132px;
 }
-.hourly__section .container {
+/* .hourly__section .container {
     max-width: 1280px;
     margin: auto;
-}
+} */
 .hourly__content {
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffff;
+	border-radius: 1rem;
 }
 .hourly__content i {
-    font-size: var(--big-font-size);
-    color: var(--fifth-color);
-    padding-right: 1rem;
+	font-size: var(--big-font-size);
+	color: var(--fifth-color);
+	padding-right: 1rem;
 }
 .hourly__title {
-    border-bottom: solid 1px var(--fourth-color);
-    padding: 1rem;
+	border-bottom: solid 1px var(--fourth-color);
+	padding: 1rem;
 }
 .hourly__title p:nth-child(3) {
-    padding: 1rem 0;
+	padding: 1rem 0;
 }
 .hourly__date {
-    border-bottom: solid 1px var(--fourth-color);
+	border-bottom: solid 1px var(--fourth-color);
 }
 .hourly__date h2 {
-    padding: 1rem;
+	padding: 1rem;
 }
 .hourly__description {
-    padding: 0 1rem;
+	padding: 0 1rem;
 }
 .hourly__main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-top: solid 1px var(--fourth-color);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-top: solid 1px var(--fourth-color);
 }
 .hourly__main div {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 .hourly__main div:nth-child(2) span {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 .hourly__main .uil-angle-down {
-    cursor: pointer;
+	cursor: pointer;
 }
 .hourly__hidden {
-    border: solid 1px var(--fourth-color);
-    border-radius: 1rem;
-    margin: 20px;
-   /* display: none; */
+	border: solid 1px var(--fourth-color);
+	border-radius: 1rem;
+	margin: 20px;
+	/* display: none; */
 }
 .hourly__hidden__info {
-    display: flex;
-    flex-flow: row wrap;
-    padding: 0 1rem;
+	display: flex;
+	flex-flow: row wrap;
+	padding: 0 1rem;
 }
 .hourly__hidden__info li {
-    width: 33%;
-    display: flex;
-    flex-direction: row;
-    padding: 1rem 0;
+	width: 33%;
+	display: flex;
+	flex-direction: row;
+	padding: 1rem 0;
 }
-.hourly__hidden__info li:nth-child(4), .hourly__hidden__info li:nth-child(5), .hourly__hidden__info li:nth-child(6) {
-    border-top: solid 1px var(--fourth-color);
+.hourly__hidden__info li:nth-child(4),
+.hourly__hidden__info li:nth-child(5),
+.hourly__hidden__info li:nth-child(6) {
+	border-top: solid 1px var(--fourth-color);
 }
 .hourly__hidden__info__text {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .hourly__button {
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
 }
 .hourly__button a {
-    color: var(--text-color);
-    font-weight: var(--font-medium);
-    transition: 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    border: 1px solid var(--sixth-color);
+	color: var(--text-color);
+	font-weight: var(--font-medium);
+	transition: 0.3s ease;
+	padding: 0.5rem 1rem;
+	border-radius: 2rem;
+	border: 1px solid var(--sixth-color);
 }
 .hourly__button a:hover {
-    color: var(--body-color);
-    background-color: var(--sixth-color);
+	color: var(--body-color);
+	background-color: var(--sixth-color);
 }
