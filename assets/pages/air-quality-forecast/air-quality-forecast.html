@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./air-quality-forecast.css" />
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+        <title>Weather App - Air Quality Forecast</title>
+        <script src="./hourly.js" defer></script>
+	</head>
+	<body>
+        <header></header>
+
+        <main>
+            <section class="air__quality__section section" id="air-quality-section">
+                <div class="container">
+                    <div class="air__quality__content">
+                        <div class="air__quality__today">
+                            <h1>Today's Air Quality <span>- Tirana</span></h1>
+                            <div class="air__quality__description">
+                                <div class="air__quality__info">
+                                    <div class="air__quality__circle" id="air-quality-circle">
+                                        <div class="air__quality__index" id="air-quality-index">48</div>
+                                    </div>
+                                    <div class="air__quality__text">
+                                        <h2>Good</h2>
+                                        <p>Air quality is considered satisfactory, and air pollution poses little or no risk.</p>
+                                    </div>
+                                </div>
+                                <div class="primary__pollutant">
+                                    <h3>Primary Pollutant:</h3>
+                                    <p>PM2.5 (Particulate matter less than 2.5 microns)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="all__pollutants">
+                            <h2>All Pollutants</h2>
+                            <div class="all__pollutants__parts">
+                                <div class="all__pollutants__description">
+                                    <div class="all__pollutants__circle">
+                                        <div class="all__pollutants__index" id="pm25-index">60</div>
+                                    </div>
+                                    <div class="all__pollutants__info">
+                                        <p>PM2.5 (Particulate matter less than 2.5 microns)</p>
+                                        <h4>Good</h4>
+                                        <p>16.85 µg/m3</p>
+                                    </div>
+                                </div>
+
+                                <div class="all__pollutants__description">
+                                    <div class="all__pollutants__circle">
+                                        <div class="all__pollutants__index" id="carbon-monoxide-index">1</div>
+                                    </div>
+                                    <div class="all__pollutants__info">
+                                        <p>CO (Carbon Monoxide)</p>
+                                        <h4>Good</h4>
+                                        <p>202.38 µg/m3</p>
+                                    </div>
+                                </div>
+
+                                <div class="all__pollutants__description">
+                                    <div class="all__pollutants__circle">
+                                        <div class="all__pollutants__index" id="nitrogen-dioxide-index">2</div>
+                                    </div>
+                                    <div class="all__pollutants__info">
+                                        <p>NO2 (Nitrogen Dioxide)</p>
+                                        <h4>Good</h4>
+                                        <p>6.36 µg/m3</p>
+                                    </div>
+                                </div>
+
+                                <div class="all__pollutants__description">
+                                    <div class="all__pollutants__circle">
+                                        <div class="all__pollutants__index" id="ozone-index">19</div>
+                                    </div>
+                                    <div class="all__pollutants__info">
+                                        <p>O3 (Ozone)</p>
+                                        <h4>Good</h4>
+                                        <p>43.11 µg/m3</p>
+                                    </div>
+                                </div>
+
+                                <div class="all__pollutants__description">
+                                    <div class="all__pollutants__circle">
+                                        <div class="all__pollutants__index" id="pm10-index">16</div>
+                                    </div>
+                                    <div class="all__pollutants__info">
+                                        <p>PM10 (Particulate matter less than 10 microns)</p>
+                                        <h4>Good</h4>
+                                        <p>18.14 µg/m3</p>
+                                    </div>
+                                </div>
+
+                                <div class="all__pollutants__description">
+                                    <div class="all__pollutants__circle">
+                                        <div class="all__pollutants__index" id="sulfur-dioxide-index">1</div>
+                                    </div>
+                                    <div class="all__pollutants__info">
+                                        <p>SO2 (Sulfur Dioxide)</p>
+                                        <h4>Good</h4>
+                                        <p>1.05 µg/m3</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="air__quality__comments">
+                                <p><i class="uil uil-info-circle"></i> Air Quality Index</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+		<footer></footer>
+	</body>
+</html>
