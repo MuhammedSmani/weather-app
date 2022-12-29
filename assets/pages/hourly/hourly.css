@@ -48,14 +48,14 @@
 .hourly__main div:nth-child(2) span {
     font-size: 1.5rem;
 }
-.hourly__main .uil-angle-down {
+.hourly__main .hourly-arrow {
     cursor: pointer;
 }
 .hourly__hidden {
     border: solid 1px var(--fourth-color);
     border-radius: 1rem;
     margin: 20px;
-   /* display: none; */
+    display: none;
 }
 .hourly__hidden__info {
     display: flex;
