@@ -135,7 +135,7 @@ footer {
 	background-color: var(--body-color);
 	text-align: center;
 	padding: 1rem 0;
-	margin-top: 1rem;
+	/* margin-top: 1rem; */
 }
 
 @media screen and (max-width: 767px) {
