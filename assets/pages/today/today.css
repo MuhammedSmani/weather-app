@@ -5,6 +5,7 @@
 @import '/assets/components/hourly-forecast/hourly-forecast.css';
 @import '/assets/components/daily-forecast/daily-forecast.css';
 @import '/assets/components/footer/footer.css';
+@import '/main.css';
 
 body {
 	background: var(--third-color);
