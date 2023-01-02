@@ -92,7 +92,7 @@
 				<div class="realtime__container container">
 					<div class="realtime__content">
 						<div class="realtime__city">
-							<p class="content__title" id="realtime-city">Tirana, Albania</p>
+							<p class="content__title city__country">Tirana, Albania</p>
 							<p class="content__para" id="realtime-time">As of 12:15 am CET</p>
 						</div>
 						<div class="realtime__info">
@@ -112,7 +112,7 @@
 				<div class="todays__forecast_container container">
 					<div class="todays__forecast_content">
 						<div class="todays__forecast_city">
-							<p class="content__title" id="todays-city">Today's Forecast for Tirana, Albania</p>
+							<p class="content__title">Today's Forecast for <span class="city__country">Tirana, Albania</span></p>
 						</div>
 						<div class="todays__forecast_four">
 							<div class="todays__forecast_morning todays__forecast_four-all">
@@ -164,11 +164,11 @@
 				<div class="weather__today_container container">
 					<div class="weather__today_content">
 						<div class="weather__today_city">
-							<p class="content__title">Weather Today in Tirana, Albania</p>
+							<p class="content__title">Weather Today in <span class="city__country">Tirana, Albania</span></p>
 						</div>
 						<div class="weather__today_info">
 							<div class="weather__today_info_left">
-								<p>34°</p>
+								<p id="feels-like">34°</p>
 								<p>Feels like</p>
 							</div>
 							<div class="weather__today_info_right">
@@ -183,38 +183,38 @@
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-tear"></i>
-								<p>Humidiy</p>
-								<p>88%°</p>
+								<p>Humidity</p>
+								<p id="humidity">88%</p>
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-compress-v"></i>
 								<p>Pressure</p>
-								<p>&darr; 30.12 in</p>
+								<p>&darr; <span id="pressure">30.12</span> in</p>
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-eye"></i>
 								<p>Visibility</p>
-								<p>1.9 mi</p>
+								<p><span id="visibility">1.9</span> km</p>
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-wind"></i>
 								<p>Wind</p>
-								<p>5 mph</p>
+								<p><span id="wind">5</span> kph</p>
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-tear"></i>
 								<p>Dew Point</p>
-								<p>34°</p>
+								<p id="dewpoint">34°</p>
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-sun"></i>
 								<p>UV Index</p>
-								<p>0 of 10</p>
+								<p><span id="uv-index">0</span> of 10</p>
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-moon-eclipse"></i>
 								<p>Moon Phase</p>
-								<p>Warning Crescent</p>
+								<p id="moon-phase">Warning Crescent</p>
 							</div>
 						</div>
 					</div>
