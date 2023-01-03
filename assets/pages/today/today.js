@@ -3,12 +3,15 @@ const searchInput = document.getElementById('search-input');
 const cityCountry = document.querySelectorAll('.city__country');
 const realtimeTime = document.getElementById('realtime-time');
 const realtimeTemp = document.getElementById('realtime-temp');
+const conditionText = document.getElementById('condition-text');
+const conditionIcon = document.getElementById('condition-icon');
 const dayTemp = document.getElementById('day-temp');
 const nightTemp = document.getElementById('night-temp');
 const morningTemp = document.getElementById('morning-temp');
 const afternoonTemp = document.getElementById('afternoon-temp');
 const eveningTemp = document.getElementById('evening-temp');
 const overnightTemp = document.getElementById('overnight-temp');
+const todayForecastIcon = document.querySelectorAll('.today-forecast-icon')
 const rainChance = document.querySelectorAll('.rain__chance')
 const feelsLike = document.getElementById('feels-like');
 const maxTemp = document.querySelectorAll('.max__temp');
@@ -24,6 +27,49 @@ const shortDailyName = document.querySelectorAll('.short__daily__name')
 const maxTempNext = document.querySelectorAll('.max__temp__next');
 const minTempNext = document.querySelectorAll('.min__temp__next');
 const dailyRainChance = document.querySelectorAll('.daily__rain');
+
+// Icons
+var lightRainIcon = `<i class="uil uil-cloud-rain"></i>`;
+var mistIcon = `<i class="uil uil-clouds"></i>`;
+var overcastIcon = `<i class="uil uil-cloud"></i>`;
+var moderateRainIcon = `<i class="uil uil-cloud-rain"></i>`;
+var partlyCloudyIcon = `<i class="uil uil-cloud-sun"></i>`;
+var clearIcon = `<i class="uil uil-sun"></i>`;
+var fogIcon = `<i class="uil uil-clouds"></i>`;
+var cloudyIcon = `<i class="uil uil-clouds"></i>`;
+var patchyRainIcon = `<i class="uil uil-cloud-sun-rain-alt"></i>`;
+var lightDrizzleIcon = `<i class="uil uil-cloud-showers-heavy"></i>`;
+var lightRainShowerIcon = `<i class="uil uil-cloud-sun-tear"></i>`;
+var otherIcon = `<i class="uil uil-rainbow"></i>`;
+
+// Function for showing the Icons depending on the Text
+function setConditionIcon(conditionText, iconElement, lightRainIcon, mistIcon, overcastIcon, moderateRainIcon, partlyCloudyIcon, clearIcon, fogIcon, cloudyIcon, patchyRainIcon, lightDrizzleIcon, lightRainShowerIcon, otherIcon) {
+  if (conditionText == "Light rain") {
+    iconElement.innerHTML = lightRainIcon;
+  } else if (conditionText == "Mist") {
+    iconElement.innerHTML = mistIcon;
+  } else if (conditionText == "Overcast") {
+    iconElement.innerHTML = overcastIcon;
+  } else if (conditionText == "Moderate rain") {
+    iconElement.innerHTML = moderateRainIcon;
+  } else if (conditionText == "Partly cloudy") {
+    iconElement.innerHTML = partlyCloudyIcon;
+  } else if (conditionText == "Clear") {
+    iconElement.innerHTML = clearIcon;
+  } else if (conditionText == "Fog") {
+    iconElement.innerHTML = fogIcon;
+  } else if (conditionText == "Cloudy") {
+    iconElement.innerHTML = cloudyIcon;
+  } else if (conditionText == "Patchy rain possible") {
+    iconElement.innerHTML = patchyRainIcon;
+  } else if (conditionText == "Light drizzle") {
+    iconElement.innerHTML = lightDrizzleIcon;
+  } else if (conditionText == "Light rain shower") {
+    iconElement.innerHTML = lightRainShowerIcon;
+  } else {
+    iconElement.innerHTML = otherIcon;
+  }
+};
 
 form.addEventListener('submit', event => {
   event.preventDefault();
@@ -57,6 +103,12 @@ form.addEventListener('submit', event => {
       // Show the Realtime temperature
       const currentTemp = data.current.temp_c; 
       realtimeTemp.innerHTML = `${currentTemp}°`;
+
+      // Show the Condition text
+      conditionText.innerHTML = data.current.condition.text;
+
+      // Show the Condition Big Icon
+      setConditionIcon(data.current.condition.text, conditionIcon, lightRainIcon, mistIcon, overcastIcon, moderateRainIcon, partlyCloudyIcon, clearIcon, fogIcon, cloudyIcon, patchyRainIcon, lightDrizzleIcon, lightRainShowerIcon, otherIcon);
 
       // Show the Day temperature
       dayTemp.innerHTML = `${data.forecast.forecastday[0].hour[12].temp_c}°`;
@@ -99,7 +151,7 @@ form.addEventListener('submit', event => {
       dewpoint.innerHTML = `${data.forecast.forecastday[0].hour[1].dewpoint_c}°`;
 
       // Show the UV Index
-      uvIndex.innerHTML = data.forecast.forecastday[0].hour[1].uv;
+      uvIndex.innerHTML = data.current.uv;
 
       // Show the Moon Phase
       moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
