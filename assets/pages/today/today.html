@@ -101,7 +101,7 @@
 								<p id="condition-text">Mist</p>
 								<p>Day <span id="day-temp">14°</span> - Night <span id="night-temp">2°</span></p>
 							</div>
-							<div class="realtime__info_right" id="condition-icon">
+							<div class="realtime__info_right condition-icon">
 								<i class="uil uil-wind-sun"></i>
 							</div>
 						</div>
@@ -120,7 +120,7 @@
 								<p id="morning-temp">10°</p>
 								<span class="today-forecast-icon"><i class="uil uil-cloud-sun-rain-alt"></i></span>
 								<div class="todays__forecast_rain">
-									<i class="uil uil-raindrops"></i>
+									<span id="morning-icon"><i class="uil uil-raindrops"></i></span>
 									<p class="rain__chance">5%</p>
 								</div>
 							</div>
@@ -129,7 +129,7 @@
 								<p id="afternoon-temp">12°</p>
 								<span class="today-forecast-icon"><i class="uil uil-cloud-sun-rain-alt"></i></span>
 								<div class="todays__forecast_rain">
-									<i class="uil uil-raindrops"></i>
+									<span id="afternoon-icon"><i class="uil uil-raindrops"></i></span>
 									<p class="rain__chance">11%</p>
 								</div>
 							</div>
@@ -138,8 +138,7 @@
 								<p id="evening-temp">7°</p>
 								<span class="today-forecast-icon"><i class="uil uil-clouds"></i></span>
 								<div class="todays__forecast_rain">
-									<i class="uil uil-raindrops"></i>
-
+									<span id="evening-icon"><i class="uil uil-raindrops"></i></span>
 									<p class="rain__chance">5%</p>
 								</div>
 							</div>
@@ -148,8 +147,7 @@
 								<p id="overnight-temp">3°</p>
 								<span class="today-forecast-icon"><i class="uil uil-clouds"></i></span>
 								<div class="todays__forecast_rain">
-									<i class="uil uil-raindrops"></i>
-
+									<span id="overnight-icon"><i class="uil uil-raindrops"></i></span>
 									<p class="rain__chance">2%</p>
 								</div>
 							</div>
@@ -169,7 +167,7 @@
 								<p id="feels-like">34°</p>
 								<p>Feels like</p>
 							</div>
-							<div class="weather__today_info_right">
+							<div class="weather__today_info_right condition-icon">
 								<i class="uil uil-wind-sun"></i>
 							</div>
 						</div>
@@ -226,54 +224,50 @@
 						</div>
 						<div class="hourly__forecast_five">
 							<div class="hourly__forecast_five-all">
-								<p>Now</p>
-								<p>10°</p>
+								<p class="hourly-time">Now</p>
+								<p class="hourly-temp">10°</p>
 								<i class="uil uil-cloud-sun-rain-alt"></i>
 								<div class="hourly__forecast_rain">
 									<i class="uil uil-raindrops"></i>
-									<p>2%</p>
+									<p class="hourly-rain">2%</p>
 								</div>
 							</div>
 							<div class="hourly__forecast_five-all">
-								<p>1 am</p>
-								<p>12°</p>
+								<p class="hourly-time">1 am</p>
+								<p class="hourly-temp">12°</p>
 								<i class="uil uil-cloud-sun-rain-alt"></i>
 								<div class="hourly__forecast_rain">
 									<i class="uil uil-raindrops"></i>
-									<p>2%</p>
+									<p class="hourly-rain">2%</p>
 								</div>
 							</div>
 							<div class="hourly__forecast_five-all">
-								<p>2 am</p>
-								<p>7°</p>
+								<p class="hourly-time">2 am</p>
+								<p class="hourly-temp">7°</p>
+								<i class="uil uil-clouds"></i>
+								<div class="hourly__forecast_rain">
+									<i class="uil uil-raindrops"></i>
+									<p class="hourly-rain">2%</p>
+								</div>
+							</div>
+							<div class="hourly__forecast_five-all">
+								<p class="hourly-time">3 am</p>
+								<p class="hourly-temp">3°</p>
 								<i class="uil uil-clouds"></i>
 
 								<div class="hourly__forecast_rain">
 									<i class="uil uil-raindrops"></i>
-
-									<p>2%</p>
+									<p class="hourly-rain">2%</p>
 								</div>
 							</div>
 							<div class="hourly__forecast_five-all">
-								<p>3 am</p>
-								<p>3°</p>
+								<p class="hourly-time">4 am</p>
+								<p class="hourly-temp">3°</p>
 								<i class="uil uil-clouds"></i>
 
 								<div class="hourly__forecast_rain">
 									<i class="uil uil-raindrops"></i>
-
-									<p>2%</p>
-								</div>
-							</div>
-							<div class="hourly__forecast_five-all">
-								<p>4 am</p>
-								<p>3°</p>
-								<i class="uil uil-clouds"></i>
-
-								<div class="hourly__forecast_rain">
-									<i class="uil uil-raindrops"></i>
-
-									<p>2%</p>
+									<p class="hourly-rain">2%</p>
 								</div>
 							</div>
 						</div>

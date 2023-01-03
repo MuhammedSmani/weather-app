@@ -1,18 +1,25 @@
+// Form submit consts
 const form = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
+
+// Realtime section consts
 const cityCountry = document.querySelectorAll('.city__country');
 const realtimeTime = document.getElementById('realtime-time');
 const realtimeTemp = document.getElementById('realtime-temp');
 const conditionText = document.getElementById('condition-text');
-const conditionIcon = document.getElementById('condition-icon');
+const conditionIcon = document.querySelectorAll('.condition-icon');
 const dayTemp = document.getElementById('day-temp');
 const nightTemp = document.getElementById('night-temp');
+
+// Today's Forecast section consts
 const morningTemp = document.getElementById('morning-temp');
 const afternoonTemp = document.getElementById('afternoon-temp');
 const eveningTemp = document.getElementById('evening-temp');
 const overnightTemp = document.getElementById('overnight-temp');
 const todayForecastIcon = document.querySelectorAll('.today-forecast-icon')
 const rainChance = document.querySelectorAll('.rain__chance')
+
+// Weather Today section consts
 const feelsLike = document.getElementById('feels-like');
 const maxTemp = document.querySelectorAll('.max__temp');
 const minTemp = document.querySelectorAll('.min__temp');
@@ -23,6 +30,13 @@ const wind = document.getElementById('wind');
 const dewpoint = document.getElementById('dewpoint');
 const uvIndex = document.getElementById('uv-index');
 const moonPhase = document.getElementById('moon-phase');
+
+// Daily Forecast section consts
+const hourlyTime = document.querySelectorAll('.hourly-time');
+const hourlyTemp = document.querySelectorAll('.hourly-temp');
+const hourlyRain = document.querySelectorAll('.hourly-rain');
+
+// Daily Forecast section consts
 const shortDailyName = document.querySelectorAll('.short__daily__name')
 const maxTempNext = document.querySelectorAll('.max__temp__next');
 const minTempNext = document.querySelectorAll('.min__temp__next');
@@ -71,6 +85,7 @@ function setConditionIcon(conditionText, iconElement, lightRainIcon, mistIcon, o
   }
 };
 
+// Submit form on Header
 form.addEventListener('submit', event => {
   event.preventDefault();
   const searchKeyword = searchInput.value;
@@ -108,7 +123,9 @@ form.addEventListener('submit', event => {
       conditionText.innerHTML = data.current.condition.text;
 
       // Show the Condition Big Icon
-      setConditionIcon(data.current.condition.text, conditionIcon, lightRainIcon, mistIcon, overcastIcon, moderateRainIcon, partlyCloudyIcon, clearIcon, fogIcon, cloudyIcon, patchyRainIcon, lightDrizzleIcon, lightRainShowerIcon, otherIcon);
+      conditionIcon.forEach(function(iconElement) {
+        setConditionIcon(data.current.condition.text, iconElement, lightRainIcon, mistIcon, overcastIcon, moderateRainIcon, partlyCloudyIcon, clearIcon, fogIcon, cloudyIcon, patchyRainIcon, lightDrizzleIcon, lightRainShowerIcon, otherIcon);
+      });
 
       // Show the Day temperature
       dayTemp.innerHTML = `${data.forecast.forecastday[0].hour[12].temp_c}°`;
