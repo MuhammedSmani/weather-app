@@ -15,8 +15,8 @@
 			<nav class="nav">
 				<container class="nav__container container">
 					<a href="./index.html" class="logo__wrapper"> Weather </a>
-					<form class="nav__search" id="search-form" action="">
-						<input id="search-input" class="search" placeholder="Search city..." />
+					<form class="nav__search" id="search-form" action="/" method="get">
+						<input id="search-input" class="search" name="city" placeholder="Search city..." />
 						<button type="submit">Search</button>
 					</form>
 					<div class="nav__cf">
@@ -99,7 +99,7 @@
 							<div class="realtime__info_left">
 								<p id="realtime-temp">3°</p>
 								<p>Mist</p>
-								<p><span id="day-temp">Day 14°</span> - <span id="night-temp">Night 2°</span></p>
+								<p>Day <span id="day-temp">14°</span> - Night <span id="night-temp">2°</span></p>
 							</div>
 							<div class="realtime__info_right">
 								<i class="uil uil-wind-sun"></i>
@@ -117,42 +117,42 @@
 						<div class="todays__forecast_four">
 							<div class="todays__forecast_morning todays__forecast_four-all">
 								<p>Morning</p>
-								<p>10°</p>
+								<p id="morning-temp">10°</p>
 								<i class="uil uil-cloud-sun-rain-alt"></i>
 								<div class="todays__forecast_rain">
 									<i class="uil uil-raindrops"></i>
-									<p>5%</p>
+									<p class="rain__chance">5%</p>
 								</div>
 							</div>
 							<div class="todays__forecast_afternoon todays__forecast_four-all">
 								<p>Afternoon</p>
-								<p>12°</p>
+								<p id="afternoon-temp">12°</p>
 								<i class="uil uil-cloud-sun-rain-alt"></i>
 								<div class="todays__forecast_rain">
 									<i class="uil uil-raindrops"></i>
-									<p>11%</p>
+									<p class="rain__chance">11%</p>
 								</div>
 							</div>
 							<div class="todays__forecast_evening todays__forecast_four-all">
 								<p>Evening</p>
-								<p>7°</p>
+								<p id="evening-temp">7°</p>
 								<i class="uil uil-clouds"></i>
 
 								<div class="todays__forecast_rain">
 									<i class="uil uil-raindrops"></i>
 
-									<p>5%</p>
+									<p class="rain__chance">5%</p>
 								</div>
 							</div>
 							<div class="todays__forecast_overnight todays__forecast_four-all">
 								<p>Overnight</p>
-								<p>3°</p>
+								<p id="overnight-temp">3°</p>
 								<i class="uil uil-clouds"></i>
 
 								<div class="todays__forecast_rain">
 									<i class="uil uil-raindrops"></i>
 
-									<p>2%</p>
+									<p class="rain__chance">2%</p>
 								</div>
 							</div>
 						</div>
@@ -179,7 +179,7 @@
 							<div class="weather__today_prop">
 								<i class="uil uil-temperature-half"></i>
 								<p>High / Low</p>
-								<p>--/36°</p>
+								<p><span id="max-temp">36°</span>/<span id="min-temp">13°</span></p>
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-tear"></i>
