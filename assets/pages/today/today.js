@@ -11,8 +11,8 @@ const eveningTemp = document.getElementById('evening-temp');
 const overnightTemp = document.getElementById('overnight-temp');
 const rainChance = document.querySelectorAll('.rain__chance')
 const feelsLike = document.getElementById('feels-like');
-const maxTemp = document.getElementById('max-temp');
-const minTemp = document.getElementById('min-temp');
+const maxTemp = document.querySelectorAll('.max__temp');
+const minTemp = document.querySelectorAll('.min__temp');
 const humidity = document.getElementById('humidity');
 const pressure = document.getElementById('pressure');
 const visibility = document.getElementById('visibility');
@@ -20,6 +20,10 @@ const wind = document.getElementById('wind');
 const dewpoint = document.getElementById('dewpoint');
 const uvIndex = document.getElementById('uv-index');
 const moonPhase = document.getElementById('moon-phase');
+const shortDailyName = document.querySelectorAll('.short__daily__name')
+const maxTempNext = document.querySelectorAll('.max__temp__next');
+const minTempNext = document.querySelectorAll('.min__temp__next');
+const dailyRainChance = document.querySelectorAll('.daily__rain');
 
 form.addEventListener('submit', event => {
   event.preventDefault();
@@ -64,15 +68,15 @@ form.addEventListener('submit', event => {
       morningTemp.innerHTML = `${data.forecast.forecastday[0].hour[6].temp_c}°`;
       rainChance[0].innerHTML = `${data.forecast.forecastday[0].hour[6].chance_of_rain}%`;
 
-      // Show the Afternoon temperature
+      // Show the Afternoon temperature and Chance of rain
       afternoonTemp.innerHTML = `${data.forecast.forecastday[0].hour[12].temp_c}°`;
       rainChance[1].innerHTML = `${data.forecast.forecastday[0].hour[12].chance_of_rain}%`;
 
-      // Show the Evening temperature
+      // Show the Evening temperature and Chance of rain
       eveningTemp.innerHTML = `${data.forecast.forecastday[0].hour[18].temp_c}°`;
       rainChance[2].innerHTML = `${data.forecast.forecastday[0].hour[18].chance_of_rain}%`;
 
-      // Show the Overnight temperature
+      // Show the Overnight temperature and Chance of rain
       overnightTemp.innerHTML = `${data.forecast.forecastday[1].hour[0].temp_c}°`;
       rainChance[3].innerHTML = `${data.forecast.forecastday[1].hour[0].chance_of_rain}%`;
 
@@ -101,7 +105,40 @@ form.addEventListener('submit', event => {
       moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
 
       // Show the High / Low temperature
-      maxTemp.innerHTML = `${data.forecast.forecastday[0].day.maxtemp_c}°`;
-      minTemp.innerHTML = `${data.forecast.forecastday[0].day.mintemp_c}°`;
+      for (let i = 0; i < maxTemp.length; i++) {
+        maxTemp[i].innerHTML = `${data.forecast.forecastday[0].day.maxtemp_c}°`;
+        minTemp[i].innerHTML = `${data.forecast.forecastday[0].day.mintemp_c}°`;
+      }
+
+      // Show the Max temperature for each tomorrow day
+      maxTempNext[0].innerHTML = `${data.forecast.forecastday[1].day.maxtemp_c}°`;
+      maxTempNext[1].innerHTML = `${data.forecast.forecastday[2].day.maxtemp_c}°`;
+      maxTempNext[2].innerHTML = `${data.forecast.forecastday[3].day.maxtemp_c}°`;
+      maxTempNext[3].innerHTML = `${data.forecast.forecastday[4].day.maxtemp_c}°`;
+
+      // Show the Min temperature for each tomorrow day
+      minTempNext[0].innerHTML = `${data.forecast.forecastday[1].day.mintemp_c}°`;
+      minTempNext[1].innerHTML = `${data.forecast.forecastday[2].day.mintemp_c}°`;
+      minTempNext[2].innerHTML = `${data.forecast.forecastday[3].day.mintemp_c}°`;
+      minTempNext[3].innerHTML = `${data.forecast.forecastday[4].day.mintemp_c}°`;
+
+      // Show the Daily Rain Chance for each day (started from today)
+      dailyRainChance[0].innerHTML = `${data.forecast.forecastday[0].day.daily_chance_of_rain}%`;
+      dailyRainChance[1].innerHTML = `${data.forecast.forecastday[1].day.daily_chance_of_rain}%`;
+      dailyRainChance[2].innerHTML = `${data.forecast.forecastday[2].day.daily_chance_of_rain}%`;
+      dailyRainChance[3].innerHTML = `${data.forecast.forecastday[3].day.daily_chance_of_rain}%`;
+      dailyRainChance[4].innerHTML = `${data.forecast.forecastday[4].day.daily_chance_of_rain}%`;
+
+      // Show the Short Daily Name in the Daily Forecast Section
+      const forecastdDaysData = data.forecast.forecastday;
+
+      for (let i = 1; i < forecastdDaysData.length; i++) {
+        const dateString = forecastdDaysData[i].date;
+        const date = new Date(dateString);
+        const dayOfWeek = date.toLocaleString("en-US", { weekday: "short" });
+        const dayOfMonth = date.toLocaleString("en-US", { day: "numeric" });
+        const formattedDate = dayOfWeek + " " + dayOfMonth;
+        shortDailyName[i - 1].innerHTML = formattedDate;
+      }
     });
 });
