@@ -78,5 +78,5 @@
 
 .realtime__city .content__title,
 .content__para {
-	color: var(--body-color);
+	color: var(--body-color) !important;
 }
