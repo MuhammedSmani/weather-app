@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./today.css" />
 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-		<title>Document</title>
+		<title>Weather App - Today</title>
 		<script src="./today.js" defer></script>
 	</head>
 	<body>
@@ -17,7 +17,7 @@
 					<a href="./index.html" class="logo__wrapper"> Weather </a>
 					<form class="nav__search" id="search-form" action="/" method="get">
 						<input id="search-input" class="search" name="city" placeholder="Search city..." />
-						<button type="submit">Search</button>
+						<button type="submit">S</button>
 					</form>
 					<div class="nav__cf">
 						<a href="#">°F</a>
@@ -92,14 +92,14 @@
 				<div class="realtime__container container">
 					<div class="realtime__content">
 						<div class="realtime__city">
-							<p class="content__title city__country">Tirana, Albania</p>
-							<p class="content__para" id="realtime-time">As of 12:15 am CET</p>
+							<p class="content__title city-country">Tirana, Albania</p>
+							<p class="content__para">As of <span id="realtime-time">12:15 am</span> CET</p>
 						</div>
 						<div class="realtime__info">
 							<div class="realtime__info_left">
 								<p id="realtime-temp">3°</p>
 								<p id="condition-text">Mist</p>
-								<p>Day <span id="day-temp">14°</span> - Night <span id="night-temp">2°</span></p>
+								<p>Day <span id="day-temp">14°</span> / Night <span id="night-temp">2°</span></p>
 							</div>
 							<div class="realtime__info_right condition-icon">
 								<i class="uil uil-wind-sun"></i>
@@ -112,7 +112,7 @@
 				<div class="todays__forecast_container container">
 					<div class="todays__forecast_content">
 						<div class="todays__forecast_city">
-							<p class="content__title">Today's Forecast for <span class="city__country">Tirana, Albania</span></p>
+							<p class="content__title">Today's Forecast for <span class="city-country">Tirana, Albania</span></p>
 						</div>
 						<div class="todays__forecast_four">
 							<div class="todays__forecast_morning todays__forecast_four-all">
@@ -121,7 +121,7 @@
 								<span class="today-forecast-icon"><i class="uil uil-cloud-sun-rain-alt"></i></span>
 								<div class="todays__forecast_rain">
 									<span id="morning-icon"><i class="uil uil-raindrops"></i></span>
-									<p class="rain__chance">5%</p>
+									<p class="rain-chance">5%</p>
 								</div>
 							</div>
 							<div class="todays__forecast_afternoon todays__forecast_four-all">
@@ -130,7 +130,7 @@
 								<span class="today-forecast-icon"><i class="uil uil-cloud-sun-rain-alt"></i></span>
 								<div class="todays__forecast_rain">
 									<span id="afternoon-icon"><i class="uil uil-raindrops"></i></span>
-									<p class="rain__chance">11%</p>
+									<p class="rain-chance">11%</p>
 								</div>
 							</div>
 							<div class="todays__forecast_evening todays__forecast_four-all">
@@ -139,7 +139,7 @@
 								<span class="today-forecast-icon"><i class="uil uil-clouds"></i></span>
 								<div class="todays__forecast_rain">
 									<span id="evening-icon"><i class="uil uil-raindrops"></i></span>
-									<p class="rain__chance">5%</p>
+									<p class="rain-chance">5%</p>
 								</div>
 							</div>
 							<div class="todays__forecast_overnight todays__forecast_four-all">
@@ -148,7 +148,7 @@
 								<span class="today-forecast-icon"><i class="uil uil-clouds"></i></span>
 								<div class="todays__forecast_rain">
 									<span id="overnight-icon"><i class="uil uil-raindrops"></i></span>
-									<p class="rain__chance">2%</p>
+									<p class="rain-chance">2%</p>
 								</div>
 							</div>
 						</div>
@@ -160,7 +160,7 @@
 				<div class="weather__today_container container">
 					<div class="weather__today_content">
 						<div class="weather__today_city">
-							<p class="content__title">Weather Today in <span class="city__country">Tirana, Albania</span></p>
+							<p class="content__title">Weather Today in <span class="city-country">Tirana, Albania</span></p>
 						</div>
 						<div class="weather__today_info">
 							<div class="weather__today_info_left">
@@ -175,7 +175,7 @@
 							<div class="weather__today_prop">
 								<i class="uil uil-temperature-half"></i>
 								<p>High / Low</p>
-								<p><span class="max__temp">36°</span>/<span class="min__temp">13°</span></p>
+								<p><span class="max-temp">36°</span>/<span class="min-temp">13°</span></p>
 							</div>
 							<div class="weather__today_prop">
 								<i class="uil uil-tear"></i>
@@ -286,59 +286,59 @@
 						<div class="daily__forecast_five">
 							<div class="daily__forecast_five-all">
 								<p>Today</p>
-								<p class="max__temp">14°</p>
-								<p class="min__temp">5°</p>
+								<p class="max-temp">14°</p>
+								<p class="min-temp">5°</p>
 								<i class="uil uil-cloud-sun-rain-alt"></i>
 								<div class="daily__forecast_rain">
 									<i class="uil uil-raindrops"></i>
-									<p class="daily__rain">2%</p>
+									<p class="daily-rain">2%</p>
 								</div>
 							</div>
 							<div class="daily__forecast_five-all">
-								<p class="short__daily__name">Fri 23</p>
-								<p class="max__temp__next">15°</p>
-								<p class="min__temp__next">4°</p>
+								<p class="short-daily-name">Fri 23</p>
+								<p class="max-temp-next">15°</p>
+								<p class="min-temp-next">4°</p>
 								<i class="uil uil-clouds"></i>
 
 								<div class="daily__forecast_rain">
 									<i class="uil uil-raindrops"></i>
-									<p class="daily__rain">2%</p>
+									<p class="daily-rain">2%</p>
 								</div>
 							</div>
 							<div class="daily__forecast_five-all">
-								<p class="short__daily__name">Sat 24</p>
-								<p class="max__temp__next">16°</p>
-								<p class="min__temp__next">5°</p>
+								<p class="short-daily-name">Sat 24</p>
+								<p class="max-temp-next">16°</p>
+								<p class="min-temp-next">5°</p>
 								<i class="uil uil-clouds"></i>
 
 								<div class="daily__forecast_rain">
 									<i class="uil uil-raindrops"></i>
 
-									<p class="daily__rain">2%</p>
+									<p class="daily-rain">2%</p>
 								</div>
 							</div>
 							<div class="daily__forecast_five-all">
-								<p class="short__daily__name">Sun 25</p>
-								<p class="max__temp__next">17°</p>
-								<p class="min__temp__next">5°</p>
+								<p class="short-daily-name">Sun 25</p>
+								<p class="max-temp-next">17°</p>
+								<p class="min-temp-next">5°</p>
 								<i class="uil uil-sun"></i>
 
 								<div class="daily__forecast_rain">
 									<i class="uil uil-raindrops"></i>
 
-									<p class="daily__rain">2%</p>
+									<p class="daily-rain">2%</p>
 								</div>
 							</div>
 							<div class="daily__forecast_five-all">
-								<p class="short__daily__name">Mon 26</p>
-								<p class="max__temp__next">18°</p>
-								<p class="min__temp__next">6°</p>
+								<p class="short-daily-name">Mon 26</p>
+								<p class="max-temp-next">18°</p>
+								<p class="min-temp-next">6°</p>
 								<i class="uil uil-sun"></i>
 
 								<div class="daily__forecast_rain">
 									<i class="uil uil-raindrops"></i>
 
-									<p class="daily__rain">2%</p>
+									<p class="daily-rain">2%</p>
 								</div>
 							</div>
 						</div>

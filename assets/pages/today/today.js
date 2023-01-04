@@ -3,7 +3,7 @@ const form = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 
 // Realtime section consts
-const cityCountry = document.querySelectorAll('.city__country');
+const cityCountry = document.querySelectorAll('.city-country');
 const realtimeTime = document.getElementById('realtime-time');
 const realtimeTemp = document.getElementById('realtime-temp');
 const conditionText = document.getElementById('condition-text');
@@ -17,12 +17,12 @@ const afternoonTemp = document.getElementById('afternoon-temp');
 const eveningTemp = document.getElementById('evening-temp');
 const overnightTemp = document.getElementById('overnight-temp');
 const todayForecastIcon = document.querySelectorAll('.today-forecast-icon')
-const rainChance = document.querySelectorAll('.rain__chance')
+const rainChance = document.querySelectorAll('.rain-chance')
 
 // Weather Today section consts
 const feelsLike = document.getElementById('feels-like');
-const maxTemp = document.querySelectorAll('.max__temp');
-const minTemp = document.querySelectorAll('.min__temp');
+const maxTemp = document.querySelectorAll('.max-temp');
+const minTemp = document.querySelectorAll('.min-temp');
 const humidity = document.getElementById('humidity');
 const pressure = document.getElementById('pressure');
 const visibility = document.getElementById('visibility');
@@ -37,10 +37,10 @@ const hourlyTemp = document.querySelectorAll('.hourly-temp');
 const hourlyRain = document.querySelectorAll('.hourly-rain');
 
 // Daily Forecast section consts
-const shortDailyName = document.querySelectorAll('.short__daily__name')
-const maxTempNext = document.querySelectorAll('.max__temp__next');
-const minTempNext = document.querySelectorAll('.min__temp__next');
-const dailyRainChance = document.querySelectorAll('.daily__rain');
+const shortDailyName = document.querySelectorAll('.short-daily-name')
+const maxTempNext = document.querySelectorAll('.max-temp-next');
+const minTempNext = document.querySelectorAll('.min-temp-next');
+const dailyRainChance = document.querySelectorAll('.daily-rain');
 
 // Icons
 var lightRainIcon = `<i class="uil uil-cloud-rain"></i>`;
@@ -113,7 +113,7 @@ form.addEventListener('submit', event => {
 
       minutes = minutes < 10 ? `0${minutes}` : minutes;
 
-      realtimeTime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
+      realtimeTime.innerHTML = `${hours}:${minutes} ${ampm}`;
 
       // Show the Realtime temperature
       const currentTemp = data.current.temp_c; 
