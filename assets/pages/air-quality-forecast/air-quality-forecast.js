@@ -1,6 +1,7 @@
 // Form submit consts
 const form = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
+
 const city = document.getElementById('city');
 
 // Air Quality Forecast consts

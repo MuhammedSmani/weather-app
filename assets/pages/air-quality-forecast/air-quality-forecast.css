@@ -8,7 +8,7 @@ body {
 .air__quality__section {
 	display: flex;
 	justify-content: center;
-	margin-top: 132px;
+	/* margin-top: 132px; */
 	height: calc(100vh - 233px);
 }
 .air__container {
@@ -30,7 +30,7 @@ body {
 }
 .air__quality__description {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	margin: 0 1rem;
 }
@@ -55,16 +55,26 @@ body {
 	border-radius: 100%;
 	outline: solid 0.3rem #e7ecf1;
 }
+.air__quality__text {
+	padding: 2rem;
+}
+.primary__pollutant {
+	padding: 2rem;
+	border-left: 1px solid var(--fourth-color);
+}
 .all__pollutants__parts {
 	display: flex;
 	flex-wrap: wrap;
+	gap: 1rem;
 }
 .all__pollutants__description {
 	display: flex;
+	justify-content: flex-start;
 	align-items: center;
-	width: 50%;
+	width: 49%;
 	display: flex;
 	margin: 1rem 0;
+	gap: 1rem;
 }
 .all__pollutants__circle {
 	width: 30%;

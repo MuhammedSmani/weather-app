@@ -54,6 +54,9 @@ var cloudyIcon = `<i class="uil uil-clouds"></i>`;
 var patchyRainIcon = `<i class="uil uil-cloud-sun-rain-alt"></i>`;
 var lightDrizzleIcon = `<i class="uil uil-cloud-showers-heavy"></i>`;
 var lightRainShowerIcon = `<i class="uil uil-cloud-sun-tear"></i>`;
+var heavySnowIcon = `<i class="uil uil-cloud-sun-hail"></i>`;
+var moderateHeavySnowIcon = `<i class="uil uil-cloud-sun-hail"></i>`;
+var patchyLightSnowIcon = `<i class="uil uil-cloud-sun-meatball"></i>`;
 var otherIcon = `<i class="uil uil-rainbow"></i>`;
 
 // Function for showing the Icons depending on the Text
@@ -80,6 +83,12 @@ function setConditionIcon(conditionText, iconElement, lightRainIcon, mistIcon, o
     iconElement.innerHTML = lightDrizzleIcon;
   } else if (conditionText == "Light rain shower") {
     iconElement.innerHTML = lightRainShowerIcon;
+  } else if (conditionText == "Heavy snow") {
+    iconElement.innerHTML = heavySnowIcon;
+  } else if (conditionText == "Moderate or heavy snow showers") {
+    iconElement.innerHTML = moderateHeavySnowIcon;
+  } else if (conditionText == "Patchy light snow") {
+    iconElement.innerHTML = patchyLightSnowIcon;
   } else {
     iconElement.innerHTML = otherIcon;
   }
@@ -113,7 +122,7 @@ form.addEventListener('submit', event => {
 
       minutes = minutes < 10 ? `0${minutes}` : minutes;
 
-      realtimeTime.innerHTML = `${hours}:${minutes} ${ampm}`;
+      realtimeTime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
 
       // Show the Realtime temperature
       const currentTemp = data.current.temp_c; 
@@ -128,29 +137,29 @@ form.addEventListener('submit', event => {
       });
 
       // Show the Day temperature
-      dayTemp.innerHTML = `${data.forecast.forecastday[0].hour[12].temp_c}°`;
+      dayTemp.innerHTML = `${Math.round(data.forecast.forecastday[0].hour[12].temp_c)}°`;
 
       // Show the Night temperature
-      nightTemp.innerHTML = `${data.forecast.forecastday[1].hour[0].temp_c}°`;
+      nightTemp.innerHTML = `${Math.round(data.forecast.forecastday[1].hour[0].temp_c)}°`;
 
       // Show the Morning temperature and Chance of rain
-      morningTemp.innerHTML = `${data.forecast.forecastday[0].hour[6].temp_c}°`;
+      morningTemp.innerHTML = `${Math.round(data.forecast.forecastday[0].hour[6].temp_c)}°`;
       rainChance[0].innerHTML = `${data.forecast.forecastday[0].hour[6].chance_of_rain}%`;
 
       // Show the Afternoon temperature and Chance of rain
-      afternoonTemp.innerHTML = `${data.forecast.forecastday[0].hour[12].temp_c}°`;
+      afternoonTemp.innerHTML = `${Math.round(data.forecast.forecastday[0].hour[12].temp_c)}°`;
       rainChance[1].innerHTML = `${data.forecast.forecastday[0].hour[12].chance_of_rain}%`;
 
       // Show the Evening temperature and Chance of rain
-      eveningTemp.innerHTML = `${data.forecast.forecastday[0].hour[18].temp_c}°`;
+      eveningTemp.innerHTML = `${Math.round(data.forecast.forecastday[0].hour[18].temp_c)}°`;
       rainChance[2].innerHTML = `${data.forecast.forecastday[0].hour[18].chance_of_rain}%`;
 
       // Show the Overnight temperature and Chance of rain
-      overnightTemp.innerHTML = `${data.forecast.forecastday[1].hour[0].temp_c}°`;
+      overnightTemp.innerHTML = `${Math.round(data.forecast.forecastday[1].hour[0].temp_c)}°`;
       rainChance[3].innerHTML = `${data.forecast.forecastday[1].hour[0].chance_of_rain}%`;
 
       // Show the Feels Like temperature
-      feelsLike.innerHTML = `${data.current.feelslike_c}°`;
+      feelsLike.innerHTML = `${Math.round(data.current.feelslike_c)}°`;
 
       // Show the Humidity percentage
       humidity.innerHTML = `${data.current.humidity}%`;
@@ -175,21 +184,21 @@ form.addEventListener('submit', event => {
 
       // Show the High / Low temperature
       for (let i = 0; i < maxTemp.length; i++) {
-        maxTemp[i].innerHTML = `${data.forecast.forecastday[0].day.maxtemp_c}°`;
-        minTemp[i].innerHTML = `${data.forecast.forecastday[0].day.mintemp_c}°`;
+        maxTemp[i].innerHTML = `${Math.round(data.forecast.forecastday[0].day.maxtemp_c)}°`;
+        minTemp[i].innerHTML = `${Math.round(data.forecast.forecastday[0].day.mintemp_c)}°`;
       }
 
       // Show the Max temperature for each tomorrow day
-      maxTempNext[0].innerHTML = `${data.forecast.forecastday[1].day.maxtemp_c}°`;
-      maxTempNext[1].innerHTML = `${data.forecast.forecastday[2].day.maxtemp_c}°`;
-      maxTempNext[2].innerHTML = `${data.forecast.forecastday[3].day.maxtemp_c}°`;
-      maxTempNext[3].innerHTML = `${data.forecast.forecastday[4].day.maxtemp_c}°`;
+      maxTempNext[0].innerHTML = `${Math.round(data.forecast.forecastday[1].day.maxtemp_c)}°`;
+      maxTempNext[1].innerHTML = `${Math.round(data.forecast.forecastday[2].day.maxtemp_c)}°`;
+      maxTempNext[2].innerHTML = `${Math.round(data.forecast.forecastday[3].day.maxtemp_c)}°`;
+      maxTempNext[3].innerHTML = `${Math.round(data.forecast.forecastday[4].day.maxtemp_c)}°`;
 
       // Show the Min temperature for each tomorrow day
-      minTempNext[0].innerHTML = `${data.forecast.forecastday[1].day.mintemp_c}°`;
-      minTempNext[1].innerHTML = `${data.forecast.forecastday[2].day.mintemp_c}°`;
-      minTempNext[2].innerHTML = `${data.forecast.forecastday[3].day.mintemp_c}°`;
-      minTempNext[3].innerHTML = `${data.forecast.forecastday[4].day.mintemp_c}°`;
+      minTempNext[0].innerHTML = `${Math.round(data.forecast.forecastday[1].day.mintemp_c)}°`;
+      minTempNext[1].innerHTML = `${Math.round(data.forecast.forecastday[2].day.mintemp_c)}°`;
+      minTempNext[2].innerHTML = `${Math.round(data.forecast.forecastday[3].day.mintemp_c)}°`;
+      minTempNext[3].innerHTML = `${Math.round(data.forecast.forecastday[4].day.mintemp_c)}°`;
 
       // Show the Daily Rain Chance for each day (started from today)
       dailyRainChance[0].innerHTML = `${data.forecast.forecastday[0].day.daily_chance_of_rain}%`;
