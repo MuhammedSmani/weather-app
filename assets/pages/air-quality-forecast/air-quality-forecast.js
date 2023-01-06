@@ -1,7 +1,6 @@
 // Form submit consts
 const form = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
-
 const city = document.getElementById('city');
 
 // Air Quality Forecast consts
@@ -54,8 +53,8 @@ function setPm25Category(pm25Num, pm25CategoryElement, pm25IndexInt, pm25Categor
   } else {
     pm25CategoryElement.innerHTML = `Extremely poor`;
     pm25CategoryText.innerHTML = `Health alert: everyone may experience more serious health effects.`;
-    pm25IndexInt[0].style.outlineColor = `red`;
-    pm25IndexInt[1].style.outlineColor = `red`;
+    pm25IndexInt[0].style.outlineColor = `brown`;
+    pm25IndexInt[1].style.outlineColor = `brown`;
   }
 };
 
@@ -69,7 +68,7 @@ function setCoCategory(coNum, coIndexInt, coCategory) {
     coIndexInt.style.outlineColor = 'black';
   } else {
     coCategory.innerHTML = `Extremely poor`;
-    coIndexInt.style.outlineColor = 'red';
+    coIndexInt.style.outlineColor = 'brown';
   }
 };
 
@@ -89,7 +88,7 @@ function setNo2Category(no2Num, no2IndexInt, no2Category) {
     no2IndexInt.style.outlineColor = 'red';
   } else {
     no2Category.innerHTML = `Extremely poor`;
-    no2IndexInt.style.outlineColor = 'red';
+    no2IndexInt.style.outlineColor = 'brown';
   }
 };
 
@@ -109,7 +108,7 @@ function setO3Category(o3Num, o3IndexInt, o3Category) {
     o3IndexInt.style.outlineColor = 'red';
   } else {
     o3Category.innerHTML = `Hazardous`;
-    o3IndexInt.style.outlineColor = 'red';
+    o3IndexInt.style.outlineColor = 'brown';
   }
 };
 
@@ -129,7 +128,7 @@ function setPm10Category(pm10Num, pm10IndexInt, pm10Category) {
     pm10IndexInt.style.outlineColor = 'red';
   } else {
     pm10Category.innerHTML = `Extremely poor`;
-    pm10IndexInt.style.outlineColor = 'green';
+    pm10IndexInt.style.outlineColor = 'brown';
   }
 };
 
@@ -149,7 +148,7 @@ function setSo2ategory(so2Num, so2IndexInt, so2Category) {
     so2IndexInt.style.outlineColor = 'red';
   } else {
     so2Category.innerHTML = `Extremely poor`;
-    so2IndexInt.style.outlineColor = 'red';
+    so2IndexInt.style.outlineColor = 'brown';
   }
 };
 
