@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./weather-news.css" />
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+		<title>Weather App - News</title>
+		<script src="./weather-news.js" defer></script>
+	</head>
+	<body>
+		<!-- <header id="header" class="header"></header> -->
+		<header>
+			<nav class="nav">
+				<container class="nav__container container">
+					<a href="./index.html" class="logo__wrapper"> Weather </a>
+					<form class="nav__search" id="search-form" action="/" method="get">
+						<input id="search-input" class="search" name="city" placeholder="Search city..." />
+						<button type="submit">S</button>
+					</form>
+					<div class="nav__cf">
+						<a href="#">°F</a>
+						<a href="#" class="nav__cf-active">°C</a>
+					</div>
+					<div class="nav__open_menu">
+						<input class="open__menu_checkbox" id="active" type="checkbox" onclick="togNav()" />
+						<div>
+							<span class="first__span"></span>
+							<span class="last__span"></span>
+						</div>
+					</div>
+				</container>
+			</nav>
+			<nav class="nav__two">
+				<container class="nav__two_container container">
+					<div class="nav__menu">
+						<ul class="nav__list">
+							<li class="nav__item">
+								<a href="#" class="nav__link">Today </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Hourly </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">7 Day </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">14 Day </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Monthly </a>
+							</li>
+						</ul>
+					</div>
+				</container>
+			</nav>
+			<!-- ******************* NAV MOBILE ******************* -->
+			<div id="mySidenav" class="sidenav">
+				<div class="nav__menu_mobile" id="menu">
+					<div class="nav__search">
+						<input type="search" id="search" class="search" placeholder="Search city..." />
+					</div>
+					<div class="nav__cf">
+						<a href="#">°F</a>
+						<a href="#">°C</a>
+					</div>
+					<div class="nav__text_buttons">
+						<ul class="nav__list_mobile">
+							<li class="nav__item">
+								<a href="#" class="nav__link">Today </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Hourly </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">7 Day </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">14 Day </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Monthly </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<section class="weather__news__section section" id="weather-news-section">
+				<div class="weather__news__container container">
+					<div class="weather__news__content">
+						<div class="weather__news__box">
+							<h2>Top Weather News</h2>
+							<div class="weather__news__top__cards">
+                                
+							</div>
+						</div>
+
+                        <div class="weather__news__box">
+							<h2>Latest Weather News</h2>
+							<div class="weather__news__latest__cards">
+                                <div class="weather__news__latest__card">
+
+                                </div>
+
+                                <div class="weather__news__latest__card">
+
+                                </div>
+
+                                <div class="weather__news__latest__card">
+
+                                </div>
+
+                                <div class="weather__news__latest__card">
+
+                                </div>
+
+                                <div class="weather__news__latest__card">
+
+                                </div>
+
+                                <div class="weather__news__latest__card">
+
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<!-- <footer id="footer" class="footer"></footer> -->
+		<script src="../../components/header/header.js"></script>
+		<!-- <script src="../../components/footer/footer.js"></script> -->
+	</body>
+</html>
