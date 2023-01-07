@@ -1,4 +1,3 @@
-@import '/main.css';
 @import '/assets/components/header/header.css';
 @import '/assets/components/footer/footer.css';
 
@@ -9,7 +8,7 @@ body {
 	display: flex;
 	justify-content: center;
 	/* margin-top: 132px; */
-	height: calc(100vh - 233px);
+	/* height: calc(100vh - 233px); */
 }
 .air__container {
 	width: 100%;
@@ -94,6 +93,7 @@ body {
 }
 .all__pollutants {
 	padding: 0;
+	position: relative;
 }
 .air__quality__comments {
 	padding: 2rem 2rem 1rem 1rem;
@@ -108,17 +108,18 @@ body {
 
 /* AIR QUALITY MODAL */
 .air__quality__modal {
-	/* display: none; */
     position: absolute;
-    z-index: 1;
-    width: 100%;
+    z-index: 200;
     min-height: 100%;
     overflow: hidden;
-}
-.air__quality__modal__box {
-	position: fixed;
 	left: 0;
-    bottom: 0;
+	bottom: 0;
+}
+.show-modal {
+	display: block;
+}
+.close-modal {
+	display: none;
 }
 .air__quality__close__btn {
 	display: flex;
@@ -134,8 +135,8 @@ body {
 	color: var(--fifth-color);
 }
 .air__quality__modal__box {
+	position: fixed;
 	width: 350px;
-	height: auto;
 	background-color: var(--first-color);
 	padding: 0 0 1rem 1rem;
 	border-radius: 1rem;

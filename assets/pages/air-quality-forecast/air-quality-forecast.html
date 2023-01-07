@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./air-quality-forecast.css" />
 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-		<title>Weather App - Air Quality Forecast</title>
+		<title>Weather App - Air Quality</title>
 		<script src="./air-quality-forecast.js" defer></script>
 	</head>
 	<body>
@@ -187,43 +187,43 @@
 
 							<div class="air__quality__comments">
 								<p id="air-quality-comments"><i class="uil uil-info-circle"></i> Air Quality Index</p>
+							</div>
 
+    						<!-- AIR QUALITY MODAL -->
+							<div class="air__quality__modal section close-modal">
+								<div class="air__quality__modal__box">
+									<div><span class="air__quality__close__btn"><i class="uil uil-times"></i></span></div>
+									<div class="air__quality__modal__content">
+										<div class="air__quality__left">
+											<ul>
+												<li><h4>Levels</h4></li>
+												<li><span class="circle"></span> Good</li>
+												<li><span class="circle"></span> Fair</li>
+												<li><span class="circle"></span> Poor</li>
+												<li><span class="circle"></span> Very poor</li>
+												<li><span class="circle"></span> Extremely poor</li>
+											</ul>
+										</div>
+										<div class="air__quality__right">
+											<ul>
+												<li><h4>Air Quality Index</h4></li>
+												<li>Less than 12.5</li>
+												<li>12.5 – 25</li>
+												<li>25 – 50</li>
+												<li>50 – 150</li>
+												<li>More than 150</li>
+											</ul>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-    		<!-- AIR QUALITY MODAL -->
-			<section class="air__quality__modal">
-				<div class="air__quality__modal__box">
-					<div><span class="air__quality__close__btn"><i class="uil uil-times"></i></span></div>
-					<div class="air__quality__modal__content">
-						<div class="air__quality__left">
-							<ul>
-								<li><h4>Levels</h4></li>
-								<li><span class="circle"></span> Good</li>
-								<li><span class="circle"></span> Fair</li>
-								<li><span class="circle"></span> Poor</li>
-								<li><span class="circle"></span> Very poor</li>
-								<li><span class="circle"></span> Extremely poor</li>
-							</ul>
-						</div>
-						<div class="air__quality__right">
-							<ul>
-								<li><h4>Air Quality Index</h4></li>
-								<li>Less than 12.5</li>
-								<li>12.5 – 25</li>
-								<li>25 – 50</li>
-								<li>50 – 150</li>
-								<li>More than 150</li>	
-							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
 		</main>
-		<!-- <footer id="footer" class="footer"></footer> -->
-		<script src="../../components/header/header.js"></script>
-		<!-- <script src="../../components/footer/footer.js"></script> -->
+		<footer id="footer"></footer>
+		<!-- <script src="/assets/components/header/header.js"></script> -->
+		<script src="/assets/components/footer/footer.js"></script>
 	</body>
 </html>

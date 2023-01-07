@@ -203,3 +203,26 @@ form.addEventListener('submit', event => {
         so2IndexInt.innerHTML = parseInt(so2Num);
     })
 });
+
+// OPEN AND CLOSE THE MODAL
+const airQualityModal = document.querySelector('.air__quality__modal');
+const triggerModal = document.querySelector('#air-quality-comments');
+const closeModalButton = document.querySelector('.air__quality__close__btn');
+
+function openModal() {
+	airQualityModal.classList.add('show-modal');
+	airQualityModal.classList.remove('close-modal');
+}
+
+function closeModal() {
+	airQualityModal.classList.add('close-modal');
+	airQualityModal.classList.remove('show-modal');
+}
+
+function windowOnScroll(event) {
+	closeModal();
+}
+
+triggerModal.addEventListener('click', openModal);
+closeModalButton.addEventListener('click', closeModal);
+window.addEventListener('scroll', windowOnScroll);
