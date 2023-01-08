@@ -18,6 +18,28 @@ body {
   padding: 0 1rem 1rem;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.arrow,
+.second_arrow,
+.third_arrow,
+.close_arrow,
+.second-close_arrow,
+.third-close_arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--third-color);
+  margin: 0 0.5rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
 .section-weekend {
   margin-top: 160px;
 }
@@ -38,7 +60,9 @@ body {
   padding-top: 1rem;
 }
 
-.dropdown {
+.dropdown,
+.second_dropdown,
+.third_dropdown {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1rem;
