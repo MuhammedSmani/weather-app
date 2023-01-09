@@ -5,22 +5,15 @@
 body {
 	background: linear-gradient(180deg, var(--third-color) 0%, var(--first-color) 100%);
 }
-
 .hourly__section {
 	display: flex;
 	justify-content: center;
 	margin-top: 132px;
 	height: calc(100vh - 233px);
 }
-
 .hourly__container {
 	width: 100%;
 }
-
-/* .hourly__section .container {
-    max-width: 1280px;
-    margin: auto;
-} */
 .hourly__content {
 	display: flex;
 	flex-direction: column;
@@ -32,6 +25,11 @@ body {
 	color: var(--fifth-color);
 	padding-right: 1rem;
 }
+
+.hourly__content i:last-child {
+	padding-right: 0;
+}
+
 .hourly__title {
 	border-bottom: solid 1px var(--fourth-color);
 	padding: 1rem;
@@ -49,22 +47,31 @@ body {
 	padding: 0 1rem;
 }
 .hourly__main {
-	display: flex;
+	/* display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-between; */
+	display: grid;
+	grid-template-columns: 2fr 2fr 3fr 2fr 2fr 1fr;
 	border-top: solid 1px var(--fourth-color);
 }
 .hourly__main div {
 	display: flex;
 	align-items: center;
+	width: 100%;
 }
+
 .hourly__main div:nth-child(2) span {
-	font-size: 1.5rem;
+	font-size: var(--h1-font-size);
+	font-weight: var(--font-semi-bold);
 }
 
 .hourly__main .hourly-arrow {
 	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
+
 .hourly__hidden {
 	border: solid 1px var(--fourth-color);
 	border-radius: 1rem;
@@ -74,12 +81,7 @@ body {
 .hourly__main .uil-angle-down {
 	cursor: pointer;
 }
-.hourly__hidden {
-	border: solid 1px var(--fourth-color);
-	border-radius: 1rem;
-	margin: 20px;
-	/* display: none; */
-}
+
 .hourly__hidden__info {
 	display: flex;
 	flex-flow: row wrap;
