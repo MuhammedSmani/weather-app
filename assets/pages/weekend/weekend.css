@@ -11,6 +11,10 @@ body {
   );
 }
 
+.title-margin {
+  margin-top: 3.5rem;
+}
+
 .this-weekend {
   background-color: var(--body-color);
   border-bottom-left-radius: 1rem;
@@ -23,11 +27,7 @@ body {
 }
 
 .arrow,
-.second_arrow,
-.third_arrow,
-.close_arrow,
-.second-close_arrow,
-.third-close_arrow {
+.close_arrow {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,9 +60,7 @@ body {
   padding-top: 1rem;
 }
 
-.dropdown,
-.second_dropdown,
-.third_dropdown {
+.dropdown {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1rem;
