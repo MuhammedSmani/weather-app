@@ -11,18 +11,94 @@
 
 	</head>
 	<body>
+        <header>
+            <nav class="nav">
+                <container class="nav__container container">
+                    <a href="./index.html" class="logo__wrapper"> Weather </a>
+                    <form class="nav__search" id="search-form" action="/" method="get">
+                        <input id="search-input" class="search" name="city" placeholder="Search city..." />
+                        <button type="submit">S</button>
+                    </form>
+                    <div class="nav__cf">
+                        <a href="#">°F</a>
+                        <a href="#" class="nav__cf-active">°C</a>
+                    </div>
+                    <div class="nav__open_menu">
+                        <input class="open__menu_checkbox" id="active" type="checkbox" onclick="togNav()" />
+                        <div>
+                            <span class="first__span"></span>
+                            <span class="last__span"></span>
+                        </div>
+                    </div>
+                </container>
+            </nav>
+            <nav class="nav__two">
+                <container class="nav__two_container container">
+                    <div class="nav__menu">
+                        <ul class="nav__list">
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">Today </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">Hourly </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">7 Day </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">14 Day </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">Monthly </a>
+                            </li>
+                        </ul>
+                    </div>
+                </container>
+            </nav>
+            <!-- ******************* NAV MOBILE ******************* -->
+            <div id="mySidenav" class="sidenav">
+                <div class="nav__menu_mobile" id="menu">
+                    <div class="nav__search">
+                        <input type="search" id="search" class="search" placeholder="Search city..." />
+                    </div>
+                    <div class="nav__cf">
+                        <a href="#">°F</a>
+                        <a href="#">°C</a>
+                    </div>
+                    <div class="nav__text_buttons">
+                        <ul class="nav__list_mobile">
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">Today </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">Hourly </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">7 Day </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">14 Day </a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="#" class="nav__link">Monthly </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
         <main>
             <section class="weekly__section section" id="weekly-section">    
                 <div class="weekly__container container">
                     <div class="weekly__content">
                         <div class="weekly__title">
-                            <h1>7 Day Weather <span>- Tirana</span></h1>
-                            <p>As of 3:44 pm CET</p>
+                            <h1>7 Day Weather - <span id="city">Tirana</span></h1>
+                            <p>As of <span id="current-time">3:44 pm</span>  CET</p>
                         </div>
 
                         <div class="weekly__date">
                             <div class="weekly__description">
-                                <div class="weekly__main">
+                                <div class="weekly__main" id="weekly-main">
                                     <div>
                                         <span>Mon 2nd</span>
                                     </div>
@@ -100,87 +176,6 @@
                                      </ul>
                                 </div>
                             </div>
-
-                            <div class="weekly__description">
-                                <div class="weekly__main">
-                                    <div>
-                                        <span>Mon 2nd</span>
-                                    </div>
-                                    <div>
-                                        <span><b>6°</b></span><span>/3°</span>
-                                    </div>
-                                    <div>
-                                        <i class="uil uil-cloud"></i> <span>Light Rain</span>
-                                    </div>
-                                    <div>
-                                        <i class="uil uil-raindrops"> </i><span>64%</span>
-                                    </div>
-                                    <div>
-                                        <i class="uil uil-wind"></i> <span>NW 5 km/h</span>
-                                    </div>
-                                    <div class="weekly-arrow">
-                                        <i class="uil uil-angle-down"></i>
-                                    </div>
-                                </div>
-                                <div class="weekly__hidden">
-                                    <div>
-                                        <h1> <b>Mon 02</b><span>|Night</span></h1>
-                                        <h1><b>6°</b></h1>
-                                        <p>Cloudy skies this evening will become partly cloudy after midnight. Areas of patchy fog. Low 4C. Winds light and variable.</p>
-                                        <div>
-                                            <i class="uil uil-raindrops"> </i><span>64%</span>
-                                        </div>
-                                        <div>
-                                            <i class="uil uil-wind"></i> <span>NW 5 km/h</span>
-                                        </div>
-                                    </div>
-                                    <ul class="weekly__hidden__info">
-                                        <li>
-                                            <i class="uil uil-thermometer"></i>
-                                            <div class="weekly__hidden__info__text">
-                                                <span class="weekly__feels__like">Feels like</span>
-                                                <span class="weekly__feels__like__temp"><b>6°</b></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="uil uil-wind"></i>
-                                            <div class="weekly__hidden__info__text">
-                                                <span class="weekly__wind">Wind</span>
-                                                <span class="weekly__wind__temp"><b>NW 5 km/h</b></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="uil uil-tear"></i>
-                                            <div class="weekly__hidden__info__text">
-                                                <span class="weekly__humidity">Humidity</span>
-                                                <span class="weekly__humidity__temp"><b>86%</b></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="uil uil-sun"></i>
-                                            <div class="weekly__hidden__info__text">
-                                                <span class="weekly__uv__index">UV Index</span>
-                                                <span class="weekly__uv__index__temp"><b>0 of 10</b></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="uil uil-cloud"></i>
-                                            <div class="weekly__hidden__info__text">
-                                                <span class="weekly__cloud__cover">Cloud Cover</span>
-                                                <span class="weekly__cloud__cover__temp"><b>89%</b></span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <i class="uil uil-raindrops-alt"></i>
-                                            <div class="weekly__hidden__info__text">
-                                                <span class="weekly__rain__amount">Rain Amount</span>
-                                                <span class="weekly__rain__amount__temp"><b>0.02 mm</b></span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="weekly__button">
                             <a href="">Weekend Weather</a>
