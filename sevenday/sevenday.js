@@ -65,3 +65,27 @@ function formatTime(time) {
   
   return `${hours}:${minutes} ${ampm}`;
 }
+
+
+// const renderPosts = (days) => {
+//   output = '';
+//   days.forEach(day => {
+//       output += `
+//       <a href="./post/post.html?id=${post.id}">
+//       <div class="post">
+//           <div class="card-body">
+//           <h5 class="card-title">${post.title}</h5>
+//           <p class="card-text">${post.body}</p>
+//           <a id="more" href=/user/user.html?id=${post.userId}></a>
+
+//           </div>
+//       </div>
+//       <a>
+//       `;
+//   });
+//   postList.innerHTML = output;
+// }
+
+// fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${location}&days=10&aqi=yes&alerts=yes`)
+//     .then(response => response.json())
+//     .then(data => {})
