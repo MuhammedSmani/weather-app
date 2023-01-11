@@ -31,7 +31,7 @@ body {
 }
 
 .hourly__title {
-	border-bottom: solid 1px var(--fourth-color);
+	/* border-bottom: solid 1px var(--fourth-color); */
 	padding: 1rem;
 }
 .hourly__title p:nth-child(3) {
@@ -42,10 +42,16 @@ body {
 }
 .hourly__date h2 {
 	padding: 1rem;
+	border-top: solid 1px var(--fourth-color);
 }
 .hourly__description {
-	padding: 0 1rem;
+	/* padding: 0 1rem; */
 }
+
+.hourly__description_three {
+	border-bottom: solid 1px var(--fourth-color);
+}
+
 .hourly__main {
 	/* display: flex;
 	flex-direction: row;
@@ -53,7 +59,9 @@ body {
 	display: grid;
 	grid-template-columns: 2fr 2fr 3fr 2fr 2fr 1fr;
 	border-top: solid 1px var(--fourth-color);
+	padding: 0.5rem 1rem;
 }
+
 .hourly__main div {
 	display: flex;
 	align-items: center;
