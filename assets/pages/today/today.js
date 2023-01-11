@@ -1,7 +1,3 @@
-// Form submit consts
-const form = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
-
 // Realtime section consts
 const cityCountry = document.querySelectorAll('.city-country');
 const realtimeTime = document.getElementById('realtime-time');
@@ -44,6 +40,7 @@ const dailyRainChance = document.querySelectorAll('.daily-rain');
 
 // Icons
 var lightRainIcon = `<i class="uil uil-cloud-rain"></i>`;
+var sunnyIcon = `<i class="uil uil-brightness"></i>`;
 var mistIcon = `<i class="uil uil-clouds"></i>`;
 var overcastIcon = `<i class="uil uil-cloud"></i>`;
 var moderateRainIcon = `<i class="uil uil-cloud-rain"></i>`;
@@ -60,9 +57,11 @@ var patchyLightSnowIcon = `<i class="uil uil-cloud-sun-meatball"></i>`;
 var otherIcon = `<i class="uil uil-rainbow"></i>`;
 
 // Function for showing the Icons depending on the Text
-function setConditionIcon(conditionText, iconElement, lightRainIcon, mistIcon, overcastIcon, moderateRainIcon, partlyCloudyIcon, clearIcon, fogIcon, cloudyIcon, patchyRainIcon, lightDrizzleIcon, lightRainShowerIcon, otherIcon) {
+function setConditionIcon(conditionText, iconElement, lightRainIcon, sunnyIcon, mistIcon, overcastIcon, moderateRainIcon, partlyCloudyIcon, clearIcon, fogIcon, cloudyIcon, patchyRainIcon, lightDrizzleIcon, lightRainShowerIcon, heavySnowIcon, moderateHeavySnowIcon, patchyLightSnowIcon, otherIcon) {
   if (conditionText == "Light rain") {
     iconElement.innerHTML = lightRainIcon;
+  } else if (conditionText == "Sunny") {
+    iconElement.innerHTML = sunnyIcon;
   } else if (conditionText == "Mist") {
     iconElement.innerHTML = mistIcon;
   } else if (conditionText == "Overcast") {
@@ -94,129 +93,86 @@ function setConditionIcon(conditionText, iconElement, lightRainIcon, mistIcon, o
   }
 };
 
-// Submit form on Header
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  const searchKeyword = searchInput.value;
-  
-  fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${searchKeyword}&days=10&aqi=yes&alerts=yes`)
-    .then(response => response.json())
-    .then(data => {
-      // Show the city name on every section of the Home Page
-      cityCountry.forEach(node => {
-        node.innerHTML = `${data.location.name}, ${data.location.country}`;
+function getWeatherData(city) {
+  return fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${city}&days=10&aqi=yes&alerts=yes`)
+  .then(response => response.json())
+  .catch(error => {
+      console.error(error);
+  });
+}
+
+function updateAirQualityLink(city) {
+  const airQualityPage = document.getElementById('air-quality-page');
+  airQualityPage.innerHTML = `<a href="../../../assets/pages/air-quality-forecast/air-quality-forecast.html?city=${city}" class="nav__link">Air Quality </a>`;
+}
+
+function updateCityCountry(data) {
+  cityCountry.forEach(node => {
+      node.innerHTML = `${data.location.name}, ${data.location.country}`;
+  });
+}
+
+function updateRealtimeTime(data) {
+  const timeString = data.location.localtime;
+  const time = new Date(timeString);
+
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+  let ampm = 'AM';
+
+  if (hours > 12) {
+      hours -= 12;
+      ampm = 'PM';
+  }
+
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  realtimeTime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
+}
+
+function updateRealtimeTemp(data) {
+  const currentTemp = data.current.temp_c;
+  realtimeTemp.innerHTML = `${Math.round(currentTemp)}°`;
+}
+
+function updateConditionText(data) {
+  conditionText.innerHTML = data.current.condition.text;
+}
+
+function updateConditionIcon(data) {
+  conditionIcon.forEach(function(iconElement) {
+      setConditionIcon(data.current.condition.text, iconElement, lightRainIcon, mistIcon, overcastIcon, moderateRainIcon, partlyCloudyIcon, clearIcon, fogIcon, cloudyIcon, patchyRainIcon, lightDrizzleIcon, lightRainShowerIcon, otherIcon);
+  });
+}
+
+function updateWeatherToday(data) {
+  feelsLike.innerHTML = `${Math.round(data.current.feelslike_c)}°`;
+  humidity.innerHTML = `${data.current.humidity}%`;
+  pressure.innerHTML = data.current.pressure_in;
+  visibility.innerHTML = data.current.vis_km;
+  wind.innerHTML = data.current.wind_kph;
+  uvIndex.innerHTML = data.current.uv;
+}
+
+function main() {
+  let city = new URLSearchParams(window.location.search).get('city');
+  if (city == null) {
+      city = "tirana";
+  }
+
+  getWeatherData(city)
+      .then(data => {
+          updateAirQualityLink(city);
+          updateCityCountry(data);
+          updateRealtimeTime(data);
+          updateRealtimeTemp(data);
+          updateConditionText(data);
+          updateConditionIcon(data);
+          updateWeatherToday(data)
+      })
+      .catch(error => {
+          console.error(error);
       });
+}
 
-      // Show the Realtime Time near to the city name
-      const timeString = data.location.localtime;
-      const time = new Date(timeString);
-
-      let hours = time.getHours();
-      let minutes = time.getMinutes();
-      let ampm = 'AM';
-    
-      if (hours > 12) {
-        hours -= 12;
-        ampm = 'PM';
-      }
-
-      minutes = minutes < 10 ? `0${minutes}` : minutes;
-
-      realtimeTime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
-
-      // Show the Realtime temperature
-      const currentTemp = data.current.temp_c; 
-      realtimeTemp.innerHTML = `${currentTemp}°`;
-
-      // Show the Condition text
-      conditionText.innerHTML = data.current.condition.text;
-
-      // Show the Condition Big Icon
-      conditionIcon.forEach(function(iconElement) {
-        setConditionIcon(data.current.condition.text, iconElement, lightRainIcon, mistIcon, overcastIcon, moderateRainIcon, partlyCloudyIcon, clearIcon, fogIcon, cloudyIcon, patchyRainIcon, lightDrizzleIcon, lightRainShowerIcon, otherIcon);
-      });
-
-      // Show the Day temperature
-      dayTemp.innerHTML = `${Math.round(data.forecast.forecastday[0].hour[12].temp_c)}°`;
-
-      // Show the Night temperature
-      nightTemp.innerHTML = `${Math.round(data.forecast.forecastday[1].hour[0].temp_c)}°`;
-
-      // Show the Morning temperature and Chance of rain
-      morningTemp.innerHTML = `${Math.round(data.forecast.forecastday[0].hour[6].temp_c)}°`;
-      rainChance[0].innerHTML = `${data.forecast.forecastday[0].hour[6].chance_of_rain}%`;
-
-      // Show the Afternoon temperature and Chance of rain
-      afternoonTemp.innerHTML = `${Math.round(data.forecast.forecastday[0].hour[12].temp_c)}°`;
-      rainChance[1].innerHTML = `${data.forecast.forecastday[0].hour[12].chance_of_rain}%`;
-
-      // Show the Evening temperature and Chance of rain
-      eveningTemp.innerHTML = `${Math.round(data.forecast.forecastday[0].hour[18].temp_c)}°`;
-      rainChance[2].innerHTML = `${data.forecast.forecastday[0].hour[18].chance_of_rain}%`;
-
-      // Show the Overnight temperature and Chance of rain
-      overnightTemp.innerHTML = `${Math.round(data.forecast.forecastday[1].hour[0].temp_c)}°`;
-      rainChance[3].innerHTML = `${data.forecast.forecastday[1].hour[0].chance_of_rain}%`;
-
-      // Show the Feels Like temperature
-      feelsLike.innerHTML = `${Math.round(data.current.feelslike_c)}°`;
-
-      // Show the Humidity percentage
-      humidity.innerHTML = `${data.current.humidity}%`;
-
-      // Show the Pressure IN
-      pressure.innerHTML = data.current.pressure_in;
-
-      // Show the Visibility in KM
-      visibility.innerHTML = data.current.vis_km;
-
-      // Show the Wind in KPH
-      wind.innerHTML = data.current.wind_kph;
-
-      // Show the Dew Point
-      dewpoint.innerHTML = `${data.forecast.forecastday[0].hour[1].dewpoint_c}°`;
-
-      // Show the UV Index
-      uvIndex.innerHTML = data.current.uv;
-
-      // Show the Moon Phase
-      moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
-
-      // Show the High / Low temperature
-      for (let i = 0; i < maxTemp.length; i++) {
-        maxTemp[i].innerHTML = `${Math.round(data.forecast.forecastday[0].day.maxtemp_c)}°`;
-        minTemp[i].innerHTML = `${Math.round(data.forecast.forecastday[0].day.mintemp_c)}°`;
-      }
-
-      // Show the Max temperature for each tomorrow day
-      maxTempNext[0].innerHTML = `${Math.round(data.forecast.forecastday[1].day.maxtemp_c)}°`;
-      maxTempNext[1].innerHTML = `${Math.round(data.forecast.forecastday[2].day.maxtemp_c)}°`;
-      maxTempNext[2].innerHTML = `${Math.round(data.forecast.forecastday[3].day.maxtemp_c)}°`;
-      maxTempNext[3].innerHTML = `${Math.round(data.forecast.forecastday[4].day.maxtemp_c)}°`;
-
-      // Show the Min temperature for each tomorrow day
-      minTempNext[0].innerHTML = `${Math.round(data.forecast.forecastday[1].day.mintemp_c)}°`;
-      minTempNext[1].innerHTML = `${Math.round(data.forecast.forecastday[2].day.mintemp_c)}°`;
-      minTempNext[2].innerHTML = `${Math.round(data.forecast.forecastday[3].day.mintemp_c)}°`;
-      minTempNext[3].innerHTML = `${Math.round(data.forecast.forecastday[4].day.mintemp_c)}°`;
-
-      // Show the Daily Rain Chance for each day (started from today)
-      dailyRainChance[0].innerHTML = `${data.forecast.forecastday[0].day.daily_chance_of_rain}%`;
-      dailyRainChance[1].innerHTML = `${data.forecast.forecastday[1].day.daily_chance_of_rain}%`;
-      dailyRainChance[2].innerHTML = `${data.forecast.forecastday[2].day.daily_chance_of_rain}%`;
-      dailyRainChance[3].innerHTML = `${data.forecast.forecastday[3].day.daily_chance_of_rain}%`;
-      dailyRainChance[4].innerHTML = `${data.forecast.forecastday[4].day.daily_chance_of_rain}%`;
-
-      // Show the Short Daily Name in the Daily Forecast Section
-      const forecastdDaysData = data.forecast.forecastday;
-
-      for (let i = 1; i < forecastdDaysData.length; i++) {
-        const dateString = forecastdDaysData[i].date;
-        const date = new Date(dateString);
-        const dayOfWeek = date.toLocaleString("en-US", { weekday: "short" });
-        const dayOfMonth = date.toLocaleString("en-US", { day: "numeric" });
-        const formattedDate = dayOfWeek + " " + dayOfMonth;
-        shortDailyName[i - 1].innerHTML = formattedDate;
-      }
-    });
-});
+main();

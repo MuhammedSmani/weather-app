@@ -10,12 +10,11 @@
 		<script src="./weather-news.js" defer></script>
 	</head>
 	<body>
-		<!-- <header id="header" class="header"></header> -->
 		<header>
 			<nav class="nav">
-				<container class="nav__container container">
-					<a href="./index.html" class="logo__wrapper"> Weather </a>
-					<form class="nav__search" id="search-form" action="/" method="get">
+				<div class="nav__container container">
+					<a href="#" class="logo__wrapper">Weather</a>
+					<form class="nav__search" id="search-form" action="">
 						<input id="search-input" class="search" name="city" placeholder="Search city..." />
 						<button type="submit">S</button>
 					</form>
@@ -30,10 +29,10 @@
 							<span class="last__span"></span>
 						</div>
 					</div>
-				</container>
+				</div>
 			</nav>
 			<nav class="nav__two">
-				<container class="nav__two_container container">
+				<div class="nav__two_container container">
 					<div class="nav__menu">
 						<ul class="nav__list">
 							<li class="nav__item">
@@ -46,14 +45,23 @@
 								<a href="#" class="nav__link">7 Day </a>
 							</li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">14 Day </a>
+								<a href="#" class="nav__link">Weekend </a>
 							</li>
 							<li class="nav__item">
 								<a href="#" class="nav__link">Monthly </a>
 							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Air Quality </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Radar </a>
+							</li>
+							<li class="nav__item">
+								<a href="../weather-news/weather-news.html" class="nav__link">Weather News </a>
+							</li>
 						</ul>
 					</div>
-				</container>
+				</div>
 			</nav>
 			<!-- ******************* NAV MOBILE ******************* -->
 			<div id="mySidenav" class="sidenav">
@@ -77,10 +85,19 @@
 								<a href="#" class="nav__link">7 Day </a>
 							</li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">14 Day </a>
+								<a href="#" class="nav__link">Weekend </a>
 							</li>
 							<li class="nav__item">
 								<a href="#" class="nav__link">Monthly </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Air Quality </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Radar </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Weather News </a>
 							</li>
 						</ul>
 					</div>
@@ -136,19 +153,14 @@
 									<img id="weather-news-image" src="" alt="">
 									<h4 id="weather-news-title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
                                 </div>
-
-                                <div class="weather__news__latest__card">
-									<img id="weather-news-image" src="" alt="">
-									<h4 id="weather-news-title">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h4>
-                                </div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 		</main>
-		<footer id="footer" class="footer"></footer>
-		<script src="../../components/header/header.js"></script>
-		<script src="../../components/footer/footer.js"></script>
+		<footer id="footer"></footer>
+		<script src="/assets/components/header/header.js"></script>
+		<script src="/assets/components/footer/footer.js"></script>
 	</body>
 </html>

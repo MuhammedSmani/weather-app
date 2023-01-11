@@ -1,4 +1,9 @@
 @import '/assets/components/header/header.css';
+@import '/assets/components/realtime/realtime.css';
+@import '/assets/components/todays-forecast/todays-forecast.css';
+@import '/assets/components/weather-today/weather-today.css';
+@import '/assets/components/hourly-forecast/hourly-forecast.css';
+@import '/assets/components/daily-forecast/daily-forecast.css';
 @import '/assets/components/footer/footer.css';
 
 body {
@@ -59,8 +64,8 @@ body {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 60vh;
-    max-height: 60vh;
+    /* min-height: 60vh;
+    max-height: 60vh; */
     max-width: 100%;
 }
 #weather-top-description {
@@ -101,8 +106,8 @@ body {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 20vh;
-    max-height: 20vh;
+    /* min-height: 20vh;
+    max-height: 20vh; */
     max-width: 100%;
 }
 .weather__news__latest__card:hover #weather-news-title {

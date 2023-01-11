@@ -10,14 +10,12 @@
 		<script src="./air-quality-forecast.js" defer></script>
 	</head>
 	<body>
-		<!-- <header id="header" class="header"></header> -->
 		<header>
 			<nav class="nav">
-				<container class="nav__container container">
-					<a href="./index.html" class="logo__wrapper"> Weather </a>
-					<form class="nav__search" id="search-form" action="/" method="get">
+				<div class="nav__container container">
+					<a href="#" class="logo__wrapper">Weather</a>
+					<form class="nav__search" id="search-form" action="../../../assets/pages/air-quality-forecast/air-quality-forecast.html">
 						<input id="search-input" class="search" name="city" placeholder="Search city..." />
-						<button type="submit">S</button>
 					</form>
 					<div class="nav__cf">
 						<a href="#">°F</a>
@@ -30,13 +28,13 @@
 							<span class="last__span"></span>
 						</div>
 					</div>
-				</container>
+				</div>
 			</nav>
 			<nav class="nav__two">
-				<container class="nav__two_container container">
+				<div class="nav__two_container container">
 					<div class="nav__menu">
 						<ul class="nav__list">
-							<li class="nav__item">
+							<li class="nav__item" id="today-page">
 								<a href="#" class="nav__link">Today </a>
 							</li>
 							<li class="nav__item">
@@ -46,14 +44,23 @@
 								<a href="#" class="nav__link">7 Day </a>
 							</li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">14 Day </a>
+								<a href="#" class="nav__link">Weekend </a>
 							</li>
 							<li class="nav__item">
 								<a href="#" class="nav__link">Monthly </a>
 							</li>
+							<li class="nav__item" id="air-quality-page">
+								<a href="" class="nav__link">Air Quality </a>
+							</li>
+							<li class="nav__item">
+								<a href="#" class="nav__link">Radar </a>
+							</li>
+							<li class="nav__item">
+								<a href="../weather-news/weather-news.html" class="nav__link">Weather News </a>
+							</li>
 						</ul>
 					</div>
-				</container>
+				</div>
 			</nav>
 			<!-- ******************* NAV MOBILE ******************* -->
 			<div id="mySidenav" class="sidenav">
@@ -68,19 +75,28 @@
 					<div class="nav__text_buttons">
 						<ul class="nav__list_mobile">
 							<li class="nav__item">
-								<a href="#" class="nav__link">Today </a>
+								<a href="" class="nav__link">Today </a>
 							</li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">Hourly </a>
+								<a href="" class="nav__link">Hourly </a>
 							</li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">7 Day </a>
+								<a href="" class="nav__link">7 Day </a>
 							</li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">14 Day </a>
+								<a href="" class="nav__link">Weekend </a>
 							</li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">Monthly </a>
+								<a href="" class="nav__link">Monthly </a>
+							</li>
+							<li class="nav__item">
+								<a href="" class="nav__link">Air Quality </a>
+							</li>
+							<li class="nav__item">
+								<a href="" class="nav__link">Radar </a>
+							</li>
+							<li class="nav__item">
+								<a href="" class="nav__link">Weather News </a>
 							</li>
 						</ul>
 					</div>
@@ -92,7 +108,7 @@
 				<div class="air__container container">
 					<div class="air__quality__content">
 						<div class="air__quality__today">
-							<h2>Today's Air Quality - <span id="city">Tirana</span></h2>
+							<h2>Today's Air Quality - <span id="air-city">Tirana</span></h2>
 							<div class="air__quality__description">
 								<div class="air__quality__info">
 									<div class="air__quality__circle" id="air-quality-circle">
@@ -221,7 +237,7 @@
 			</section>
 		</main>
 		<footer id="footer"></footer>
-		<!-- <script src="/assets/components/header/header.js"></script> -->
+		<script src="/assets/components/header/header.js"></script>
 		<script src="/assets/components/footer/footer.js"></script>
 	</body>
 </html>

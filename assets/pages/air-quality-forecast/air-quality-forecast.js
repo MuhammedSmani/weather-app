@@ -1,7 +1,7 @@
 // Form submit consts
 const form = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
-const city = document.getElementById('city');
+const airCity = document.getElementById('air-city');
 
 // Air Quality Forecast consts
 const pm25Index = document.getElementById('pm25-index');
@@ -152,57 +152,41 @@ function setSo2ategory(so2Num, so2IndexInt, so2Category) {
   }
 };
 
-// Submit form on Header
-form.addEventListener('submit', event => {
-    event.preventDefault();
-    const searchKeyword = searchInput.value;
-    
-    fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${searchKeyword}&days=10&aqi=yes&alerts=yes`)
-      .then(response => response.json())
+function getWeatherData(city) {
+  return fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${city}&days=10&aqi=yes&alerts=yes`)
+  .then(response => response.json())
+  .catch(error => {
+      console.error(error);
+  });
+}
+
+function updateTodayLink(city) {
+  const todayPage = document.getElementById('today-page');
+  todayPage.innerHTML = `<a href="../../../assets/pages/today/today.html?city=${city}" class="nav__link">Today </a>`;
+}
+
+function updateCityCountry(data) {
+  const cityCountry = document.getElementById('air-city')
+  cityCountry.innerHTML = `${data.location.name}, ${data.location.country}`;
+}
+
+function main() {
+  let city = new URLSearchParams(window.location.search).get('city');
+  if (city == null) {
+      city = "tirana";
+  }
+
+  getWeatherData(city)
       .then(data => {
-        // Show the city name at Today's Air Quality title
-        city.innerHTML = data.location.name;
+          updateTodayLink(city);
+          updateCityCountry(data);
+      })
+      .catch(error => {
+          console.error(error);
+      });
+}
 
-        // Show the PM2.5 index and category
-        pm25CategoryElements.forEach(function(pm25CategoryElement, index) {
-          var pm25Num = Number(data.current.air_quality.pm2_5.toFixed(2));
-          pm25Index.innerHTML = pm25Num;
-          setPm25Category(pm25Num, pm25CategoryElement, pm25IndexInt, pm25CategoryText);
-          pm25IndexInt[0].innerHTML = parseInt(pm25Num);
-          pm25IndexInt[1].innerHTML = parseInt(pm25Num);
-        });
-
-        // Show the CO index and category
-        var coNum = Number(data.current.air_quality.co.toFixed(2));
-        coIndex.innerHTML = coNum;
-        setCoCategory(coNum, coIndexInt, coCategory);
-        coIndexInt.innerHTML = parseInt(coNum);
-
-        // Show the NO2 index and category
-        var no2Num = Number(data.current.air_quality.no2.toFixed(2));
-        no2Index.innerHTML = no2Num;
-        setNo2Category(no2Num, no2IndexInt, no2Category);
-        no2IndexInt.innerHTML = parseInt(no2Num);
-
-        // Show the O3 index and category
-        var o3Num = Number(data.current.air_quality.o3.toFixed(2));
-        o3Index.innerHTML = o3Num;
-        setO3Category(o3Num, o3IndexInt, o3Category);
-        o3IndexInt.innerHTML = parseInt(o3Num);
-
-        // Show the PM10 index and category
-        var pm10Num = Number(data.current.air_quality.pm10.toFixed(2));
-        pm10Index.innerHTML = pm10Num;
-        setPm10Category(pm10Num, pm10IndexInt, pm10Category);
-        pm10IndexInt.innerHTML = parseInt(pm10Num);
-
-        // Show the SO2 index and category
-        var so2Num = Number(data.current.air_quality.so2.toFixed(2));
-        so2Index.innerHTML = so2Num;
-        setSo2ategory(so2Num, so2IndexInt, so2Category);
-        so2IndexInt.innerHTML = parseInt(so2Num);
-    })
-});
+main();
 
 // OPEN AND CLOSE THE MODAL
 const airQualityModal = document.querySelector('.air__quality__modal');
