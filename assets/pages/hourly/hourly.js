@@ -10,6 +10,23 @@ const hourlyDescriptionTwo = document.querySelector('.hourly__description_two');
 const hourlyDescriptionThree = document.querySelector('.hourly__description_three');
 const hourlyCityName = document.querySelector('.hourly__city_name');
 
+// Icons
+var lightRainIcon = `<i class="uil uil-cloud-rain"></i>`;
+var mistIcon = `<i class="uil uil-clouds"></i>`;
+var overcastIcon = `<i class="uil uil-cloud"></i>`;
+var moderateRainIcon = `<i class="uil uil-cloud-rain"></i>`;
+var partlyCloudyIcon = `<i class="uil uil-cloud-sun"></i>`;
+var clearIcon = `<i class="uil uil-sun"></i>`;
+var fogIcon = `<i class="uil uil-clouds"></i>`;
+var cloudyIcon = `<i class="uil uil-clouds"></i>`;
+var patchyRainIcon = `<i class="uil uil-cloud-sun-rain-alt"></i>`;
+var lightDrizzleIcon = `<i class="uil uil-cloud-showers-heavy"></i>`;
+var lightRainShowerIcon = `<i class="uil uil-cloud-sun-tear"></i>`;
+var heavySnowIcon = `<i class="uil uil-cloud-sun-hail"></i>`;
+var moderateHeavySnowIcon = `<i class="uil uil-cloud-sun-hail"></i>`;
+var patchyLightSnowIcon = `<i class="uil uil-cloud-sun-meatball"></i>`;
+var otherIcon = `<i class="uil uil-rainbow"></i>`;
+
 // console.log(hourlyDescription);
 
 const form = document.getElementById('search-form');
@@ -90,6 +107,8 @@ function render() {
 			const dateNumberThree = dateThree.getDate();
 
 			hourlyThirdDay.innerHTML = `${dayNameThree}, ${monthNameThree} ${dateNumberThree}`;
+
+			//
 
 			//
 
@@ -188,6 +207,64 @@ function render() {
 								</div>
 							</div>
           `;
+
+				// var conditionText = document.querySelector('.condition-text');
+
+				// var conditionIcon = document.querySelector('.condition');
+
+				// var lightRainIcon = `<i class="uil uil-cloud-rain"></i>`;
+				// var mistIcon = `<i class="uil uil-clouds"></i>`;
+				// var overcastIcon = `<i class="uil uil-cloud"></i>`;
+				// var moderateRainIcon = `<i class="uil uil-cloud-rain"></i>`;
+				// var partlyCloudyIcon = `<i class="uil uil-cloud-sun"></i>`;
+				// var clearIcon = `<i class="uil uil-sun"></i>`;
+				// var fogIcon = `<i class="uil uil-clouds"></i>`;
+				// var cloudyIcon = `<i class="uil uil-clouds"></i>`;
+				// var patchyRainIcon = `<i class="uil uil-cloud-sun-rain-alt"></i>`;
+				// var lightDrizzleIcon = `<i class="uil uil-cloud-showers-heavy"></i>`;
+				// var lightRainShowerIcon = `<i class="uil uil-cloud-sun-tear"></i>`;
+				// var heavySnowIcon = `<i class="uil uil-cloud-sun-hail"></i>`;
+				// var moderateHeavySnowIcon = `<i class="uil uil-cloud-sun-hail"></i>`;
+				// var patchyLightSnowIcon = `<i class="uil uil-cloud-sun-meatball"></i>`;
+				// var otherIcon = `<i class="uil uil-rainbow"></i>`;
+
+				// // if ((conditionText = 'Cloudy')) {
+				// // 	document.querySelector('.condition').innerHTML = mistIcon;
+				// // }
+
+				// document.querySelector('.condition').forEach((el) => {
+				// 	if (conditionText == 'Light rain') {
+				// 		document.querySelector('.condition').innerHTML = lightRainIcon;
+				// 	} else if (conditionText == 'Mist') {
+				// 		document.querySelector('.condition').innerHTML = mistIcon;
+				// 	} else if (conditionText == 'Overcast') {
+				// 		document.querySelector('.condition').innerHTML = overcastIcon;
+				// 	} else if (conditionText == 'Moderate rain') {
+				// 		document.querySelector('.condition').innerHTML = moderateRainIcon;
+				// 	} else if (conditionText == 'Partly cloudy') {
+				// 		document.querySelector('.condition').innerHTML = partlyCloudyIcon;
+				// 	} else if (conditionText == 'Clear') {
+				// 		document.querySelector('.condition').innerHTML = clearIcon;
+				// 	} else if (conditionText == 'Fog') {
+				// 		document.querySelector('.condition').innerHTML = fogIcon;
+				// 	} else if (conditionText == 'Cloudy') {
+				// 		document.querySelector('.condition').innerHTML = cloudyIcon;
+				// 	} else if (conditionText == 'Patchy rain possible') {
+				// 		document.querySelector('.condition').innerHTML = patchyRainIcon;
+				// 	} else if (conditionText == 'Light drizzle') {
+				// 		document.querySelector('.condition').innerHTML = lightDrizzleIcon;
+				// 	} else if (conditionText == 'Light rain shower') {
+				// 		document.querySelector('.condition').innerHTML = lightRainShowerIcon;
+				// 	} else if (conditionText == 'Heavy snow') {
+				// 		document.querySelector('.condition').innerHTML = heavySnowIcon;
+				// 	} else if (conditionText == 'Moderate or heavy snow showers') {
+				// 		document.querySelector('.condition').innerHTML = moderateHeavySnowIcon;
+				// 	} else if (conditionText == 'Patchy light snow') {
+				// 		document.querySelector('.condition').innerHTML = patchyLightSnowIcon;
+				// 	} else {
+				// 		document.querySelector('.condition').innerHTML = otherIcon;
+				// 	}
+				// });
 			}
 
 			for (i = 0; i < 24; i++) {
