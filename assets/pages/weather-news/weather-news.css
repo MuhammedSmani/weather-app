@@ -1,9 +1,4 @@
 @import '/assets/components/header/header.css';
-@import '/assets/components/realtime/realtime.css';
-@import '/assets/components/todays-forecast/todays-forecast.css';
-@import '/assets/components/weather-today/weather-today.css';
-@import '/assets/components/hourly-forecast/hourly-forecast.css';
-@import '/assets/components/daily-forecast/daily-forecast.css';
 @import '/assets/components/footer/footer.css';
 
 body {
@@ -14,9 +9,6 @@ body {
 	justify-content: center;
 	/* margin-top: 132px; */
 	/* height: calc(100vh - 233px); */
-}
-.weather__news__container {
-	width: 100%;
 }
 .weather__news__content {
 	display: flex;
@@ -37,10 +29,9 @@ body {
     border-radius: 1rem;
 }
 
-/* TOP WEATHER STORY */
+/* WEATHER TOP STORY */
 .weather__news__top__box {
     width: 70%;
-
 }
 .weather__news__top__story {
     padding: 2rem;
@@ -59,15 +50,6 @@ body {
 #weather-top-date {
     font-weight: normal;
 }
-#weather-top-image {
-    background-image: url('./images/weather-news-image.jpg');
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* min-height: 60vh;
-    max-height: 60vh; */
-    max-width: 100%;
-}
 #weather-top-description {
     font-weight: 600;
     text-align: justify;
@@ -81,38 +63,34 @@ body {
 }
 
 /* WEATHER NEWS ASIDE */
-.weather__news__latest__box {
+.weather__news__aside__box {
     width: 30%;
 }
-.weather__news__latest__cards {
+.weather__news__aside__cards {
 	display: flex;
 	flex-direction: column;
+    justify-content: start;
 	align-items: center;
     background-color: var(--body-color);
-    padding: 1rem;
+    padding: 1rem 1rem 2rem 1rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     gap: 1.5rem;
 }
-.weather__news__latest__card {
+.weather__news__aside__card {
     display: flex;
     flex-direction: column;
-    width: 100%;
     gap: 0.5rem;
     cursor: pointer;
 }
-#weather-news-image {
-    background-image: url('./images/weather-news-image.jpg');
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* min-height: 20vh;
-    max-height: 20vh; */
-    max-width: 100%;
+.weather__news__aside__card a:hover,
+.weather__news__aside__card a:active,
+.weather__news__aside__card a:visited {
+    color: var(--text-color);
 }
-.weather__news__latest__card:hover #weather-news-title {
-    text-decoration: underline;
-}
-.weather__news__latest__card:hover #weather-news-image {
+.weather__news__aside__card:hover .weather-news-image {
     filter: brightness(85%);
+}
+.weather__news__aside__card:hover .weather-news-title {
+    text-decoration: underline;
 }

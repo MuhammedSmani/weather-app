@@ -1,6 +1,4 @@
 // Form submit consts
-const form = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
 const airCity = document.getElementById('air-city');
 
 // Air Quality Forecast consts
@@ -193,7 +191,9 @@ const airQualityModal = document.querySelector('.air__quality__modal');
 const triggerModal = document.querySelector('#air-quality-comments');
 const closeModalButton = document.querySelector('.air__quality__close__btn');
 
-function openModal() {
+function openModal(event) {
+	// airQualityModal.style.top = (event.clientY) + "px";
+	// airQualityModal.style.left = (event.clientX) + "px";
 	airQualityModal.classList.add('show-modal');
 	airQualityModal.classList.remove('close-modal');
 }
