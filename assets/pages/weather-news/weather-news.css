@@ -83,9 +83,7 @@ body {
     gap: 0.5rem;
     cursor: pointer;
 }
-.weather__news__aside__card a:hover,
-.weather__news__aside__card a:active,
-.weather__news__aside__card a:visited {
+.weather__news__aside__card a {
     color: var(--text-color);
 }
 .weather__news__aside__card:hover .weather-news-image {
