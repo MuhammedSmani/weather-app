@@ -14,7 +14,7 @@ let weatherNewsUrl;
 function fetchWeatherNews() {
   return fetch(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=297bf25a8f8a457d89a37392b0db687a`)
   .then(response => response.json());
-};
+}
 
 // Get Weather Top Story data
 function getWeatherTopStory(data) {
@@ -26,7 +26,7 @@ function getWeatherTopStory(data) {
 
   const cleanedContent = content.replace(/\[\+\d+ chars\]/, "");
   weatherTopContent.innerHTML = cleanedContent;
-};
+}
 
 // Get Weather Top Story date
 function getWeatherTopStoryDate(data) {
@@ -42,19 +42,19 @@ function getWeatherTopStoryDate(data) {
 
   // Show the desired date format
   weatherTopDate.innerHTML = `${day}-${month}-${year}`;
-};
+}
 
 // Get Weather Top Story image
 function getWeatherTopStoryImage(data) {
   const imageUrl = data.articles[0].urlToImage;
   weatherTopImage.src = imageUrl;
-};
+}
 
 // Update the href attribute of the anchor element
 function openWeatherUrl(data) {
   readMoreAnchor.href = weatherNewsUrl;
   weatherNewsUrl = data.articles[0].url;
-};
+}
 
 readMoreButton.addEventListener('click', openWeatherUrl);
 
@@ -76,7 +76,7 @@ function getWeatherNewsAside(data) {
     `;
     weatherNewsCards.insertAdjacentHTML("beforeend", weatherNewsCard);
   })
-};
+}
 
 // Get All Weather News data
 function getWeatherNews() {
@@ -92,6 +92,6 @@ function getWeatherNews() {
   } catch (error) {
     console.log("Error Occured: ", error);
   }
-};
+}
 
 getWeatherNews();

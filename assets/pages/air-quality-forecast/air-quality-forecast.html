@@ -34,29 +34,15 @@
 				<div class="nav__two_container container">
 					<div class="nav__menu">
 						<ul class="nav__list">
-							<li class="nav__item" id="today-page">
-								<a href="#" class="nav__link">Today </a>
-							</li>
+							<li class="nav__item today-page"></li>
+							<li class="nav__item hourly-page"></li>
+							<li class="nav__item sevenday-page"></li>
+							<li class="nav__item weekend-page"></li>
+							<li class="nav__item monthly-page"></li>
+							<li class="nav__item airquality-page"></li>
+							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">Hourly </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">7 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Weekend </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Monthly </a>
-							</li>
-							<li class="nav__item" id="air-quality-page">
-								<a href="" class="nav__link">Air Quality </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Radar </a>
-							</li>
-							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__link">Weather News </a>
+								<a href="../weather-news/weather-news.html" class="nav__link">Weather News</a>
 							</li>
 						</ul>
 					</div>
@@ -74,29 +60,15 @@
 					</div>
 					<div class="nav__text_buttons">
 						<ul class="nav__list_mobile">
+							<li class="nav__item today-page"></li>
+							<li class="nav__item hourly-page"></li>
+							<li class="nav__item sevenday-page"></li>
+							<li class="nav__item weekend-page"></li>
+							<li class="nav__item monthly-page"></li>
+							<li class="nav__item airquality-page"></li>
+							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="" class="nav__link">Today </a>
-							</li>
-							<li class="nav__item">
-								<a href="" class="nav__link">Hourly </a>
-							</li>
-							<li class="nav__item">
-								<a href="" class="nav__link">7 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="" class="nav__link">Weekend </a>
-							</li>
-							<li class="nav__item">
-								<a href="" class="nav__link">Monthly </a>
-							</li>
-							<li class="nav__item">
-								<a href="" class="nav__link">Air Quality </a>
-							</li>
-							<li class="nav__item">
-								<a href="" class="nav__link">Radar </a>
-							</li>
-							<li class="nav__item">
-								<a href="" class="nav__link">Weather News </a>
+								<a href="" class="nav__link">Weather News</a>
 							</li>
 						</ul>
 					</div>
@@ -108,14 +80,14 @@
 				<div class="air__container container">
 					<div class="air__quality__content">
 						<div class="air__quality__today">
-							<h2>Today's Air Quality - <span id="air-city">Tirana</span></h2>
+							<h2>Today's Air Quality - <span id="air-city"></span></h2>
 							<div class="air__quality__description">
 								<div class="air__quality__info">
 									<div class="air__quality__circle" id="air-quality-circle">
 										<div class="air__quality__index pm25-index-int">0</div>
 									</div>
 									<div class="air__quality__text">
-										<h3 class="pm25-category">Good</h3>
+										<h3 class="pm25-category"></h3>
 										<p id="pm25-category-text">
 											Air quality is considered satisfactory, and air
 											pollution poses little or no risk.
@@ -138,7 +110,7 @@
 									</div>
 									<div class="all__pollutants__info">
 										<p>PM2.5 (Particulate matter less than 2.5 microns)</p>
-										<h4 class="pm25-category">Good</h4>
+										<h4 class="pm25-category"></h4>
 										<p><span id="pm25-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
@@ -149,7 +121,7 @@
 									</div>
 									<div class="all__pollutants__info">
 										<p>CO (Carbon Monoxide)</p>
-										<h4 id="co-category">Good</h4>
+										<h4 id="co-category"></h4>
 										<p><span id="co-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
@@ -160,7 +132,7 @@
 									</div>
 									<div class="all__pollutants__info">
 										<p>NO2 (Nitrogen Dioxide)</p>
-										<h4 id="no2-category">Good</h4>
+										<h4 id="no2-category"></h4>
 										<p><span id="no2-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
@@ -171,7 +143,7 @@
 									</div>
 									<div class="all__pollutants__info">
 										<p>O3 (Ozone)</p>
-										<h4 id="o3-category">Good</h4>
+										<h4 id="o3-category"></h4>
 										<p><span id="o3-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
@@ -182,7 +154,7 @@
 									</div>
 									<div class="all__pollutants__info">
 										<p>PM10 (Particulate matter less than 10 microns)</p>
-										<h4 id="pm10-category">Good</h4>
+										<h4 id="pm10-category"></h4>
 										<p><span id="pm10-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
@@ -193,7 +165,7 @@
 									</div>
 									<div class="all__pollutants__info">
 										<p>SO2 (Sulfur Dioxide)</p>
-										<h4 id="so2-category">Good</h4>
+										<h4 id="so2-category"></h4>
 										<p><span id="so2-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
