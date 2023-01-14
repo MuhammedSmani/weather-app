@@ -10,6 +10,7 @@ var cities = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "Sofia
 
 let customIcon;
 let marker;
+let markers = [];
 
 
 
@@ -46,16 +47,13 @@ if ("geolocation" in navigator) {
 
                 // });
 
-                // var customCircle = L.circle([lat, lng], {
-                //     color: 'red',
-                //     fillColor: '#f03',
-                //     fillOpacity: 0.5,
-                // }).addTo(map);
+               
 
                 marker = L.marker([lat, lng]).addTo(map);
                 marker.bindPopup(output);
                 marker.openPopup();
                 map.setView([lat, lng], 10);
+                markers.push(marker);
             });
     });
 } else {
@@ -71,7 +69,8 @@ form.addEventListener("submit", (event) => {
 });
 
 function getRadarData(lokacioni) {
-    if (map.hasLayer(marker)) {
+    while (markers.length) {
+        let marker = markers.pop();
         map.removeLayer(marker);
     }
     fetch(
@@ -107,16 +106,20 @@ function showDataOnMap(data) {
     marker = L.marker([apilat, apilng], { icon: customIcon }).addTo(map);
     marker.bindPopup(output).openPopup();
     map.setView([apilat, apilng], 7);
+    markers.push(marker);
+
+
 }
 
 mapIcons.addEventListener("click", (event) => {
     event.preventDefault();
-    removeMarkers();
+    getMapIcons();
 
 })
 
-function removeMarkers() {
-    if (map.hasLayer(marker)) {
+function getMapIcons() {
+    while (markers.length) {
+        let marker = markers.pop();
         map.removeLayer(marker);
     }
 
@@ -154,7 +157,8 @@ tempIcons.addEventListener("click", (event) => {
 });
 
 function getTemp() {
-    if (map.hasLayer(marker)) {
+    while (markers.length) {
+        let marker = markers.pop();
         map.removeLayer(marker);
     }
     cities.forEach(function (city) {
@@ -188,6 +192,8 @@ function getHighTemp(data) {
 
     var marker = L.marker([lat, lng], { icon: highTempIcon }).addTo(map);
     marker.bindPopup(`<h2>${data.location.name}<span><b>  ${data.current.temp_c}°</b></span></h2>`);
+                markers.push(marker);
+
 }
 
 function getMediumTemp(data) {
@@ -201,6 +207,7 @@ function getMediumTemp(data) {
 
     var marker = L.marker([lat, lng], { icon: mediumTempIcon }).addTo(map);
     marker.bindPopup(`<h2>${data.location.name}<span><b>  ${data.current.temp_c}°</b></span></h2>`);
+    markers.push(marker);
 }
 
 function getLowTemp(data) {
@@ -213,4 +220,4 @@ function getLowTemp(data) {
     });
     var marker = L.marker([lat, lng], { icon: lowTempIcon }).addTo(map);
     marker.bindPopup(`<h2>${data.location.name}<span><b>  ${data.current.temp_c}°</b></span></h2>`);
-}
+    markers.push(marker);}                
