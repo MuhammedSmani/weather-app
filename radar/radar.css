@@ -2,6 +2,7 @@
 	height: 40rem;
 	width: 80%;
 	margin: auto;
+	position: relative;
   }
   
   .header {
@@ -559,7 +560,42 @@
   .leaflet-container a.leaflet-popup-close-button {
 	padding: 6px 21px 0 0;
   }
-  
+
+  .low-temp-icon{
+	background-color: blue;
+    border-radius: 100%;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+	border: darkblue, 1px, solid;
+
+  }
+
+  .medium-temp-icon{
+	background-color: orange;
+    border-radius: 100%;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+	border:  1px, solid, darkorange;
+  }
+
+  .high-temp-icon{
+	background-color: red;
+    border-radius: 100%;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+	border: darkred, 1px, solid;
+
+  }
+
+  #mapicons{
+	position: absolute;
+	right: 10%;
+	top: 90%;
+	z-index: 401 !important;
+  }
   @media screen and (max-width: 767px) {
 	.content__title {
 	  color: var(--text-color);

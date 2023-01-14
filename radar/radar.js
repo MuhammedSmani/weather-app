@@ -1,11 +1,12 @@
 const form = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const mapIcons = document.getElementById("mapicons");
+const tempIcons = document.getElementById("tempicons");
 
 var map = L.map("map");
-var cities = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "Sofia", "Madrid", "Ljublana", "Tirana", "Sarajevo", "Athens", "Rome", "Zagreb", "Stockholm",
+var cities = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "Sofia", "Madrid", "Ljubljana", "Tirana", "Sarajevo", "Athens", "Rome", "Zagreb", "Stockholm",
     "Valletta", "Chisinau", "Skopje", "Luxembourg", "Vilnius", "Vaduz", "Riga", "Dublin", "Reykjavik", "Budapest", "Vatican City", "Helsinki", "Tallinn", "Copenhagen", "Prague",
-    "Vienna", "Minsk", "Andorra La Vella", "Monaco", "Vilnius", "Podgorica", "Amsterdam", "Oslo", "Warsaw", "Lisbon", "Bucharest", "Belgrade", "San Marino", "Bratislava", "Prague", "Kyiv"];
+    "Vienna", "Minsk", "Andorra La Vella", "Monaco", "Vilnius", "Podgorica", "Amsterdam", "Oslo", "Warsaw", "Lisbon", "Bucharest", "Belgrade", "San Marino", "Bratislava", "Prague", "Kiev"];
 
 let customIcon;
 let marker;
@@ -37,13 +38,13 @@ if ("geolocation" in navigator) {
 
             `;
 
-                customIcon = L.icon({
-                    iconUrl: `${data.current.condition.icon}`,
-                    iconSize: [90, 90],
-                    iconAnchor: [22, 94],
-                    popupAnchor: [-3, -76],
+                // customIcon = L.icon({
+                //     iconUrl: `${data.current.condition.icon}`,
+                //     iconSize: [90, 90],
+                //     iconAnchor: [22, 94],
+                //     popupAnchor: [-3, -76],
 
-                });
+                // });
 
                 // var customCircle = L.circle([lat, lng], {
                 //     color: 'red',
@@ -51,7 +52,7 @@ if ("geolocation" in navigator) {
                 //     fillOpacity: 0.5,
                 // }).addTo(map);
 
-                marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
+                marker = L.marker([lat, lng]).addTo(map);
                 marker.bindPopup(output);
                 marker.openPopup();
                 map.setView([lat, lng], 10);
@@ -128,7 +129,7 @@ function removeMarkers() {
                     var lat = data.location.lat;
                     var lng = data.location.lon;
 
-                    var customIcon = L.icon({
+                    customIcon = L.icon({
                         iconUrl: `${data.current.condition.icon}`,
                         iconSize: [70, 70],
                         iconAnchor: [22, 94],
@@ -143,4 +144,73 @@ function removeMarkers() {
                 }
             });
     });
+}
+
+tempIcons.addEventListener("click", (event) => {
+    event.preventDefault();
+    getTemp();
+    map.setView([48.15, 17.02], 5);
+
+});
+
+function getTemp() {
+    if (map.hasLayer(marker)) {
+        map.removeLayer(marker);
+    }
+    cities.forEach(function (city) {
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${city}&days=10`)
+            .then((response) => response.json())
+            .then((dataa) => {
+                if (dataa.location.name === city) {
+                    if (dataa.current.temp_c <= 0) {
+                        getLowTemp(dataa);
+                    } else if (dataa.current.temp_c > 0 && dataa.current.temp_c < 5) {
+                        getMediumTemp(dataa);
+                    } else {
+                        getHighTemp(dataa);
+                    }
+                }
+            })
+            .catch(function (error) {
+                console.log('Request failed', error)
+            });
+    });
+}
+
+function getHighTemp(data) {
+    var lat = data.location.lat;
+    var lng = data.location.lon;
+    let highTempIcon = L.divIcon({
+        className: "high-temp-icon",
+        html: '<div>H</div>',
+        iconSize: [25, 25]
+    });
+
+    var marker = L.marker([lat, lng], { icon: highTempIcon }).addTo(map);
+    marker.bindPopup(`<h2>${data.location.name}<span><b>  ${data.current.temp_c}°</b></span></h2>`);
+}
+
+function getMediumTemp(data) {
+    var lat = data.location.lat;
+    var lng = data.location.lon;
+    let mediumTempIcon = L.divIcon({
+        className: "medium-temp-icon",
+        html: '<div>M</div>',
+        iconSize: [25, 25]
+    });
+
+    var marker = L.marker([lat, lng], { icon: mediumTempIcon }).addTo(map);
+    marker.bindPopup(`<h2>${data.location.name}<span><b>  ${data.current.temp_c}°</b></span></h2>`);
+}
+
+function getLowTemp(data) {
+    var lat = data.location.lat;
+    var lng = data.location.lon;
+    let lowTempIcon = L.divIcon({
+        className: "low-temp-icon",
+        html: '<div>L</div>',
+        iconSize: [25, 25]
+    });
+    var marker = L.marker([lat, lng], { icon: lowTempIcon }).addTo(map);
+    marker.bindPopup(`<h2>${data.location.name}<span><b>  ${data.current.temp_c}°</b></span></h2>`);
 }
