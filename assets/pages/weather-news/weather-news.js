@@ -12,8 +12,27 @@ let weatherNewsUrl;
 
 // Fetch Weather News data
 function fetchWeatherNews() {
+  // check if localStorage has a cache entry for the news
+  if (localStorage.getItem(`cache-weather-news`)) {
+    // read the cache entry
+    const cacheData = JSON.parse(localStorage.getItem(`cache-weather-news`));
+    // check if the cache data is still valid (1 hour)
+    const currentTime = new Date();
+    const cacheTime = new Date(cacheData.cacheTime);
+    const timeDiff = (currentTime - cacheTime) / 3600000;
+    if (timeDiff < 1) {
+      // return the cached data
+      return Promise.resolve(cacheData.data);
+    }
+  }
+  // fetch the data from the API
   return fetch(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=297bf25a8f8a457d89a37392b0db687a`)
-  .then(response => response.json());
+    .then(response => response.json())
+    .then(data => {
+      // create a cache entry with the current time
+      localStorage.setItem(`cache-weather-news`, JSON.stringify({ data: data, cacheTime: new Date() }));
+      return data;
+    });
 }
 
 // Get Weather Top Story data
