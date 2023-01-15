@@ -25,7 +25,6 @@ body {
 	padding-right: 1rem;
 }
 .weekly__title {
-	border-bottom: solid 1px var(--fourth-color);
 	padding: 1rem;
 }
 .weekly__title p:nth-child(3) {
@@ -45,6 +44,8 @@ body {
 	flex-direction: row;
 	justify-content: space-between;
 	border-top: solid 1px var(--fourth-color);
+	height: 5rem;
+	text-align: start;
 }
 .weekly__main div {
 	display: flex;
@@ -62,6 +63,7 @@ body {
 	border-radius: 1rem;
 	margin: 20px;
 	display: none;
+	padding: 1rem;
 }
 .weekly__main .uil-angle-down {
 	cursor: pointer;
@@ -124,6 +126,14 @@ body {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center; */
+}
+.day-hidden{
+    display:none;
+}
+@media (min-width: 18h) {
+    .day-hidden{
+        display:block;
+    }
 }
 
 /*==================== NAV ====================*/
