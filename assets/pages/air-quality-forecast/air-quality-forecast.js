@@ -228,7 +228,7 @@ function setSo2ategory(so2Num, so2IndexInt, so2Category) {
 
 // Get City and Country data
 function getCityCountry(data) {
-  const cityCountry = document.getElementById('air-city')
+  const cityCountry = document.getElementById('city-country')
   cityCountry.innerHTML = `${data.location.name}, ${data.location.country}`;
 }
 
