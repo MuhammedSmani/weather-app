@@ -65,14 +65,6 @@ function updateNavbarLinks(city) {
   radarPage(city);
 }
 
-// Daily Forecast section consts
-const hourlyTime = document.querySelectorAll('.hourly-time');
-const hourlyTemp = document.querySelectorAll('.hourly-temp');
-const hourlyRain = document.querySelectorAll('.hourly-rain');
-
-// Daily Forecast section consts
-
-
 // Condition Text and Icons
 const conditionText = document.getElementById('condition-text');
 const conditionIcon = document.querySelectorAll('.condition-icon');
@@ -226,47 +218,6 @@ function getTodaysForecast(data) {
   }
 }
 
-// Get Daily Forecast section data
-function getDailyForecast(data) {
-  const shortDailyName = document.querySelectorAll('.short-daily-name')
-  const maxTempNext = document.querySelectorAll('.max-temp-next');
-  const minTempNext = document.querySelectorAll('.min-temp-next');
-  const dailyRainChance = document.querySelectorAll('.daily-rain');
-
-  // Show the Max temperature for each tomorrow day
-  maxTempNext[0].innerHTML = `${Math.round(data.forecast.forecastday[0].day.maxtemp_c)}°`;
-  maxTempNext[1].innerHTML = `${Math.round(data.forecast.forecastday[1].day.maxtemp_c)}°`;
-  maxTempNext[2].innerHTML = `${Math.round(data.forecast.forecastday[2].day.maxtemp_c)}°`;
-  maxTempNext[3].innerHTML = `${Math.round(data.forecast.forecastday[3].day.maxtemp_c)}°`;
-  maxTempNext[4].innerHTML = `${Math.round(data.forecast.forecastday[4].day.maxtemp_c)}°`;
-
-  // Show the Min temperature for each tomorrow day
-  minTempNext[0].innerHTML = `${Math.round(data.forecast.forecastday[0].day.mintemp_c)}°`;
-  minTempNext[1].innerHTML = `${Math.round(data.forecast.forecastday[1].day.mintemp_c)}°`;
-  minTempNext[2].innerHTML = `${Math.round(data.forecast.forecastday[2].day.mintemp_c)}°`;
-  minTempNext[3].innerHTML = `${Math.round(data.forecast.forecastday[3].day.mintemp_c)}°`;
-  minTempNext[4].innerHTML = `${Math.round(data.forecast.forecastday[4].day.mintemp_c)}°`;
-
-  // Show the Daily Rain Chance for each day (started from today)
-  dailyRainChance[0].innerHTML = `${data.forecast.forecastday[0].day.daily_chance_of_rain}%`;
-  dailyRainChance[1].innerHTML = `${data.forecast.forecastday[1].day.daily_chance_of_rain}%`;
-  dailyRainChance[2].innerHTML = `${data.forecast.forecastday[2].day.daily_chance_of_rain}%`;
-  dailyRainChance[3].innerHTML = `${data.forecast.forecastday[3].day.daily_chance_of_rain}%`;
-  dailyRainChance[4].innerHTML = `${data.forecast.forecastday[4].day.daily_chance_of_rain}%`;
-
-  // Show the Short Daily Name in the Daily Forecast Section
-  const forecastdDaysData = data.forecast.forecastday;
-
-  for (let i = 1; i < forecastdDaysData.length; i++) {
-    const dateString = forecastdDaysData[i].date;
-    const date = new Date(dateString);
-    const dayOfWeek = date.toLocaleString("en-US", { weekday: "short" });
-    const dayOfMonth = date.toLocaleString("en-US", { day: "numeric" });
-    const formattedDate = dayOfWeek + " " + dayOfMonth;
-    shortDailyName[i].innerHTML = formattedDate;
-  }
-}
-
 // Get Weather Today section data
 function getWeatherToday(data) {
   const feelsLike = document.getElementById('feels-like');
@@ -291,9 +242,6 @@ function getWeatherToday(data) {
   uvIndex.innerHTML = data.current.uv;
   moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
 }
-
-
-
 
 // Get all Weather data by city input
 function getWeatherData() {
