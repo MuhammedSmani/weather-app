@@ -92,3 +92,21 @@ body {
 .weather__news__aside__card:hover .weather-news-title {
     text-decoration: underline;
 }
+
+@media screen and (max-width: 767px) {
+    .weather__news__content {
+        flex-direction: column;
+    }
+    .weather__news__top__box,
+    .weather__news__aside__box {
+        width: 100%;
+    }
+    .weather__news__aside__cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: start;
+    }
+    .weather__news__aside__card {
+        width: 47%;
+    }
+}
