@@ -81,7 +81,7 @@ readMoreButton.addEventListener('click', openWeatherUrl);
 function getWeatherNewsAside(data) {
   const weatherNewsCards = document.querySelector(".weather__news__aside__cards");
 
-  data.articles.slice(1, 4).forEach((article) => {
+  data.articles.slice(1, 5).forEach((article) => {
     const imageAsideUrl = article.urlToImage;
     const titleAside = article.title;
     const urlAside = article.url;

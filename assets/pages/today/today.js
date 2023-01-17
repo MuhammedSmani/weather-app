@@ -93,36 +93,6 @@ function setConditionIcon(conditionTextData, iconElement) {
   iconElement.innerHTML = icon;
 }
 
-// Fetch Weather data
-function fetchWeatherData(city) {
-  // check if localStorage has a cache entry for the city
-  if (localStorage.getItem(`cache-${city}`)) {
-    // read the cache entry
-    const cacheData = JSON.parse(localStorage.getItem(`cache-${city}`));
-    // check if the cache data is still valid (1 hour)
-    const currentTime = new Date();
-    const cacheTime = new Date(cacheData.cacheTime);
-    const timeDiffInMs = currentTime - cacheTime;
-    const timeDiffInHrs = timeDiffInMs / 3600000;
-    if (timeDiffInHrs < 1) {
-      // return the cached data
-      return Promise.resolve(cacheData.data);
-    } else {
-      localStorage.removeItem(`cache-${city}`);
-    }
-  }
-  return fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${city}&days=10&aqi=yes&alerts=yes`)
-    .then(response => response.json())
-    .then(data => {
-      // create a cache entry with the current time
-      localStorage.setItem(`cache-${city}`, JSON.stringify({ data: data, cacheTime: new Date() }));
-      return data;
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
 // Get City and Country data
 function getCityCountry(data) {
   const cityCountry = document.querySelectorAll('.city-country');
@@ -203,8 +173,10 @@ const timePeriods = {
 
 // Get Today's Forecast section data
 function getTodaysForecast(data) {
-  // Get the parent div
   const todaysForecast = document.querySelector('.todays__forecast_four');
+
+  // Clear the previous data before appending new data
+  todaysForecast.innerHTML = "";
 
   // Iterate through the time periods and append the HTML to the parent div
   for (let period in timePeriods) {
@@ -249,30 +221,70 @@ function getWeatherToday(data) {
   moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
 }
 
-// Get all Weather data by city input
-function getWeatherData() {
-  let city = new URLSearchParams(window.location.search).get('city');
-  if (city == null) {
-    city = "tirana";
-  }
+// Search form
+document.getElementById("search-form").addEventListener("submit", function (event) {
+  event.preventDefault();
+  let city = document.getElementById("search-input").value;
+  let searchParams = new URLSearchParams(window.location.search);
+  searchParams.set("city", city);
+  window.history.pushState({}, "", `${window.location.pathname}?${searchParams.toString()}`);
+  updateData(city);
+});
 
-  fetchWeatherData(city)
-  .then(data => {
-    updateNavbarLinks(city);
-    getCityCountry(data);
-    getRealtimeTime(data);
-    getRealtimeTemp(data);
-    getConditionText(data)
-    getConditionIcon(data);
-    getDayNightTemp(data);
-    getTodaysForecast(data);
-    getWeatherToday(data);
-
-    getDailyForecast(data)
-  })
-  .catch(error => {
-    console.error(error);
-  });
+function updateData(city) {
+  // Fetch weather data based on the city name
+  fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${city}&days=10&aqi=yes&alerts=yes`)
+    .then((response) => response.json())
+    .then((data) => {
+      // Update the data being displayed on the page
+      // for example you can use the data to update the content of some div or element 
+      // document.getElementById("weather-data").innerHTML = data;
+      updateNavbarLinks(city)
+      getCityCountry(data);
+      getRealtimeTime(data);
+      getRealtimeTemp(data);
+      getConditionText(data)
+      getConditionIcon(data);
+      getDayNightTemp(data);
+      getTodaysForecast(data);
+      getWeatherToday(data);
+      getDailyForecast(data);
+    });
 }
 
-getWeatherData();
+function getCityFromUrl() {
+  let searchParams = new URLSearchParams(window.location.search);
+  let city = searchParams.get("city");
+  if (city) {
+    return city;
+  }
+}
+
+navigator.geolocation.getCurrentPosition((position) => {
+  let lat = position.coords.latitude;
+  let lng = position.coords.longitude;
+
+  // Fetch weather data based on current location
+  fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`)
+    .then((response) => response.json())
+    .then((data) => {
+      let city = data.location.name;
+      // Set city name in input field
+      document.getElementById("search-input").value = city;
+
+      // Update the URL with the city value
+      let searchParams = new URLSearchParams(window.location.search);
+      searchParams.set("city", city);
+      window.history.pushState({}, "", `${window.location.pathname}?${searchParams.toString()}`);
+      updateData(city);
+    });
+}, (error) => {
+    console.log(error);
+    // handle the error
+});
+
+let city = getCityFromUrl();
+if (city) {
+  document.getElementById("search-input").value = city;
+  updateData(city);
+}

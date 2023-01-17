@@ -83,6 +83,9 @@ body {
     gap: 0.5rem;
     cursor: pointer;
 }
+.weather__news__aside__card:nth-child(4) {
+    display: none;
+}
 .weather__news__aside__card a {
     color: var(--text-color);
 }
@@ -108,5 +111,8 @@ body {
     }
     .weather__news__aside__card {
         width: 47%;
+    }
+    .weather__news__aside__card:nth-child(4) {
+        display: block;
     }
 }
