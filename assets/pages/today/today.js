@@ -193,26 +193,32 @@ function generateTodaysForecastHTML(period, temp, chanceOfRain) {
             </div>`
 }
 
+// Creating an object to store the time period indices
+const timePeriods = {
+  morning: 6,
+  afternoon: 12,
+  evening: 18,
+  overnight: 0
+}
+
 // Get Today's Forecast section data
 function getTodaysForecast(data) {
   // Get the parent div
   const todaysForecast = document.querySelector('.todays__forecast_four');
-  
-  // Array of time periods
-  const timePeriods = ['morning', 'afternoon', 'evening', 'overnight'];
-  
+
   // Iterate through the time periods and append the HTML to the parent div
-  for (let i = 0; i < timePeriods.length; i++) {
-    let period = timePeriods[i];
+  for (let period in timePeriods) {
     let temp;
     let chanceOfRain;
-    if(period === 'overnight'){
-      temp = Math.round(data.forecast.forecastday[1].hour[0].temp_c);
-      chanceOfRain = data.forecast.forecastday[1].hour[0].chance_of_rain;
-    }
-    else{
-      temp = Math.round(data.forecast.forecastday[0].hour[i*6].temp_c);
-      chanceOfRain = data.forecast.forecastday[0].hour[i*6].chance_of_rain;
+    switch (period) {
+      case 'overnight':
+        temp = Math.round(data.forecast.forecastday[1].hour[timePeriods[period]].temp_c);
+        chanceOfRain = data.forecast.forecastday[1].hour[timePeriods[period]].chance_of_rain;
+        break;
+      default:
+        temp = Math.round(data.forecast.forecastday[0].hour[timePeriods[period]].temp_c);
+        chanceOfRain = data.forecast.forecastday[0].hour[timePeriods[period]].chance_of_rain;
+        break;
     }
     todaysForecast.innerHTML += generateTodaysForecastHTML(period, temp, chanceOfRain);
   }
