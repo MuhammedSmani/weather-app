@@ -65,11 +65,28 @@ function updateNavbarLinks(city) {
   radarPage(city);
 }
 
-// Fetch Weather data
-function fetchWeatherData(city) {
-  return fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${city}&days=10&aqi=yes&alerts=yes`)
-  .then(response => response.json());
+// Open and Close the Modal
+const airQualityModal = document.querySelector('.air__quality__modal');
+const triggerModal = document.querySelector('#air-quality-comments');
+const closeModalButton = document.querySelector('.air__quality__close__btn');
+
+function openModal(event) {
+	airQualityModal.classList.add('show-modal');
+	airQualityModal.classList.remove('close-modal');
 }
+
+function closeModal() {
+	airQualityModal.classList.add('close-modal');
+	airQualityModal.classList.remove('show-modal');
+}
+
+function windowOnScroll(event) {
+	closeModal();
+}
+
+triggerModal.addEventListener('click', openModal);
+closeModalButton.addEventListener('click', closeModal);
+window.addEventListener('scroll', windowOnScroll);
 
 // PM25 consts
 const pm25Index = document.getElementById('pm25-index');
@@ -283,50 +300,78 @@ function getSo2Data(data) {
   so2IndexInt.innerHTML = parseInt(so2Num);
 }
 
-// Get all Air Quality Forecast data
-function getWeatherData() {
-  let city = new URLSearchParams(window.location.search).get('city');
-  if (city == null) {
-    city = "tirana";
-  }
+// Constants
+const apiKey = '9ce000ab2ee94bf8bfd111052222012';
+const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&days=10&aqi=yes&alerts=yes`;
+const searchForm = document.getElementById('search-form');
+const searchParams = new URLSearchParams(window.location.search);
 
-  fetchWeatherData(city)
-  .then(data => {
-    updateNavbarLinks(city);
-    getCityCountry(data);
-    getPm25Data(data);
-    getCoData(data);
-    getNo2Data(data);
-    getO3Data(data);
-    getPm10Data(data);
-    getSo2Data(data);
-  })
-  .catch(error => {
-    console.error(error);
-  });
+searchForm.addEventListener('submit', getCityValue);
+
+// Get the city name value in search input
+function getCityValue(event) {
+  event.preventDefault();
+  const city = document.getElementById('search-input').value;
+  updateSearchParams(city)
+  fetchWeatherData(city);
 }
 
-getWeatherData();
-
-// Open and Close the Modal
-const airQualityModal = document.querySelector('.air__quality__modal');
-const triggerModal = document.querySelector('#air-quality-comments');
-const closeModalButton = document.querySelector('.air__quality__close__btn');
-
-function openModal(event) {
-	airQualityModal.classList.add('show-modal');
-	airQualityModal.classList.remove('close-modal');
+//
+function updateSearchParams(city) {
+  searchParams.set("city", city);
+  window.history.pushState({}, "", `${window.location.pathname}?${searchParams.toString()}`);
 }
 
-function closeModal() {
-	airQualityModal.classList.add('close-modal');
-	airQualityModal.classList.remove('show-modal');
+// Fetch Weather data based on city
+function fetchWeatherData(city) {
+  fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`)
+    .then((response) => response.json())
+    .then((data) => {
+      updateNavbarLinks(city);
+      getCityCountry(data);
+      getPm25Data(data);
+      getCoData(data);
+      getNo2Data(data);
+      getO3Data(data);
+      getPm10Data(data);
+      getSo2Data(data);
+    });
 }
 
-function windowOnScroll(event) {
-	closeModal();
-}
+// Get the city name from the URL
+// function getCityFromUrl() {
+//   searchParams;
+//   let city = searchParams.get("city");
+//   if (city) {
+//     return city;
+//   }
+// }
 
-triggerModal.addEventListener('click', openModal);
-closeModalButton.addEventListener('click', closeModal);
-window.addEventListener('scroll', windowOnScroll);
+// Fetch Weather data based on the Geolocation
+navigator.geolocation.getCurrentPosition((position) => {
+  let lat = position.coords.latitude;
+  let lng = position.coords.longitude;
+
+  // Fetch weather data based on current location
+  fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`)
+    .then((response) => response.json())
+    .then((data) => {
+      const city = data.location.name;
+      if(localStorage.getItem('city') && localStorage.getItem('city') === city && window.location.search) return
+      // Set city name in input field
+      document.getElementById("search-input").value = city;
+      localStorage.setItem('city', city);
+      // Update the URL with the city value
+      updateSearchParams(city);
+      fetchWeatherData(city);
+    });
+}, (error) => {
+    console.log(error);
+});
+
+// Get the city name from the URL
+const cityFromUrl = searchParams.get("city");
+if (cityFromUrl) {
+  document.getElementById("search-input").value = cityFromUrl;
+  fetchWeatherData(cityFromUrl);
+}

@@ -112,9 +112,10 @@ body {
     z-index: 200;
     min-height: 100%;
 	min-width: 100%;
-    overflow: hidden;
+    overflow: none;
 	top: 0;
-	left: 11rem;
+	left: 0;
+	transform: translate(13%, 51%);
 }
 .show-modal {
 	display: block;
@@ -136,11 +137,10 @@ body {
 	color: var(--fifth-color);
 }
 .air__quality__modal__box {
-	position: fixed;
 	width: 350px;
 	background-color: var(--first-color);
 	padding: 0 0 1rem 1rem;
-	border-radius: 1rem;
+	border-radius: 1rem 1rem 1rem 0rem;
 	box-shadow: 0px 0px 4px 2px #989AA0;
 }
 .air__quality__modal__content {
@@ -187,5 +187,8 @@ body {
 	}
 	.all__pollutants__description {
 		width: 100%;
+	}
+	.air__quality__modal {
+		transform: translate(10%, 71%);
 	}
 }
