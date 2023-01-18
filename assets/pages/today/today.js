@@ -221,29 +221,38 @@ function getWeatherToday(data) {
   moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
 }
 
-// Search form
-document.getElementById("search-form").addEventListener("submit", function (event) {
+// Constants
+const apiKey = '9ce000ab2ee94bf8bfd111052222012';
+const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&days=10&aqi=yes&alerts=yes`;
+const searchForm = document.getElementById('search-form');
+const searchParams = new URLSearchParams(window.location.search);
+
+searchForm.addEventListener('submit', getCityValue);
+
+// Get the city name value in search input
+function getCityValue(event) {
   event.preventDefault();
-  let city = document.getElementById("search-input").value;
-  let searchParams = new URLSearchParams(window.location.search);
+  const city = document.getElementById('search-input').value;
+  updateSearchParams(city)
+  fetchWeatherData(city);
+}
+
+//
+function updateSearchParams(city) {
   searchParams.set("city", city);
   window.history.pushState({}, "", `${window.location.pathname}?${searchParams.toString()}`);
-  updateData(city);
-});
+}
 
-function updateData(city) {
-  // Fetch weather data based on the city name
-  fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${city}&days=10&aqi=yes&alerts=yes`)
+// Fetch Weather data based on city
+function fetchWeatherData(city) {
+  fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`)
     .then((response) => response.json())
     .then((data) => {
-      // Update the data being displayed on the page
-      // for example you can use the data to update the content of some div or element 
-      // document.getElementById("weather-data").innerHTML = data;
-      updateNavbarLinks(city)
+      updateNavbarLinks(city);
       getCityCountry(data);
       getRealtimeTime(data);
       getRealtimeTemp(data);
-      getConditionText(data)
+      getConditionText(data);
       getConditionIcon(data);
       getDayNightTemp(data);
       getTodaysForecast(data);
@@ -252,39 +261,50 @@ function updateData(city) {
     });
 }
 
-function getCityFromUrl() {
-  let searchParams = new URLSearchParams(window.location.search);
-  let city = searchParams.get("city");
-  if (city) {
-    return city;
-  }
-}
+// Get the city name from the URL
+// function getCityFromUrl() {
+//   searchParams;
+//   let city = searchParams.get("city");
+//   if (city) {
+//     return city;
+//   }
+// }
 
+// Fetch Weather data based on the Geolocation
 navigator.geolocation.getCurrentPosition((position) => {
   let lat = position.coords.latitude;
   let lng = position.coords.longitude;
 
   // Fetch weather data based on current location
-  fetch(`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`)
+  fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`)
     .then((response) => response.json())
     .then((data) => {
-      let city = data.location.name;
+      const city = data.location.name;
+      if(localStorage.getItem('city') && localStorage.getItem('city') === city && window.location.search) return
       // Set city name in input field
       document.getElementById("search-input").value = city;
-
+      localStorage.setItem('city', city);
       // Update the URL with the city value
-      let searchParams = new URLSearchParams(window.location.search);
-      searchParams.set("city", city);
-      window.history.pushState({}, "", `${window.location.pathname}?${searchParams.toString()}`);
-      updateData(city);
+      updateSearchParams(city);
+      fetchWeatherData(city);
     });
 }, (error) => {
     console.log(error);
-    // handle the error
 });
 
-let city = getCityFromUrl();
-if (city) {
-  document.getElementById("search-input").value = city;
-  updateData(city);
+// Get the city name from the URL
+const cityFromUrl = searchParams.get("city");
+if (cityFromUrl) {
+  document.getElementById("search-input").value = cityFromUrl;
+  fetchWeatherData(cityFromUrl);
 }
+
+// Autocomplete Search Form
+
+let searchable = [
+  'pristina',
+  'istok',
+  'london',
+  'moska',
+  'berlin'
+];
