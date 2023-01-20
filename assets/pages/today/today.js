@@ -257,7 +257,7 @@ function fetchWeatherData(city) {
       getDayNightTemp(data);
       getTodaysForecast(data);
       getWeatherToday(data);
-      getDailyForecast(data);
+      // getDailyForecast(data);
     });
 }
 

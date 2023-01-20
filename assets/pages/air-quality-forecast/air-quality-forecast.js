@@ -88,6 +88,12 @@ triggerModal.addEventListener('click', openModal);
 closeModalButton.addEventListener('click', closeModal);
 window.addEventListener('scroll', windowOnScroll);
 
+// Get City and Country data
+function getCityCountry(data) {
+  const cityCountry = document.getElementById('city-country')
+  cityCountry.innerHTML = `${data.location.name}, ${data.location.country}`;
+}
+
 // PM25 consts
 const pm25Index = document.getElementById('pm25-index');
 const pm25CategoryElements = document.querySelectorAll('.pm25-category');
@@ -124,6 +130,17 @@ function setPm25Category(pm25Num, pm25CategoryElement, pm25IndexInt, pm25Categor
   }
 }
 
+// Show PM2.5 index, category, color
+function getPm25Data(data) {
+  pm25CategoryElements.forEach(function(pm25CategoryElement, index) {
+    var pm25Num = Number(data.current.air_quality.pm2_5.toFixed(2));
+    pm25Index.innerHTML = pm25Num;
+    setPm25Category(pm25Num, pm25CategoryElement, pm25IndexInt, pm25CategoryText);
+    pm25IndexInt[0].innerHTML = parseInt(pm25Num);
+    pm25IndexInt[1].innerHTML = parseInt(pm25Num);
+  });
+}
+
 // CO consts
 const coIndex = document.getElementById('co-index');
 const coCategory = document.getElementById('co-category');
@@ -141,6 +158,14 @@ function setCoCategory(coNum, coIndexInt, coCategory) {
     coCategory.innerHTML = `Extremely poor`;
     coIndexInt.style.outlineColor = 'brown';
   }
+}
+
+// Show CO index, category, color
+function getCoData(data) {
+  var coNum = Number(data.current.air_quality.co.toFixed(2));
+  coIndex.innerHTML = coNum;
+  setCoCategory(coNum, coIndexInt, coCategory);
+  coIndexInt.innerHTML = parseInt(coNum);
 }
 
 // NO2 consts
@@ -168,6 +193,14 @@ function setNo2Category(no2Num, no2IndexInt, no2Category) {
   }
 }
 
+// Show NO2 index, category, color
+function getNo2Data(data) {
+  var no2Num = Number(data.current.air_quality.no2.toFixed(2));
+  no2Index.innerHTML = no2Num;
+  setNo2Category(no2Num, no2IndexInt, no2Category);
+  no2IndexInt.innerHTML = parseInt(no2Num);
+}
+
 // O3 consts
 const o3Index = document.getElementById('o3-index');
 const o3Category = document.getElementById('o3-category');
@@ -191,6 +224,14 @@ function setO3Category(o3Num, o3IndexInt, o3Category) {
     o3Category.innerHTML = `Hazardous`;
     o3IndexInt.style.outlineColor = 'brown';
   }
+}
+
+// Show 03 index, category, color
+function getO3Data(data) {
+  var o3Num = Number(data.current.air_quality.o3.toFixed(2));
+  o3Index.innerHTML = o3Num;
+  setO3Category(o3Num, o3IndexInt, o3Category);
+  o3IndexInt.innerHTML = parseInt(o3Num);
 }
 
 // PM10 consts
@@ -218,72 +259,6 @@ function setPm10Category(pm10Num, pm10IndexInt, pm10Category) {
   }
 }
 
-// SO2 consts
-const so2Index = document.getElementById('so2-index');
-const so2Category = document.getElementById('so2-category');
-const so2IndexInt = document.getElementById('so2-index-int');
-
-// Function for showing the SO2 category depending on the SO2 index
-function setSo2ategory(so2Num, so2IndexInt, so2Category) {
-  if (so2Num < 100) {
-    so2Category.innerHTML = `Good`;
-    so2IndexInt.style.outlineColor = 'green';
-  } else if (so2Num < 200) {
-    so2Category.innerHTML = `Fair`;
-    so2IndexInt.style.outlineColor = 'yellow';
-  } else if (so2Num < 300) {
-    so2Category.innerHTML = `Poor`;
-    so2IndexInt.style.outlineColor = 'orange';
-  } else if (so2Num < 300) {
-    so2Category.innerHTML = `Very poor`;
-    so2IndexInt.style.outlineColor = 'red';
-  } else {
-    so2Category.innerHTML = `Extremely poor`;
-    so2IndexInt.style.outlineColor = 'brown';
-  }
-}
-
-// Get City and Country data
-function getCityCountry(data) {
-  const cityCountry = document.getElementById('city-country')
-  cityCountry.innerHTML = `${data.location.name}, ${data.location.country}`;
-}
-
-// Show PM2.5 index, category, color
-function getPm25Data(data) {
-  pm25CategoryElements.forEach(function(pm25CategoryElement, index) {
-    var pm25Num = Number(data.current.air_quality.pm2_5.toFixed(2));
-    pm25Index.innerHTML = pm25Num;
-    setPm25Category(pm25Num, pm25CategoryElement, pm25IndexInt, pm25CategoryText);
-    pm25IndexInt[0].innerHTML = parseInt(pm25Num);
-    pm25IndexInt[1].innerHTML = parseInt(pm25Num);
-  });
-}
-
-// Show CO index, category, color
-function getCoData(data) {
-  var coNum = Number(data.current.air_quality.co.toFixed(2));
-  coIndex.innerHTML = coNum;
-  setCoCategory(coNum, coIndexInt, coCategory);
-  coIndexInt.innerHTML = parseInt(coNum);
-}
-
-// Show NO2 index, category, color
-function getNo2Data(data) {
-  var no2Num = Number(data.current.air_quality.no2.toFixed(2));
-  no2Index.innerHTML = no2Num;
-  setNo2Category(no2Num, no2IndexInt, no2Category);
-  no2IndexInt.innerHTML = parseInt(no2Num);
-}
-
-// Show 03 index, category, color
-function getO3Data(data) {
-  var o3Num = Number(data.current.air_quality.o3.toFixed(2));
-  o3Index.innerHTML = o3Num;
-  setO3Category(o3Num, o3IndexInt, o3Category);
-  o3IndexInt.innerHTML = parseInt(o3Num);
-}
-
 // Show PM10 index, category, color
 function getPm10Data(data) {
   var pm10Num = Number(data.current.air_quality.pm10.toFixed(2));
@@ -292,12 +267,39 @@ function getPm10Data(data) {
   pm10IndexInt.innerHTML = parseInt(pm10Num);
 }
 
+// SO2 consts
+const so2Index = document.getElementById('so2-index');
+const so2Category = document.getElementById('so2-category');
+const so2IndexInt = document.getElementById('so2-index-int');
+
+// Function for showing the SO2 category depending on the SO2 index
+function setSo2Category(so2Num, so2IndexInt, so2Category) {
+  var valuenow;
+  if (so2Num < 100) {
+    so2Category.innerHTML = `Good`;
+    valuenow = 1;
+  } else if (so2Num < 200) {
+    so2Category.innerHTML = `Fair`;
+    valuenow = 2;
+  } else if (so2Num < 300) {
+    so2Category.innerHTML = `Poor`;
+    valuenow = 3;
+  } else if (so2Num < 400) {
+    so2Category.innerHTML = `Very poor`;
+    valuenow = 4;
+  } else {
+    so2Category.innerHTML = `Extremely poor`;
+    valuenow = 5;
+  }
+  so2IndexInt.style.setProperty("--value", valuenow*20);
+  so2IndexInt.innerHTML = valuenow;
+}
+
 // Show SO2 index, category, color
 function getSo2Data(data) {
-  var so2Num = Number(data.current.air_quality.so2.toFixed(2));
+  const so2Num = Number(data.current.air_quality.so2.toFixed(2));
   so2Index.innerHTML = so2Num;
-  setSo2ategory(so2Num, so2IndexInt, so2Category);
-  so2IndexInt.innerHTML = parseInt(so2Num);
+  setSo2Category(so2Num, so2IndexInt, so2Category);
 }
 
 // Constants
