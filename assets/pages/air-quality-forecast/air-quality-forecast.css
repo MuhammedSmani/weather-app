@@ -52,7 +52,6 @@ body {
 	width: 7rem;
 	height: 7rem;
 	border-radius: 100%;
-	outline: solid 0.3rem #e7ecf1;
 }
 .air__quality__text {
 	padding: 2rem;
@@ -81,16 +80,6 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-/* .all__pollutants__index {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 5rem;
-	height: 5rem;
-	border-radius: 100%;
-	outline: solid 0.3rem #e7ecf1;
-	font-size: 1.5rem;
-} */
 .all__pollutants__index {
 	display: flex;
 	justify-content: center;
@@ -214,8 +203,8 @@ body {
 	initial-value: 0;
 }
 div[role="progressbar"] {
-	animation: growProgressBar 2s 1s forwards;
+	animation: growProgressBar 2s forwards;
 	background: 
 	radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0),
-	conic-gradient(var(--sixth-color) calc(var(--pgPercentage) * 1%), var(--first-color) 0);
+	conic-gradient(var(--sixth-color) calc(var(--pgPercentage) * 1%), #e7ecf1 0);
 }

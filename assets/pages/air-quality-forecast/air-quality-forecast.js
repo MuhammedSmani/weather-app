@@ -94,6 +94,13 @@ function getCityCountry(data) {
   cityCountry.innerHTML = `${data.location.name}, ${data.location.country}`;
 }
 
+const progressBars = document.querySelectorAll('div[role="progressbar"]');
+var green = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(green calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+var yellow = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(yellow calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+var orange = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(orange calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+var red = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(red calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+var brown = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(brown calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+
 // PM25 consts
 const pm25Index = document.getElementById('pm25-index');
 const pm25CategoryElements = document.querySelectorAll('.pm25-category');
@@ -102,32 +109,42 @@ const pm25IndexInt = document.querySelectorAll('.pm25-index-int');
 
 // Function for showing the PM2.5 category depending on the PM2.5 index
 function setPm25Category(pm25Num, pm25CategoryElement, pm25IndexInt, pm25CategoryText) {
+  var pm25valuenow;
   if (pm25Num < 12.5) {
     pm25CategoryElement.innerHTML = `Good`;
     pm25CategoryText.innerHTML = `Air quality is considered satisfactory, and air pollution poses little or no risk.`;
-    pm25IndexInt[0].style.outlineColor = `green`;
-    pm25IndexInt[1].style.outlineColor = `green`;
+    pm25valuenow = 1;
+    progressBars[0].style.background = green;
+    progressBars[1].style.background = green;
   } else if (pm25Num < 25) {
     pm25CategoryElement.innerHTML = `Fair`;
     pm25CategoryText.innerHTML = `Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.`;
-    pm25IndexInt[0].style.outlineColor = `yellow`;
-    pm25IndexInt[1].style.outlineColor = `yellow`;
+    pm25valuenow = 2;
+    progressBars[0].style.background = yellow;
+    progressBars[1].style.background = yellow;
   } else if (pm25Num < 50) {
     pm25CategoryElement.innerHTML = `Poor`;
     pm25CategoryText.innerHTML = `Members of sensitive groups may experience health effects. The general public is not likely to be affected.`;
-    pm25IndexInt[0].style.outlineColor = `orange`;
-    pm25IndexInt[1].style.outlineColor = `orange`;
+    pm25valuenow = 3;
+    progressBars[0].style.background = orange;
+    progressBars[1].style.background = orange;
   } else if (pm25Num < 150) {
     pm25CategoryElement.innerHTML = `Very poor`;
     pm25CategoryText.innerHTML = `Health warnings of emergency conditions. The entire population is more likely to be affected.`;
-    pm25IndexInt[0].style.outlineColor = `red`;
-    pm25IndexInt[1].style.outlineColor = `red`;
+    pm25valuenow = 4;
+    progressBars[0].style.background = red;
+    progressBars[1].style.background = red;
   } else {
     pm25CategoryElement.innerHTML = `Extremely poor`;
     pm25CategoryText.innerHTML = `Health alert: everyone may experience more serious health effects.`;
-    pm25IndexInt[0].style.outlineColor = `brown`;
-    pm25IndexInt[1].style.outlineColor = `brown`;
+    pm25valuenow = 5;
+    progressBars[0].style.background = brown;
+    progressBars[1].style.background = brown;
   }
+  pm25IndexInt[0].style.setProperty("--value", pm25valuenow*20);
+  pm25IndexInt[1].style.setProperty("--value", pm25valuenow*20);
+  pm25IndexInt[0].innerHTML = pm25valuenow;
+  pm25IndexInt[1].innerHTML = pm25valuenow;
 }
 
 // Show PM2.5 index, category, color
@@ -136,8 +153,6 @@ function getPm25Data(data) {
     var pm25Num = Number(data.current.air_quality.pm2_5.toFixed(2));
     pm25Index.innerHTML = pm25Num;
     setPm25Category(pm25Num, pm25CategoryElement, pm25IndexInt, pm25CategoryText);
-    pm25IndexInt[0].innerHTML = parseInt(pm25Num);
-    pm25IndexInt[1].innerHTML = parseInt(pm25Num);
   });
 }
 
@@ -148,16 +163,24 @@ const coIndexInt = document.getElementById('co-index-int');
 
 // Function for showing the CO category depending on the CO index
 function setCoCategory(coNum, coIndexInt, coCategory) {
+  var covaluenow;
+  var coBackground = progressBars[2].style.background;
   if (coNum < 30) {
     coCategory.innerHTML = `Good`;
-    coIndexInt.style.outlineColor = 'green';
+    covaluenow = 1;
+    coBackground = green;
   } else if (coNum < 70) {
     coCategory.innerHTML = `Poor`;
-    coIndexInt.style.outlineColor = 'black';
+    covaluenow = 2;
+    coBackground = orange;
   } else {
     coCategory.innerHTML = `Extremely poor`;
-    coIndexInt.style.outlineColor = 'brown';
+    covaluenow = 3;
+    coBackground = brown;
   }
+  coIndexInt.style.setProperty("--value", covaluenow*33.33);
+  coIndexInt.innerHTML = covaluenow;
+  progressBars[2].style.background = coBackground;
 }
 
 // Show CO index, category, color
@@ -165,7 +188,6 @@ function getCoData(data) {
   var coNum = Number(data.current.air_quality.co.toFixed(2));
   coIndex.innerHTML = coNum;
   setCoCategory(coNum, coIndexInt, coCategory);
-  coIndexInt.innerHTML = parseInt(coNum);
 }
 
 // NO2 consts
@@ -175,22 +197,32 @@ const no2IndexInt = document.getElementById('no2-index-int');
 
 // Function for showing the NO2 category depending on the NO2 index
 function setNo2Category(no2Num, no2IndexInt, no2Category) {
+  var no3valuenow;
+  var no2background = progressBars[3].style.background;
   if (no2Num < 60) {
     no2Category.innerHTML = `Good`;
-    no2IndexInt.style.outlineColor = 'green';
+    no3valuenow = 1;
+    no2background = green;
   } else if (no2Num < 120) {
     no2Category.innerHTML = `Fair`;
-    no2IndexInt.style.outlineColor = 'yellow';
+    no3valuenow = 2;
+    no2background = yellow;
   } else if (no2Num < 180) {
     no2Category.innerHTML = `Poor`;
-    no2IndexInt.style.outlineColor = 'orange';
+    no3valuenow = 3;
+    no2background = orange;
   } else if (no2Num < 360) {
     no2Category.innerHTML = `Very poor`;
-    no2IndexInt.style.outlineColor = 'red';
+    no3valuenow = 4;
+    no2background = red;
   } else {
     no2Category.innerHTML = `Extremely poor`;
-    no2IndexInt.style.outlineColor = 'brown';
+    no3valuenow = 5;
+    no2background = brown;
   }
+  no2IndexInt.style.setProperty("--value", no3valuenow*20);
+  no2IndexInt.innerHTML = no3valuenow;
+  progressBars[3].style.background = no2background;
 }
 
 // Show NO2 index, category, color
@@ -198,7 +230,6 @@ function getNo2Data(data) {
   var no2Num = Number(data.current.air_quality.no2.toFixed(2));
   no2Index.innerHTML = no2Num;
   setNo2Category(no2Num, no2IndexInt, no2Category);
-  no2IndexInt.innerHTML = parseInt(no2Num);
 }
 
 // O3 consts
@@ -208,22 +239,32 @@ const o3IndexInt = document.getElementById('o3-index-int');
 
 // Function for showing the O3 category depending on the O3 index
 function setO3Category(o3Num, o3IndexInt, o3Category) {
+  var o3valuenow;
+  var o3background = progressBars[4].style.background;
   if (o3Num < 50) {
     o3Category.innerHTML = `Good`;
-    o3IndexInt.style.outlineColor = 'green';
+    o3valuenow = 1;
+    o3background = green;
   } else if (o3Num < 100) {
     o3Category.innerHTML = `Moderate`;
-    o3IndexInt.style.outlineColor = 'yellow';
+    o3valuenow = 2;
+    o3background = yellow;
   } else if (o3Num < 150) {
     o3Category.innerHTML = `Poor`;
-    o3IndexInt.style.outlineColor = 'orange';
+    o3valuenow = 3;
+    o3background = orange;
   } else if (o3Num < 300) {
     o3Category.innerHTML = `Very poor`;
-    o3IndexInt.style.outlineColor = 'red';
+    o3valuenow = 4;
+    o3background = red;
   } else {
     o3Category.innerHTML = `Hazardous`;
-    o3IndexInt.style.outlineColor = 'brown';
+    o3valuenow = 5;
+    o3background = brown;
   }
+  o3IndexInt.style.setProperty("--value", o3valuenow*20);
+  o3IndexInt.innerHTML = o3valuenow;
+  progressBars[4].style.background = o3background;
 }
 
 // Show 03 index, category, color
@@ -231,7 +272,6 @@ function getO3Data(data) {
   var o3Num = Number(data.current.air_quality.o3.toFixed(2));
   o3Index.innerHTML = o3Num;
   setO3Category(o3Num, o3IndexInt, o3Category);
-  o3IndexInt.innerHTML = parseInt(o3Num);
 }
 
 // PM10 consts
@@ -241,22 +281,30 @@ const pm10IndexInt = document.getElementById('pm10-index-int');
 
 // Function for showing the PM10 category depending on the PM10 index
 function setPm10Category(pm10Num, pm10IndexInt, pm10Category) {
+  var pm10valuenow;
+  var pm10background = progressBars[5].style.background;
   if (pm10Num < 40) {
     pm10Category.innerHTML = `Good`;
-    pm10IndexInt.style.outlineColor = 'green';
+    pm10valuenow = 1;
+    pm10background = green;
   } else if (pm10Num < 80) {
     pm10Category.innerHTML = `Fair`;
-    pm10IndexInt.style.outlineColor = 'yellow';
-  } else if (pm10Num < 120) {
+    pm10valuenow = 2;
+    pm10background = yellow;
     pm10Category.innerHTML = `Poor`;
-    pm10IndexInt.style.outlineColor = 'orange';
-  } else if (pm10Num < 300) {
+    pm10valuenow = 3;
+    pm10background = orange;
     pm10Category.innerHTML = `Very poor`;
-    pm10IndexInt.style.outlineColor = 'red';
+    pm10valuenow = 4;
+    pm10background = red;
   } else {
     pm10Category.innerHTML = `Extremely poor`;
-    pm10IndexInt.style.outlineColor = 'brown';
+    pm10valuenow = 5;
+    pm10background = brown;
   }
+  pm10IndexInt.style.setProperty("--value", pm10valuenow*20);
+  pm10IndexInt.innerHTML = pm10valuenow;
+  progressBars[5].style.background = pm10background;
 }
 
 // Show PM10 index, category, color
@@ -264,7 +312,7 @@ function getPm10Data(data) {
   var pm10Num = Number(data.current.air_quality.pm10.toFixed(2));
   pm10Index.innerHTML = pm10Num;
   setPm10Category(pm10Num, pm10IndexInt, pm10Category);
-  pm10IndexInt.innerHTML = parseInt(pm10Num);
+  // pm10IndexInt.innerHTML = parseInt(pm10Num);
 }
 
 // SO2 consts
@@ -274,25 +322,32 @@ const so2IndexInt = document.getElementById('so2-index-int');
 
 // Function for showing the SO2 category depending on the SO2 index
 function setSo2Category(so2Num, so2IndexInt, so2Category) {
-  var valuenow;
+  var so2valuenow;
+  var so2background = progressBars[6].style.background;
   if (so2Num < 100) {
     so2Category.innerHTML = `Good`;
-    valuenow = 1;
+    so2valuenow = 1;
+    so2background = green;
   } else if (so2Num < 200) {
     so2Category.innerHTML = `Fair`;
-    valuenow = 2;
+    so2valuenow = 2;
+    so2background = yellow;
   } else if (so2Num < 300) {
     so2Category.innerHTML = `Poor`;
-    valuenow = 3;
+    so2valuenow = 3;
+    so2background = orange;
   } else if (so2Num < 400) {
     so2Category.innerHTML = `Very poor`;
-    valuenow = 4;
+    so2valuenow = 4;
+    so2background = red;
   } else {
     so2Category.innerHTML = `Extremely poor`;
-    valuenow = 5;
+    so2valuenow = 5;
+    so2background = brown;
   }
-  so2IndexInt.style.setProperty("--value", valuenow*20);
-  so2IndexInt.innerHTML = valuenow;
+  so2IndexInt.style.setProperty("--value", so2valuenow*20);
+  so2IndexInt.innerHTML = so2valuenow;
+  progressBars[6].style.background = so2background;
 }
 
 // Show SO2 index, category, color
