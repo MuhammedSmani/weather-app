@@ -1,3 +1,32 @@
+/*==================== UPDATE MAIN PAGE BUTTONS ====================*/
+
+// Update Main Page Today's Forecast "Next Hours" button
+function updateNextHoursButton(city) {
+  const nextHoursButton = document.querySelector('.todays__forecast_button');
+  nextHoursButton.innerHTML = `<a href="../../../assets/pages/hourly/hourly.html?city=${city}">Next Hours</a>`;
+};
+
+// Update Main Page Hourly Forecast "Next 48 Hours" button
+function updateNext48HoursButton(city) {
+  const next48HoursButton = document.querySelector('.hourly__forecast_button');
+  next48HoursButton.innerHTML = `<a href="../../../assets/pages/hourly/hourly.html?city=${city}">Next 48 Hours</a>`;
+};
+
+// Update Main Page Daily Forecast "Next 7 Day" button
+function updateNextSevenDaysButton(city) {
+  const nextSevenDaysButton = document.querySelector('.daily__forecast_button');
+  nextSevenDaysButton.innerHTML = `<a href="../../../assets/pages/sevenday/sevenday.html?city=${city}">Next 7 Day</a>`;
+};
+
+// Update Main Page buttons
+function updateMainPageButtons(city) {
+  updateNextHoursButton(city);
+  updateNext48HoursButton(city);
+  updateNextSevenDaysButton(city);
+}
+
+/*==================== ICONS AND TEXT ====================*/
+
 // Condition Text and Icons
 const conditionText = document.getElementById('condition-text');
 const conditionIcon = document.querySelectorAll('.condition-icon');
@@ -25,6 +54,8 @@ function setConditionIcon(conditionTextData, iconElement) {
   const icon = icons[conditionTextData] || icons.Other;
   iconElement.innerHTML = icon;
 }
+
+/*==================== REALTIME SECTION ====================*/
 
 // Get City and Country data
 function getCityCountry(data) {
@@ -83,6 +114,8 @@ function getDayNightTemp(data) {
   nightTemp.innerHTML = `${Math.round(data.forecast.forecastday[1].hour[0].temp_c)}°`;
 }
 
+/*==================== TODAY'S FORECAST SECTION ====================*/
+
 // Function to generate Today's Forecast section for each time period
 function generateTodaysForecastHTML(period, temp, chanceOfRain) {
   return `<div class="todays__forecast_${period} todays__forecast_four-all">
@@ -129,6 +162,8 @@ function getTodaysForecast(data) {
   }
 }
 
+/*==================== WEATHER TODAY SECTION ====================*/
+
 // Get Weather Today section data
 function getWeatherToday(data) {
   const feelsLike = document.getElementById('feels-like');
@@ -153,6 +188,8 @@ function getWeatherToday(data) {
   uvIndex.innerHTML = data.current.uv;
   moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
 }
+
+/*==================== GET WEATHER DATA FUNCTIONS ====================*/
 
 // Constants
 const apiKey = '9ce000ab2ee94bf8bfd111052222012';
@@ -182,6 +219,7 @@ function fetchWeatherData(city) {
     .then((response) => response.json())
     .then((data) => {
       updateNavbarLinks(city);
+      updateMainPageButtons(city)
       getCityCountry(data);
       getRealtimeTime(data);
       getRealtimeTemp(data);
@@ -223,7 +261,9 @@ if (cityFromUrl) {
   fetchWeatherData(cityFromUrl);
 }
 
-// Autocomplete Search Form
+/*==================== AUTOCOMPLETE SEARCH FORM ====================*/
+
+// Declaring an array that contains a list of cities
 let searchable = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "Sofia", "Madrid", "Ljubljana", "Tirana", "Sarajevo", "Athens", "Rome", "Zagreb", "Stockholm",
 "Valletta", "Chisinau", "Skopje", "Luxembourg", "Vilnius", "Vaduz", "Riga", "Dublin", "Reykjavik", "Budapest", "Vatican City", "Helsinki", "Tallinn", "Copenhagen", "Prague",
 "Vienna", "Minsk", "Andorra La Vella", "Monaco", "Vilnius", "Podgorica", "Amsterdam", "Oslo", "Warsaw", "Lisbon", "Bucharest", "Belgrade", "San Marino", "Bratislava", "Prague", "Kiev"];
@@ -232,14 +272,20 @@ const searchInput = document.getElementById('search-input');
 const searchField = document.querySelector('.search')
 const searchResults = document.querySelector('.search-results');
 
+// Adding an event listener to the search input that listens for keyup events
 searchInput.addEventListener('keyup', () => {
+  // Initializing an empty array to store search results
   let results = [];
+  // Storing the current value of the search input
   let resultInput = searchInput.value;
+  // If the search input has a value
   if (resultInput.length) {
+    // Filtering the 'searchable' array for items that include the current search input value
     results = searchable.filter((item) => {
       return item.toLowerCase().includes(resultInput.toLowerCase())
     });
-        if(!results.length) {
+    //If there's no match, clearing the search results
+    if(!results.length) {
       searchResults.classList.remove('search-show');
       searchResults.innerHTML = "";
       return;
@@ -253,14 +299,18 @@ searchInput.addEventListener('keyup', () => {
   renderResults(results);
 })
 
+//Function that renders the search results
 function renderResults(results) {
+  //If there's no results
   if(!results.length) {
     return searchResults.classList.remove('search-show');
   }
 
+  //Mapping the filtered results to create the HTML for each result
   let searchContent = results.map((item) => {
     return `<li><a href="../../../assets/pages/today/today.html?city=${item}">${item}</a></li>`
   })
+  //Joining the HTML of all results into a single string
   .join('');
 
   searchResults.classList.add('search-show')

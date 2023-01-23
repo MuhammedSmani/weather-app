@@ -328,15 +328,6 @@ function fetchWeatherData(city) {
     });
 }
 
-// Get the city name from the URL
-// function getCityFromUrl() {
-//   searchParams;
-//   let city = searchParams.get("city");
-//   if (city) {
-//     return city;
-//   }
-// }
-
 // Fetch Weather data based on the Geolocation
 navigator.geolocation.getCurrentPosition((position) => {
   let lat = position.coords.latitude;
@@ -366,23 +357,30 @@ if (cityFromUrl) {
   fetchWeatherData(cityFromUrl);
 }
 
-// Autocomplete Search Form
+/*==================== AUTOCOMPLETE SEARCH FORM ====================*/
+
+// Declaring an array that contains a list of cities
 let searchable = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "Sofia", "Madrid", "Ljubljana", "Tirana", "Sarajevo", "Athens", "Rome", "Zagreb", "Stockholm",
 "Valletta", "Chisinau", "Skopje", "Luxembourg", "Vilnius", "Vaduz", "Riga", "Dublin", "Reykjavik", "Budapest", "Vatican City", "Helsinki", "Tallinn", "Copenhagen", "Prague",
 "Vienna", "Minsk", "Andorra La Vella", "Monaco", "Vilnius", "Podgorica", "Amsterdam", "Oslo", "Warsaw", "Lisbon", "Bucharest", "Belgrade", "San Marino", "Bratislava", "Prague", "Kiev"];
 
 const searchInput = document.getElementById('search-input');
 const searchField = document.querySelector('.search')
-// const searchForm = document.getElementById('search-form');
 const searchResults = document.querySelector('.search-results');
 
+// Adding an event listener to the search input that listens for keyup events
 searchInput.addEventListener('keyup', () => {
+  // Initializing an empty array to store search results
   let results = [];
+  // Storing the current value of the search input
   let resultInput = searchInput.value;
+  // If the search input has a value
   if (resultInput.length) {
+    // Filtering the 'searchable' array for items that include the current search input value
     results = searchable.filter((item) => {
       return item.toLowerCase().includes(resultInput.toLowerCase())
     });
+    //If there's no match, clearing the search results
     if(!results.length) {
       searchResults.classList.remove('search-show');
       searchResults.innerHTML = "";
@@ -397,14 +395,18 @@ searchInput.addEventListener('keyup', () => {
   renderResults(results);
 })
 
+//Function that renders the search results
 function renderResults(results) {
+  //If there's no results
   if(!results.length) {
     return searchResults.classList.remove('search-show');
   }
 
+  //Mapping the filtered results to create the HTML for each result
   let searchContent = results.map((item) => {
     return `<li><a href="../../../assets/pages/air-quality-forecast/air-quality-forecast.html?city=${item}">${item}</a></li>`
   })
+  //Joining the HTML of all results into a single string
   .join('');
 
   searchResults.classList.add('search-show')
