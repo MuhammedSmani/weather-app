@@ -7,7 +7,7 @@ body {
 .weather__news__section {
 	display: flex;
 	justify-content: center;
-	/* margin-top: 132px; */
+	margin-top: 132px;
 	/* height: calc(100vh - 233px); */
 }
 .weather__news__content {

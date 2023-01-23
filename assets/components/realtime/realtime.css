@@ -1,8 +1,8 @@
 .realtime {
 	display: flex;
 	justify-content: center;
-	/* margin-top: 132px; */
-	padding-top: 2rem;
+	margin-top: 132px;
+	padding-top: 1rem;
 }
 
 .realtime__container {

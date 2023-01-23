@@ -1,70 +1,3 @@
-// Update Today page link
-function updateTodayPage(city) {
-  const todayPages = document.querySelectorAll('.today-page');
-  todayPages.forEach(todayPage => {
-    todayPage.innerHTML = `<a href="../../../assets/pages/today/today.html?city=${city}" class="nav__link">Today</a>`;
-  });
-}
-
-// Update Air Quality page link
-function updateAirQualityPage(city) {
-  const airQualityPages = document.querySelectorAll('.airquality-page');
-  airQualityPages.forEach(airQualityPage => {
-    airQualityPage.innerHTML = `<a href="../../../assets/pages/air-quality-forecast/air-quality-forecast.html?city=${city}" class="nav__link">Air Quality</a>`;
-  });
-}
-
-// Update Hourly page link
-function updateHourlyPage(city) {
-  const hourlyPages = document.querySelectorAll('.hourly-page');
-  hourlyPages.forEach(hourlyPage => {
-    hourlyPage.innerHTML = `<a href="../../../assets/pages/hourly/hourly.html?city=${city}" class="nav__link">Hourly</a>`;
-  });
-}
-
-// Update 7 Day page link
-function updateSevenDayPage(city) {
-  const sevenDayPages = document.querySelectorAll('.sevenday-page');
-  sevenDayPages.forEach(sevenDayPage => {
-    sevenDayPage.innerHTML = `<a href="../../../assets/pages/sevenday/sevenday.html?city=${city}" class="nav__link">7 Day</a>`;
-  });
-}
-
-// Update Weekend page link
-function updateWeekendPage(city) {
-  const weekendPages = document.querySelectorAll('.weekend-page');
-  weekendPages.forEach(weekendPage => {
-    weekendPage.innerHTML = `<a href="../../../assets/pages/weekend/weekend.html?city=${city}" class="nav__link">Weekend</a>`;
-  });
-}
-
-// Update Monthly page link
-function updateMonthlyPage(city) {
-  const monthlyPages = document.querySelectorAll('.monthly-page');
-  monthlyPages.forEach(monthlyPage => {
-    monthlyPage.innerHTML = `<a href="../../../assets/pages/monthly/monthly.html?city=${city}" class="nav__link">Monthly</a>`;
-  });
-}
-
-// Update Radar page link
-function radarPage(city) {
-  const radarPages = document.querySelectorAll('.radar-page');
-  radarPages.forEach(radarPage => {
-    radarPage.innerHTML = `<a href="../../../assets/pages/radar/radar.html?city=${city}" class="nav__link">Radar</a>`;
-  });
-}
-
-// Update Navbar links
-function updateNavbarLinks(city) {
-  updateTodayPage(city);
-  updateAirQualityPage(city);
-  updateHourlyPage(city);
-  updateSevenDayPage(city);
-  updateWeekendPage(city);
-  updateMonthlyPage(city);
-  radarPage(city);
-}
-
 // Open and Close the Modal
 const airQualityModal = document.querySelector('.air__quality__modal');
 const triggerModal = document.querySelector('#air-quality-comments');
@@ -439,6 +372,7 @@ let searchable = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "S
 "Vienna", "Minsk", "Andorra La Vella", "Monaco", "Vilnius", "Podgorica", "Amsterdam", "Oslo", "Warsaw", "Lisbon", "Bucharest", "Belgrade", "San Marino", "Bratislava", "Prague", "Kiev"];
 
 const searchInput = document.getElementById('search-input');
+const searchField = document.querySelector('.search')
 // const searchForm = document.getElementById('search-form');
 const searchResults = document.querySelector('.search-results');
 
@@ -448,7 +382,16 @@ searchInput.addEventListener('keyup', () => {
   if (resultInput.length) {
     results = searchable.filter((item) => {
       return item.toLowerCase().includes(resultInput.toLowerCase())
-    })
+    });
+    if(!results.length) {
+      searchResults.classList.remove('search-show');
+      searchResults.innerHTML = "";
+      return;
+    }
+  } else {
+    searchResults.classList.remove('search-show');
+    searchResults.innerHTML = "";
+    return;
   }
 
   renderResults(results);
@@ -456,7 +399,7 @@ searchInput.addEventListener('keyup', () => {
 
 function renderResults(results) {
   if(!results.length) {
-    return searchForm.classList.remove('search-show');
+    return searchResults.classList.remove('search-show');
   }
 
   let searchContent = results.map((item) => {
@@ -464,6 +407,6 @@ function renderResults(results) {
   })
   .join('');
 
-  searchForm.classList.add('search-show')
+  searchResults.classList.add('search-show')
   searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }

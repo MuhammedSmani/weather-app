@@ -7,15 +7,18 @@
 		<link rel="stylesheet" href="./today.css" />
 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
 		<title>Weather App - Today</title>
+		<script src="../../scripts/index.js" defer></script>
 		<script src="./today.js" defer></script>
 	</head>
 	<body>
-		<header>
+		<header class="header">
 			<nav class="nav">
 				<div class="nav__container container">
-					<a href="#" class="logo__wrapper">Weather</a>
-					<form class="nav__search" id="search-form" action="../../../assets/pages/today/today.html">
-						<input type="text" id="search-input" class="search" name="city"  placeholder="Search city..." autocomplete="chrome-off" />
+					<a href="" class="logo__wrapper">Weather</a>
+					<form class="nav__search" id="search-form" action="">
+						<div>
+							<input type="text" id="search-input" class="search" name="city"  placeholder="Search city..." autocomplete="off" />
+						</div>
 						<div class="search-results"></div>
 					</form>
 					<div class="nav__cf">
@@ -43,7 +46,7 @@
 							<li class="nav__item airquality-page"></li>
 							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__link">Weather News</a>
+								<a href="../weather-news/weather-news.html" class="nav__link">Weather News </a>
 							</li>
 						</ul>
 					</div>
@@ -70,7 +73,7 @@
 							<li class="nav__item airquality-page"></li>
 							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="" class="nav__link">Weather News</a>
+								<a href="../weather-news/weather-news.html" class="nav__item">Weather News </a>
 							</li>
 						</ul>
 					</div>

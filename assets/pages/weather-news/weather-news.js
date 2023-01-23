@@ -114,3 +114,48 @@ function getWeatherNews() {
 }
 
 getWeatherNews();
+
+// Autocomplete Search Form
+let searchable = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "Sofia", "Madrid", "Ljubljana", "Tirana", "Sarajevo", "Athens", "Rome", "Zagreb", "Stockholm",
+"Valletta", "Chisinau", "Skopje", "Luxembourg", "Vilnius", "Vaduz", "Riga", "Dublin", "Reykjavik", "Budapest", "Vatican City", "Helsinki", "Tallinn", "Copenhagen", "Prague",
+"Vienna", "Minsk", "Andorra La Vella", "Monaco", "Vilnius", "Podgorica", "Amsterdam", "Oslo", "Warsaw", "Lisbon", "Bucharest", "Belgrade", "San Marino", "Bratislava", "Prague", "Kiev"];
+
+const searchInput = document.getElementById('search-input');
+const searchField = document.querySelector('.search')
+// const searchForm = document.getElementById('search-form');
+const searchResults = document.querySelector('.search-results');
+
+searchInput.addEventListener('keyup', () => {
+  let results = [];
+  let resultInput = searchInput.value;
+  if (resultInput.length) {
+    results = searchable.filter((item) => {
+      return item.toLowerCase().includes(resultInput.toLowerCase())
+    });
+    if(!results.length) {
+      searchResults.classList.remove('search-show');
+      searchResults.innerHTML = "";
+      return;
+    }
+  } else {
+    searchResults.classList.remove('search-show');
+    searchResults.innerHTML = "";
+    return;
+  }
+
+  renderResults(results);
+})
+
+function renderResults(results) {
+  if(!results.length) {
+    return searchResults.classList.remove('search-show');
+  }
+
+  let searchContent = results.map((item) => {
+    return `<li><a href="../../../assets/pages/today/today.html?city=${item}">${item}</a></li>`
+  })
+  .join('');
+
+  searchResults.classList.add('search-show')
+  searchResults.innerHTML = `<ul>${searchContent}</ul>`;
+}
