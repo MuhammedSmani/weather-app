@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <link rel="stylesheet" href="radar.css">
     <script src="radar.js" defer></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -23,8 +24,8 @@
                     <button type="submit">S</button>
                 </form>
                 <div class="nav__cf">
-                    <a href="#">°F</a>
-                    <a href="#" class="nav__cf-active">°C</a>
+                    <a href="#" id="fahrenheit">°F</a>
+                    <a href="#" class="nav__cf-active" id="celsius">°C</a>
                 </div>
                 <div class="nav__open_menu">
                     <input class="open__menu_checkbox" id="active" type="checkbox" onclick="togNav()" />

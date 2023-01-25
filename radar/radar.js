@@ -12,12 +12,34 @@ let customIcon;
 let marker;
 let markers = [];
 
+let tempUnit = "C"; 
 
+const fButton = document.getElementById("fahrenheit");
+fButton.addEventListener("click", () => {
+    tempUnit = "F";
+    localStorage.setItem("tempUnit", tempUnit);
+    location.reload();
 
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
+});
+
+const cButton = document.getElementById("celsius");
+cButton.addEventListener("click", () => {
+    tempUnit = "C";
+    localStorage.setItem("tempUnit", tempUnit);
+    location.reload();
+
+});
+
+L.tileLayer("https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png", {
+  attribution:
+    '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+
+ ,}).addTo(map);
+
+// window.onload = getGeolocationData();
+// function getGeolocationData(){
+
+tempUnit =  localStorage.getItem("tempUnit");
 
 if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -29,13 +51,13 @@ if ("geolocation" in navigator) {
             .then((response) => response.json())
             .then((data) => {
                 let output = "";
+              
                 output += `
               <h2>${data.location.name}</h2>
-              <h1><b>${Math.round(data.current.temp_c)}°</b></h1>
+              <h1 ><b>${Math.round(tempUnit == 'C' ? data.current.temp_c : data.current.temp_f)}°</b></h1>
               <h2>${data.current.condition.text}</h2>
               <h2>Feels like ${Math.round(data.current.feelslike_c)}°</h2>
               <img src="${data.current.condition.icon}">
-
 
             `;
 
@@ -59,14 +81,20 @@ if ("geolocation" in navigator) {
 } else {
     alert("Geolocation is not supported by this browser.");
     console.log("geolocation");
-}
+// }
+};
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     const searchKeyword = searchInput.value;
 
-    getRadarData(searchKeyword);
+    getRadarData(searchKeyword)
+   
 });
+
+
+
+
 
 function getRadarData(lokacioni) {
     while (markers.length) {
@@ -88,7 +116,7 @@ function showDataOnMap(data) {
     let output = "";
     output += `
         <h2>${data.location.name}</h2>
-        <h1><b>${Math.round(data.current.temp_c)}°</b>
+        <h1 class="temperature"><b>${Math.round(tempUnit == 'C' ? data.current.temp_c : data.current.temp_f)}°</b>
         <h2>${data.current.condition.text}</h2>
         <h2>Feels like ${Math.round(data.current.feelslike_c)}°</h2>
          <img src="${data.current.condition.icon}">
@@ -140,7 +168,7 @@ function getMapIcons() {
                     });
 
                     var marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
-                    marker.bindPopup(`<h2>${city}<span><b>  ${Math.round(data.current.temp_c)}°</b></span></h2>`);
+                    marker.bindPopup(`<h2>${city}<span class="temperature"><b>  ${Math.round(tempUnit == 'C' ? data.current.temp_c : data.current.temp_f)}°</b></span></h2>`);
                     map.setView([48.15, 17.02], 4);
                     markers.push(marker);
 
@@ -186,12 +214,12 @@ function getHighTemp(data) {
     var lng = data.location.lon;
     let highTempIcon = L.divIcon({
         className: "high-temp-icon",
-        html: '<div>H</div>',
-        iconSize: [25, 25]
+        html: '<i class="uil uil-temperature"></i>',
+        iconSize: [30, 45]
     });
 
     var marker = L.marker([lat, lng], { icon: highTempIcon }).addTo(map);
-    marker.bindPopup(`<h2>${data.location.name}<span><b>  ${Math.round(data.current.temp_c)}°</b></span></h2>`);
+    marker.bindPopup(`<h2>${data.location.name}<span class="temperature"><b>  ${Math.round(tempUnit == 'C' ? data.current.temp_c : data.current.temp_f)}°</b></span></h2>`);
                 markers.push(marker);
 
 }
@@ -201,12 +229,12 @@ function getMediumTemp(data) {
     var lng = data.location.lon;
     let mediumTempIcon = L.divIcon({
         className: "medium-temp-icon",
-        html: '<div>M</div>',
-        iconSize: [25, 25]
+        html: '<i class="uil uil-temperature-half"></i>',
+        iconSize: [30, 45]
     });
 
     var marker = L.marker([lat, lng], { icon: mediumTempIcon }).addTo(map);
-    marker.bindPopup(`<h2>${data.location.name}<span><b>  ${Math.round(data.current.temp_c)}°</b></span></h2>`);
+    marker.bindPopup(`<h2>${data.location.name}<span class="temperature"><b>  ${Math.round(tempUnit == 'C' ? data.current.temp_c : data.current.temp_f)}°</b></span></h2>`);
     markers.push(marker);
 }
 
@@ -215,9 +243,9 @@ function getLowTemp(data) {
     var lng = data.location.lon;
     let lowTempIcon = L.divIcon({
         className: "low-temp-icon",
-        html: '<div>L</div>',
-        iconSize: [25, 25]
+        html: '<i class="uil uil-temperature-empty"></i>',
+        iconSize: [30, 45]
     });
     var marker = L.marker([lat, lng], { icon: lowTempIcon }).addTo(map);
-    marker.bindPopup(`<h2>${data.location.name}<span><b>  ${Math.round(data.current.temp_c)}°</b></span></h2>`);
+    marker.bindPopup(`<h2>${data.location.name}<span class="temperature"><b>  ${Math.round(tempUnit == 'C' ? data.current.temp_c : data.current.temp_f)}°</b></span></h2>`);
     markers.push(marker);}                

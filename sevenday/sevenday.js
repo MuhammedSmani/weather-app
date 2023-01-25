@@ -214,9 +214,10 @@ function getMainData(lokacioni) {
 }
 
 function showTitleData(data){
+  
   weeklyTitle.innerHTML += `
   <h1>7 Day Weather - <span id="city">${data.location.name}</span></h1>
-  <p>As of <span id="current-time">3:44 pm</span>  CET</p>
+  <p>As of <span id="current-time">Date(timeString).:44 pm</span>  CET</p>
   `
 
 }

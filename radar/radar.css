@@ -562,37 +562,35 @@
   }
 
   .low-temp-icon{
-	background-color: rgb(56, 0, 120);
-    border-radius: 100%;
-    text-align: center;
-    color: white;
-    font-size: 15px;
-	border: rgb(56, 0, 120)s, 1px, solid;
-	opacity: 60%;
-
+	color: var(--fourth-color);
+	font-size: 1.5rem;
+		left: 28px;
+	top:18px;
+	background-color: var(--sixth-color);
+	border-radius: 60%;
 
   }
 
   .medium-temp-icon{
-	background-color: rgb(96, 46, 154);
-    border-radius: 100%;
-    text-align: center;
-    color: white;
-    font-size: 15px;
-	border:  1px, solid, rgb(96, 46, 154);
-	opacity: 60%;
+	color: var(--fourth-color);
+	font-size: 1.5rem;
+	left: 28px;
+	top:18px;
+	background-color: var(--sixth-color);
+	border-radius: 60%;
+
+
 
   }
 
   .high-temp-icon{
-	background-color: rgb(146, 103, 194);
-    border-radius: 100%;
-    text-align: center;
-    color: white;
-    font-size: 15px;
-	border: rgb(146, 103, 194), 1px, solid;
-	opacity: 60%;
-	margin-top: 70px !important;
+	color: var(--fourth-color);
+	font-size: 1.5rem;
+		left: 28px;
+	top:18px;
+	background-color: var(--sixth-color);
+	border-radius: 60%;
+
 
   }
 /* 
