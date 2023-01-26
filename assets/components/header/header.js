@@ -1,16 +1,16 @@
-fetch('../../components/header/header.html')
-	.then(function (response) {
-		return response.text();
-	})
-	.then(function (data) {
-		window.onload = addCode();
-		function addCode() {
-			document.getElementById('header').innerHTML = data;
-		}
-	})
-	.catch(function (err) {
-		console.warn('Something went wrong.', err);
-	});
+// fetch('../../components/header/header.html')
+// 	.then(function (response) {
+// 		return response.text();
+// 	})
+// 	.then(function (data) {
+// 		window.onload = addCode();
+// 		function addCode() {
+// 			document.getElementById('header').innerHTML = data;
+// 		}
+// 	})
+// 	.catch(function (err) {
+// 		console.warn('Something went wrong.', err);
+// 	});
 
 /*==================== OPEN AND CLOSE MOBILE NAV ====================*/
 

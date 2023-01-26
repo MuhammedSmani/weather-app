@@ -1,4 +1,5 @@
-// Open and Close the Modal
+/*==================== OPEN AND CLOSE MODAL ====================*/
+
 const airQualityModal = document.querySelector('.air__quality__modal');
 const triggerModal = document.querySelector('#air-quality-comments');
 const closeModalButton = document.querySelector('.air__quality__close__btn');
@@ -27,12 +28,16 @@ function getCityCountry(data) {
   cityCountry.innerHTML = `${data.location.name}, ${data.location.country}`;
 }
 
+/*==================== COLORS CONSTANTS ====================*/
+
 const progressBars = document.querySelectorAll('div[role="progressbar"]');
 var green = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(green calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
 var yellow = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(yellow calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
 var orange = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(orange calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
 var red = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(red calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
 var brown = "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(brown calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+
+/*==================== GET PM2.5 DATA FUNCTIONS ====================*/
 
 // PM25 consts
 const pm25Index = document.getElementById('pm25-index');
@@ -89,6 +94,8 @@ function getPm25Data(data) {
   });
 }
 
+/*==================== GET CO DATA FUNCTIONS ====================*/
+
 // CO consts
 const coIndex = document.getElementById('co-index');
 const coCategory = document.getElementById('co-category');
@@ -122,6 +129,8 @@ function getCoData(data) {
   coIndex.innerHTML = coNum;
   setCoCategory(coNum, coIndexInt, coCategory);
 }
+
+/*==================== GET NO2 DATA FUNCTIONS ====================*/
 
 // NO2 consts
 const no2Index = document.getElementById('no2-index');
@@ -165,6 +174,8 @@ function getNo2Data(data) {
   setNo2Category(no2Num, no2IndexInt, no2Category);
 }
 
+/*==================== GET O3 DATA FUNCTIONS ====================*/
+
 // O3 consts
 const o3Index = document.getElementById('o3-index');
 const o3Category = document.getElementById('o3-category');
@@ -207,6 +218,8 @@ function getO3Data(data) {
   setO3Category(o3Num, o3IndexInt, o3Category);
 }
 
+/*==================== GET PM10 DATA FUNCTIONS ====================*/
+
 // PM10 consts
 const pm10Index = document.getElementById('pm10-index');
 const pm10Category = document.getElementById('pm10-category');
@@ -247,6 +260,8 @@ function getPm10Data(data) {
   setPm10Category(pm10Num, pm10IndexInt, pm10Category);
   // pm10IndexInt.innerHTML = parseInt(pm10Num);
 }
+
+/*==================== GET SO2 DATA FUNCTIONS ====================*/
 
 // SO2 consts
 const so2Index = document.getElementById('so2-index');
@@ -290,25 +305,29 @@ function getSo2Data(data) {
   setSo2Category(so2Num, so2IndexInt, so2Category);
 }
 
+/*==================== GET WEATHER DATA FUNCTIONS ====================*/
+
 // Constants
 const apiKey = '9ce000ab2ee94bf8bfd111052222012';
 const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&days=10&aqi=yes&alerts=yes`;
-const searchForm = document.getElementById('search-form');
+const searchForm = document.querySelector('.search-form');
+const searchInputs = document.querySelectorAll('.search-input');
 const searchParams = new URLSearchParams(window.location.search);
 
-searchForm.addEventListener('submit', getCityValue);
+searchInputs[0].addEventListener('submit', getCityValue);
+searchInputs[1].addEventListener('submit', getCityValue);
 
 // Get the city name value in search input
 function getCityValue(event) {
   event.preventDefault();
-  const city = document.getElementById('search-input').value;
+  const city = event.target.value;
   updateSearchParams(city)
   fetchWeatherData(city);
 }
 
-//
+// Update Search parameters
 function updateSearchParams(city) {
-  searchParams.set("city", city);
+  searchParams.set('city', city);
   window.history.pushState({}, "", `${window.location.pathname}?${searchParams.toString()}`);
 }
 
@@ -328,15 +347,6 @@ function fetchWeatherData(city) {
     });
 }
 
-// Get the city name from the URL
-// function getCityFromUrl() {
-//   searchParams;
-//   let city = searchParams.get("city");
-//   if (city) {
-//     return city;
-//   }
-// }
-
 // Fetch Weather data based on the Geolocation
 navigator.geolocation.getCurrentPosition((position) => {
   let lat = position.coords.latitude;
@@ -349,7 +359,8 @@ navigator.geolocation.getCurrentPosition((position) => {
       const city = data.location.name;
       if(localStorage.getItem('city') && localStorage.getItem('city') === city && window.location.search) return
       // Set city name in input field
-      document.getElementById("search-input").value = city;
+      searchInputs[0].value = city;
+      searchInputs[1].value = city;
       localStorage.setItem('city', city);
       // Update the URL with the city value
       updateSearchParams(city);
@@ -360,29 +371,37 @@ navigator.geolocation.getCurrentPosition((position) => {
 });
 
 // Get the city name from the URL
-const cityFromUrl = searchParams.get("city");
+const cityFromUrl = searchParams.get('city');
 if (cityFromUrl) {
-  document.getElementById("search-input").value = cityFromUrl;
+  searchInputs[0].value = cityFromUrl;
+  searchInputs[1].value = cityFromUrl;
   fetchWeatherData(cityFromUrl);
 }
 
-// Autocomplete Search Form
+/*==================== AUTOCOMPLETE SEARCH FORM ====================*/
+
+// Declaring an array that contains a list of cities
 let searchable = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "Sofia", "Madrid", "Ljubljana", "Tirana", "Sarajevo", "Athens", "Rome", "Zagreb", "Stockholm",
 "Valletta", "Chisinau", "Skopje", "Luxembourg", "Vilnius", "Vaduz", "Riga", "Dublin", "Reykjavik", "Budapest", "Vatican City", "Helsinki", "Tallinn", "Copenhagen", "Prague",
 "Vienna", "Minsk", "Andorra La Vella", "Monaco", "Vilnius", "Podgorica", "Amsterdam", "Oslo", "Warsaw", "Lisbon", "Bucharest", "Belgrade", "San Marino", "Bratislava", "Prague", "Kiev"];
 
-const searchInput = document.getElementById('search-input');
+// const searchInputs = document.querySelectorAll('.search-input');
 const searchField = document.querySelector('.search')
-// const searchForm = document.getElementById('search-form');
 const searchResults = document.querySelector('.search-results');
 
+searchInputs.forEach(searchInput => {
 searchInput.addEventListener('keyup', () => {
+  // Initializing an empty array to store search results
   let results = [];
+  // Storing the current value of the search input
   let resultInput = searchInput.value;
+  // If the search input has a value
   if (resultInput.length) {
+    // Filtering the 'searchable' array for items that include the current search input value
     results = searchable.filter((item) => {
       return item.toLowerCase().includes(resultInput.toLowerCase())
     });
+    //If there's no match, clearing the search results
     if(!results.length) {
       searchResults.classList.remove('search-show');
       searchResults.innerHTML = "";
@@ -393,20 +412,23 @@ searchInput.addEventListener('keyup', () => {
     searchResults.innerHTML = "";
     return;
   }
-
+  
   renderResults(results);
-})
+});
+});
 
+//Function that renders the search results
 function renderResults(results) {
   if(!results.length) {
     return searchResults.classList.remove('search-show');
   }
-
+  //Mapping the filtered results to create the HTML for each result
   let searchContent = results.map((item) => {
     return `<li><a href="../../../assets/pages/air-quality-forecast/air-quality-forecast.html?city=${item}">${item}</a></li>`
   })
+  //Joining the HTML of all results into a single string
   .join('');
-
+  
   searchResults.classList.add('search-show')
   searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }

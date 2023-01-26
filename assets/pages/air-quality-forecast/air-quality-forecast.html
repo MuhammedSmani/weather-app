@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./air-quality-forecast.css" />
 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-		<title>Weather App - Air Quality</title>
+		<title>Weather - Air Quality</title>
 		<script src="../../scripts/index.js" defer></script>
 		<script src="./air-quality-forecast.js" defer></script>
 	</head>
@@ -15,9 +15,9 @@
 			<nav class="nav">
 				<div class="nav__container container">
 					<a href="" class="logo__wrapper">Weather</a>
-					<form class="nav__search" id="search-form" action="">
+					<form class="nav__search search-form" action="">
 						<div>
-							<input type="text" id="search-input" class="search" name="city"  placeholder="Search city..." autocomplete="off" />
+							<input type="text" class="search search-input" name="city" placeholder="Search city..." autocomplete="off" />
 						</div>
 						<div class="search-results"></div>
 					</form>
@@ -46,7 +46,7 @@
 							<li class="nav__item airquality-page"></li>
 							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__link">Weather News </a>
+								<a href="../weather-news/weather-news.html" class="nav__link">Weather News</a>
 							</li>
 						</ul>
 					</div>
@@ -55,10 +55,12 @@
 			<!-- ******************* NAV MOBILE ******************* -->
 			<div id="mySidenav" class="sidenav">
 				<div class="nav__menu_mobile" id="menu">
-					<div class="nav__search">
-						<!-- <input type="search" id="search" class="search" placeholder="Search city..." /> -->
-						<input type="text" id="city-search" class="search" placeholder="Search city...">
-					</div>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input type="text" class="search search-input" name="city" placeholder="Search city..." autocomplete="off" />
+						</div>
+						<div class="search-results"></div>
+					</form>
 					<div class="nav__cf">
 						<a href="#">°F</a>
 						<a href="#">°C</a>
@@ -241,6 +243,7 @@
 			</section>
 		</main>
 		<footer id="footer"></footer>
+		<script src="../../components/header/header.js" defer></script>
 		<!-- <script src="/assets/components/header/header.js"></script> -->
 		<script src="/assets/components/footer/footer.js"></script>
 	</body>
