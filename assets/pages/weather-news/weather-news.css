@@ -1,4 +1,5 @@
 @import '/assets/components/header/header.css';
+@import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
 
 body {
@@ -98,6 +99,9 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+    .weather__news__section {
+        margin-top: 80px;
+    }
     .weather__news__content {
         flex-direction: column;
     }

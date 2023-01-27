@@ -1,4 +1,5 @@
-// Weather Top Story consts
+/*==================== NEWS CONSTANTS ====================*/
+
 const weatherTopTitle = document.getElementById('weather-top-title');
 const weatherTopAuthor = document.getElementById('weather-top-author');
 const weatherTopSource = document.getElementById('weather-top-source');
@@ -10,7 +11,8 @@ const readMoreButton = document.querySelector('.weather__news__button');
 const readMoreAnchor = document.querySelector('#weather-top-url');
 let weatherNewsUrl;
 
-// Fetch Weather News data
+/*==================== FETCH WEATHER NEWS DATA ====================*/
+
 function fetchWeatherNews() {
   // check if localStorage has a cache entry for the news
   if (localStorage.getItem(`cache-weather-news`)) {
@@ -35,7 +37,8 @@ function fetchWeatherNews() {
     });
 }
 
-// Get Weather Top Story data
+/*==================== GET WEATHER TOP STORY ====================*/
+
 function getWeatherTopStory(data) {
   const { title, author, source: { name }, description, content } = data.articles[0];
   weatherTopTitle.innerHTML = title;
@@ -77,7 +80,8 @@ function openWeatherUrl(data) {
 
 readMoreButton.addEventListener('click', openWeatherUrl);
 
-// Get Weather News data aside
+/*==================== GET WEATHER NEWS ASIDE ====================*/
+
 function getWeatherNewsAside(data) {
   const weatherNewsCards = document.querySelector(".weather__news__aside__cards");
 
@@ -97,7 +101,8 @@ function getWeatherNewsAside(data) {
   })
 }
 
-// Get All Weather News data
+/*==================== GET WEATHER NEWS FUNCTION ====================*/
+
 function getWeatherNews() {
   try {
     fetchWeatherNews()
@@ -115,23 +120,31 @@ function getWeatherNews() {
 
 getWeatherNews();
 
-// Autocomplete Search Form
+/*==================== AUTOCOMPLETE SEARCH FORM ====================*/
+
+// Declaring an array that contains a list of cities
 let searchable = ["London", "Pristina", "Moscow", "Paris", "Berlin", "Berne", "Sofia", "Madrid", "Ljubljana", "Tirana", "Sarajevo", "Athens", "Rome", "Zagreb", "Stockholm",
 "Valletta", "Chisinau", "Skopje", "Luxembourg", "Vilnius", "Vaduz", "Riga", "Dublin", "Reykjavik", "Budapest", "Vatican City", "Helsinki", "Tallinn", "Copenhagen", "Prague",
 "Vienna", "Minsk", "Andorra La Vella", "Monaco", "Vilnius", "Podgorica", "Amsterdam", "Oslo", "Warsaw", "Lisbon", "Bucharest", "Belgrade", "San Marino", "Bratislava", "Prague", "Kiev"];
 
-const searchInput = document.getElementById('search-input');
+// const searchInputs = document.querySelectorAll('.search-input');
 const searchField = document.querySelector('.search')
-// const searchForm = document.getElementById('search-form');
+const searchInputs = document.querySelectorAll('.search-input');
 const searchResults = document.querySelector('.search-results');
 
+searchInputs.forEach(searchInput => {
 searchInput.addEventListener('keyup', () => {
+  // Initializing an empty array to store search results
   let results = [];
+  // Storing the current value of the search input
   let resultInput = searchInput.value;
+  // If the search input has a value
   if (resultInput.length) {
+    // Filtering the 'searchable' array for items that include the current search input value
     results = searchable.filter((item) => {
       return item.toLowerCase().includes(resultInput.toLowerCase())
     });
+    //If there's no match, clearing the search results
     if(!results.length) {
       searchResults.classList.remove('search-show');
       searchResults.innerHTML = "";
@@ -142,20 +155,23 @@ searchInput.addEventListener('keyup', () => {
     searchResults.innerHTML = "";
     return;
   }
-
+  
   renderResults(results);
-})
+});
+});
 
+//Function that renders the search results
 function renderResults(results) {
   if(!results.length) {
     return searchResults.classList.remove('search-show');
   }
-
+  //Mapping the filtered results to create the HTML for each result
   let searchContent = results.map((item) => {
     return `<li><a href="../../../assets/pages/today/today.html?city=${item}">${item}</a></li>`
   })
+  //Joining the HTML of all results into a single string
   .join('');
-
+  
   searchResults.classList.add('search-show')
   searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
