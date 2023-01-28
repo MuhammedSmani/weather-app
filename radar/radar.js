@@ -62,7 +62,7 @@ const fButton = document.getElementById("fahrenheit");
 fButton.addEventListener("click", () => {
     tempUnit = "F";
     localStorage.setItem("tempUnit", tempUnit);
-    location.reload();
+    // location.reload();
 
 });
 
@@ -70,16 +70,16 @@ const cButton = document.getElementById("celsius");
 cButton.addEventListener("click", () => {
     tempUnit = "C";
     localStorage.setItem("tempUnit", tempUnit);
-    location.reload();
+    // location.reload();
 
 });
 
 
 L.tileLayer("https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png", {
   attribution:
-    '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-
- ,}).addTo(map);
+    '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+    minZoom: 2.5,
+    maxZoom: 15 }).addTo(map);
 
 if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -101,15 +101,15 @@ if ("geolocation" in navigator) {
 
             `;
 
-        // customIcon = L.icon({
-        //     iconUrl: `${data.current.condition.icon}`,
-        //     iconSize: [90, 90],
-        //     iconAnchor: [22, 94],
-        //     popupAnchor: [-3, -76],
+        customIcon = L.icon({
+            iconUrl: `https://images.squarespace-cdn.com/content/v1/5ddbecf4e7b0381e7563300c/1614442398525-CBYTHYX9P22FT9NW0BUH/pin.png`,
+            iconSize: [60, 60],
+            // iconAnchor: [22, 94],
+            popupAnchor: [-3, -76],
 
-        // });
+        });
 
-        marker = L.marker([lat, lng]).addTo(map);
+        marker = L.marker([lat, lng], {icon : customIcon}).addTo(map);
         marker.bindPopup(output);
         marker.openPopup();
         map.setView([lat, lng], 10);
