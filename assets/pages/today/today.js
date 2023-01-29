@@ -15,7 +15,6 @@ function updateMainPageButtons(city) {
 
 /*==================== ICONS AND TEXT ====================*/
 
-// Condition Text and Icons
 const conditionText = document.getElementById('condition-text');
 const conditionIcon = document.querySelectorAll('.condition-icon');
 const icons = {
@@ -102,14 +101,37 @@ function getDayNightTemp(data) {
   nightTemp.innerHTML = `${Math.round(data.forecast.forecastday[1].hour[0].temp_c)}°`;
 }
 
+/*==================== ICONS MAPPING ====================*/
+
+const iconsMapping = {
+  "113.png": "uil-sun",
+  "116.png": "uil-cloud-sun",
+  "119.png": "uil-clouds",
+  "122.png": "uil-cloud",
+  "176.png": "uil-cloud-sun-rain-alt",
+  "311.png": "uil-cloud-showers-heavy",
+  "326.png": "uil-cloud-meatball",
+  "329.png": "uil-cloud-sun-meatball",
+  "332.png": "uil-cloud-meatball",
+  "335.png": "uil-cloud-sun-meatball",
+  "338.png": "uil-cloud-meatball",
+  "xxx.png": "uil-rainbow",
+};
+
+function getIconClass(iconName) {
+  return iconsMapping[iconName];
+}
+
 /*==================== TODAY'S FORECAST SECTION ====================*/
 
-// Function to generate Today's Forecast section for each time period
-function generateTodaysForecastHTML(period, temp, chanceOfRain) {
+// Function to generate Today's Forecast section for each period
+function generateTodaysForecastHTML(period, temp, chanceOfRain, todayIcon) {
   return `<div class="todays__forecast_${period} todays__forecast_four-all">
               <p>${period[0].toUpperCase() + period.slice(1)}</p>
               <p id="${period}-temp">${temp}°</p>
-              <span class="today-forecast-icon"><i class="uil uil-cloud-sun-rain-alt"></i></span>
+              <span class="today-forecast-icon">
+                <i class="uil ${todayIcon}"></i>
+              </span>
               <div class="todays__forecast_rain">
                 <span id="${period}-icon"><i class="uil uil-raindrops"></i></span>
                 <p class="rain-chance">${chanceOfRain}%</p>
@@ -136,17 +158,24 @@ function getTodaysForecast(data) {
   for (let period in timePeriods) {
     let temp;
     let chanceOfRain;
+    let todayIcon;
     switch (period) {
       case 'overnight':
         temp = Math.round(data.forecast.forecastday[1].hour[timePeriods[period]].temp_c);
         chanceOfRain = data.forecast.forecastday[1].hour[timePeriods[period]].chance_of_rain;
+        var todayIconUrl = data.forecast.forecastday[1].hour[timePeriods[period]].condition.icon;
+        var todayIconName = todayIconUrl.split("/").pop();
+        todayIcon = getIconClass(todayIconName);
         break;
       default:
         temp = Math.round(data.forecast.forecastday[0].hour[timePeriods[period]].temp_c);
         chanceOfRain = data.forecast.forecastday[0].hour[timePeriods[period]].chance_of_rain;
+        var todayIconUrl = data.forecast.forecastday[0].hour[timePeriods[period]].condition.icon;
+        var todayIconName = todayIconUrl.split("/").pop();
+        todayIcon = getIconClass(todayIconName);
         break;
     }
-    todaysForecast.innerHTML += generateTodaysForecastHTML(period, temp, chanceOfRain);
+    todaysForecast.innerHTML += generateTodaysForecastHTML(period, temp, chanceOfRain, todayIcon);
   }
 }
 
@@ -177,15 +206,67 @@ function getWeatherToday(data) {
   moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
 }
 
+/*==================== HOURLY FORECAST SECTION ====================*/
+
+// Function to generate Hourly Forecast section for each hour
+function generateHourlyForecastHTML(hourlyTime, hourlyTemp, hourlyRainChance, hourlyIcon) {
+  return `<div class="hourly__forecast_five-all">
+            <p class="hourly-time">${hourlyTime}</p>
+            <p class="hourly-temp">${hourlyTemp}°</p>
+            <i class="uil ${hourlyIcon}"></i>
+            <div class="hourly__forecast_rain">
+              <i class="uil uil-raindrops"></i>
+              <p class="hourly-rain">${hourlyRainChance}%</p>
+            </div>
+          </div>`
+  }
+  
+// Get Hourly Forecast section data
+function getHourlyForecast(data) {
+  const hourlyForecast = document.querySelector('.hourly__forecast_five')
+  hourlyForecast.innerHTML = "";
+  
+  const forecastHoursData = data.forecast.forecastday[2].hour;
+  
+  const numOfHours = 5;
+  const currentHour = new Date().getHours();
+  
+  for (let i = 0; i < numOfHours; i++) {
+    let hourlyTime = forecastHoursData[currentHour + i].time;
+    const hourlyTemp = Math.round(forecastHoursData[currentHour + i].temp_c);
+    const hourlyRainChance = forecastHoursData[currentHour + i].chance_of_rain;
+    const hourlyIconUrl = forecastHoursData[currentHour + i].condition.icon;
+    const hourlyIconName = hourlyIconUrl.split("/").pop();
+    const hourlyIcon = getIconClass(hourlyIconName);
+    if (i === 0) {
+      hourlyTime = 'Now';
+    } else {
+      let hour = (currentHour + i) % 24;
+      let period = 'am';
+      
+      if (hour === 0) {
+        hour = 12;
+      } else if (hour >= 12) {
+        period = 'pm';
+        if (hour > 12) {
+          hour -= 12;
+        }
+      }
+      hourlyTime = `${hour} ${period}`;
+    }
+    const html = generateHourlyForecastHTML(hourlyTime, hourlyTemp, hourlyRainChance, hourlyIcon);
+    hourlyForecast.innerHTML += html;
+  }
+}
+
 /*==================== DAILY FORECAST SECTION ====================*/
 
-// Function to generate Daily Forecast section for each day
-function generateDailyForecastHTML(shortDailyName, maxTemp, minTemp, dailyRainChance) {
+function generateDailyForecastHTML(shortDailyName, maxTemp, minTemp, dailyRainChance, dailyIcon) {
   return `<div class="daily__forecast_five-all">
             <p class="short-daily-name">${shortDailyName}</p>
             <p class="max-temp-next">${maxTemp}°</p>
             <p class="min-temp-next">${minTemp}°</p>
-            <i class="uil uil-cloud-sun-rain-alt"></i>
+            <i class="uil ${dailyIcon}"></i>
             <div class="daily__forecast_rain">
               <i class="uil uil-raindrops"></i>
               <p class="daily-rain">${dailyRainChance}%</p>
@@ -193,7 +274,6 @@ function generateDailyForecastHTML(shortDailyName, maxTemp, minTemp, dailyRainCh
           </div>`
 }
 
-// Get Daily Forecast section data
 function getDailyForecast(data) {
   const dailyForecast = document.querySelector('.daily__forecast_five');
   dailyForecast.innerHTML = "";
@@ -216,8 +296,12 @@ function getDailyForecast(data) {
     const maxTemp = Math.round(forecastdDaysData[i].day.maxtemp_c);
     const minTemp = Math.round(forecastdDaysData[i].day.mintemp_c);
     const dailyRainChance = forecastdDaysData[i].day.daily_chance_of_rain;
+
+    const dailyIconUrl = forecastdDaysData[i].day.condition.icon;
+    const dailyIconName = dailyIconUrl.split("/").pop();
+    const dailyIcon = getIconClass(dailyIconName);
   
-    dailyForecast.innerHTML += generateDailyForecastHTML(shortDailyName, maxTemp, minTemp, dailyRainChance);
+    dailyForecast.innerHTML += generateDailyForecastHTML(shortDailyName, maxTemp, minTemp, dailyRainChance, dailyIcon);
   }
 }
 
@@ -263,6 +347,7 @@ function fetchWeatherData(city) {
       getTodaysForecast(data);
       getWeatherToday(data);
       getDailyForecast(data);
+      getHourlyForecast(data);
     });
 }
 
