@@ -177,6 +177,50 @@ function getWeatherToday(data) {
   moonPhase.innerHTML = data.forecast.forecastday[0].astro.moon_phase;
 }
 
+/*==================== DAILY FORECAST SECTION ====================*/
+
+// Function to generate Daily Forecast section for each day
+function generateDailyForecastHTML(shortDailyName, maxTemp, minTemp, dailyRainChance) {
+  return `<div class="daily__forecast_five-all">
+            <p class="short-daily-name">${shortDailyName}</p>
+            <p class="max-temp-next">${maxTemp}°</p>
+            <p class="min-temp-next">${minTemp}°</p>
+            <i class="uil uil-cloud-sun-rain-alt"></i>
+            <div class="daily__forecast_rain">
+              <i class="uil uil-raindrops"></i>
+              <p class="daily-rain">${dailyRainChance}%</p>
+            </div>
+          </div>`
+}
+
+// Get Daily Forecast section data
+function getDailyForecast(data) {
+  const dailyForecast = document.querySelector('.daily__forecast_five');
+  dailyForecast.innerHTML = "";
+  
+  const forecastdDaysData = data.forecast.forecastday;
+
+  const numOfDays = 5;
+  
+  for (let i = 0; i < numOfDays && i < forecastdDaysData.length; i++) {
+    let shortDailyName;
+    if (i === 0) {
+      shortDailyName = 'Today';
+    } else {
+      const dateString = forecastdDaysData[i].date;
+      const date = new Date(dateString);
+      const day = date.getDate();
+      shortDailyName = date.toLocaleString("en-US", { weekday: "short" }) + " " + day;
+    }
+
+    const maxTemp = Math.round(forecastdDaysData[i].day.maxtemp_c);
+    const minTemp = Math.round(forecastdDaysData[i].day.mintemp_c);
+    const dailyRainChance = forecastdDaysData[i].day.daily_chance_of_rain;
+  
+    dailyForecast.innerHTML += generateDailyForecastHTML(shortDailyName, maxTemp, minTemp, dailyRainChance);
+  }
+}
+
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/
 
 // Constants
@@ -218,7 +262,7 @@ function fetchWeatherData(city) {
       getDayNightTemp(data);
       getTodaysForecast(data);
       getWeatherToday(data);
-      // getDailyForecast(data);
+      getDailyForecast(data);
     });
 }
 
