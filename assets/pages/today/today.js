@@ -108,6 +108,7 @@ const iconsMapping = {
   "116.png": "uil-cloud-sun",
   "119.png": "uil-clouds",
   "122.png": "uil-cloud",
+  "143.png": "uil-windy",
   "176.png": "uil-cloud-sun-rain-alt",
   "311.png": "uil-cloud-showers-heavy",
   "326.png": "uil-cloud-meatball",
@@ -115,6 +116,7 @@ const iconsMapping = {
   "332.png": "uil-cloud-meatball",
   "335.png": "uil-cloud-sun-meatball",
   "338.png": "uil-cloud-meatball",
+  "371.png": "uil-cloud-sun-meatball",
   "xxx.png": "uil-rainbow",
 };
 
@@ -231,7 +233,7 @@ function getHourlyForecast(data) {
   const numOfHours = 5;
   const currentHour = new Date().getHours();
   
-  for (let i = 0; i < numOfHours; i++) {
+  for (let i = 0; i < numOfHours && i < forecastHoursData.length; i++) {
     let hourlyTime = forecastHoursData[currentHour + i].time;
     const hourlyTemp = Math.round(forecastHoursData[currentHour + i].temp_c);
     const hourlyRainChance = forecastHoursData[currentHour + i].chance_of_rain;
