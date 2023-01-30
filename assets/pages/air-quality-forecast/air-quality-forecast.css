@@ -1,4 +1,5 @@
 @import '/assets/components/header/header.css';
+@import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
 
 body {
@@ -7,7 +8,7 @@ body {
 .air__quality__section {
 	display: flex;
 	justify-content: center;
-	/* margin-top: 132px; */
+	margin-top: 132px;
 	/* height: calc(100vh - 233px); */
 }
 .air__container {
@@ -39,7 +40,7 @@ body {
 	align-items: center;
 }
 .air__quality__circle {
-	width: 30%;
+	min-width: 30%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -49,10 +50,9 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 7rem;
-	height: 7rem;
+	min-width: 7rem;
+	min-height: 7rem;
 	border-radius: 100%;
-	outline: solid 0.3rem #e7ecf1;
 }
 .air__quality__text {
 	padding: 2rem;
@@ -70,13 +70,12 @@ body {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	width: 49%;
-	display: flex;
+	width: 48%;
 	margin: 1rem 0;
 	gap: 1rem;
 }
 .all__pollutants__circle {
-	width: 30%;
+	min-width: 30%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -85,11 +84,10 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 5rem;
-	height: 5rem;
+	width: 6rem;
+	height: 6rem;
 	border-radius: 100%;
-	outline: solid 0.3rem #e7ecf1;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 }
 .all__pollutants {
 	padding: 0;
@@ -111,9 +109,11 @@ body {
     position: absolute;
     z-index: 200;
     min-height: 100%;
-    overflow: hidden;
+	min-width: 100%;
+    overflow: none;
+	top: 0;
 	left: 0;
-	bottom: 0;
+	transform: translate(13%, 55%);
 }
 .show-modal {
 	display: block;
@@ -135,11 +135,10 @@ body {
 	color: var(--fifth-color);
 }
 .air__quality__modal__box {
-	position: fixed;
 	width: 350px;
 	background-color: var(--first-color);
 	padding: 0 0 1rem 1rem;
-	border-radius: 1rem;
+	border-radius: 1rem 1rem 1rem 0rem;
 	box-shadow: 0px 0px 4px 2px #989AA0;
 }
 .air__quality__modal__content {
@@ -169,4 +168,46 @@ body {
 }
 .air__quality__left ul li:nth-child(6) .circle {
 	background-color: brown;
+}
+
+/* AIR QUALITY RESPONSIV */
+@media screen and (max-width: 767px) {
+	.air__quality__section {
+		margin-top: 80px;
+	}
+	.air__quality__description {
+		flex-direction: column;
+	}
+	.air__quality__text {
+		padding-right: 1rem;
+	}
+	.primary__pollutant {
+		display: none;
+	}
+	.all__pollutants__parts {
+		flex-direction: column;
+	}
+	.all__pollutants__description {
+		width: 100%;
+	}
+	.air__quality__modal {
+		transform: translate(10%, 71%);
+	}
+}
+
+/* CIRCULAR PROGRESS BAR ANIMATION */
+@keyframes growProgressBar {
+	0%, 33% { --pgPercentage: 0; }
+	100% { --pgPercentage: var(--value); }
+}
+@property --pgPercentage {
+	syntax: '<number>';
+	inherits: false;
+	initial-value: 0;
+}
+div[role="progressbar"] {
+	animation: growProgressBar 2s forwards;
+	/* background: 
+	radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0),
+	conic-gradient(var(--sixth-color) calc(var(--pgPercentage) * 1%), #e7ecf1 0); */
 }

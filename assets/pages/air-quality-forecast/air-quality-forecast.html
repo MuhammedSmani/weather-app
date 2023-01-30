@@ -6,18 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./air-quality-forecast.css" />
 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-		<title>Weather App - Air Quality</title>
+		<title>Weather - Air Quality</title>
+		<script src="../../scripts/index.js" defer></script>
 		<script src="./air-quality-forecast.js" defer></script>
 	</head>
 	<body>
-		<!-- <header id="header" class="header"></header> -->
-		<header>
+		<header class="header">
 			<nav class="nav">
-				<container class="nav__container container">
-					<a href="./index.html" class="logo__wrapper"> Weather </a>
-					<form class="nav__search" id="search-form" action="/" method="get">
-						<input id="search-input" class="search" name="city" placeholder="Search city..." />
-						<button type="submit">S</button>
+				<div class="nav__container container">
+					<a href="" class="logo__wrapper">Weather</a>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input type="text" class="search search-input" name="city" placeholder="Search city..." autocomplete="off" />
+						</div>
+						<div class="search-results"></div>
 					</form>
 					<div class="nav__cf">
 						<a href="#">°F</a>
@@ -30,57 +32,50 @@
 							<span class="last__span"></span>
 						</div>
 					</div>
-				</container>
+				</div>
 			</nav>
 			<nav class="nav__two">
-				<container class="nav__two_container container">
+				<div class="nav__two_container container">
 					<div class="nav__menu">
 						<ul class="nav__list">
+							<li class="nav__item today-page"></li>
+							<li class="nav__item hourly-page"></li>
+							<li class="nav__item sevenday-page"></li>
+							<li class="nav__item weekend-page"></li>
+							<li class="nav__item monthly-page"></li>
+							<li class="nav__item airquality-page"></li>
+							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">Today </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Hourly </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">7 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">14 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Monthly </a>
+								<a href="../weather-news/weather-news.html" class="nav__link">Weather News</a>
 							</li>
 						</ul>
 					</div>
-				</container>
+				</div>
 			</nav>
 			<!-- ******************* NAV MOBILE ******************* -->
 			<div id="mySidenav" class="sidenav">
 				<div class="nav__menu_mobile" id="menu">
-					<div class="nav__search">
-						<input type="search" id="search" class="search" placeholder="Search city..." />
-					</div>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input type="text" class="search search-input" name="city" placeholder="Search city..." autocomplete="off" />
+						</div>
+						<div class="search-results"></div>
+					</form>
 					<div class="nav__cf">
 						<a href="#">°F</a>
 						<a href="#">°C</a>
 					</div>
 					<div class="nav__text_buttons">
 						<ul class="nav__list_mobile">
+							<li class="nav__item today-page"></li>
+							<li class="nav__item hourly-page"></li>
+							<li class="nav__item sevenday-page"></li>
+							<li class="nav__item weekend-page"></li>
+							<li class="nav__item monthly-page"></li>
+							<li class="nav__item airquality-page"></li>
+							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">Today </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Hourly </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">7 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">14 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Monthly </a>
+								<a href="../weather-news/weather-news.html" class="nav__item">Weather News </a>
 							</li>
 						</ul>
 					</div>
@@ -92,20 +87,18 @@
 				<div class="air__container container">
 					<div class="air__quality__content">
 						<div class="air__quality__today">
-							<h2>Today's Air Quality - <span id="city">Tirana</span></h2>
+							<h2>Today's Air Quality - <span id="city-country"></span></h2>
 							<div class="air__quality__description">
 								<div class="air__quality__info">
 									<div class="air__quality__circle" id="air-quality-circle">
-										<div class="air__quality__index pm25-index-int">
-											48
+										<div class="air__quality__index pm25-index-int"
+										role="progressbar"
+										style="--value:0">0
 										</div>
 									</div>
 									<div class="air__quality__text">
-										<h3 class="pm25-category">Good</h3>
-										<p id="pm25-category-text">
-											Air quality is considered satisfactory, and air
-											pollution poses little or no risk.
-										</p>
+										<h3 class="pm25-category"></h3>
+										<p id="pm25-category-text"></p>
 									</div>
 								</div>
 								<div class="primary__pollutant">
@@ -116,71 +109,98 @@
 						</div>
 
 						<div class="all__pollutants">
-							<h2>All Pollutants</h2>
+							<h2 id="all-poll">All Pollutants</h2>
 							<div class="all__pollutants__parts">
 								<div class="all__pollutants__description">
 									<div class="all__pollutants__circle">
-										<div class="all__pollutants__index pm25-index-int">60</div>
+										<div class="all__pollutants__index pm25-index-int"
+										role="progressbar"
+										style="--value:0">0
+										</div>
 									</div>
 									<div class="all__pollutants__info">
 										<p>PM2.5 (Particulate matter less than 2.5 microns)</p>
-										<h4 class="pm25-category">Good</h4>
-										<p><span id="pm25-index">16.85</span> µg/m3</p>
+										<h4 class="pm25-category"></h4>
+										<p><span id="pm25-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
 
 								<div class="all__pollutants__description">
 									<div class="all__pollutants__circle">
-										<div class="all__pollutants__index" id="co-index-int">1</div>
+										<div class="all__pollutants__index"
+										id="co-index-int"
+										role="progressbar"
+										style="--value:0">0
+										</div>
 									</div>
 									<div class="all__pollutants__info">
 										<p>CO (Carbon Monoxide)</p>
-										<h4 id="co-category">Good</h4>
-										<p><span id="co-index">202.38</span> µg/m3</p>
+										<h4 id="co-category"></h4>
+										<p><span id="co-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
 
 								<div class="all__pollutants__description">
 									<div class="all__pollutants__circle">
-										<div class="all__pollutants__index" id="no2-index-int">2</div>
+										<div
+										class="all__pollutants__index"
+										id="no2-index-int"
+										role="progressbar"
+										style="--value:0">0
+										</div>
 									</div>
 									<div class="all__pollutants__info">
 										<p>NO2 (Nitrogen Dioxide)</p>
-										<h4 id="no2-category">Good</h4>
-										<p><span id="no2-index">6.36</span> µg/m3</p>
+										<h4 id="no2-category"></h4>
+										<p><span id="no2-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
 
 								<div class="all__pollutants__description">
 									<div class="all__pollutants__circle">
-										<div class="all__pollutants__index" id="o3-index-int">19</div>
+										<div
+										class="all__pollutants__index"
+										id="o3-index-int"
+										role="progressbar"
+										style="--value:0">0
+										</div>
 									</div>
 									<div class="all__pollutants__info">
 										<p>O3 (Ozone)</p>
-										<h4 id="o3-category">Good</h4>
-										<p><span id="o3-index">43.11</span> µg/m3</p>
+										<h4 id="o3-category"></h4>
+										<p><span id="o3-index">0.0</span> µg/m3</p>
 									</div>
 								</div>
 
 								<div class="all__pollutants__description">
 									<div class="all__pollutants__circle">
-										<div class="all__pollutants__index" id="pm10-index-int">16</div>
+										<div
+										class="all__pollutants__index"
+										id="pm10-index-int"
+										role="progressbar"
+										style="--value:0">0
+									</div>
 									</div>
 									<div class="all__pollutants__info">
 										<p>PM10 (Particulate matter less than 10 microns)</p>
-										<h4 id="pm10-category">Good</h4>
-										<p><span id="pm10-index">18.14</span> µg/m3</p>
+										<h4 id="pm10-category"></h4>
+										<p><span id="pm10-index"></span> µg/m3</p>
 									</div>
 								</div>
 
 								<div class="all__pollutants__description">
 									<div class="all__pollutants__circle">
-										<div class="all__pollutants__index" id="so2-index-int">1</div>
+										<div
+										class="all__pollutants__index"
+										id="so2-index-int"
+										role="progressbar"
+										style="--value:0">0
+									  </div>
 									</div>
 									<div class="all__pollutants__info">
 										<p>SO2 (Sulfur Dioxide)</p>
-										<h4 id="so2-category">Good</h4>
-										<p><span id="so2-index">1.05</span> µg/m3</p>
+										<h4 id="so2-category"></h4>
+										<p><span id="so2-index"></span> µg/m3</p>
 									</div>
 								</div>
 							</div>
@@ -223,7 +243,7 @@
 			</section>
 		</main>
 		<footer id="footer"></footer>
-		<!-- <script src="/assets/components/header/header.js"></script> -->
+		<script src="/assets/components/header/header.js"></script>
 		<script src="/assets/components/footer/footer.js"></script>
 	</body>
 </html>

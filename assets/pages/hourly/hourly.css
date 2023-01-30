@@ -8,7 +8,7 @@ body {
 .hourly__section {
 	display: flex;
 	justify-content: center;
-	/* margin-top: 132px; */
+	margin-top: 132px;
 	/* height: calc(100vh - 233px); */
 }
 .hourly__container {
