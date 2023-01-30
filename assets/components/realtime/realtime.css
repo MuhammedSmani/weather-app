@@ -24,7 +24,7 @@
 	border-top-right-radius: 1rem;
 }
 
-.realtime__city p:first-child {
+/* .realtime__city p:first-child {
 	color: var(--body-color);
 	font-size: var(--h3-font-size);
 	font-weight: var(--font-semi-bold);
@@ -33,7 +33,7 @@
 .realtime__city p {
 	color: var(--body-color);
 	font-size: var(--normal-font-size);
-}
+} */
 
 .realtime__info {
 	display: flex;
@@ -73,5 +73,10 @@
 .realtime__info_right i {
 	font-size: 10rem;
 	line-height: 0;
+	color: var(--body-color);
+}
+
+.realtime__city .content__title,
+.content__para {
 	color: var(--body-color);
 }

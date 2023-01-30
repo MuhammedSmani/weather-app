@@ -1,100 +1,96 @@
 <!-- ******************* NAV ******************* -->
 <nav class="nav">
-  <container class="nav__container container">
-    <a href="./index.html" class="logo__wrapper"> Weather </a>
-    <div class="nav__search">
-      <input
-        type="search"
-        id="search"
-        class="search"
-        placeholder="Search city..."
-      />
-    </div>
-    <div class="nav__cf">
-      <a href="#">°F</a>
-      <a href="#">°C</a>
-    </div>
-    <div class="nav__open_menu">
-      <input
-        class="open__menu_checkbox"
-        id="active"
-        type="checkbox"
-        onclick="togNav()"
-      />
-      <div>
-        <span class="first__span"></span>
-        <span class="last__span"></span>
-      </div>
-    </div>
-  </container>
+	<container class="nav__container container">
+		<a href="./index.html" class="logo__wrapper"> Weather </a>
+		<div class="nav__search">
+			<input type="search" id="search" class="search" placeholder="Search city..." />
+		</div>
+		<div class="nav__cf">
+			<a href="#">°F</a>
+			<<<<<<< HEAD
+			<a href="#">°C</a>
+			=======
+			<a href="#" class="nav__cf-active">°C</a>
+			>>>>>>> 702a0b3a486021f3cd0a00a5b3081e03e8291fe1
+		</div>
+		<div class="nav__open_menu">
+			<input class="open__menu_checkbox" id="active" type="checkbox" onclick="togNav()" />
+			<div>
+				<span class="first__span"></span>
+				<span class="last__span"></span>
+			</div>
+		</div>
+	</container>
 </nav>
 <nav class="nav__two">
-  <container class="nav__two_container container">
-    <div class="nav__menu">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <a href="/assets/pages/today/today.html" class="nav__link">Today </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">Hourly </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">7 Day </a>
-        </li>
-        <li class="nav__item">
-          <a href="/assets/pages/weekend/weekend.html" class="nav__link"
-            >Weekend
-          </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">14 Day </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">Monthly </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">Radar </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">Contact </a>
-        </li>
-      </ul>
-    </div>
-  </container>
+	<container class="nav__two_container container">
+		<div class="nav__menu">
+			<ul class="nav__list">
+				<li class="nav__item">
+					<a href="/assets/pages/today/today.html" class="nav__link">Today </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">Hourly </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">7 Day </a>
+				</li>
+				<li class="nav__item">
+					<a href="/assets/pages/weekend/weekend.html" class="nav__link">Weekend </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">14 Day </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">Monthly </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">Radar </a>
+				</li>
+				<li class="nav__item">
+					<a href="/assets/pages/contact/contact.html" class="nav__link">Contact </a>
+				</li>
+			</ul>
+		</div>
+	</container>
 </nav>
 <!-- ******************* NAV MOBILE ******************* -->
 <div id="mySidenav" class="sidenav">
-  <div class="nav__menu_mobile" id="menu">
-    <div class="nav__search">
-      <input
-        type="search"
-        id="search"
-        class="search"
-        placeholder="Search city..."
-      />
-    </div>
-    <div class="nav__cf">
-      <a href="#">°F</a>
-      <a href="#">°C</a>
-    </div>
-    <div class="nav__text_buttons">
-      <ul class="nav__list_mobile">
-        <li class="nav__item">
-          <a href="#" class="nav__link">Today </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">Hourly </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">7 Day </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">14 Day </a>
-        </li>
-        <li class="nav__item">
-          <a href="#" class="nav__link">Monthly </a>
-        </li>
-      </ul>
-    </div>
-  </div>
+	<div class="nav__menu_mobile md:hidden" id="menu">
+		<div class="nav__search">
+			<input type="search" id="search" class="search" placeholder="Search city..." />
+		</div>
+		<div class="nav__cf">
+			<a href="#">°F</a>
+			<a href="#">°C</a>
+		</div>
+		<div class="nav__text_buttons">
+			<ul class="nav__list_mobile">
+				<li class="nav__item">
+					<a href="#" class="nav__link">Today </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">Hourly </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">7 Day </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">14 Day </a>
+				</li>
+				<li class="nav__item">
+					<a href="/assets/pages/weekend/weekend.html" class="nav__link">Weekend</a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">Monthly </a>
+				</li>
+				<li class="nav__item">
+					<a href="#" class="nav__link">Radar</a>
+				</li>
+				<li class="nav__item">
+					<a href="/assets/pages/contact/contact.html" class="nav__link">Contact</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
