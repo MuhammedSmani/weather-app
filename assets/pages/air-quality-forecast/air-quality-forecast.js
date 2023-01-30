@@ -332,43 +332,47 @@ function updateSearchParams(city) {
 }
 
 // Fetch Weather data based on city
-function fetchWeatherData(city) {
-  fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`)
-    .then((response) => response.json())
-    .then((data) => {
-      updateNavbarLinks(city);
-      getCityCountry(data);
-      getPm25Data(data);
-      getCoData(data);
-      getNo2Data(data);
-      getO3Data(data);
-      getPm10Data(data);
-      getSo2Data(data);
-    });
+async function fetchWeatherData(city) {
+  const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`);
+  const data = await response.json();
+  
+  updateNavbarLinks(city);
+  getCityCountry(data);
+  getPm25Data(data);
+  getCoData(data);
+  getNo2Data(data);
+  getO3Data(data);
+  getPm10Data(data);
+  getSo2Data(data);
 }
 
 // Fetch Weather data based on the Geolocation
-navigator.geolocation.getCurrentPosition((position) => {
-  let lat = position.coords.latitude;
-  let lng = position.coords.longitude;
-
-  // Fetch weather data based on current location
-  fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`)
-    .then((response) => response.json())
-    .then((data) => {
-      const city = data.location.name;
-      if(localStorage.getItem('city') && localStorage.getItem('city') === city && window.location.search) return
-      // Set city name in input field
-      searchInputs[0].value = city;
-      searchInputs[1].value = city;
-      localStorage.setItem('city', city);
-      // Update the URL with the city value
-      updateSearchParams(city);
-      fetchWeatherData(city);
+async function getLocationData() {
+  try {
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
     });
-}, (error) => {
+    let lat = position.coords.latitude;
+    let lng = position.coords.longitude;
+
+    // Fetch weather data based on current location
+    const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`);
+    const data = await response.json();
+
+    const city = data.location.name;
+    if (localStorage.getItem('city') && localStorage.getItem('city') === city && window.location.search) return;
+
+    // Set city name in input field
+    searchInputs[0].value = city;
+    searchInputs[1].value = city;
+    localStorage.setItem('city', city);
+    // Update the URL with the city value
+    updateSearchParams(city);
+    fetchWeatherData(city);
+  } catch (error) {
     console.log(error);
-});
+  }
+}
 
 // Get the city name from the URL
 const cityFromUrl = searchParams.get('city');
@@ -377,6 +381,8 @@ if (cityFromUrl) {
   searchInputs[1].value = cityFromUrl;
   fetchWeatherData(cityFromUrl);
 }
+
+getLocationData();
 
 /*==================== AUTOCOMPLETE SEARCH FORM ====================*/
 
