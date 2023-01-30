@@ -7,23 +7,27 @@
 		<link rel="stylesheet" href="./hourly.css" />
 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
 		<title>Weather App - Hourly</title>
+		<script src="/assets/scripts/index.js" defer></script>
 		<script src="./hourly.js" defer></script>
 		<!-- <script src="../../components/header/header.js" defer></script> -->
 		<!-- <script src="../../components/footer/footer.js" defer></script> -->
 	</head>
 	<body>
-		<header>
+		<header class="header">
 			<nav class="nav">
-				<container class="nav__container container">
-					<a href="./index.html" class="logo__wrapper"> Weather </a>
-					<form class="nav__search" id="search-form" action="/" method="get">
-						<input
-							id="search-input"
-							class="search"
-							name="city"
-							placeholder="Search city..."
-						/>
-						<button type="submit">S</button>
+				<div class="nav__container container">
+					<a href="" class="logo__wrapper">Weather</a>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
 					</form>
 					<div class="nav__cf">
 						<a href="#">°F</a>
@@ -41,66 +45,60 @@
 							<span class="last__span"></span>
 						</div>
 					</div>
-				</container>
+				</div>
 			</nav>
 			<nav class="nav__two">
-				<container class="nav__two_container container">
+				<div class="nav__two_container container">
 					<div class="nav__menu">
 						<ul class="nav__list">
+							<li class="nav__item today-page"></li>
+							<li class="nav__item hourly-page"></li>
+							<li class="nav__item sevenday-page"></li>
+							<li class="nav__item weekend-page"></li>
+							<li class="nav__item monthly-page"></li>
+							<li class="nav__item airquality-page"></li>
+							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="/assets/pages/today/today.html" class="nav__link"
-									>Today
-								</a>
-							</li>
-							<li class="nav__item">
-								<a href="/assets/pages/hourly/hourly.html" class="nav__link"
-									>Hourly
-								</a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">7 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">14 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Monthly </a>
+								<a href="../weather-news/weather-news.html" class="nav__link"
+									>Weather News</a
+								>
 							</li>
 						</ul>
 					</div>
-				</container>
+				</div>
 			</nav>
 			<!-- ******************* NAV MOBILE ******************* -->
 			<div id="mySidenav" class="sidenav">
 				<div class="nav__menu_mobile" id="menu">
-					<div class="nav__search">
-						<input
-							type="search"
-							id="search"
-							class="search"
-							placeholder="Search city..."
-						/>
-					</div>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
 					<div class="nav__cf">
 						<a href="#">°F</a>
 						<a href="#">°C</a>
 					</div>
 					<div class="nav__text_buttons">
 						<ul class="nav__list_mobile">
+							<li class="nav__item today-page"></li>
+							<li class="nav__item hourly-page"></li>
+							<li class="nav__item sevenday-page"></li>
+							<li class="nav__item weekend-page"></li>
+							<li class="nav__item monthly-page"></li>
+							<li class="nav__item airquality-page"></li>
+							<li class="nav__item radar-page"></li>
 							<li class="nav__item">
-								<a href="#" class="nav__link">Today </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Hourly </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">7 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">14 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="#" class="nav__link">Monthly </a>
+								<a href="../weather-news/weather-news.html" class="nav__item"
+									>Weather News
+								</a>
 							</li>
 						</ul>
 					</div>

@@ -91,7 +91,7 @@
 
 .search {
 	padding: 0.5rem 1rem;
-	border-radius: 0.5rem;
+	border-radius: 3rem;
 	border: 1px solid var(--first-color);
 	width: 380px;
 	min-width: 200px;

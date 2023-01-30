@@ -49,95 +49,92 @@ const searchInput = document.getElementById('search-input');
 // 	event.preventDefault();
 // 	const searchKeyword = searchInput.value;
 
-window.onload = render();
+// window.onload = fetchWeatherData(city);
 
-function render() {
-	fetch(
-		`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=Pristina&days=10&aqi=yes&alerts=yes`
-	)
-		.then((response) => response.json())
-		.then((data) => {
-			// Show the city name on every section of the Home Page
+// function render() {
+// 	fetch(
+// 		`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=Pristina&days=10&aqi=yes&alerts=yes`
+// 	)
+// 		.then((response) => response.json())
+// 		.then((data) => {
+// 			// Show the city name on every section of the Home Page
 
-			let response = data;
+// 			// let response = data;
 
-			const months = [
-				'January',
-				'Februaru',
-				'March',
-				'April',
-				'May',
-				'June',
-				'July',
-				'August',
-				'September',
-				'October',
-				'November',
-				'December',
-			];
-			const days = [
-				'Sunday',
-				'Monday',
-				'Tuesday',
-				'Wednesday',
-				'Thursday',
-				'Friday',
-				'Saturday',
-			];
+// 			getHourlyPage(data);
+// 		});
+// }
 
-			//
+function getHourlyPage(data) {
+	const months = [
+		'January',
+		'Februaru',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	];
+	const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-			const dateOne = new Date(`${response.forecast.forecastday[0].date}`);
-			const dayNameOne = days[dateOne.getDay()];
-			const monthNameOne = months[dateOne.getMonth()];
-			const dateNumberOne = dateOne.getDate();
+	//
 
-			hourlyFirstDay.innerHTML = `${dayNameOne}, ${monthNameOne} ${dateNumberOne}`;
+	const dateOne = new Date(`${data.forecast.forecastday[0].date}`);
+	const dayNameOne = days[dateOne.getDay()];
+	const monthNameOne = months[dateOne.getMonth()];
+	const dateNumberOne = dateOne.getDate();
 
-			const dateTwo = new Date(`${response.forecast.forecastday[1].date}`);
-			const dayNameTwo = days[dateTwo.getDay()];
-			const monthNameTwo = months[dateTwo.getMonth()];
-			const dateNumberTwo = dateTwo.getDate();
+	hourlyFirstDay.innerHTML = `${dayNameOne}, ${monthNameOne} ${dateNumberOne}`;
 
-			hourlySecondDay.innerHTML = `${dayNameTwo}, ${monthNameTwo} ${dateNumberTwo}`;
+	const dateTwo = new Date(`${data.forecast.forecastday[1].date}`);
+	const dayNameTwo = days[dateTwo.getDay()];
+	const monthNameTwo = months[dateTwo.getMonth()];
+	const dateNumberTwo = dateTwo.getDate();
 
-			const dateThree = new Date(`${response.forecast.forecastday[2].date}`);
-			const dayNameThree = days[dateThree.getDay()];
-			const monthNameThree = months[dateThree.getMonth()];
-			const dateNumberThree = dateThree.getDate();
+	hourlySecondDay.innerHTML = `${dayNameTwo}, ${monthNameTwo} ${dateNumberTwo}`;
 
-			hourlyThirdDay.innerHTML = `${dayNameThree}, ${monthNameThree} ${dateNumberThree}`;
+	const dateThree = new Date(`${data.forecast.forecastday[2].date}`);
+	const dayNameThree = days[dateThree.getDay()];
+	const monthNameThree = months[dateThree.getMonth()];
+	const dateNumberThree = dateThree.getDate();
 
-			//
+	hourlyThirdDay.innerHTML = `${dayNameThree}, ${monthNameThree} ${dateNumberThree}`;
 
-			//
+	//
 
-			hourlyCityName.innerHTML = `- ${response.location.name}`;
+	//
 
-			let currentHour = new Date().getHours();
-			// console.log(currentHour);
+	hourlyCityName.innerHTML = `- ${data.location.name}`;
 
-			for (i = currentHour; i < 24; i++) {
-				const time = new Date(`${response.forecast.forecastday[0].hour[i].time}`);
-				const options = { hour: 'numeric', hour12: true };
-				const timeString = time.toLocaleString('en-US', options);
+	let currentHour = new Date().getHours();
+	// console.log(currentHour);
 
-				hourlyDescription.innerHTML += `
+	for (i = currentHour; i < 24; i++) {
+		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
+		const options = { hour: 'numeric', hour12: true };
+		const timeString = time.toLocaleString('en-US', options);
+
+		hourlyDescription.innerHTML += `
           <div class="hourly__main">
 									<div>
 										<span>${timeString}</span>
 									</div>
 									<div>
-										<span>${Math.round(response.forecast.forecastday[0].hour[i].temp_c)}°</span>
+										<span>${Math.round(data.forecast.forecastday[0].hour[i].temp_c)}°</span>
 									</div>
 									<div><i class="uil uil-cloud"></i> <span>${
-										response.forecast.forecastday[0].hour[i].condition.text
+										data.forecast.forecastday[0].hour[i].condition.text
 									}</span></div>
 									<div><i class="uil uil-raindrops"> </i><span>${
-										response.forecast.forecastday[0].hour[i].will_it_rain
+										data.forecast.forecastday[0].hour[i].will_it_rain
 									}%</span></div>
 									<div><i class="uil uil-wind"></i> <span>NW ${
-										response.forecast.forecastday[0].hour[i].wind_kph
+										data.forecast.forecastday[0].hour[i].wind_kph
 									} kph</span></div>
 									<div class="hourly-arrow">
 										<i class="uil uil-angle-down"></i>
@@ -150,7 +147,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__feels__like">Feels like</span>
 												<span class="hourly__feels__like__temp"
-													><b>${Math.round(response.forecast.forecastday[0].hour[i].feelslike_c)}°</b></span
+													><b>${Math.round(data.forecast.forecastday[0].hour[i].feelslike_c)}°</b></span
 												>
 											</div>
 										</li>
@@ -159,7 +156,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__wind">Wind</span>
 												<span class="hourly__wind__temp"
-													><b>NW ${response.forecast.forecastday[0].hour[i].wind_kph} kph</b></span
+													><b>NW ${data.forecast.forecastday[0].hour[i].wind_kph} kph</b></span
 												>
 											</div>
 										</li>
@@ -168,7 +165,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__humidity">Humidity</span>
 												<span class="hourly__humidity__temp"
-													><b>${response.forecast.forecastday[0].hour[i].humidity}%</b></span
+													><b>${data.forecast.forecastday[0].hour[i].humidity}%</b></span
 												>
 											</div>
 										</li>
@@ -177,7 +174,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__uv__index">UV Index</span>
 												<span class="hourly__uv__index__temp"
-													><b>${Math.round(response.forecast.forecastday[0].hour[i].uv)} of 10</b></span
+													><b>${Math.round(data.forecast.forecastday[0].hour[i].uv)} of 10</b></span
 												>
 											</div>
 										</li>
@@ -188,7 +185,7 @@ function render() {
 													>Cloud Cover</span
 												>
 												<span class="hourly__cloud__cover__temp"
-													><b>${response.forecast.forecastday[0].hour[i].cloud}%</b></span
+													><b>${data.forecast.forecastday[0].hour[i].cloud}%</b></span
 												>
 											</div>
 										</li>
@@ -199,7 +196,7 @@ function render() {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${response.forecast.forecastday[0].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[0].hour[i].chance_of_rain} mm</b></span
 												>
 											</div>
 										</li>
@@ -207,86 +204,28 @@ function render() {
 								</div>
 							</div>
           `;
+	}
 
-				// var conditionText = document.querySelector('.condition-text');
-
-				// var conditionIcon = document.querySelector('.condition');
-
-				// var lightRainIcon = `<i class="uil uil-cloud-rain"></i>`;
-				// var mistIcon = `<i class="uil uil-clouds"></i>`;
-				// var overcastIcon = `<i class="uil uil-cloud"></i>`;
-				// var moderateRainIcon = `<i class="uil uil-cloud-rain"></i>`;
-				// var partlyCloudyIcon = `<i class="uil uil-cloud-sun"></i>`;
-				// var clearIcon = `<i class="uil uil-sun"></i>`;
-				// var fogIcon = `<i class="uil uil-clouds"></i>`;
-				// var cloudyIcon = `<i class="uil uil-clouds"></i>`;
-				// var patchyRainIcon = `<i class="uil uil-cloud-sun-rain-alt"></i>`;
-				// var lightDrizzleIcon = `<i class="uil uil-cloud-showers-heavy"></i>`;
-				// var lightRainShowerIcon = `<i class="uil uil-cloud-sun-tear"></i>`;
-				// var heavySnowIcon = `<i class="uil uil-cloud-sun-hail"></i>`;
-				// var moderateHeavySnowIcon = `<i class="uil uil-cloud-sun-hail"></i>`;
-				// var patchyLightSnowIcon = `<i class="uil uil-cloud-sun-meatball"></i>`;
-				// var otherIcon = `<i class="uil uil-rainbow"></i>`;
-
-				// // if ((conditionText = 'Cloudy')) {
-				// // 	document.querySelector('.condition').innerHTML = mistIcon;
-				// // }
-
-				// document.querySelector('.condition').forEach((el) => {
-				// 	if (conditionText == 'Light rain') {
-				// 		document.querySelector('.condition').innerHTML = lightRainIcon;
-				// 	} else if (conditionText == 'Mist') {
-				// 		document.querySelector('.condition').innerHTML = mistIcon;
-				// 	} else if (conditionText == 'Overcast') {
-				// 		document.querySelector('.condition').innerHTML = overcastIcon;
-				// 	} else if (conditionText == 'Moderate rain') {
-				// 		document.querySelector('.condition').innerHTML = moderateRainIcon;
-				// 	} else if (conditionText == 'Partly cloudy') {
-				// 		document.querySelector('.condition').innerHTML = partlyCloudyIcon;
-				// 	} else if (conditionText == 'Clear') {
-				// 		document.querySelector('.condition').innerHTML = clearIcon;
-				// 	} else if (conditionText == 'Fog') {
-				// 		document.querySelector('.condition').innerHTML = fogIcon;
-				// 	} else if (conditionText == 'Cloudy') {
-				// 		document.querySelector('.condition').innerHTML = cloudyIcon;
-				// 	} else if (conditionText == 'Patchy rain possible') {
-				// 		document.querySelector('.condition').innerHTML = patchyRainIcon;
-				// 	} else if (conditionText == 'Light drizzle') {
-				// 		document.querySelector('.condition').innerHTML = lightDrizzleIcon;
-				// 	} else if (conditionText == 'Light rain shower') {
-				// 		document.querySelector('.condition').innerHTML = lightRainShowerIcon;
-				// 	} else if (conditionText == 'Heavy snow') {
-				// 		document.querySelector('.condition').innerHTML = heavySnowIcon;
-				// 	} else if (conditionText == 'Moderate or heavy snow showers') {
-				// 		document.querySelector('.condition').innerHTML = moderateHeavySnowIcon;
-				// 	} else if (conditionText == 'Patchy light snow') {
-				// 		document.querySelector('.condition').innerHTML = patchyLightSnowIcon;
-				// 	} else {
-				// 		document.querySelector('.condition').innerHTML = otherIcon;
-				// 	}
-				// });
-			}
-
-			for (i = 0; i < 24; i++) {
-				const time = new Date(`${response.forecast.forecastday[0].hour[i].time}`);
-				const options = { hour: 'numeric', hour12: true };
-				const timeString = time.toLocaleString('en-US', options);
-				hourlyDescriptionTwo.innerHTML += `
+	for (i = 0; i < 24; i++) {
+		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
+		const options = { hour: 'numeric', hour12: true };
+		const timeString = time.toLocaleString('en-US', options);
+		hourlyDescriptionTwo.innerHTML += `
           <div class="hourly__main">
 									<div>
 										<span>${timeString}</span>
 									</div>
 									<div>
-										<span>${Math.round(response.forecast.forecastday[1].hour[i].temp_c)}°</span>
+										<span>${Math.round(data.forecast.forecastday[1].hour[i].temp_c)}°</span>
 									</div>
 									<div><i class="uil uil-cloud"></i> <span>${
-										response.forecast.forecastday[1].hour[i].condition.text
+										data.forecast.forecastday[1].hour[i].condition.text
 									}</span></div>
 									<div><i class="uil uil-raindrops"> </i><span>${
-										response.forecast.forecastday[1].hour[i].will_it_rain
+										data.forecast.forecastday[1].hour[i].will_it_rain
 									}%</span></div>
 									<div><i class="uil uil-wind"></i> <span>NW ${
-										response.forecast.forecastday[1].hour[i].wind_kph
+										data.forecast.forecastday[1].hour[i].wind_kph
 									} kph</span></div>
 									<div class="hourly-arrow">
 										<i class="uil uil-angle-down"></i>
@@ -299,7 +238,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__feels__like">Feels like</span>
 												<span class="hourly__feels__like__temp"
-													><b>${Math.round(response.forecast.forecastday[1].hour[i].feelslike_c)}°</b></span
+													><b>${Math.round(data.forecast.forecastday[1].hour[i].feelslike_c)}°</b></span
 												>
 											</div>
 										</li>
@@ -308,7 +247,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__wind">Wind</span>
 												<span class="hourly__wind__temp"
-													><b>NW ${response.forecast.forecastday[1].hour[i].wind_kph} kph</b></span
+													><b>NW ${data.forecast.forecastday[1].hour[i].wind_kph} kph</b></span
 												>
 											</div>
 										</li>
@@ -317,7 +256,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__humidity">Humidity</span>
 												<span class="hourly__humidity__temp"
-													><b>${response.forecast.forecastday[1].hour[i].humidity}%</b></span
+													><b>${data.forecast.forecastday[1].hour[i].humidity}%</b></span
 												>
 											</div>
 										</li>
@@ -326,7 +265,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__uv__index">UV Index</span>
 												<span class="hourly__uv__index__temp"
-													><b>${Math.round(response.forecast.forecastday[1].hour[i].uv)} of 10</b></span
+													><b>${Math.round(data.forecast.forecastday[1].hour[i].uv)} of 10</b></span
 												>
 											</div>
 										</li>
@@ -337,7 +276,7 @@ function render() {
 													>Cloud Cover</span
 												>
 												<span class="hourly__cloud__cover__temp"
-													><b>${response.forecast.forecastday[1].hour[i].cloud}%</b></span
+													><b>${data.forecast.forecastday[1].hour[i].cloud}%</b></span
 												>
 											</div>
 										</li>
@@ -348,7 +287,7 @@ function render() {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${response.forecast.forecastday[1].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[1].hour[i].chance_of_rain} mm</b></span
 												>
 											</div>
 										</li>
@@ -356,22 +295,22 @@ function render() {
 								</div>
 							</div>
           `;
-				hourlyDescriptionThree.innerHTML += `
+		hourlyDescriptionThree.innerHTML += `
           <div class="hourly__main">
 									<div>
 										<span>${timeString}</span>
 									</div>
 									<div>
-										<span>${Math.round(response.forecast.forecastday[2].hour[i].temp_c)}°</span>
+										<span>${Math.round(data.forecast.forecastday[2].hour[i].temp_c)}°</span>
 									</div>
 									<div><i class="uil uil-cloud"></i> <span>${
-										response.forecast.forecastday[2].hour[i].condition.text
+										data.forecast.forecastday[2].hour[i].condition.text
 									}</span></div>
 									<div><i class="uil uil-raindrops"> </i><span>${
-										response.forecast.forecastday[2].hour[i].will_it_rain
+										data.forecast.forecastday[2].hour[i].will_it_rain
 									}%</span></div>
 									<div><i class="uil uil-wind"></i> <span>NW ${
-										response.forecast.forecastday[2].hour[i].wind_kph
+										data.forecast.forecastday[2].hour[i].wind_kph
 									} kph</span></div>
 									<div class="hourly-arrow">
 										<i class="uil uil-angle-down"></i>
@@ -384,7 +323,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__feels__like">Feels like</span>
 												<span class="hourly__feels__like__temp"
-													><b>${Math.round(response.forecast.forecastday[2].hour[i].feelslike_c)}°</b></span
+													><b>${Math.round(data.forecast.forecastday[2].hour[i].feelslike_c)}°</b></span
 												>
 											</div>
 										</li>
@@ -393,7 +332,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__wind">Wind</span>
 												<span class="hourly__wind__temp"
-													><b>NW ${response.forecast.forecastday[2].hour[i].wind_kph} kph</b></span
+													><b>NW ${data.forecast.forecastday[2].hour[i].wind_kph} kph</b></span
 												>
 											</div>
 										</li>
@@ -402,7 +341,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__humidity">Humidity</span>
 												<span class="hourly__humidity__temp"
-													><b>${response.forecast.forecastday[2].hour[i].humidity}%</b></span
+													><b>${data.forecast.forecastday[2].hour[i].humidity}%</b></span
 												>
 											</div>
 										</li>
@@ -411,7 +350,7 @@ function render() {
 											<div class="hourly__hidden__info__text">
 												<span class="hourly__uv__index">UV Index</span>
 												<span class="hourly__uv__index__temp"
-													><b>${Math.round(response.forecast.forecastday[2].hour[i].uv)} of 10</b></span
+													><b>${Math.round(data.forecast.forecastday[2].hour[i].uv)} of 10</b></span
 												>
 											</div>
 										</li>
@@ -422,7 +361,7 @@ function render() {
 													>Cloud Cover</span
 												>
 												<span class="hourly__cloud__cover__temp"
-													><b>${response.forecast.forecastday[2].hour[i].cloud}%</b></span
+													><b>${data.forecast.forecastday[2].hour[i].cloud}%</b></span
 												>
 											</div>
 										</li>
@@ -433,7 +372,7 @@ function render() {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${response.forecast.forecastday[2].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[2].hour[i].chance_of_rain} mm</b></span
 												>
 											</div>
 										</li>
@@ -441,26 +380,205 @@ function render() {
 								</div>
 							</div>
           `;
-			}
-			const hourlyArrows = document.querySelectorAll('.hourly-arrow');
-			const hourlyHidden = document.querySelectorAll('.hourly__hidden');
-			// console.log(hourlyArrows);
+	}
+	const hourlyArrows = document.querySelectorAll('.hourly-arrow');
+	const hourlyHidden = document.querySelectorAll('.hourly__hidden');
+	// console.log(hourlyArrows);
 
-			hourlyArrows.forEach((arrow, index) => {
-				arrow.addEventListener('click', () => {
-					if (hourlyHidden[index].style.display === 'block') {
-						hourlyHidden[index].style.display = 'none';
-					} else {
-						hourlyHidden.forEach((hidden) => {
-							hidden.style.display = 'none';
-						});
-						hourlyHidden[index].style.display = 'block';
-					}
+	hourlyArrows.forEach((arrow, index) => {
+		arrow.addEventListener('click', () => {
+			if (hourlyHidden[index].style.display === 'block') {
+				hourlyHidden[index].style.display = 'none';
+			} else {
+				hourlyHidden.forEach((hidden) => {
+					hidden.style.display = 'none';
 				});
-			});
+				hourlyHidden[index].style.display = 'block';
+			}
 		});
+	});
 }
 
 // function openHourly() {
 // 	hourlyHidden.style.display == 'hidden';
 // }
+
+/*==================== GET WEATHER DATA FUNCTIONS ====================*/
+
+// Constants
+const apiKey = '9ce000ab2ee94bf8bfd111052222012';
+const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&days=10&aqi=yes&alerts=yes`;
+const searchForm = document.querySelector('.search-form');
+const searchInputs = document.querySelectorAll('.search-input');
+const searchParams = new URLSearchParams(window.location.search);
+
+searchInputs[0].addEventListener('submit', getCityValue);
+searchInputs[1].addEventListener('submit', getCityValue);
+
+// Get the city name value in search input
+function getCityValue(event) {
+	event.preventDefault();
+	const city = event.target.value;
+	updateSearchParams(city);
+	fetchWeatherData(city);
+}
+
+// Update Search parameters
+function updateSearchParams(city) {
+	searchParams.set('city', city);
+	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
+}
+
+// Fetch Weather data based on city
+function fetchWeatherData(city) {
+	fetch(
+		`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`
+	)
+		.then((response) => response.json())
+		.then((data) => {
+			updateNavbarLinks(city);
+			getHourlyPage(data);
+		});
+}
+
+// Fetch Weather data based on the Geolocation
+navigator.geolocation.getCurrentPosition(
+	(position) => {
+		let lat = position.coords.latitude;
+		let lng = position.coords.longitude;
+
+		// Fetch weather data based on current location
+		fetch(
+			`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				const city = data.location.name;
+				if (
+					localStorage.getItem('city') &&
+					localStorage.getItem('city') === city &&
+					window.location.search
+				)
+					return;
+				// Set city name in input field
+				searchInputs[0].value = city;
+				searchInputs[1].value = city;
+				localStorage.setItem('city', city);
+				// Update the URL with the city value
+				updateSearchParams(city);
+				fetchWeatherData(city);
+			});
+	},
+	(error) => {
+		console.log(error);
+	}
+);
+
+// Get the city name from the URL
+const cityFromUrl = searchParams.get('city');
+if (cityFromUrl) {
+	searchInputs[0].value = cityFromUrl;
+	searchInputs[1].value = cityFromUrl;
+	fetchWeatherData(cityFromUrl);
+}
+
+/*==================== AUTOCOMPLETE SEARCH FORM ====================*/
+
+// Declaring an array that contains a list of cities
+let searchable = [
+	'London',
+	'Pristina',
+	'Moscow',
+	'Paris',
+	'Berlin',
+	'Berne',
+	'Sofia',
+	'Madrid',
+	'Ljubljana',
+	'Tirana',
+	'Sarajevo',
+	'Athens',
+	'Rome',
+	'Zagreb',
+	'Stockholm',
+	'Valletta',
+	'Chisinau',
+	'Skopje',
+	'Luxembourg',
+	'Vilnius',
+	'Vaduz',
+	'Riga',
+	'Dublin',
+	'Reykjavik',
+	'Budapest',
+	'Vatican City',
+	'Helsinki',
+	'Tallinn',
+	'Copenhagen',
+	'Prague',
+	'Vienna',
+	'Minsk',
+	'Andorra La Vella',
+	'Monaco',
+	'Vilnius',
+	'Podgorica',
+	'Amsterdam',
+	'Oslo',
+	'Warsaw',
+	'Lisbon',
+	'Bucharest',
+	'Belgrade',
+	'San Marino',
+	'Bratislava',
+	'Prague',
+	'Kiev',
+];
+
+// const searchInputs = document.querySelectorAll('.search-input');
+const searchField = document.querySelector('.search');
+const searchResults = document.querySelector('.search-results');
+
+searchInputs.forEach((searchInput) => {
+	searchInput.addEventListener('keyup', () => {
+		// Initializing an empty array to store search results
+		let results = [];
+		// Storing the current value of the search input
+		let resultInput = searchInput.value;
+		// If the search input has a value
+		if (resultInput.length) {
+			// Filtering the 'searchable' array for items that include the current search input value
+			results = searchable.filter((item) => {
+				return item.toLowerCase().includes(resultInput.toLowerCase());
+			});
+			//If there's no match, clearing the search results
+			if (!results.length) {
+				searchResults.classList.remove('search-show');
+				searchResults.innerHTML = '';
+				return;
+			}
+		} else {
+			searchResults.classList.remove('search-show');
+			searchResults.innerHTML = '';
+			return;
+		}
+
+		renderResults(results);
+	});
+});
+
+//Function that renders the search results
+function renderResults(results) {
+	if (!results.length) {
+		return searchResults.classList.remove('search-show');
+	}
+	//Mapping the filtered results to create the HTML for each result
+	let searchContent = results
+		.map((item) => {
+			return `<li><a href="../../../assets/pages/hourly/hourly.html?city=${item}">${item}</a></li>`;
+		})
+		//Joining the HTML of all results into a single string
+		.join('');
+
+	searchResults.classList.add('search-show');
+	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
+}
