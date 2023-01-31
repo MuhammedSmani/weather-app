@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <link rel="stylesheet" href="radar.css">
+    <script src="radar.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <header>
+        <nav class="nav">
+            <container class="nav__container container">
+                <a href="./index.html" class="logo__wrapper"> Weather </a>
+                <form class="nav__search" id="search-form" action="/" method="get">
+                    <input id="search-input" class="search" name="city" placeholder="Search city..." />
+                    <button type="submit">S</button>
+                </form>
+                <div class="nav__cf">
+                    <a href="#" id="fahrenheit">°F</a>
+                    <a href="#" class="nav__cf-active" id="celsius">°C</a>
+                </div>
+                <div class="nav__open_menu">
+                    <input class="open__menu_checkbox" id="active" type="checkbox" onclick="togNav()" />
+                    <div>
+                        <span class="first__span"></span>
+                        <span class="last__span"></span>
+                    </div>
+                </div>
+            </container>
+        </nav>
+        <nav class="nav__two">
+            <container class="nav__two_container container">
+                <div class="nav__menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Today </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Hourly </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">7 Day </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">14 Day </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Monthly </a>
+                        </li>
+                    </ul>
+                </div>
+            </container>
+        </nav>
+        <!-- ******************* NAV MOBILE ******************* -->
+        <div id="mySidenav" class="sidenav">
+            <div class="nav__menu_mobile" id="menu">
+                <div class="nav__search">
+                    <input type="search" id="search" class="search" placeholder="Search city..." />
+                </div>
+                <div class="nav__cf">
+                    <a href="#">°F</a>
+                    <a href="#">°C</a>
+                </div>
+                <div class="nav__text_buttons">
+                    <ul class="nav__list_mobile">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Today </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Hourly </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">7 Day </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">14 Day </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Monthly </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="map">
+        <div id="open-modal">
+            <div id="mapicons">Map Icons</div>
+        <div id="tempicons">Temp Icons</div>
+        </div>
+        
+    </div>
+  
+
+</body>
+
+</html>
