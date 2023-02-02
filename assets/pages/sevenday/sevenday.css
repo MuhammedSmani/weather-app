@@ -2,21 +2,20 @@
 @import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
 
+/* SEVENDAY SECTION */
+
 .weekly__section {
   display: flex;
   justify-content: center;
-  margin-top: 132px;
+	margin-top: 4rem;
 }
-
 .weekly__container {
   width: 100%;
 }
-
 .weekly__content {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  border-radius: 1rem;
 }
 .weekly__content i {
   font-size: var(--big-font-size);
@@ -29,22 +28,17 @@
 .weekly__title p:nth-child(3) {
   padding: 1rem 0;
 }
-.weekly__date {
-  border-bottom: solid 1px var(--fourth-color);
-}
-.weekly__date h2 {
+/* .weekly__date h2 {
   padding: 1rem;
-}
-.weekly__description {
+} */
+/* .weekly__description {
   padding: 0 1rem;
-}
+} */
 .weekly__main {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 2fr 3fr 2fr 2fr 1fr;
   border-top: solid 1px var(--fourth-color);
-  height: 5rem;
-  text-align: start;
+  padding: 0.5rem 1rem;
 }
 .weekly__main div {
   display: flex;
@@ -53,9 +47,15 @@
 .weekly__main div:nth-child(2) span {
   font-size: 1.5rem;
 }
+.weekly__main div span:nth-child(2) {
+  font-size: 1rem;
+}
 
 .weekly__main .weekly-arrow {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .weekly__hidden {
   border-radius: 1rem;
@@ -71,21 +71,26 @@
   align-items: center;
   gap: 1rem;
 }
+.weekly__hidden__header {
+  display: flex;
+
+}
 .weekly__hidden__info {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   padding: 0 1rem;
+  border: solid 1px var(--fourth-color);
+  border-radius: 0.5rem;
 }
 .weekly__hidden__info li {
-  width: 33%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   padding: 1rem 0;
 }
-.weekly__hidden__info li:nth-child(4),
-.weekly__hidden__info li:nth-child(5),
-.weekly__hidden__info li:nth-child(6) {
-  border-top: solid 1px var(--fourth-color);
+.weekly__hidden__info li:nth-child(1),
+.weekly__hidden__info li:nth-child(2) {
+  border-bottom: solid 1px var(--fourth-color);
 }
 .weekly__hidden__info__text {
   display: flex;
@@ -95,6 +100,7 @@
   display: flex;
   justify-content: center;
   padding: 1rem;
+  border-top: solid 1px var(--fourth-color)
 }
 .weekly__button a {
   color: var(--text-color);
@@ -126,12 +132,14 @@
   max-width: 50%;
   border: solid 1px var(--fourth-color);
   padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .night-hidden {
   max-width: 50%;
   border: solid 1px var(--fourth-color);
   padding: 1rem;
+  border-radius: 0.5rem;
 }
 @media (min-width: 19h) {
   .day-hidden {
