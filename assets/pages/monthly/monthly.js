@@ -1,3 +1,23 @@
+function getHourlyRealtime(data) {
+	const hourlyRealtime = document.getElementById('realtime-time');
+	// console.log(hourlyRealtime.innerText);
+
+	const timeString = data.location.localtime;
+	const time = new Date(timeString);
+
+	let hours = time.getHours();
+	let minutes = time.getMinutes();
+	let ampm = 'AM';
+
+	if (hours > 12) {
+		hours -= 12;
+		ampm = 'PM';
+	}
+
+	minutes = minutes < 10 ? `0${minutes}` : minutes;
+	hourlyRealtime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
+}
+
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/
 
 function getMonthlyPage(data) {
@@ -5,7 +25,7 @@ function getMonthlyPage(data) {
 	// activeNum.innerHTML = `${Math.round(data.forecast.forecastday[0].day.avgtemp_c)}°`;
 	// console.log(`${Math.round(data.forecast.forecastday[0].day.avgtemp_c)}`);
 
-	console.log(data);
+	// console.log(data);
 
 	const daysTag = document.querySelector('.days'),
 		currentDate = document.querySelector('.current-date'),
@@ -38,8 +58,11 @@ function getMonthlyPage(data) {
 			lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
 		let liTag = '';
 		for (let i = firstDayofMonth; i > 0; i--) {
-			liTag += `<li>
-                    <p class="inactive">${lastDateofLastMonth - i + 1}</p>
+			liTag += `<li class="inactive">
+                    <p >${lastDateofLastMonth - i + 1}</p>
+                <i class="inactive__i">--</i>
+
+                    <p>--</p>
                   </li>`;
 		}
 		for (let i = 1; i <= lastDateofMonth; i++) {
@@ -51,20 +74,31 @@ function getMonthlyPage(data) {
 					? 'active'
 					: '';
 			liTag += `<li class="${isToday}">
-                    <p class="day">${i}</p>`;
+                    <p class="day">${i}</p>
+                    `;
 
 			if ((isToday || todayPassed) && forecastDay < data.forecast.forecastday.length) {
 				let dayTemp = Math.round(data.forecast.forecastday[forecastDay].day.avgtemp_c);
-				liTag += `<p class="forecast">${dayTemp}</p>`;
+				liTag += `
+                <i class="uil uil-cloud"></i>
+                <p class="forecast">${dayTemp}°</p>
+                        `;
 				forecastDay++;
 				todayPassed = true;
+			} else {
+				liTag += `
+                <i class="inactive__i">--</i>
+                <p>--</p>`;
 			}
 
 			liTag += `</li>`;
 		}
 		for (let i = lastDayofMonth; i < 6; i++) {
-			liTag += `<li>
-                    <p class="inactive">${i - lastDayofMonth + 1}</p>
+			liTag += `<li class="inactive">
+                    <p >${i - lastDayofMonth + 1}</p>
+                <i class="inactive__i">--</i>
+
+                    <p>--</p>
                   </li>`;
 		}
 		currentDate.innerText = `${months[currMonth]} ${currYear}`;
@@ -122,6 +156,7 @@ function fetchWeatherData(city) {
 		.then((data) => {
 			updateNavbarLinks(city);
 			getMonthlyPage(data);
+			getHourlyRealtime(data);
 		});
 }
 
