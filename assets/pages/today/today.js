@@ -438,6 +438,56 @@ if (cityFromUrl) {
 
 /*==================== AUTOCOMPLETE SEARCH FORM ====================*/
 
+// Declaring an array that contains a list of cities
+let searchable = [
+	'London',
+	'Pristina',
+	'Moscow',
+	'Paris',
+	'Berlin',
+	'Berne',
+	'Sofia',
+	'Madrid',
+	'Ljubljana',
+	'Tirana',
+	'Sarajevo',
+	'Athens',
+	'Rome',
+	'Zagreb',
+	'Stockholm',
+	'Valletta',
+	'Chisinau',
+	'Skopje',
+	'Luxembourg',
+	'Vilnius',
+	'Vaduz',
+	'Riga',
+	'Dublin',
+	'Reykjavik',
+	'Budapest',
+	'Vatican City',
+	'Helsinki',
+	'Tallinn',
+	'Copenhagen',
+	'Prague',
+	'Vienna',
+	'Minsk',
+	'Andorra La Vella',
+	'Monaco',
+	'Vilnius',
+	'Podgorica',
+	'Amsterdam',
+	'Oslo',
+	'Warsaw',
+	'Lisbon',
+	'Bucharest',
+	'Belgrade',
+	'San Marino',
+	'Bratislava',
+	'Prague',
+	'Kiev',
+];
+
 // const searchInputs = document.querySelectorAll('.search-input');
 const searchField = document.querySelector(".search");
 const searchResults = document.querySelector(".search-results");
@@ -499,4 +549,3 @@ setTimeout(() => {
 setTimeout(() => {
     weatherAnimation.style.display = 'none';
 }, 3000);
-
