@@ -1,3 +1,12 @@
+/*==================== UPDATE MAIN PAGE BUTTONS ====================*/
+
+const hourlyButton = document.getElementById('hourly-button');
+
+function updateMainPageButton(city) {
+	hourlyButton.innerHTML = `<a href="../sevenday/sevenday.html?city=${city}">7 Day Weather</a>`
+}
+
+
 // const hourlyArrows = document.querySelectorAll('.hourly-arrow');
 // const hourlyHidden = document.querySelectorAll('.hourly__hidden');
 
@@ -65,10 +74,29 @@ const searchInput = document.getElementById('search-input');
 // 		});
 // }
 
+function getHourlyRealtime(data) {
+	const hourlyRealtime = document.getElementById('hourly-realtime');
+
+	const timeString = data.location.localtime;
+	const time = new Date(timeString);
+  
+	let hours = time.getHours();
+	let minutes = time.getMinutes();
+	let ampm = "AM";
+  
+	if (hours > 12) {
+	  hours -= 12;
+	  ampm = "PM";
+	}
+  
+	minutes = minutes < 10 ? `0${minutes}` : minutes;
+	hourlyRealtime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
+}
+
 function getHourlyPage(data) {
 	const months = [
 		'January',
-		'Februaru',
+		'February',
 		'March',
 		'April',
 		'May',
@@ -109,7 +137,7 @@ function getHourlyPage(data) {
 
 	//
 
-	hourlyCityName.innerHTML = `- ${data.location.name}`;
+	hourlyCityName.innerHTML = `- ${data.location.name}, ${data.location.country}`;
 
 	let currentHour = new Date().getHours();
 	// console.log(currentHour);
@@ -437,6 +465,8 @@ function fetchWeatherData(city) {
 		.then((response) => response.json())
 		.then((data) => {
 			updateNavbarLinks(city);
+			updateMainPageButton(city);
+			getHourlyRealtime(data);
 			getHourlyPage(data);
 		});
 }

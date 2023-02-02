@@ -16,6 +16,10 @@ function updateMainPageButtons(city) {
       selector: ".daily__forecast_button",
       text: "Next 7 Day",
       href: "../../../assets/pages/sevenday/sevenday.html",
+    },    {
+      selector: ".air__quality__button",
+      text: "Air Quality",
+      href: "../../../assets/pages/air-quality-forecast/air-quality-forecast.html",
     },
   ];
 
@@ -147,7 +151,7 @@ function generateTodaysForecastHTML(period, temp, chanceOfRain, todayIcon) {
               <p>${period[0].toUpperCase() + period.slice(1)}</p>
               <p id="${period}-temp">${temp}°</p>
               <span class="today-forecast-icon">
-                <i class="uil ${todayIcon}"></i>
+                <i class="uil ${todayIcon ? todayIcon : iconsMapping["xxx.png"]}"></i>
               </span>
               <div class="todays__forecast_rain">
                 <span id="${period}-icon"><i class="uil uil-raindrops"></i></span>
@@ -252,7 +256,7 @@ function generateHourlyForecastHTML(
   return `<div class="hourly__forecast_five-all">
             <p class="hourly-time">${hourlyTime}</p>
             <p class="hourly-temp">${hourlyTemp}°</p>
-            <i class="uil ${hourlyIcon}"></i>
+            <i class="uil ${hourlyIcon ? hourlyIcon : iconsMapping["xxx.png"]}"></i>
             <div class="hourly__forecast_rain">
               <i class="uil uil-raindrops"></i>
               <p class="hourly-rain">${hourlyRainChance}%</p>
@@ -316,7 +320,7 @@ function generateDailyForecastHTML(
             <p class="short-daily-name">${shortDailyName}</p>
             <p class="max-temp-next">${maxTemp}°</p>
             <p class="min-temp-next">${minTemp}°</p>
-            <i class="uil ${dailyIcon}"></i>
+            <i class="uil ${dailyIcon ? dailyIcon : iconsMapping["xxx.png"]}"></i>
             <div class="daily__forecast_rain">
               <i class="uil uil-raindrops"></i>
               <p class="daily-rain">${dailyRainChance}%</p>
@@ -375,11 +379,11 @@ searchInputs[0].addEventListener("submit", getCityValue);
 searchInputs[1].addEventListener("submit", getCityValue);
 
 // Get the city name value in search input
-function getCityValue(event) {
+async function getCityValue(event) {
   event.preventDefault();
   const city = event.target.value;
   updateSearchParams(city);
-  fetchWeatherData(city);
+  await fetchWeatherData(city);
 }
 
 // Update Search parameters
@@ -393,58 +397,57 @@ function updateSearchParams(city) {
 }
 
 // Fetch Weather data based on city
-function fetchWeatherData(city) {
-  fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      updateNavbarLinks(city);
-      updateMainPageButtons(city);
-      getCityCountry(data);
-      getRealtimeTime(data);
-      getRealtimeTemp(data);
-      getConditionText(data);
-      getConditionIcon(data);
-      getDayNightTemp(data);
-      getTodaysForecast(data);
-      getWeatherToday(data);
-      getDailyForecast(data);
-      getHourlyForecast(data);
-    });
+async function fetchWeatherData(city) {
+  const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`);
+    const data = await response.json();
+    updateNavbarLinks(city);
+    updateMainPageButtons(city);
+    getCityCountry(data);
+    getRealtimeTime(data);
+    getRealtimeTemp(data);
+    getConditionText(data);
+    getConditionIcon(data);
+    getDayNightTemp(data);
+    getTodaysForecast(data);
+    getWeatherToday(data);
+    getDailyForecast(data);
+    getHourlyForecast(data);
 }
 
 // Fetch Weather data based on the Geolocation
 navigator.geolocation.getCurrentPosition(
-  (position) => {
+  async (position) => {
     let lat = position.coords.latitude;
     let lng = position.coords.longitude;
-
+    let data;
     // Fetch weather data based on current location
-    fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const city = data.location.name;
-        if (
-          localStorage.getItem("city") &&
-          localStorage.getItem("city") === city &&
-          window.location.search
-        )
-          return;
+    try {
+      const response = await fetch(
+        `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`
+        );
+        data = await response.json();
+      } catch (error) {
+        console.error(error);
+      }
+      const city = data.location.name;
+      if (
+        localStorage.getItem("city") &&
+        localStorage.getItem("city") === city &&
+        window.location.search
+        ) return;
+        
         // Set city name in input field
         searchInputs[0].value = city;
         searchInputs[1].value = city;
         localStorage.setItem("city", city);
+        
         // Update the URL with the city value
         updateSearchParams(city);
         fetchWeatherData(city);
-      });
-  },
-  (error) => {
-    console.log(error);
-  }
+      },
+      (error) => {
+        console.error(error);
+      }
 );
 
 // Get the city name from the URL

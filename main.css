@@ -10,6 +10,7 @@
 	--normal-font-size: 0.938rem;
 	--small-font-size: 0.813rem;
 	--smaller-font-size: 0.75rem;
+	--smaller-border-radius: 0.1rem;
 
 	--font-medium: 500;
 	--font-semi-bold: 600;
@@ -37,7 +38,6 @@
 
 html {
 	scroll-behavior: smooth;
-	/* overflow-x: hidden; */
 }
 
 body {
@@ -46,7 +46,7 @@ body {
 	font-size: var(--normal-font-size);
 	background-color: var(--body-color);
 	color: var(--text-color);
-	/* overflow-x: hidden; */
+	background-color: #f2f2f2;
 }
 
 body::-webkit-scrollbar {
@@ -96,6 +96,7 @@ input:focus {
 	font-size: var(--h3-font-size);
 }
 
+
 .button a {
 	font-size: var(--medium-font-size);
 	color: var(--text-color);
@@ -104,17 +105,24 @@ input:focus {
 	padding: 0.5rem 1rem;
 	border-radius: 2rem;
 	border: 1px solid var(--sixth-color);
+
+	color: var(--body-color);
+	background-color: var(--sixth-color);
+	
 }
 
 .button a:hover {
 	color: var(--body-color);
 	background-color: var(--sixth-color);
+
+	color: var(--text-color);
+	background-color: #fff;
 }
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 
 .section {
-	padding: 1rem 0;
+	padding: 3rem 0 0;
 }
 
 /*==================== LAYOUT ====================*/
@@ -122,6 +130,7 @@ input:focus {
 .container {
 	max-width: 1280px;
 	margin: auto;
+	padding: 0 1rem;
 }
 
 .grid {
@@ -131,12 +140,12 @@ input:focus {
 
 /*==================== FOOTER ====================*/
 
-footer {
+/* footer {
 	background-color: var(--body-color);
 	text-align: center;
 	padding: 1rem 0;
 	margin-top: 1rem;
-}
+} */
 @media screen and (max-width: 767px) {
 	.content__title {
 		color: var(--text-color);

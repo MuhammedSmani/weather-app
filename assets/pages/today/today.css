@@ -1,20 +1,15 @@
+@import '/main.css';
 @import '/assets/components/header/header.css';
-@import '/assets/components/realtime/realtime.css';
+@import '/assets/components/today-image/today-image.css';
 @import '/assets/components/todays-forecast/todays-forecast.css';
 @import '/assets/components/weather-today/weather-today.css';
 @import '/assets/components/hourly-forecast/hourly-forecast.css';
 @import '/assets/components/daily-forecast/daily-forecast.css';
 @import '/assets/components/footer/footer.css';
-@import '/main.css';
-
-body {
-	background: var(--third-color);
-	background: linear-gradient(180deg, var(--third-color) 0%, var(--first-color) 100%);
-}
 
 @media screen and (max-width: 767px) {
 	.section {
-		padding: 1rem 0;
+		padding: 1rem 0!important;
 	}
 
 	.nav__menu,
@@ -175,5 +170,18 @@ body {
 	.realtime__info_right i,
 	.weather__today_info_right i {
 		font-size: 4rem;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.content__title {
+		color: var(--text-color);
+		font-size: var(--h3-font-size);
+		font-weight: var(--font-semi-bold);
+	}
+
+	.content__para {
+		color: var(--text-color);
+		font-size: var(--normal-font-size);
 	}
 }

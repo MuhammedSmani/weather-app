@@ -6,35 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./weather-news.css" />
 		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-		<title>Weather - News</title>
+		<title>Weather - News ♥</title>
 		<script src="./weather-news.js" defer></script>
 	</head>
 	<body>
 		<header class="header">
 			<nav class="nav">
 				<div class="nav__container container">
-					<a href="#" class="logo__wrapper">Weather</a>
-					<form class="nav__search search-form" action="">
-						<div>
-							<input type="text" class="search search-input" name="city" placeholder="Search city..." autocomplete="off" />
-						</div>
-						<div class="search-results"></div>
-					</form>
-					<div class="nav__cf">
-						<a href="#">°F</a>
-						<a href="#" class="nav__cf-active">°C</a>
-					</div>
-					<div class="nav__open_menu">
-						<input class="open__menu_checkbox" id="active" type="checkbox" onclick="togNav()" />
-						<div>
-							<span class="first__span"></span>
-							<span class="last__span"></span>
-						</div>
-					</div>
-				</div>
-			</nav>
-			<nav class="nav__two">
-				<div class="nav__two_container container">
 					<div class="nav__menu">
 						<ul class="nav__list">
 							<li class="nav__item">
@@ -49,6 +27,18 @@
 							<li class="nav__item">
 								<a href="../../../assets/pages/weekend/weekend.html" class="nav__link">Weekend </a>
 							</li>
+							<form class="nav__search search-form" action="">
+								<div>
+									<input
+										type="text"
+										class="search search-input"
+										name="city"
+										placeholder="Search city..."
+										autocomplete="off"
+									/>
+								</div>
+								<div class="search-results"></div>
+							</form>
 							<li class="nav__item">
 								<a href="../../../assets/pages/monthly/monthly.html" class="nav__link">Monthly </a>
 							</li>
@@ -59,70 +49,87 @@
 								<a href="../../../assets/pages/radar/radar.html" class="nav__link">Radar </a>
 							</li>
 							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__link">Weather News </a>
+								<a href="../weather-news/weather-news.html" class="nav__link">News </a>
 							</li>
 						</ul>
+					</div>
+					<div class="nav__open_menu">
+						<input
+							class="open__menu_checkbox"
+							id="active"
+							type="checkbox"
+							onclick="togNav()"
+						/>
+						<div>
+							<span class="first__span"></span>
+							<span class="last__span"></span>
+						</div>
 					</div>
 				</div>
 			</nav>
 			<!-- ******************* NAV MOBILE ******************* -->
 			<div id="mySidenav" class="sidenav">
 				<div class="nav__menu_mobile" id="menu">
-					<form class="nav__search search-form" action="">
-						<div>
-							<input type="text" class="search search-input" name="city" placeholder="Search city..." autocomplete="off" />
-						</div>
-						<div class="search-results"></div>
-					</form>
-					<div class="nav__cf">
-						<a href="#">°F</a>
-						<a href="#">°C</a>
-					</div>
 					<div class="nav__text_buttons">
 						<ul class="nav__list_mobile">
-							<li class="nav__item">
+							<form class="nav__search search-form" action="">
+								<div>
+									<input
+										type="text"
+										class="search search-input"
+										name="city"
+										placeholder="Search city..."
+										autocomplete="off"
+									/>
+								</div>
+								<div class="search-results"></div>
+							</form>
+							<li class="nav__item today-page">
 								<a href="../../../assets/pages/today/today.html" class="nav__link">Today </a>
 							</li>
-							<li class="nav__item">
-								<a href="../../../assets/pages/hourly/hourly.html" class="nav__link">Hourly </a>
+							<li class="nav__item hourly-page">
+								<a href="../../../assets/pages/today/today.html" class="nav__link">Today </a>
+							</li>
+							<li class="nav__item sevenday-page">
+								<a href="../../../assets/pages/today/today.html" class="nav__link">Today </a>
+							</li>
+							<li class="nav__item weekend-page">
+								<a href="../../../assets/pages/today/today.html" class="nav__link">Today </a>
+							</li>
+							<li class="nav__item monthly-page">
+								<a href="../../../assets/pages/today/today.html" class="nav__link">Today </a>
+							</li>
+							<li class="nav__item airquality-page">
+								<a href="../../../assets/pages/today/today.html" class="nav__link">Today </a>
+							</li>
+							<li class="nav__item radar-page">
+								<a href="../../../assets/pages/radar/radar.html" class="nav__link">Today </a>
 							</li>
 							<li class="nav__item">
-								<a href="../../../assets/pages/sevenday/sevenday.html" class="nav__link">7 Day </a>
-							</li>
-							<li class="nav__item">
-								<a href="../../../assets/pages/weekend/weekend.html" class="nav__link">Weekend </a>
-							</li>
-							<li class="nav__item">
-								<a href="../../../assets/pages/monthly/monthly.html" class="nav__link">Monthly </a>
-							</li>
-							<li class="nav__item">
-								<a href="../../../assets/pages/air-quality-forecast/air-quality-forecast.html" class="nav__link">Air Quality </a>
-							</li>
-							<li class="nav__item">
-								<a href="../../../assets/pages/radar/radar.html" class="nav__link">Radar </a>
-							</li>
-							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__link">Weather News </a>
+								<a href="../weather-news/weather-news.html" class="nav__item"
+									>News
+								</a>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</header>
+
 		<main>
-			<section class="weather__news__section section" id="weather-news-section">
+			<section class="weather__news__section section">
 				<div class="weather__news__container container">
 					<div class="weather__news__content">
 						<div class="weather__news__top__box">
 							<h2>Weather Top Story</h2>
 							<div class="weather__news__top__story">
-								<h1 id="weather-top-title"></h1>
 								<div class="weather-top-info">
 									<p>Author: <span id="weather-top-author"></span></p>
 									<p>Source: <span id="weather-top-source"></span></p>
 									<p>Date: <span id="weather-top-date"></span></p>
 								</div>
 								<img id="weather-top-image" src="" alt="">
+								<h1 id="weather-top-title"></h1>
 								<p id="weather-top-description"></p>
 								<p id="weather-top-content"></p>
 								<div class="weather__news__button button">
@@ -131,16 +138,41 @@
 							</div>
 						</div>
 
-                        <div class="weather__news__aside__box">
+                        <aside class="weather__news__aside__box">
 							<h2>Weather News</h2>
 							<div class="weather__news__aside__cards"></div>
-						</div>
+						</aside>
 					</div>
 				</div>
 			</section>
 		</main>
-		<footer id="footer"></footer>
+
+		<section class="social__media__section">
+			<div class="container">
+				<p>Get connected to us on social networks</p>
+				<div class="social__media__icons">
+					<a href="https://www.facebook.com"><i class="uil uil-facebook"></i></a>
+					<a href="https://www.instagram.com"><i class="uil uil-instagram"></i></a>
+					<a href="https://www.twitter.com"><i class="uil uil-twitter"></i></a>
+					<a href="https://www.youtube.com"><i class="uil uil-youtube"></i></a>
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="footer__content container">
+				<div class="footer__apps">
+					<p>Download Weather App</p>
+					<a href="#"><img src="../../images/app-store-badge.svg"></a>
+					<a href="#"><img src="../../images/Google_Play_Store_badge_EN.svg"></a>
+				</div>
+				<p class="footer__copyright">&#169; 2022 - 2023 Weather by LIFE from Gjirafa</p>
+				<p class="footer__info">
+					Weather is a team of Frontend Developers that 
+					has been practising weather web development in LIFE courses.<br>
+					Headquarters in Gjirafa, KS. <i class="uil uil-sun"></i>
+				</p>
+			</div>
+		</footer>
 		<script src="/assets/components/header/header.js"></script>
-		<script src="/assets/components/footer/footer.js"></script>
 	</body>
 </html>

@@ -11,7 +11,7 @@
 	display: flex;
 	flex-direction: column;
 	background-color: var(--body-color);
-	border-radius: 1rem;
+	border-radius: 0.1rem;
 }
 
 .todays__forecast_city {
@@ -55,14 +55,16 @@
 }
 
 .todays__forecast_four-all p {
-	color: var(--fifth-color);
+	/* color: var(--text-color)!important; */
 	font-size: var(--big-font-size);
+	color: var(--fifth-color);
 }
 
 .todays__forecast_four-all i {
 	font-size: 6rem;
 	line-height: 0;
 	color: var(--third-color);
+	/* color: #42787f; */
 }
 
 .todays__forecast_rain {
@@ -74,7 +76,7 @@
 
 .todays__forecast_rain i {
 	font-size: var(--h2-font-size);
-	color: var(--fifth-color);
+	color: #42787f;
 }
 
 .todays__forecast_rain p {
@@ -87,18 +89,3 @@
 	justify-content: center;
 	padding: 1rem;
 }
-
-/* .todays__forecast_button a {
-	font-size: var(--medium-font-size);
-	color: var(--text-color);
-	font-weight: var(--font-medium);
-	transition: 0.3s ease;
-	padding: 0.5rem 1rem;
-	border-radius: 2rem;
-	border: 1px solid var(--sixth-color);
-}
-
-.todays__forecast_button a:hover {
-	color: var(--body-color);
-	background-color: var(--sixth-color);
-} */

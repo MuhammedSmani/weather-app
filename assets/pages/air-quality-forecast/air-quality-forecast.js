@@ -32,15 +32,15 @@ function getCityCountry(data) {
 
 const progressBars = document.querySelectorAll('div[role="progressbar"]');
 var green =
-  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(green calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(green calc(var(--pgPercentage) * 1%), #f2f2f2 0)";
 var yellow =
-  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(yellow calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(yellow calc(var(--pgPercentage) * 1%), #f2f2f2 0)";
 var orange =
-  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(orange calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(orange calc(var(--pgPercentage) * 1%), #f2f2f2 0)";
 var red =
-  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(red calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(red calc(var(--pgPercentage) * 1%), #f2f2f2 0)";
 var brown =
-  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(brown calc(var(--pgPercentage) * 1%), #e7ecf1 0)";
+  "radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0), conic-gradient(brown calc(var(--pgPercentage) * 1%), #f2f2f2 0)";
 
 /*==================== GET PM2.5 DATA FUNCTIONS ====================*/
 
