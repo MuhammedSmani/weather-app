@@ -2,22 +2,12 @@
 @import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
 
-/* HOURLY IMAGE */
-.hourly__image {
-	height: 24rem;
-	width: 100%;
-	background: url('../../images/weather2.png');
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: cover;
-	margin-top: 60px;
-}
-
 /* HOURLY SECTION */
 
 .hourly__section {
 	display: flex;
 	justify-content: center;
+	margin-top: 4rem;
 }
 .hourly__container {
 	width: 100%;
@@ -26,20 +16,16 @@
 	display: flex;
 	flex-direction: column;
 	background-color: #ffffff;
-	/* border-radius: 1rem; */
 }
 .hourly__content i {
 	font-size: var(--big-font-size);
 	color: var(--fifth-color);
 	padding-right: 1rem;
 }
-
 .hourly__content i:last-child {
 	padding-right: 0;
 }
-
 .hourly__title {
-	/* border-bottom: solid 1px var(--fourth-color); */
 	padding: 1rem;
 }
 .hourly__title p:nth-child(3) {

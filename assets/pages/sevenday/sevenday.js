@@ -1,3 +1,11 @@
+/*==================== UPDATE MAIN PAGE BUTTONS ====================*/
+
+const weeklyButton = document.getElementById('weekly-button');
+
+function updateMainPageButton(city) {
+	weeklyButton.innerHTML = `<a href="../weekend/weekend.html?city=${city}">Weekend Weather</a>`
+}
+
 // const weeklyDescription = document.getElementById('weekly-main');
 const weeklyDescription = document.querySelector(".weekly__description");
 
@@ -8,11 +16,17 @@ const searchInput = document.getElementById("search-input");
 
 weeklyDescription.innerHTML = "";
 
+let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 function showData(data) {
   data.forecast.forecastday.forEach((day, index) => {
+    let date = new Date(day.date);
+    let dayOfWeek = daysOfWeek[date.getUTCDay()];
+    let formattedDate = dayOfWeek + " " + date.getUTCDate();
+
     weeklyDescription.innerHTML += `  <div class="weekly__main" id="weekly-${index}" >
     <div>
-        <span>${day.date}</span>
+        <span>${formattedDate}</span>
     </div>
     <div>
         <span><b>${Math.round(
@@ -35,7 +49,7 @@ function showData(data) {
   <div class="weekly__hidden" id="hidden-${index}">
   <div class="day-hidden"> 
   <div>
-    <h1> <b>${day.date}</b><span>|Day</span></h1>
+    <h2> <b>${formattedDate}</b><span> | Day</span></h2>
     <h1><b>${Math.round(day.day.maxtemp_c)}°</b></h1>
     <p>${day.day.condition.text}</p>
     <div>
@@ -85,7 +99,7 @@ function showData(data) {
   </div>
   <div class="night-hidden"> 
   <div>
-    <h1> <b>${day.date}</b><span>|Night</span></h1>
+    <h1> <b>${formattedDate}</b><span> | Night</span></h1>
     <h1><b>${Math.round(day.day.maxtemp_c)}°</b></h1>
     <p>${day.day.condition.text}</p>
     <div>
@@ -153,6 +167,28 @@ function showData(data) {
   });
 }
 
+// Function for showing the Title data
+function showTitleData(data){
+  const timeString = data.location.localtime;
+  const time = new Date(timeString);
+
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+  let ampm = "AM";
+
+  if (hours > 12) {
+    hours -= 12;
+    ampm = "PM";
+  }
+
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  weeklyTitle.innerHTML += `
+  <p class="content__title">7 Day Weather - <span id="city">${data.location.name}, ${data.location.country}</span></p>
+  <p>As of <span id="weekly-time">${hours}:${minutes} ${ampm}</span>  CET</p>
+  `
+}
+
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/
 
 // Constants
@@ -191,6 +227,7 @@ function fetchWeatherData(city) {
     .then((response) => response.json())
     .then((data) => {
       updateNavbarLinks(city);
+      updateMainPageButton(city);
       showTitleData(data);
       showData(data);
     });
@@ -235,15 +272,6 @@ if (cityFromUrl) {
   searchInputs[0].value = cityFromUrl;
   searchInputs[1].value = cityFromUrl;
   fetchWeatherData(cityFromUrl);
-}
-
-function showTitleData(data){
-  
-  weeklyTitle.innerHTML += `
-  <h1>7 Day Weather - <span id="city">${data.location.name}</span></h1>
-  <p>As of <span id="current-time">Date(timeString).:44 pm</span>  CET</p>
-  `
-
 }
 
 /*==================== AUTOCOMPLETE SEARCH FORM ====================*/
