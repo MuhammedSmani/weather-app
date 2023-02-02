@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 // function onDropdown() {
 // 	const dropdowns = document.querySelectorAll('.dropdown');
 // 	const arrows = document.querySelectorAll('.arrow');
@@ -35,44 +35,51 @@
 // 	ondropdown();
 // };
 
-
 function getWeekendData(data) {
-	const filteredData = data.forecast.forecastday.filter((x) => {
-		const dt = new Date(x.date);
-		const day = dt.getUTCDay();
-		const today = new Date().getUTCDay();
-		if (dt.getDate() === new Date().getDate()) {
-			return false;
-		}
-		// remove next weeekend
-		if (
-			dt.getTime() > new Date().getTime() &&
-			dt.getUTCDay() - today < 1 &&
-			dt.getUTCDay() !== 0
-		) {
-			return false;
-		}
+  const currentWeekend = document.querySelector(".current-weekend");
+  currentWeekend.innerHTML = "";
+  const city = "- " + data.location.name + ", " + data.location.country;
+  const searchName = document.querySelector("#search-name");
+  searchName.innerHTML = city;
+  const filteredData = data.forecast.forecastday.filter((x) => {
+    const dt = new Date(x.date);
+    const day = dt.getUTCDay();
+    const today = new Date().getUTCDay();
+    // if (dt.getDate() === new Date().getDate()) {
+    //   return false;
+    // }
+    // remove next weeekend
+    // if (
+    //   dt.getTime() > new Date().getTime() &&
+    //   dt.getUTCDay() - today < 1 &&
+    //   false &&
+    //   dt.getUTCDay() !== 0
+    // ) {
+    //   return false;
+    // }
 
-		return day === 5 || day === 6 || day === 0;
-	});
+    console.log(x.date, day, "Date");
+    return day === 5 || day === 6 || day === 0;
+  });
 
-	// Loop through the weekend data and generate the HTML
-	const thisWeekend = filteredData.slice(0, 3);
-	thisWeekend.forEach((day) => {
-		const { date, day: dayData, hour } = day;
-		const { maxtemp_c, mintemp_c, avgtemp_c, maxwind_kph } = dayData;
-		const { condition } = hour[0];
-		const { text, icon } = condition;
-		const humidities = [hour[0].humidity, hour[12].humidity];
-		const temperature = Math.round(avgtemp_c);
-		// Sat 30, Sun 31, Mon 1
-		const dayName = new Date(date).toLocaleDateString('en-UK', {
-			weekday: 'short',
-			day: 'numeric',
-		});
-		const windSpeed = Math.round(maxwind_kph);
-		const description = text;
-		const weatherDiv = `
+  // Loop through the weekend data and generate the HTML
+  const thisWeekend = filteredData.slice(0, 3);
+  console.log(thisWeekend);
+  thisWeekend.forEach((day) => {
+    const { date, day: dayData, hour } = day;
+    const { maxtemp_c, mintemp_c, avgtemp_c, maxwind_kph } = dayData;
+    const { condition } = hour[0];
+    const { text, icon } = condition;
+    const humidities = [hour[0].humidity, hour[12].humidity];
+    const temperature = Math.round(avgtemp_c);
+    // Sat 30, Sun 31, Mon 1
+    const dayName = new Date(date).toLocaleDateString("en-UK", {
+      weekday: "short",
+      day: "numeric",
+    });
+    const windSpeed = Math.round(maxwind_kph);
+    const description = text;
+    const weatherDiv = `
       <div class="summary">
       <div class="for-weekend">
       <div class="weekend-days">
@@ -95,7 +102,7 @@ function getWeekendData(data) {
               <span>Wind</span>
               <span>${windSpeed} km/h</span>
           </div>
-          <div class="arrow">
+          <div class="arrow hidden">
               <i class="uil uil-arrow-down"></i>
           </div>
           <div class="close_arrow hidden">
@@ -103,7 +110,7 @@ function getWeekendData(data) {
           </div>
       </div>
       </div>
-      <div class="dropdown hidden">
+      <div class="dropdown">
       <div class="dropdown-grade">
           <span> ${dayName} | Day </span>
           <div class="daily-content">
@@ -124,20 +131,19 @@ function getWeekendData(data) {
       </div>
       <div class="dropdown-info">
         ${humidities.map((humidity) => {
-			return `<div class="humidity broder-bottom">
+          return `<div class="humidity broder-bottom">
           <i class="uil uil-tear"></i>
           <div class="index">
               <span>Humidity</span>
               <span>${humidity}%</span>
           </div>
           </div>`;
-		})}
+        })}
       </div>
       </div>
   </div>`;
-		const currentWeekend = document.querySelector('.current-weekend');
-		currentWeekend.innerHTML = weatherDiv;
-	});
+    currentWeekend.innerHTML += weatherDiv;
+  });
 }
 
 // fetchWeather();
@@ -221,11 +227,6 @@ function getWeekendData(data) {
 // 	fetchWeatherData(cityFromUrl);
 // }
 
-
-
-
-
-
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/
 
 // Constants
@@ -263,8 +264,8 @@ function fetchWeatherData(city) {
   )
     .then((response) => response.json())
     .then((data) => {
-		updateNavbarLinks(city);
-		getWeekendData(data);
+      updateNavbarLinks(city);
+      getWeekendData(data);
     });
 }
 
@@ -313,99 +314,99 @@ if (cityFromUrl) {
 
 // Declaring an array that contains a list of cities
 let searchable = [
-	"London",
-	"Pristina",
-	"Moscow",
-	"Paris",
-	"Berlin",
-	"Berne",
-	"Sofia",
-	"Madrid",
-	"Ljubljana",
-	"Tirana",
-	"Sarajevo",
-	"Athens",
-	"Rome",
-	"Zagreb",
-	"Stockholm",
-	"Valletta",
-	"Chisinau",
-	"Skopje",
-	"Luxembourg",
-	"Vilnius",
-	"Vaduz",
-	"Riga",
-	"Dublin",
-	"Reykjavik",
-	"Budapest",
-	"Vatican City",
-	"Helsinki",
-	"Tallinn",
-	"Copenhagen",
-	"Prague",
-	"Vienna",
-	"Minsk",
-	"Andorra La Vella",
-	"Monaco",
-	"Vilnius",
-	"Podgorica",
-	"Amsterdam",
-	"Oslo",
-	"Warsaw",
-	"Lisbon",
-	"Bucharest",
-	"Belgrade",
-	"San Marino",
-	"Bratislava",
-	"Prague",
-	"Kiev",
-  ];
-  
-  // const searchInputs = document.querySelectorAll('.search-input');
-  const searchField = document.querySelector(".search");
-  const searchResults = document.querySelector(".search-results");
-  
-  searchInputs.forEach((searchInput) => {
-	searchInput.addEventListener("keyup", () => {
-	  // Initializing an empty array to store search results
-	  let results = [];
-	  // Storing the current value of the search input
-	  let resultInput = searchInput.value;
-	  // If the search input has a value
-	  if (resultInput.length) {
-		// Filtering the 'searchable' array for items that include the current search input value
-		results = searchable.filter((item) => {
-		  return item.toLowerCase().includes(resultInput.toLowerCase());
-		});
-		//If there's no match, clearing the search results
-		if (!results.length) {
-		  searchResults.classList.remove("search-show");
-		  searchResults.innerHTML = "";
-		  return;
-		}
-	  } else {
-		searchResults.classList.remove("search-show");
-		searchResults.innerHTML = "";
-		return;
-	  }
-  
-	  renderResults(results);
-	});
+  "London",
+  "Pristina",
+  "Moscow",
+  "Paris",
+  "Berlin",
+  "Berne",
+  "Sofia",
+  "Madrid",
+  "Ljubljana",
+  "Tirana",
+  "Sarajevo",
+  "Athens",
+  "Rome",
+  "Zagreb",
+  "Stockholm",
+  "Valletta",
+  "Chisinau",
+  "Skopje",
+  "Luxembourg",
+  "Vilnius",
+  "Vaduz",
+  "Riga",
+  "Dublin",
+  "Reykjavik",
+  "Budapest",
+  "Vatican City",
+  "Helsinki",
+  "Tallinn",
+  "Copenhagen",
+  "Prague",
+  "Vienna",
+  "Minsk",
+  "Andorra La Vella",
+  "Monaco",
+  "Vilnius",
+  "Podgorica",
+  "Amsterdam",
+  "Oslo",
+  "Warsaw",
+  "Lisbon",
+  "Bucharest",
+  "Belgrade",
+  "San Marino",
+  "Bratislava",
+  "Prague",
+  "Kiev",
+];
+
+// const searchInputs = document.querySelectorAll('.search-input');
+const searchField = document.querySelector(".search");
+const searchResults = document.querySelector(".search-results");
+
+searchInputs.forEach((searchInput) => {
+  searchInput.addEventListener("keyup", () => {
+    // Initializing an empty array to store search results
+    let results = [];
+    // Storing the current value of the search input
+    let resultInput = searchInput.value;
+    // If the search input has a value
+    if (resultInput.length) {
+      // Filtering the 'searchable' array for items that include the current search input value
+      results = searchable.filter((item) => {
+        return item.toLowerCase().includes(resultInput.toLowerCase());
+      });
+      //If there's no match, clearing the search results
+      if (!results.length) {
+        searchResults.classList.remove("search-show");
+        searchResults.innerHTML = "";
+        return;
+      }
+    } else {
+      searchResults.classList.remove("search-show");
+      searchResults.innerHTML = "";
+      return;
+    }
+
+    renderResults(results);
   });
-  
-  //Function that renders the search results
-  function renderResults(results) {
-	if (!results.length) {
-	  return searchResults.classList.remove("search-show");
-	}
-	//Mapping the filtered results to create the HTML for each result
-	let searchContent = results
-	  .map((item) => {
-		return `<li><a href="../../../assets/pages/weekend/weekend.html?city=${item}">${item}</a></li>`;
-	  })
-	  //Joining the HTML of all results into a single string
-	  .join("");
-  
-	searchResults.classList.add("search-show");
-	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
+});
+
+//Function that renders the search results
+function renderResults(results) {
+  if (!results.length) {
+    return searchResults.classList.remove("search-show");
   }
+  //Mapping the filtered results to create the HTML for each result
+  let searchContent = results
+    .map((item) => {
+      return `<li><a href="../../../assets/pages/weekend/weekend.html?city=${item}">${item}</a></li>`;
+    })
+    //Joining the HTML of all results into a single string
+    .join("");
+
+  searchResults.classList.add("search-show");
+  searchResults.innerHTML = `<ul>${searchContent}</ul>`;
+}
