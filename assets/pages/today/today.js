@@ -121,28 +121,6 @@ function getDayNightTemp(data) {
   )}°`;
 }
 
-/*==================== ICONS MAPPING ====================*/
-
-const iconsMapping = {
-  "113.png": "uil-sun",
-  "116.png": "uil-cloud-sun",
-  "119.png": "uil-clouds",
-  "122.png": "uil-cloud",
-  "143.png": "uil-cloud",
-  "176.png": "uil-cloud-sun-rain-alt",
-  "311.png": "uil-cloud-showers-heavy",
-  "326.png": "uil-cloud-meatball",
-  "329.png": "uil-cloud-sun-meatball",
-  "332.png": "uil-cloud-meatball",
-  "335.png": "uil-cloud-sun-meatball",
-  "338.png": "uil-cloud-meatball",
-  "xxx.png": "uil-rainbow",
-};
-
-function getIconClass(iconName) {
-  return iconsMapping[iconName];
-}
-
 /*==================== TODAY'S FORECAST SECTION ====================*/
 
 // Function to generate Today's Forecast section for each period
@@ -460,55 +438,7 @@ if (cityFromUrl) {
 
 /*==================== AUTOCOMPLETE SEARCH FORM ====================*/
 
-// Declaring an array that contains a list of cities
-let searchable = [
-  "London",
-  "Pristina",
-  "Moscow",
-  "Paris",
-  "Berlin",
-  "Berne",
-  "Sofia",
-  "Madrid",
-  "Ljubljana",
-  "Tirana",
-  "Sarajevo",
-  "Athens",
-  "Rome",
-  "Zagreb",
-  "Stockholm",
-  "Valletta",
-  "Chisinau",
-  "Skopje",
-  "Luxembourg",
-  "Vilnius",
-  "Vaduz",
-  "Riga",
-  "Dublin",
-  "Reykjavik",
-  "Budapest",
-  "Vatican City",
-  "Helsinki",
-  "Tallinn",
-  "Copenhagen",
-  "Prague",
-  "Vienna",
-  "Minsk",
-  "Andorra La Vella",
-  "Monaco",
-  "Vilnius",
-  "Podgorica",
-  "Amsterdam",
-  "Oslo",
-  "Warsaw",
-  "Lisbon",
-  "Bucharest",
-  "Belgrade",
-  "San Marino",
-  "Bratislava",
-  "Prague",
-  "Kiev",
-];
+
 
 // const searchInputs = document.querySelectorAll('.search-input');
 const searchField = document.querySelector(".search");
