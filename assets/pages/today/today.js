@@ -438,8 +438,6 @@ if (cityFromUrl) {
 
 /*==================== AUTOCOMPLETE SEARCH FORM ====================*/
 
-
-
 // const searchInputs = document.querySelectorAll('.search-input');
 const searchField = document.querySelector(".search");
 const searchResults = document.querySelector(".search-results");
@@ -488,3 +486,17 @@ function renderResults(results) {
   searchResults.classList.add("search-show");
   searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
+
+/*==================== INTRO ANIMATION ====================*/
+
+const weatherAnimation = document.querySelector('.weather__animation');
+const sunLogo = document.getElementById('sun-logo')
+
+setTimeout(() => {
+  sunLogo.style.display = 'none';
+}, 3000);
+
+setTimeout(() => {
+    weatherAnimation.style.display = 'none';
+}, 3000);
+

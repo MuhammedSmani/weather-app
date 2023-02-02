@@ -7,6 +7,9 @@
 	background-color: var(--fourth-color);
 	background: linear-gradient(to left, var(--fifth-color) 0%, var(--third-color) 100%);
 	padding: 0.5rem 0;
+	position: -webkit-sticky;
+	position: sticky;
+	bottom: 0;
 }
 .social__media__section .container {
 	display: flex;
