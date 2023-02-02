@@ -26,10 +26,7 @@
 						</div>
 						<div class="search-results"></div>
 					</form>
-					<div class="nav__cf">
-						<a href="#">°F</a>
-						<a href="#" class="nav__cf-active">°C</a>
-					</div>
+					<!-- <div class="div">+</div> -->
 					<div class="nav__open_menu">
 						<input
 							class="open__menu_checkbox"
@@ -48,16 +45,16 @@
 				<div class="nav__two_container container">
 					<div class="nav__menu">
 						<ul class="nav__list">
-							<li class="nav__item today-page"></li>
-							<li class="nav__item hourly-page"></li>
-							<li class="nav__item sevenday-page"></li>
-							<li class="nav__item weekend-page"></li>
-							<li class="nav__item monthly-page"></li>
-							<li class="nav__item airquality-page"></li>
-							<li class="nav__item radar-page"></li>
+							<li class="nav__item today-page">Today</li>
+							<li class="nav__item hourly-page">Hourly</li>
+							<li class="nav__item sevenday-page">7 Day</li>
+							<li class="nav__item weekend-page">Weekend</li>
+							<li class="nav__item monthly-page">Monthly</li>
+							<li class="nav__item airquality-page">Air Quality</li>
+							<li class="nav__item radar-page">Radar</li>
 							<li class="nav__item">
 								<a href="../weather-news/weather-news.html" class="nav__link"
-									>Weather News</a
+									>News</a
 								>
 							</li>
 						</ul>
@@ -79,36 +76,35 @@
 						</div>
 						<div class="search-results"></div>
 					</form>
-					<div class="nav__cf">
-						<a href="#">°F</a>
-						<a href="#">°C</a>
-					</div>
 					<div class="nav__text_buttons">
 						<ul class="nav__list_mobile">
-							<li class="nav__item today-page"></li>
-							<li class="nav__item hourly-page"></li>
-							<li class="nav__item sevenday-page"></li>
-							<li class="nav__item weekend-page"></li>
-							<li class="nav__item monthly-page"></li>
-							<li class="nav__item airquality-page"></li>
-							<li class="nav__item radar-page"></li>
+							<li class="nav__item today-page">Today</li>
+							<li class="nav__item hourly-page">Hourly</li>
+							<li class="nav__item sevenday-page">7 Day</li>
+							<li class="nav__item weekend-page">Weekend</li>
+							<li class="nav__item monthly-page">Monthly</li>
+							<li class="nav__item airquality-page">Air Quality</li>
+							<li class="nav__item radar-page">Radar</li>
 							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__item"
-									>Weather News
-								</a>
+								<a href="../weather-news/weather-news.html" class="nav__link"
+									>News</a
+								>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
 		</header>
-		<main style="padding-top: 132px">
+		<main>
 			<section class="calendars section">
 				<div class="calendar__container container">
 					<div class="calendar__content">
-						<div class="realtime__city">
-							<p class="content__title city-country"></p>
-							<p class="content__para" id="realtime-time">As of 00:00 am CET</p>
+						<div class="hourly__title">
+							<h1 class="content__title">
+								Hourly Weather
+								<span class="hourly__city_name">- Pristina, Kosovo</span>
+							</h1>
+							<p id="monthly-realtime">As of 3:44 pm CET</p>
 						</div>
 						<div class="calendar__header">
 							<i id="prev" class="uil uil-angle-left"></i>
@@ -133,5 +129,6 @@
 		</main>
 		<script src="/index.js"></script>
 		<script src="/assets/pages/monthly/monthly.js" defer></script>
+		<script src="/assets/components/header/header.js" defer></script>
 	</body>
 </html>

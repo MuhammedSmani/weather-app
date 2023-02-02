@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="sevenday.css" />
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
 		<title>Weather - 7 Day ♥</title>
 		<script src="../.././../index.js" defer></script>
 		<script src="./sevenday.js" defer></script>
@@ -14,34 +14,20 @@
 		<header class="header">
 			<nav class="nav">
 				<div class="nav__container container">
-					<div class="nav__menu">
-						<ul class="nav__list">
-							<li class="nav__item today-page"></li>
-							<li class="nav__item hourly-page"></li>
-							<li class="nav__item sevenday-page"></li>
-							<li class="nav__item weekend-page"></li>
-							<form class="nav__search search-form" action="">
-								<div>
-									<input
-										type="text"
-										class="search search-input"
-										name="city"
-										placeholder="Search city..."
-										autocomplete="off"
-									/>
-								</div>
-								<div class="search-results"></div>
-							</form>
-							<li class="nav__item monthly-page"></li>
-							<li class="nav__item airquality-page"></li>
-							<li class="nav__item radar-page"></li>
-							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__link"
-									>News</a
-								>
-							</li>
-						</ul>
-					</div>
+					<a href="" class="logo__wrapper">Weather</a>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
+					<!-- <div class="div">+</div> -->
 					<div class="nav__open_menu">
 						<input
 							class="open__menu_checkbox"
@@ -56,55 +42,76 @@
 					</div>
 				</div>
 			</nav>
-			<!-- ******************* NAV MOBILE ******************* -->
-			<div id="mySidenav" class="sidenav">
-				<div class="nav__menu_mobile" id="menu">
-					<div class="nav__text_buttons">
-						<ul class="nav__list_mobile">
-							<form class="nav__search search-form" action="">
-								<div>
-									<input
-										type="text"
-										class="search search-input"
-										name="city"
-										placeholder="Search city..."
-										autocomplete="off"
-									/>
-								</div>
-								<div class="search-results"></div>
-							</form>
-							<li class="nav__item today-page"></li>
-							<li class="nav__item hourly-page"></li>
-							<li class="nav__item sevenday-page"></li>
-							<li class="nav__item weekend-page"></li>
-							<li class="nav__item monthly-page"></li>
-							<li class="nav__item airquality-page"></li>
-							<li class="nav__item radar-page"></li>
+			<nav class="nav__two">
+				<div class="nav__two_container container">
+					<div class="nav__menu">
+						<ul class="nav__list">
+							<li class="nav__item today-page">Today</li>
+							<li class="nav__item hourly-page">Hourly</li>
+							<li class="nav__item sevenday-page">7 Day</li>
+							<li class="nav__item weekend-page">Weekend</li>
+							<li class="nav__item monthly-page">Monthly</li>
+							<li class="nav__item airquality-page">Air Quality</li>
+							<li class="nav__item radar-page">Radar</li>
 							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__item"
-									>News
-								</a>
+								<a href="../weather-news/weather-news.html" class="nav__link"
+									>News</a
+								>
 							</li>
 						</ul>
 					</div>
 				</div>
-			</div>
+			</nav>
+			<!-- ******************* NAV MOBILE ******************* -->
+			<nav id="mySidenav" class="sidenav">
+				<div class="nav__menu_mobile" id="menu">
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
+					<div class="nav__text_buttons">
+						<ul class="nav__list_mobile">
+							<li class="nav__item today-page">Today</li>
+							<li class="nav__item hourly-page">Hourly</li>
+							<li class="nav__item sevenday-page">7 Day</li>
+							<li class="nav__item weekend-page">Weekend</li>
+							<li class="nav__item monthly-page">Monthly</li>
+							<li class="nav__item airquality-page">Air Quality</li>
+							<li class="nav__item radar-page">Radar</li>
+							<li class="nav__item">
+								<a href="../weather-news/weather-news.html" class="nav__link"
+									>News</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 		</header>
 
-        <main>
-            <section class="weekly__section section" id="weekly-section">    
-                <div class="weekly__container container">
-                    <div class="weekly__content">
-                        <div class="weekly__title"></div>
+		<main>
+			<section class="weekly__section section" id="weekly-section">
+				<div class="weekly__container container">
+					<div class="weekly__content">
+						<div class="weekly__title"></div>
 
-                        <div class="weekly__date">
-                            <div class="weekly__description"></div>
+						<div class="weekly__date">
+							<div class="weekly__description"></div>
 
-                        <div class="weekly__button" id="weekly-button"></div>
-                    </div>
-                </div>
-            </section>
-        </main>
+							<div class="weekly__button" id="weekly-button"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
 
 		<section class="social__media__section">
 			<div class="container">
@@ -121,17 +128,17 @@
 			<div class="footer__content container">
 				<div class="footer__apps">
 					<p>Download Weather App</p>
-					<a href="#"><img src="../../images/app-store-badge.svg"></a>
-					<a href="#"><img src="../../images/Google_Play_Store_badge_EN.svg"></a>
+					<a href="#"><img src="../../images/app-store-badge.svg" /></a>
+					<a href="#"><img src="../../images/Google_Play_Store_badge_EN.svg" /></a>
 				</div>
 				<p class="footer__copyright">&#169; 2022 - 2023 Weather by LIFE from Gjirafa</p>
 				<p class="footer__info">
-					Weather is a team of Frontend Developers that 
-					has been practising weather web development in LIFE courses.<br>
+					Weather is a team of Frontend Developers that has been practising weather web
+					development in LIFE courses.<br />
 					Headquarters in Gjirafa, KS. <i class="uil uil-sun"></i>
 				</p>
 			</div>
 		</footer>
 		<script src="/assets/components/header/header.js"></script>
-    </body>
+	</body>
 </html>
