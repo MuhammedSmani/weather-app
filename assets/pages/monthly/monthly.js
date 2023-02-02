@@ -1,5 +1,7 @@
 function getHourlyRealtime(data) {
-	const hourlyRealtime = document.getElementById('realtime-time');
+	const monthlyRealtime = document.getElementById('monthly-realtime');
+	const hourlyCityName = document.querySelector('.hourly__city_name');
+
 	// console.log(hourlyRealtime.innerText);
 
 	const timeString = data.location.localtime;
@@ -15,7 +17,8 @@ function getHourlyRealtime(data) {
 	}
 
 	minutes = minutes < 10 ? `0${minutes}` : minutes;
-	hourlyRealtime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
+	monthlyRealtime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
+	hourlyCityName.innerHTML = `- ${data.location.name}, ${data.location.country}`;
 }
 
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/

@@ -98,7 +98,7 @@ body {
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
-	scale: 0.9;
+	transform: scale(0.9);
 	transition: 0.3s ease;
 }
 
@@ -169,3 +169,10 @@ body {
 	color: var(--body-color);
 	font-size: var(--normal-font-size);
 } */
+
+.hourly__title {
+	padding: 1rem;
+}
+.hourly__title p:nth-child(3) {
+	padding: 1rem 0;
+}

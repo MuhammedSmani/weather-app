@@ -14,34 +14,20 @@
 		<header class="header">
 			<nav class="nav">
 				<div class="nav__container container">
-					<div class="nav__menu">
-						<ul class="nav__list">
-							<li class="nav__item today-page"></li>
-							<li class="nav__item hourly-page"></li>
-							<li class="nav__item sevenday-page"></li>
-							<li class="nav__item weekend-page"></li>
-							<form class="nav__search search-form" action="">
-								<div>
-									<input
-										type="text"
-										class="search search-input"
-										name="city"
-										placeholder="Search city..."
-										autocomplete="off"
-									/>
-								</div>
-								<div class="search-results"></div>
-							</form>
-							<li class="nav__item monthly-page"></li>
-							<li class="nav__item airquality-page"></li>
-							<li class="nav__item radar-page"></li>
-							<li class="nav__item">
-								<a href="../weather-news/weather-news.html" class="nav__link"
-									>News</a
-								>
-							</li>
-						</ul>
-					</div>
+					<a href="" class="logo__wrapper">Weather</a>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
+					<!-- <div class="div">+</div> -->
 					<div class="nav__open_menu">
 						<input
 							class="open__menu_checkbox"
@@ -56,31 +42,17 @@
 					</div>
 				</div>
 			</nav>
-			<!-- ******************* NAV MOBILE ******************* -->
-			<div id="mySidenav" class="sidenav">
-				<div class="nav__menu_mobile" id="menu">
-					<div class="nav__text_buttons">
-						<ul class="nav__list_mobile">
-							<form class="nav__search search-form" action="">
-								<div>
-									<input
-										type="text"
-										class="search search-input"
-										name="city"
-										placeholder="Search city..."
-										autocomplete="off"
-									/>
-								</div>
-								<div class="search-results"></div>
-							</form>
-							<li class="nav__item today-page"></li>
-							<li class="nav__item hourly-page"></li>
-							<li class="nav__item sevenday-page"></li>
-							<li class="nav__item weekend-page"></li>
-
-							<li class="nav__item monthly-page"></li>
-							<li class="nav__item airquality-page"></li>
-							<li class="nav__item radar-page"></li>
+			<nav class="nav__two">
+				<div class="nav__two_container container">
+					<div class="nav__menu">
+						<ul class="nav__list">
+							<li class="nav__item today-page">Today</li>
+							<li class="nav__item hourly-page">Hourly</li>
+							<li class="nav__item sevenday-page">7 Day</li>
+							<li class="nav__item weekend-page">Weekend</li>
+							<li class="nav__item monthly-page">Monthly</li>
+							<li class="nav__item airquality-page">Air Quality</li>
+							<li class="nav__item radar-page">Radar</li>
 							<li class="nav__item">
 								<a href="../weather-news/weather-news.html" class="nav__link"
 									>News</a
@@ -89,7 +61,40 @@
 						</ul>
 					</div>
 				</div>
-			</div>
+			</nav>
+			<!-- ******************* NAV MOBILE ******************* -->
+			<nav id="mySidenav" class="sidenav">
+				<div class="nav__menu_mobile" id="menu">
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
+					<div class="nav__text_buttons">
+						<ul class="nav__list_mobile">
+							<li class="nav__item today-page">Today</li>
+							<li class="nav__item hourly-page">Hourly</li>
+							<li class="nav__item sevenday-page">7 Day</li>
+							<li class="nav__item weekend-page">Weekend</li>
+							<li class="nav__item monthly-page">Monthly</li>
+							<li class="nav__item airquality-page">Air Quality</li>
+							<li class="nav__item radar-page">Radar</li>
+							<li class="nav__item">
+								<a href="../weather-news/weather-news.html" class="nav__link"
+									>News</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 		</header>
 		<section class="air__quality__image">
 			<div class="air__quality__container">
