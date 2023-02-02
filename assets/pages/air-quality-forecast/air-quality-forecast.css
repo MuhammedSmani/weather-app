@@ -34,6 +34,7 @@
 .air__quality__today,
 .all__pollutants {
 	border-radius: 1rem;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 }
 .all__pollutants {
 	background-color: #ffffff;
