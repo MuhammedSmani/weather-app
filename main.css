@@ -46,7 +46,7 @@ body {
 	font-size: var(--normal-font-size);
 	background-color: var(--body-color);
 	color: var(--text-color);
-	background-color: #f2f2f2;
+	/* background-color: #f2f2f2; */
 }
 
 body::-webkit-scrollbar {
@@ -96,7 +96,6 @@ input:focus {
 	font-size: var(--h3-font-size);
 }
 
-
 .button a {
 	font-size: var(--medium-font-size);
 	color: var(--text-color);
@@ -108,7 +107,6 @@ input:focus {
 
 	color: var(--body-color);
 	background-color: var(--sixth-color);
-	
 }
 
 .button a:hover {

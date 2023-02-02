@@ -4,9 +4,134 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link rel="stylesheet" href="/main.css" /> -->
+		<link rel="stylesheet" href="/assets/pages/monthly/monthly.css" />
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
 		<title>Monthly</title>
 	</head>
 	<body>
-		<header id="header" class="header"></header>
+		<header class="header">
+			<nav class="nav">
+				<div class="nav__container container">
+					<a href="" class="logo__wrapper">Weather</a>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
+					<div class="nav__cf">
+						<a href="#">°F</a>
+						<a href="#" class="nav__cf-active">°C</a>
+					</div>
+					<div class="nav__open_menu">
+						<input
+							class="open__menu_checkbox"
+							id="active"
+							type="checkbox"
+							onclick="togNav()"
+						/>
+						<div>
+							<span class="first__span"></span>
+							<span class="last__span"></span>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<nav class="nav__two">
+				<div class="nav__two_container container">
+					<div class="nav__menu">
+						<ul class="nav__list">
+							<li class="nav__item today-page"></li>
+							<li class="nav__item hourly-page"></li>
+							<li class="nav__item sevenday-page"></li>
+							<li class="nav__item weekend-page"></li>
+							<li class="nav__item monthly-page"></li>
+							<li class="nav__item airquality-page"></li>
+							<li class="nav__item radar-page"></li>
+							<li class="nav__item">
+								<a href="../weather-news/weather-news.html" class="nav__link"
+									>Weather News</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- ******************* NAV MOBILE ******************* -->
+			<nav id="mySidenav" class="sidenav">
+				<div class="nav__menu_mobile" id="menu">
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
+					<div class="nav__cf">
+						<a href="#">°F</a>
+						<a href="#">°C</a>
+					</div>
+					<div class="nav__text_buttons">
+						<ul class="nav__list_mobile">
+							<li class="nav__item today-page"></li>
+							<li class="nav__item hourly-page"></li>
+							<li class="nav__item sevenday-page"></li>
+							<li class="nav__item weekend-page"></li>
+							<li class="nav__item monthly-page"></li>
+							<li class="nav__item airquality-page"></li>
+							<li class="nav__item radar-page"></li>
+							<li class="nav__item">
+								<a href="../weather-news/weather-news.html" class="nav__item"
+									>Weather News
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main style="padding-top: 132px">
+			<section class="calendars section">
+				<div class="calendar__container container">
+					<div class="calendar__content">
+						<div class="realtime__city">
+							<p class="content__title city-country"></p>
+							<p class="content__para" id="realtime-time">As of 00:00 am CET</p>
+						</div>
+						<div class="calendar__header">
+							<i id="prev" class="uil uil-angle-left"></i>
+							<p class="current-date">September 2022</p>
+							<i id="next" class="uil uil-angle-right"></i>
+						</div>
+						<div class="calendar">
+							<ul class="weeks">
+								<li>Sun</li>
+								<li>Mon</li>
+								<li>Tue</li>
+								<li>Wed</li>
+								<li>Thu</li>
+								<li>Fri</li>
+								<li>Sat</li>
+							</ul>
+							<ul class="days"></ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<script src="/index.js"></script>
+		<script src="/assets/pages/monthly/monthly.js" defer></script>
 	</body>
 </html>

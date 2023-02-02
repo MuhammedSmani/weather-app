@@ -5,13 +5,14 @@
 
 .weather__today_container {
 	width: 100%;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+	border-radius: 0.5rem;
 }
 
 .weather__today_content {
 	display: flex;
 	flex-direction: column;
 	background-color: var(--body-color);
-	/* border-radius: 1rem; */
 }
 
 .weather__today_city {
