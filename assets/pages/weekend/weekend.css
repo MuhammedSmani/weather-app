@@ -1,9 +1,14 @@
 @import "/assets/components/header/header.css";
 @import "/assets/components/footer/footer.css";
 @import "/assets/pages/today/today.css";
+@import "/assets/pages/contact/modalContact.css";
 
 body {
   background: var(--body-second-color);
+}
+
+.hidden {
+  display: none !important;
 }
 
 .title-margin {
@@ -27,20 +32,6 @@ body {
 
 .hidden {
   display: none !important;
-}
-
-.arrow,
-.close_arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background-color: var(--third-color);
-  margin: 0 0.5rem;
-  font-size: 1.7rem;
-  cursor: pointer;
 }
 
 .section-weekend {
@@ -167,4 +158,14 @@ button[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.arrow {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: var(--big-font-size);
+  color: var(--fifth-color);
+  padding-right: 1rem;
 }
