@@ -1,4 +1,5 @@
 @import '/main.css';
+@import '/assets/styles/animation.css';
 @import '/assets/components/header/header.css';
 @import '/assets/components/today-image/today-image.css';
 @import '/assets/components/todays-forecast/todays-forecast.css';
