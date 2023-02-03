@@ -1,26 +1,28 @@
 "use strict";
-// function onDropdown() {
-// 	const dropdowns = document.querySelectorAll('.dropdown');
-// 	const arrows = document.querySelectorAll('.arrow');
-// 	const closeArrows = document.querySelectorAll('.close_arrow');
-// 	const weekendDays = document.querySelectorAll('.weekend-days');
+function onDropdown() {
+  const dropdowns = document.querySelectorAll(".dropdown");
+  const arrows = document.querySelectorAll(".arrow");
+  const closeArrows = document.querySelectorAll(".close_arrow");
+  const weekendDays = document.querySelectorAll(".weekend-days");
 
-// 	function toggleDropdown(dropdown, arrow, closeArrow) {
-// 		dropdown.classList.toggle('hidden');
-// 		arrow.classList.toggle('hidden');
-// 		closeArrow.classList.toggle('hidden');
-// 	}
+  function toggleDropdown(dropdown, arrow, closeArrow) {
+    dropdown.classList.toggle("hidden");
+    arrow.classList.toggle("hidden");
+    closeArrow.classList.toggle("hidden");
+  }
 
-// 	arrows.forEach((arrow, i) => {
-// 		arrow.addEventListener('click', () => toggleDropdown(dropdowns[i], arrow, closeArrows[i]));
-// 	});
+  arrows.forEach((arrow, i) => {
+    arrow.addEventListener("click", () =>
+      toggleDropdown(dropdowns[i], arrow, closeArrows[i])
+    );
+  });
 
-// 	closeArrows.forEach((closeArrow, i) => {
-// 		closeArrow.addEventListener('click', () =>
-// 			toggleDropdown(dropdowns[i], arrows[i], closeArrow)
-// 		);
-// 	});
-// }
+  closeArrows.forEach((closeArrow, i) => {
+    closeArrow.addEventListener("click", () =>
+      toggleDropdown(dropdowns[i], arrows[i], closeArrow)
+    );
+  });
+}
 
 // const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=London&days=14&aqi=yes&alerts=yes`;
 
@@ -38,7 +40,7 @@
 function getWeekendData(data) {
   const currentWeekend = document.querySelector(".current-weekend");
   currentWeekend.innerHTML = "";
-  const city = "- " + data.location.name + ", " + data.location.country;
+  const city = data.location.name + ", " + data.location.country;
   const searchName = document.querySelector("#search-name");
   searchName.innerHTML = city;
   const filteredData = data.forecast.forecastday.filter((x) => {
