@@ -1,5 +1,6 @@
 @import '/main.css';
 @import '/assets/components/header/header.css';
+@import '/assets/components/footer/footer.css';
 /* @import '/assets/components/footer/footer.css'; */
 
 body {
@@ -16,6 +17,7 @@ body {
 
 .calendar__container {
 	width: 100%;
+	padding: 0;
 }
 
 .calendar__content {

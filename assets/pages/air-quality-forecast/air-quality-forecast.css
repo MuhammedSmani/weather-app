@@ -14,7 +14,7 @@
 	background-position: center top;
 	background-size: cover;
 	margin-top: 60px;
-	color: #fff!important;
+	color: #fff !important;
 }
 .air__quality__container {
 	max-width: 1200px;
@@ -31,14 +31,19 @@
 	padding: 1rem;
 	color: #fff;
 }
+
+.air__container {
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+	background-color: #ffffff;
+	border-radius: 0.5rem;
+}
+
 .air__quality__today,
 .all__pollutants {
 	border-radius: 1rem;
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 }
 .all__pollutants {
-	background-color: #ffffff;
-	border-radius: 0.1rem;
+	border-radius: 0.5rem;
 	padding-bottom: 2rem;
 }
 .all__pollutants h2 {
@@ -95,7 +100,6 @@
 	border-radius: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	margin: auto;
-
 }
 .primary__pollutant__circle p {
 	color: #fff;

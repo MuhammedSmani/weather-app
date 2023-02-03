@@ -12,11 +12,13 @@
 .hourly__container {
 	width: 100%;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+	border-radius: 0.5rem;
 }
 .hourly__content {
 	display: flex;
 	flex-direction: column;
 	background-color: #ffffff;
+	border-radius: 0.5rem;
 }
 .hourly__content i {
 	font-size: var(--big-font-size);
