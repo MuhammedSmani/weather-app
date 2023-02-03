@@ -8,9 +8,9 @@
 @import '/assets/components/daily-forecast/daily-forecast.css';
 @import '/assets/components/footer/footer.css';
 
-main {
+/* main {
 	min-height: 100vh !important;
-}
+} */
 
 /* .lds-hourglass:after {
 	content: ' ';
