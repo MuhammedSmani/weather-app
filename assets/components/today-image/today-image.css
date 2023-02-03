@@ -77,6 +77,10 @@
 	text-align: right;
 }
 
+.content__para {
+	font-size: var(--normal-font-size) !important;
+}
+
 /*==================== TODAY IMAGE RESPONSIV ====================*/
 
 @media screen and (max-width: 1040px) {
