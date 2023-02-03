@@ -63,7 +63,7 @@ function getMonthlyPage(data) {
 		for (let i = firstDayofMonth; i > 0; i--) {
 			liTag += `<li class="inactive">
                     <p >${lastDateofLastMonth - i + 1}</p>
-                <i class="inactive__i">--</i>
+                <p class="inactive__i">--</p>
 
                     <p>--</p>
                   </li>`;
@@ -90,7 +90,7 @@ function getMonthlyPage(data) {
 				todayPassed = true;
 			} else {
 				liTag += `
-                <i class="inactive__i">--</i>
+                <p class="inactive__i">--</p>
                 <p>--</p>`;
 			}
 
@@ -99,7 +99,7 @@ function getMonthlyPage(data) {
 		for (let i = lastDayofMonth; i < 6; i++) {
 			liTag += `<li class="inactive">
                     <p >${i - lastDayofMonth + 1}</p>
-                <i class="inactive__i">--</i>
+                <p class="inactive__i">--</p>
 
                     <p>--</p>
                   </li>`;

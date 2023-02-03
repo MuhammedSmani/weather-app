@@ -127,8 +127,8 @@ body {
 .calendar ul li p.day::before {
 	position: absolute;
 	content: '';
-	height: 40px;
-	width: 40px;
+	height: 30px;
+	width: 30px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -145,7 +145,7 @@ body {
 }
 
 .forecast {
-	font-size: var(--h2-font-size);
+	font-size: var(--h3-font-size);
 	font-weight: var(--font-medium);
 }
 
