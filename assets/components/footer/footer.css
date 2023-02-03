@@ -41,25 +41,34 @@ footer {
 	padding-bottom: 1rem;
 }
 .footer__content {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	gap: 1rem;
+	font-size: var(--normal-font-size);
 }
-.footer__apps,
+/* .footer__apps,
 .footer__info,
 .footer__copyright {
 	width: 33%;
-}
+} */
 .footer__apps {
 	text-align: left;
 }
+
+.footer__info {
+	text-align: left;
+}
+
+.footer__copyright {
+	order: 3;
+	text-align: left;
+}
+
 footer img {
 	height: 2.5rem;
 }
 .footer__info {
-	text-align: right;
-	font-size: 0.8rem;
+	text-align: left;
 }
 .footer__info i {
 	color: orangered;
