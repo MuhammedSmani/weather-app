@@ -78,7 +78,7 @@
 
 .todays__forecast_rain i {
 	font-size: var(--h2-font-size);
-	color: #42787f;
+	color: var(--fifth-color);
 }
 
 .todays__forecast_rain p {

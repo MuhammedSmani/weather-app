@@ -32,11 +32,20 @@
 	/* align-items: center; */
 }
 .logo__wrapper {
-	font-size: var(--medium-font-size);
+	/* font-size: var(--medium-font-size);
 	color: var(--body-color);
-	font-weight: var(--font-medium);
+	font-weight: var(--font-medium); */
 	transition: 0.3s ease;
 }
+
+.logo__wrapper svg {
+	width: 120px;
+}
+
+.logo {
+	width: 120px;
+}
+
 .logo {
 	cursor: pointer;
 }

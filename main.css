@@ -104,18 +104,18 @@ input:focus {
 	transition: 0.3s ease;
 	padding: 0.5rem 1rem;
 	border-radius: 2rem;
-	border: 1px solid var(--sixth-color);
+	/* border: 1px solid var(--sixth-color); */
 
 	color: var(--body-color);
-	background-color: var(--sixth-color);
+	background-color: var(--fifth-color);
 }
 
 .button a:hover {
-	color: var(--body-color);
+	/* color: var(--body-color); */
 	background-color: var(--sixth-color);
-
+	/* 
 	color: var(--text-color);
-	background-color: #fff;
+	background-color: #fff; */
 }
 
 /*==================== REUSABLE CSS CLASSES ====================*/
