@@ -3,7 +3,7 @@
 const weeklyButton = document.getElementById('weekly-button');
 
 function updateMainPageButton(city) {
-	weeklyButton.innerHTML = `<a href="../weekend/weekend.html?city=${city}">Weekend Weather</a>`
+  weeklyButton.innerHTML = `<a href="../weekend/weekend.html?city=${city}">Weekend Weather</a>`
 }
 
 // const weeklyDescription = document.getElementById('weekly-main');
@@ -30,8 +30,8 @@ function showData(data) {
     </div>
     <div>
         <span><b>${Math.round(
-          day.day.maxtemp_c
-        )}°</b></span><span>/${Math.round(day.day.mintemp_c)}°</span>
+      day.day.maxtemp_c
+    )}°</b></span><span>/${Math.round(day.day.mintemp_c)}°</span>
     </div>
     <div>
         <i class="uil uil-cloud"></i> <span>${day.day.condition.text}</span>
@@ -48,19 +48,22 @@ function showData(data) {
   </div>
   <div class="weekly__hidden" id="hidden-${index}">
   <div class="day-hidden"> 
-  <div>
-    <h2> <b>${formattedDate}</b><span> | Day</span></h2>
+  <div class="hidden-content-firstdiv">
+  <div class="hidden-content-inner-div">
+  <h2> <b>${formattedDate}</b><span> | Day</span></h2>
     <h1><b>${Math.round(day.day.maxtemp_c)}°</b></h1>
     <p>${day.day.condition.text}</p>
-    <div>
-        <i class=" uil uil-raindrops"></i> <span>${
-          day.day.daily_chance_of_rain
-        }%</span>
     </div>
+    <div class="wind-rain">
     <div>
-        <i class="uil uil-wind"></i> <span>NW ${day.day.maxwind_kph} km/h</span>
+    <i class="uil uil-wind"></i> <span>NW ${day.day.maxwind_kph} km/h</span>
     </div>
+    <div> 
+     <i class=" uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
+     </div>
   </div>
+  </div>
+
   <ul class="weekly__hidden__info">
   <li>
   <i class="uil uil-tear"></i>
@@ -75,42 +78,45 @@ function showData(data) {
         <i class="uil uil-sun"></i>
         <div class="weekly__hidden__info__text">
             <span class="weekly__uv__index">UV Index</span>
-            <span class="weekly__uv__index__temp"><b>${
-              day.day.uv
-            } of 10</b></span>
+            <span class="weekly__uv__index__temp"><b>${day.day.uv
+      } of 10</b></span>
         </div>
     </li>
     <li>
-        <i class="uil uil-cloud"></i>
-        <div class="weekly__hidden__info__text">
-            <span class="weekly__moonrise">Moonrise</span>
-            <span class="weekly__moonrise__data"><b>${
-              day.day.cloud
-            }AM</b></span>
-        </div>
-    </li>
-    <li>
-    <i class="uil uil-cloud"></i>
+    
+    
+    <i class="uil uil-sunset"></i>
     <div class="weekly__hidden__info__text">
-        <span class="weekly__moonset">Moonset</span>
-        <span class="weekly__moonset__data"><b>${day.day.cloud}AM</b></span>
+            <span class="weekly__sunrise">Sunrise</span>
+            <span class="weekly__sunrise__data"><b>${day.astro.sunrise
+      }</b></span>
+        </div>
+    </li>
+    <li>
+    <i class="uil uil-sunset"></i>
+    <div class="weekly__hidden__info__text">
+        <span class="weekly__sunset">Sunset</span>
+        <span class="weekly__sunset__data"><b>${day.astro.sunset}</b></span>
     </div>
 </li>  </ul>
   </div>
   <div class="night-hidden"> 
-  <div>
-    <h1> <b>${formattedDate}</b><span> | Night</span></h1>
-    <h1><b>${Math.round(day.day.maxtemp_c)}°</b></h1>
+  <div class="hidden-content-firstdiv">
+  <div class="hidden-content-inner-div">
+  <div>    <h1> <b>${formattedDate}</b><span> | Night</span></h1>
+    <h1><b>${Math.round(day.day.mintemp_c)}°</b></h1>
     <p>${day.day.condition.text}</p>
-    <div>
-        <i class=" uil uil-raindrops"></i> <span>${
-          day.day.daily_chance_of_rain
-        }%</span>
     </div>
-    <div>
-        <i class="uil uil-wind"></i> <span>NW ${day.day.maxwind_kph} km/h</span>
+
+    <div class="wind-rain">
+   <div>
+   <i class="uil uil-wind"></i> <span>NW ${day.day.maxwind_kph} km/h</span>
+   </div>
+   <div> 
+    <i class=" uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
     </div>
-  </div>
+    </div>
+    </div>
   <ul class="weekly__hidden__info">
   <li>
   <i class="uil uil-tear"></i>
@@ -125,29 +131,28 @@ function showData(data) {
         <i class="uil uil-sun"></i>
         <div class="weekly__hidden__info__text">
             <span class="weekly__uv__index">UV Index</span>
-            <span class="weekly__uv__index__temp"><b>${
-              day.day.uv
-            } of 10</b></span>
+            <span class="weekly__uv__index__temp"><b>${day.day.uv
+      } of 10</b></span>
         </div>
     </li>
     <li>
-        <i class="uil uil-cloud"></i>
+    <i class="uil uil-moonset"></i>
         <div class="weekly__hidden__info__text">
             <span class="weekly__moonrise">Moonrise</span>
-            <span class="weekly__moonrise__data"><b>${
-              day.day.cloud
-            }AM</b></span>
+            <span class="weekly__moonrise__data"><b>${day.astro.moonrise
+      }</b></span>
         </div>
     </li>
     <li>
-    <i class="uil uil-cloud"></i>
+    <i class="uil uil-moonset"></i>
     <div class="weekly__hidden__info__text">
         <span class="weekly__moonset">Moonset</span>
-        <span class="weekly__moonset__data"><b>${day.day.cloud}AM</b></span>
-    </div>
-</li>
-  </ul>
-  </div>
+        <span class="weekly__moonset__data"><b>${day.astro.moonset}</b></span>
+        </div>
+        </li>  </ul>
+          </div>
+          </div>
+          </div>
   </div>`;
   });
   const weeklyArrows = document.querySelectorAll(".weekly-arrow");
@@ -168,7 +173,7 @@ function showData(data) {
 }
 
 // Function for showing the Title data
-function showTitleData(data){
+function showTitleData(data) {
   const timeString = data.location.localtime;
   const time = new Date(timeString);
 
