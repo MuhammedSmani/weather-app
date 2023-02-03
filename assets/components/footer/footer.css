@@ -3,7 +3,7 @@
 /*==================== SOCIAL MEDIA ====================*/
 
 .social__media__section {
-	margin-top: 3rem;
+	/* margin-top: 3rem; */
 	background-color: var(--fourth-color);
 	background: linear-gradient(to left, var(--fifth-color) 0%, var(--third-color) 100%);
 	padding: 0.5rem 0;
@@ -15,6 +15,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	min-height: 40px;
 }
 .social__media__icons {
 	display: flex;
@@ -44,7 +45,7 @@ footer {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 1rem;
-	font-size: var(--normal-font-size);
+	font-size: var(--small-font-size);
 }
 /* .footer__apps,
 .footer__info,
