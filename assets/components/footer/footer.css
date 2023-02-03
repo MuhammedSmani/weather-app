@@ -10,12 +10,15 @@
 	position: -webkit-sticky;
 	/* position: sticky; */
 	bottom: 0;
+	display: flex;
+	justify-content: center;
 }
 .social__media__section .container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	min-height: 40px;
+	width: 100%;
 }
 .social__media__icons {
 	display: flex;
@@ -34,6 +37,7 @@
 
 footer {
 	display: flex;
+	justify-content: center;
 	background-color: var(--sixth-color);
 	color: var(--body-color);
 	text-align: center;

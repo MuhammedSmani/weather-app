@@ -236,11 +236,45 @@ function getHourlyForecast(data) {
 	const numOfHours = 5;
 	const currentHour = new Date().getHours();
 
+	// for (let i = 0; i < numOfHours; i++) {
+	// 	let hourlyTime = forecastHoursData[currentHour + i].time;
+	// 	const hourlyTemp = Math.round(forecastHoursData[currentHour + i].temp_c);
+	// 	const hourlyRainChance = forecastHoursData[currentHour + i].chance_of_rain;
+	// 	const hourlyIconUrl = forecastHoursData[currentHour + i].condition.icon;
+	// 	const hourlyIconName = hourlyIconUrl.split('/').pop();
+	// 	const hourlyIcon = getIconClass(hourlyIconName);
+	// 	if (i === 0) {
+	// 		hourlyTime = 'Now';
+	// 	} else {
+	// 		let hour = (currentHour + i) % 24;
+	// 		let period = 'am';
+
+	// 		if (hour === 0) {
+	// 			hour = 12;
+	// 		} else if (hour >= 12) {
+	// 			period = 'pm';
+	// 			if (hour > 12) {
+	// 				hour -= 12;
+	// 			}
+	// 		}
+	// 		hourlyTime = `${hour} ${period}`;
+	// 	}
+	// 	const html = generateHourlyForecastHTML(
+	// 		hourlyTime,
+	// 		hourlyTemp,
+	// 		hourlyRainChance,
+	// 		hourlyIcon
+	// 	);
+	// 	hourlyForecast.innerHTML += html;
+	// }
 	for (let i = 0; i < numOfHours; i++) {
-		let hourlyTime = forecastHoursData[currentHour + i].time;
-		const hourlyTemp = Math.round(forecastHoursData[currentHour + i].temp_c);
-		const hourlyRainChance = forecastHoursData[currentHour + i].chance_of_rain;
-		const hourlyIconUrl = forecastHoursData[currentHour + i].condition.icon;
+		let hourlyData = forecastHoursData[currentHour + i];
+		if (!hourlyData) continue;
+
+		let hourlyTime = hourlyData.time;
+		const hourlyTemp = Math.round(hourlyData.temp_c);
+		const hourlyRainChance = hourlyData.chance_of_rain;
+		const hourlyIconUrl = hourlyData.condition.icon;
 		const hourlyIconName = hourlyIconUrl.split('/').pop();
 		const hourlyIcon = getIconClass(hourlyIconName);
 		if (i === 0) {
