@@ -34,9 +34,9 @@ const iconsMapping = {
 	"332.png": "uil-cloud-meatball",
 	"335.png": "uil-cloud-sun-meatball",
 	"338.png": "uil-cloud-meatball",
-	"xxx.png": "uil-rainbow",
+	"xxx.png": "uil-sun",
 };
-  
+
 function getIconClass(iconName) {
 	return iconsMapping[iconName];
 }

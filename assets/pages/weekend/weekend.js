@@ -289,7 +289,11 @@ navigator.geolocation.getCurrentPosition(
       });
   },
   (error) => {
-    console.log(error);
+    console.error(error);
+		// If geolocation is off, use Pristina as the default city
+		searchInputs[0].value = "Pristina";
+		searchInputs[1].value = "Pristina";
+		fetchWeatherData("Pristina");
   }
 );
 

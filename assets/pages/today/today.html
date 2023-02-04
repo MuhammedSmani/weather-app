@@ -229,145 +229,140 @@
     <div class="sun__logo_wrapper">
       <span id="sun-logo"><i class="uil uil-sun"></i></span>
     </div>
-    <main>
-      <div id="main">
-        <section class="today__image section">
-          <div class="today__image__container container">
-            <div class="today__image__left">
-              <div class="today__realtime">
-                <div class="today__realtime__content">
-                  <h3 class="content__title city-country">Pristina, Kosovo</h3>
-                  <p class="content__para" id="realtime-time">
-                    As of 00:00 am CET
-                  </p>
-                  <p id="realtime-temp">0°</p>
-                  <p id="condition-text">None</p>
-                  <p>
-                    Day <span id="day-temp">0°</span> / Night
-                    <span id="night-temp">0°</span>
-                  </p>
-                </div>
-                <div class="today__realtime__icon condition-icon">
-                  <i class="uil uil-wind-sun"></i>
-                </div>
+    <main id="main">
+      <section class="today__image section">
+        <div class="today__image__container container">
+          <div class="today__image__left">
+            <div class="today__realtime">
+              <div class="today__realtime__content">
+                <h3 class="content__title city-country">Pristina, Kosovo</h3>
+                <p class="content__para" id="realtime-time">
+                  As of 00:00 am CET
+                </p>
+                <p id="realtime-temp">0°</p>
+                <p id="condition-text">None</p>
+                <p>
+                  Day <span id="day-temp">0°</span> / Night
+                  <span id="night-temp">0°</span>
+                </p>
+              </div>
+              <div class="today__realtime__icon condition-icon">
+                <i class="uil uil-wind-sun"></i>
               </div>
             </div>
-            <!-- <div class="today__image__right">
+          </div>
+          <!-- <div class="today__image__right">
 						<div class="today__image__logo">
 							<a href="#">Weather<i class="uil uil-sunset"></i></a>
 						</div>
 					</div> -->
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="todays__forecast section" id="todays-forecast">
-          <div class="todays__forecast_container container">
-            <div class="todays__forecast_content">
-              <div class="todays__forecast_city">
-                <p class="content__title">
-                  Today's Forecast for <span class="city-country"></span>
+      <section class="todays__forecast section" id="todays-forecast">
+        <div class="todays__forecast_container container">
+          <div class="todays__forecast_content">
+            <div class="todays__forecast_city">
+              <p class="content__title">
+                Today's Forecast for <span class="city-country"></span>
+              </p>
+            </div>
+            <div class="todays__forecast_four"></div>
+            <div class="todays__forecast_button button"></div>
+          </div>
+        </div>
+      </section>
+      <section class="weather__today section" id="weather-today">
+        <div class="weather__today_container container">
+          <div class="weather__today_content">
+            <div class="weather__today_city">
+              <p class="content__title">
+                Weather Today in <span class="city-country"></span>
+              </p>
+            </div>
+            <div class="weather__today_info">
+              <div class="weather__today_info_left">
+                <p id="feels-like">0°</p>
+                <p>Feels like</p>
+              </div>
+              <div class="weather__today_info_right condition-icon">
+                <i class="uil uil-wind-sun"></i>
+              </div>
+            </div>
+            <div class="weather__today_prop-all">
+              <div class="weather__today_prop">
+                <i class="uil uil-temperature-half"></i>
+                <p>High / Low</p>
+                <p>
+                  <span id="max-temp">0°</span>/<span id="min-temp">0°</span>
                 </p>
               </div>
-              <div class="todays__forecast_four"></div>
-              <div class="todays__forecast_button button"></div>
+              <div class="weather__today_prop">
+                <i class="uil uil-tear"></i>
+                <p>Humidity</p>
+                <p id="humidity">0%</p>
+              </div>
+              <div class="weather__today_prop">
+                <i class="uil uil-compress-v"></i>
+                <p>Pressure</p>
+                <p>&darr; <span id="pressure">00.00</span> in</p>
+              </div>
+              <div class="weather__today_prop">
+                <i class="uil uil-eye"></i>
+                <p>Visibility</p>
+                <p><span id="visibility">0.0</span> km</p>
+              </div>
+              <div class="weather__today_prop">
+                <i class="uil uil-wind"></i>
+                <p>Wind</p>
+                <p><span id="wind">0</span> kph</p>
+              </div>
+              <div class="weather__today_prop">
+                <i class="uil uil-tear"></i>
+                <p>Dew Point</p>
+                <p id="dewpoint">0°</p>
+              </div>
+              <div class="weather__today_prop">
+                <i class="uil uil-sun"></i>
+                <p>UV Index</p>
+                <p><span id="uv-index">0</span> of 10</p>
+              </div>
+              <div class="weather__today_prop">
+                <i class="uil uil-moon-eclipse"></i>
+                <p>Moon Phase</p>
+                <p id="moon-phase"></p>
+              </div>
             </div>
+            <div class="air__quality__button button"></div>
           </div>
-        </section>
-        <section class="weather__today section" id="weather-today">
-          <div class="weather__today_container container">
-            <div class="weather__today_content">
-              <div class="weather__today_city">
-                <p class="content__title">
-                  Weather Today in <span class="city-country"></span>
-                </p>
-              </div>
-              <div class="weather__today_info">
-                <div class="weather__today_info_left">
-                  <p id="feels-like">0°</p>
-                  <p>Feels like</p>
-                </div>
-                <div class="weather__today_info_right condition-icon">
-                  <i class="uil uil-wind-sun"></i>
-                </div>
-              </div>
-              <div class="weather__today_prop-all">
-                <div class="weather__today_prop">
-                  <i class="uil uil-temperature-half"></i>
-                  <p>High / Low</p>
-                  <p>
-                    <span id="max-temp">0°</span>/<span id="min-temp">0°</span>
-                  </p>
-                </div>
-                <div class="weather__today_prop">
-                  <i class="uil uil-tear"></i>
-                  <p>Humidity</p>
-                  <p id="humidity">0%</p>
-                </div>
-                <div class="weather__today_prop">
-                  <i class="uil uil-compress-v"></i>
-                  <p>Pressure</p>
-                  <p>&darr; <span id="pressure">00.00</span> in</p>
-                </div>
-                <div class="weather__today_prop">
-                  <i class="uil uil-eye"></i>
-                  <p>Visibility</p>
-                  <p><span id="visibility">0.0</span> km</p>
-                </div>
-                <div class="weather__today_prop">
-                  <i class="uil uil-wind"></i>
-                  <p>Wind</p>
-                  <p><span id="wind">0</span> kph</p>
-                </div>
-                <div class="weather__today_prop">
-                  <i class="uil uil-tear"></i>
-                  <p>Dew Point</p>
-                  <p id="dewpoint">0°</p>
-                </div>
-                <div class="weather__today_prop">
-                  <i class="uil uil-sun"></i>
-                  <p>UV Index</p>
-                  <p><span id="uv-index">0</span> of 10</p>
-                </div>
-                <div class="weather__today_prop">
-                  <i class="uil uil-moon-eclipse"></i>
-                  <p>Moon Phase</p>
-                  <p id="moon-phase"></p>
-                </div>
-              </div>
-              <div class="air__quality__button button"></div>
+        </div>
+      </section>
+      <section class="hourly__forecast section" id="hourly-forecast">
+        <div class="hourly__forecast_container container">
+          <div class="hourly__forecast_content">
+            <div class="hourly__forecast_city">
+              <p class="content__title">
+                Hourly Forecast for <span class="city-country"></span>
+              </p>
             </div>
+            <div class="hourly__forecast_five"></div>
+            <div class="hourly__forecast_button button"></div>
           </div>
-        </section>
-        <section class="hourly__forecast section" id="hourly-forecast">
-          <div class="hourly__forecast_container container">
-            <div class="hourly__forecast_content">
-              <div class="hourly__forecast_city">
-                <p class="content__title">
-                  Hourly Forecast for <span class="city-country"></span>
-                </p>
-              </div>
-              <div class="hourly__forecast_five"></div>
-              <div class="hourly__forecast_button button"></div>
+        </div>
+      </section>
+      <section class="daily__forecast section" id="daily-forecast">
+        <div class="daily__forecast_container container">
+          <div class="daily__forecast_content">
+            <div class="daily__forecast_city">
+              <p class="content__title">
+                Daily Forecast for <span class="city-country"></span>
+              </p>
             </div>
+            <div class="daily__forecast_five"></div>
+            <div class="daily__forecast_button button"></div>
           </div>
-        </section>
-        <section class="daily__forecast section" id="daily-forecast">
-          <div class="daily__forecast_container container">
-            <div class="daily__forecast_content">
-              <div class="daily__forecast_city">
-                <p class="content__title">
-                  Daily Forecast for <span class="city-country"></span>
-                </p>
-              </div>
-              <div class="daily__forecast_five"></div>
-              <div class="daily__forecast_button button"></div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="contact-button">
-        <a class="contact-btn" id="button">Contact</a>
-      </div>
+        </div>
+      </section>
     </main>
 
     <!-- <section class="weather__animation">
