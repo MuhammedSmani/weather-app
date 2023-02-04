@@ -71,14 +71,14 @@ body {
 }
 
 #hidden-0 {
-	display: grid;
+	display: flex;
 }
 .weekly__main .uil-angle-down {
 	cursor: pointer;
 }
 .weekly__hidden {
 	border-radius: 0.5rem;
-	grid-template-columns: repeat(2, 1fr);
+	/* grid-template-columns: repeat(2, 1fr); */
 	align-items: center;
 	gap: 1rem;
 }

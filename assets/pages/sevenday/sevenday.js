@@ -164,17 +164,16 @@ function showData(data) {
   });
   const weeklyArrows = document.querySelectorAll(".weekly-arrow");
   const weeklyHidden = document.querySelectorAll(".weekly__hidden");
-  const weeklyElona = document.querySelectorAll(".elona");
 
   weeklyArrows.forEach((arrow, index) => {
     arrow.addEventListener("click", () => {
-      if (weeklyHidden[index].style.display === "grid") {
+      if (weeklyHidden[index].style.display === "flex") {
         weeklyHidden[index].style.display = "none";
       } else {
         weeklyHidden.forEach((hidden) => {
           hidden.style.display = "none";
         });
-        weeklyHidden[index].style.display = "grid";
+        weeklyHidden[index].style.display = "flex";
       }
     });
   });
@@ -251,14 +250,6 @@ const searchParams = new URLSearchParams(window.location.search);
 searchInputs[0].addEventListener("submit", getCityValue);
 // searchInputs[1].addEventListener('submit', getCityValue);
 
-// Get the city name value in search input
-function getCityValue(event) {
-  event.preventDefault();
-  const city = event.target.value;
-  updateSearchParams(city);
-  fetchWeatherData(city);
-}
-
 // Update Search parameters
 function updateSearchParams(city) {
   searchParams.set("city", city);
@@ -267,6 +258,15 @@ function updateSearchParams(city) {
     "",
     `${window.location.pathname}?${searchParams.toString()}`
   );
+  updateNavbarLinks(city);
+}
+
+// Get the city name value in search input
+function getCityValue(event) {
+  event.preventDefault();
+  const city = event.target.value;
+  updateSearchParams(city);
+  fetchWeatherData(city);
 }
 
 // Fetch Weather data based on city
@@ -306,19 +306,25 @@ navigator.geolocation.getCurrentPosition(
           return;
         // Set city name in input field
         searchInputs[0].value = city;
-        searchInputs[1].value = city;
-        localStorage.setItem("city", city);
+        // searchInputs[1].value = city;
         // Update the URL with the city value
         updateSearchParams(city);
-        fetchWeatherData(city);
+        // Set city value in local storage
+        localStorage.setItem("city", city);
       });
   },
   (error) => {
-    console.error(error);
-    // If geolocation is off, use Pristina as the default city
-    searchInputs[0].value = "Pristina";
-    searchInputs[1].value = "Pristina";
-    fetchWeatherData("Pristina");
+    const cityFromUrl = searchParams.get("city");
+    if (!cityFromUrl) {
+      // If there is no city value in the URL, set the default city to 'Pristina'
+      searchInputs[0].value = "Pristina";
+      updateSearchParams("Pristina");
+    } else {
+      console.error(error);
+      // If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+      searchInputs[0].value = cityFromUrl;
+      updateSearchParams(cityFromUrl);
+    }
   }
 );
 
@@ -433,5 +439,3 @@ function renderResults(results) {
 
 hideMain();
 showLoader();
-
-

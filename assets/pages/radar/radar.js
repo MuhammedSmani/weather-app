@@ -1,4 +1,4 @@
-// Show Loader
+// // Show Loader
 // const loader = document.querySelector('.sun__logo_wrapper');
 // function showLoader() {
 // 	loader.style.display = 'flex';
@@ -84,28 +84,7 @@ L.tileLayer('https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png', {
 }).addTo(map);
 
 // Constants
-const apiKey = '9ce000ab2ee94bf8bfd111052222012';
-const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&days=10&aqi=yes&alerts=yes`;
-const searchForm = document.querySelector('.search-form');
-const searchInputs = document.querySelectorAll('.search-input');
-const searchParams = new URLSearchParams(window.location.search);
 
-searchInputs[0].addEventListener('submit', getCityValue);
-
-// Get the city name value in search input
-
-function getCityValue(event) {
-	event.preventDefault();
-	const city = event.target.value;
-	updateSearchParams(city);
-	getRadarData(city);
-}
-
-// Update Search parameters
-function updateSearchParams(city) {
-	searchParams.set('city', city);
-	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
-}
 
 navigator.geolocation.getCurrentPosition(
 	(position) => {
@@ -130,43 +109,50 @@ navigator.geolocation.getCurrentPosition(
 				localStorage.setItem('city', city);
 				// Update the URL with the city value
 				updateSearchParams(city);
-				let output = '';
-
-				output += `
-      <h2>${data.location.name}</h2>
-      <h1 ><b>${Math.round(data.current.temp_c)}°C</b></h1>
-      <h2>${data.current.condition.text}</h2>
-      <h2>Feels like ${Math.round(data.current.feelslike_c)}°C</h2>
-      <img src="${data.current.condition.icon}">
-
-    `;
-
-				customIcon = L.icon({
-					iconUrl: `https://images.squarespace-cdn.com/content/v1/5ddbecf4e7b0381e7563300c/1614442398525-CBYTHYX9P22FT9NW0BUH/pin.png`,
-					iconSize: [60, 60],
-					// iconAnchor: [22, 94],
-					popupAnchor: [-3, -76],
-				});
-
-				marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
-				marker.bindPopup(output);
-				marker.openPopup();
-				map.setView([lat, lng], 10);
-				markers.push(marker);
+				getRadarData(city);
+	
 			});
-	},
-	(error) => {
-		console.error(error);
-		// If geolocation is off, use Pristina as the default city
-		searchInputs[0].value = 'Pristina';
-		// searchInputs[1].value = 'Pristina';
-		fetchWeatherData('Pristina');	}
-);
+		},
+		(error) => {
+			const cityFromUrl = searchParams.get('city');
+			if (!cityFromUrl) {
+				// If there is no city value in the URL, set the default city to 'Pristina'
+				searchInputs[0].value = 'Pristina';
+				updateSearchParams('Pristina');
+			} else {
+				console.error(error);
+				// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+				searchInputs[0].value = cityFromUrl;
+				updateSearchParams(cityFromUrl);
+			}
+		}
+	);
+	
+
+
+const apiKey = '9ce000ab2ee94bf8bfd111052222012';
+const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&days=10&aqi=yes&alerts=yes`;
+const searchForm = document.querySelector('.search-form');
+const searchInputs = document.querySelectorAll('.search-input');
+const searchParams = new URLSearchParams(window.location.search);
+
+searchInputs[0].addEventListener('submit', getCityValue);
+
 
 function updateSearchParams(city) {
 	searchParams.set('city', city);
 	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
 }
+
+// Get the city name value in search input
+
+function getCityValue(event) {
+	event.preventDefault();
+	const city = event.target.value;
+	updateSearchParams(city);
+	getRadarData(city);
+}
+
 
 // form.addEventListener("submit", (event) => {
 //   event.preventDefault();
@@ -176,27 +162,22 @@ function updateSearchParams(city) {
 
 // });
 
-function getCityValue(event) {
-	event.preventDefault();
-	const city = event.target.value;
-	updateSearchParams(city);
-	getRadarData(city);
-}
 
 {
 	/* <h1 class="temperature"><b>${Math.round(tempUnit == 'C' ? data.current.temp_c : data.current.temp_f)}°C</b> */
 }
 
-function getRadarData(lokacioni) {
+function getRadarData(city) {
 	while (markers.length) {
 		let marker = markers.pop();
 		map.removeLayer(marker);
 	}
 	fetch(
-		`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${lokacioni}&days=10&aqi=yes&alerts=yes`
+		`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`
 	)
 		.then((response) => response.json())
 		.then((data) => {
+			updateNavbarLinks(city);
 			showDataOnMap(data);
 		});
 }

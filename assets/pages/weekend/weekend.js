@@ -304,7 +304,7 @@ navigator.geolocation.getCurrentPosition(
           return;
         // Set city name in input field
         searchInputs[0].value = city;
-        searchInputs[1].value = city;
+        // searchInputs[1].value = city;
         localStorage.setItem("city", city);
         // Update the URL with the city value
         updateSearchParams(city);
@@ -312,11 +312,17 @@ navigator.geolocation.getCurrentPosition(
       });
   },
   (error) => {
-    console.error(error);
-    // If geolocation is off, use Pristina as the default city
-    searchInputs[0].value = "Pristina";
-    searchInputs[1].value = "Pristina";
-    fetchWeatherData("Pristina");
+    const cityFromUrl = searchParams.get("city");
+    if (!cityFromUrl) {
+      // If there is no city value in the URL, set the default city to 'Pristina'
+      searchInputs[0].value = "Pristina";
+      updateSearchParams("Pristina");
+    } else {
+      console.error(error);
+      // If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+      searchInputs[0].value = cityFromUrl;
+      updateSearchParams(cityFromUrl);
+    }
   }
 );
 
