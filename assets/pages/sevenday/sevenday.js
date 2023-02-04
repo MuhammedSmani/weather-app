@@ -23,6 +23,9 @@ function showData(data) {
 		let date = new Date(day.date);
 		let dayOfWeek = daysOfWeek[date.getUTCDay()];
 		let formattedDate = dayOfWeek + ' ' + date.getUTCDate();
+		const dailyIconUrl = day.day.condition.icon;
+		const dailyIconName = dailyIconUrl.split('/').pop();
+		const dailyIcon = getIconClass(dailyIconName);
 
 		weeklyDescription.innerHTML += `  <div class="weekly__main" id="weekly-${index}" >
     <div class="elona">
@@ -34,7 +37,8 @@ function showData(data) {
 		)}°</span>
     </div>
     <div class="elona">
-        <i class="uil uil-cloud"></i> <span>${day.day.condition.text}</span>
+	<i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
+	<span>${day.day.condition.text}</span>
     </div>
     <div class="elona">
         <i class="uil uil-wind"></i> <span>${day.day.maxwind_kph}  km/h</span>

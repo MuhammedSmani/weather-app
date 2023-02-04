@@ -110,24 +110,24 @@ navigator.geolocation.getCurrentPosition(
 				// Update the URL with the city value
 				updateSearchParams(city);
 				getRadarData(city);
-	
+
 			});
-		},
-		(error) => {
-			const cityFromUrl = searchParams.get('city');
-			if (!cityFromUrl) {
-				// If there is no city value in the URL, set the default city to 'Pristina'
-				searchInputs[0].value = 'Pristina';
-				updateSearchParams('Pristina');
-			} else {
-				console.error(error);
-				// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
-				searchInputs[0].value = cityFromUrl;
-				updateSearchParams(cityFromUrl);
-			}
+	},
+	(error) => {
+		const cityFromUrl = searchParams.get('city');
+		if (!cityFromUrl) {
+			// If there is no city value in the URL, set the default city to 'Pristina'
+			searchInputs[0].value = 'Pristina';
+			updateSearchParams('Pristina');
+		} else {
+			console.error(error);
+			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+			searchInputs[0].value = cityFromUrl;
+			updateSearchParams(cityFromUrl);
 		}
-	);
-	
+	}
+);
+
 
 
 const apiKey = '9ce000ab2ee94bf8bfd111052222012';
@@ -221,22 +221,24 @@ function getMapIcons() {
 		map.removeLayer(marker);
 	}
 	cities.forEach(function (city) {
+
 		fetch(
 			`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=${city}&days=10`
 		)
 			.then((response) => response.json())
 			.then((data) => {
+				const dailyIconUrl = data.current.condition.icon;
+				const dailyIconName = dailyIconUrl.split('/').pop();
+				const dailyIcon = getIconClass(dailyIconName);
 				if (data.location.name === city) {
 					var lat = data.location.lat;
 					var lng = data.location.lon;
 
-					customIcon = L.icon({
-						iconUrl: `${data.current.condition.icon}`,
-						iconSize: [70, 70],
-						iconAnchor: [22, 94],
-						popupAnchor: [-3, -76],
+					customIcon = L.divIcon({
+						className: 'map-icons',
+						html: `<i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>`,
+						iconSize: [45, 45]
 					});
-
 					var marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
 					marker.bindPopup(
 						`<h2>${city}<span class="temperature"><b>  ${Math.round(

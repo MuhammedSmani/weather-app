@@ -145,6 +145,9 @@ function getHourlyPage(data) {
 		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
 		const options = { hour: 'numeric', hour12: true };
 		const timeString = time.toLocaleString('en-US', options);
+		const hourlyIconUrl = data.forecast.forecastday[0].hour[currentHour + i].condition.icon;
+		const hourlyIconName = hourlyIconUrl.split('/').pop();
+		const hourlyIcon = getIconClass(hourlyIconName);
 
 		hourlyDescription.innerHTML += `
           <div class="hourly__main">
@@ -154,7 +157,8 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[0].hour[i].temp_c)}°</span>
 									</div>
-									<div><i class="uil uil-cloud"></i> <span>${
+									<div>	<i class="uil ${hourlyIcon ? hourlyIcon : iconsMapping['xxx.png']}"></i>
+									<span>${
 										data.forecast.forecastday[0].hour[i].condition.text
 									}</span></div>
 									<div><i class="uil uil-raindrops"> </i><span>${
@@ -237,6 +241,9 @@ function getHourlyPage(data) {
 		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
 		const options = { hour: 'numeric', hour12: true };
 		const timeString = time.toLocaleString('en-US', options);
+		const hourlyIconUrl1 = data.forecast.forecastday[1].hour[currentHour + i].condition.icon;
+		const hourlyIconName1 = hourlyIconUrl1.split('/').pop();
+		const hourlyIcon1 = getIconClass(hourlyIconName1);
 		hourlyDescriptionTwo.innerHTML += `
           <div class="hourly__main">
 									<div>
@@ -245,7 +252,7 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[1].hour[i].temp_c)}°</span>
 									</div>
-									<div><i class="uil uil-cloud"></i> <span>${
+									<div><i class="uil ${hourlyIcon1 ? hourlyIcon1 : iconsMapping['xxx.png']}"></i> <span>${
 										data.forecast.forecastday[1].hour[i].condition.text
 									}</span></div>
 									<div><i class="uil uil-raindrops"> </i><span>${
@@ -322,6 +329,9 @@ function getHourlyPage(data) {
 								</div>
 							</div>
           `;
+		  const hourlyIconUrl2 = data.forecast.forecastday[2].hour[currentHour + i].condition.icon;
+		const hourlyIconName2 = hourlyIconUrl2.split('/').pop();
+		const hourlyIcon2 = getIconClass(hourlyIconName2);
 		hourlyDescriptionThree.innerHTML += `
           <div class="hourly__main">
 									<div>
@@ -330,7 +340,7 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[2].hour[i].temp_c)}°</span>
 									</div>
-									<div><i class="uil uil-cloud"></i> <span>${
+									<div><i class="uil ${hourlyIcon2 ? hourlyIcon2 : iconsMapping['xxx.png']}"></i> <span>${
 										data.forecast.forecastday[2].hour[i].condition.text
 									}</span></div>
 									<div><i class="uil uil-raindrops"> </i><span>${
