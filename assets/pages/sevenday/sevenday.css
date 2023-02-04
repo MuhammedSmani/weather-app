@@ -7,9 +7,10 @@
 
 /* SEVENDAY SECTION */
 
-body{
+body {
 	background: linear-gradient(var(--sixth-color), var(--second-color));
-	background-attachment: fixed;}
+	background-attachment: fixed;
+}
 
 .weekly__container {
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
@@ -28,11 +29,12 @@ body{
 	padding: 1rem;
 }
 .weekly__title p:nth-child(2) {
-font-size: 1.3rem;}
+	font-size: 1.3rem;
+}
 
 .weekly__main {
 	display: grid;
-	grid-template-columns: 2fr 2fr 3fr 2fr 2fr 1fr;
+	grid-template-columns: 2fr 2fr 3fr 2fr 1fr;
 	border-top: solid 1px var(--fourth-color);
 	padding: 0.5rem 1rem;
 }
@@ -47,11 +49,11 @@ font-size: 1.3rem;}
 	font-size: 1rem;
 }
 
-.content__title{
+.content__title {
 	font-size: 2rem;
 }
 
-.content__title span{
+.content__title span {
 	font-size: 1rem;
 	font-weight: 100;
 }
@@ -68,7 +70,7 @@ font-size: 1.3rem;}
 	display: none;
 }
 
-#hidden-0{
+#hidden-0 {
 	display: grid;
 }
 .weekly__main .uil-angle-down {
@@ -128,7 +130,6 @@ font-size: 1.3rem;}
 	padding: 1rem;
 	border-radius: 0.5rem;
 	min-width: 10rem;
-
 }
 
 .night-hidden {
@@ -136,11 +137,15 @@ font-size: 1.3rem;}
 	padding: 1rem;
 	border-radius: 0.5rem;
 	min-width: 10rem;
-
 }
 
-.hidden-content-inner-div{
+.hidden-content-inner-div {
 	display: flex;
-    justify-content: space-between;
-    align-items: center;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.wind-rain div {
+	display: flex;
+	align-items: center;
 }
