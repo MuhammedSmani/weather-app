@@ -1,6 +1,8 @@
 @import '/assets/components/header/header.css';
 @import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
+@import '/assets/pages/contact/modalContact.css';
+@import '/assets/styles/loader.css';
 
 /*==================== WEATHER NEWS ====================*/
 
@@ -25,7 +27,8 @@
 	font-weight: var(--font-semi-bold);
 	color: var(--text-color);
 	background-color: #fff;
-	border-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
+	border-top-left-radius: 0.5rem;
 }
 .weather__news__top__box,
 .weather__news__latest__box {
@@ -82,7 +85,8 @@
 	background-color: var(--body-color);
 	padding: 1rem 1rem 2rem 1rem;
 	gap: 1.5rem;
-	border-radius: 0.5rem;
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
 }
 .weather__news__aside__card {
 	display: flex;
@@ -96,11 +100,21 @@
 .weather__news__aside__card a {
 	color: var(--text-color);
 }
-.weather__news__aside__card:hover .weather-news-image {
+.weather__news__aside__card:hover .§ {
 	filter: brightness(85%);
 }
 .weather__news__aside__card:hover .weather-news-title {
 	text-decoration: underline;
+}
+
+.image__wrapper {
+	aspect-ratio: 16/9;
+}
+
+.weather-news-image {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
 
 @media screen and (max-width: 767px) {

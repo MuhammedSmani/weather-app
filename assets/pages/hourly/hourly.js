@@ -3,9 +3,8 @@
 const hourlyButton = document.getElementById('hourly-button');
 
 function updateMainPageButton(city) {
-	hourlyButton.innerHTML = `<a href="../sevenday/sevenday.html?city=${city}">7 Day Weather</a>`
+	hourlyButton.innerHTML = `<a href="../sevenday/sevenday.html?city=${city}">7 Day Weather</a>`;
 }
-
 
 // const hourlyArrows = document.querySelectorAll('.hourly-arrow');
 // const hourlyHidden = document.querySelectorAll('.hourly__hidden');
@@ -79,16 +78,16 @@ function getHourlyRealtime(data) {
 
 	const timeString = data.location.localtime;
 	const time = new Date(timeString);
-  
+
 	let hours = time.getHours();
 	let minutes = time.getMinutes();
-	let ampm = "AM";
-  
+	let ampm = 'AM';
+
 	if (hours > 12) {
-	  hours -= 12;
-	  ampm = "PM";
+		hours -= 12;
+		ampm = 'PM';
 	}
-  
+
 	minutes = minutes < 10 ? `0${minutes}` : minutes;
 	hourlyRealtime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
 }
@@ -427,6 +426,73 @@ function getHourlyPage(data) {
 	});
 }
 
+// function fetchWeatherNews() {
+// 	// check if localStorage has a cache entry for the news
+// 	if (localStorage.getItem(`cache-weather-news`)) {
+// 		// read the cache entry
+// 		const cacheData = JSON.parse(localStorage.getItem(`cache-weather-news`));
+// 		// check if the cache data is still valid (1 hour)
+// 		const currentTime = new Date();
+// 		const cacheTime = new Date(cacheData.cacheTime);
+// 		const timeDiff = (currentTime - cacheTime) / 3600000;
+// 		if (timeDiff < 1) {
+// 			// return the cached data
+// 			return Promise.resolve(cacheData.data);
+// 		}
+// 	}
+// 	// fetch the data from the API
+// 	return fetch(
+// 		`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=297bf25a8f8a457d89a37392b0db687a`
+// 	)
+// 		.then((response) => response.json())
+// 		.then((data) => {
+// 			// create a cache entry with the current time
+// 			localStorage.setItem(
+// 				`cache-weather-news`,
+// 				JSON.stringify({ data: data, cacheTime: new Date() })
+// 			);
+// 			return data;
+// 		});
+// }
+
+// function getWeatherNewsAside(data) {
+// 	const weatherNewsCards = document.querySelector('.weather__news__aside__cards');
+
+// 	for (let i = 0; i < 2; i++) {
+// 		data.articles.slice(1, 10).forEach((article) => {
+// 			const imageAsideUrl = article.urlToImage;
+// 			const titleAside = article.title;
+// 			const urlAside = article.url;
+// 			const weatherNewsCard = `
+// 			<div class="weather__news__aside__card">
+// 				<a href="${urlAside}" target="_blank">
+// 				<div class="image__wrapper">
+// 					<img class="weather-news-image" src="${imageAsideUrl}" alt="">
+// 				</div>
+// 				<h4 class="weather-news-title">${titleAside}</h4>
+// 				</a>
+// 			</div>
+// 		`;
+// 			weatherNewsCards.insertAdjacentHTML('beforeend', weatherNewsCard);
+// 		});
+// 	}
+// }
+
+// /*==================== GET WEATHER NEWS FUNCTION ====================*/
+
+// function getWeatherNews() {
+// 	try {
+// 		fetchWeatherNews().then((data) => {
+// 			// openWeatherUrl(data);
+// 			getWeatherNewsAside(data);
+// 		});
+// 	} catch (error) {
+// 		console.log('Error Occured: ', error);
+// 	}
+// }
+
+// getWeatherNews();
+
 // function openHourly() {
 // 	hourlyHidden.style.display == 'hidden';
 // }
@@ -457,6 +523,27 @@ function updateSearchParams(city) {
 	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
 }
 
+// Show Loader
+const loader = document.querySelector('.sun__logo_wrapper');
+function showLoader() {
+	loader.style.display = 'flex';
+}
+
+const main = document.getElementById('main');
+
+function showMain() {
+	main.style.display = 'block';
+}
+
+function hideMain() {
+	main.style.display = 'none';
+}
+
+// Hide loader
+function hideLoader() {
+	loader.style.display = 'none';
+}
+
 // Fetch Weather data based on city
 function fetchWeatherData(city) {
 	fetch(
@@ -468,6 +555,8 @@ function fetchWeatherData(city) {
 			updateMainPageButton(city);
 			getHourlyRealtime(data);
 			getHourlyPage(data);
+			hideLoader();
+			showMain();
 		});
 }
 
@@ -500,7 +589,11 @@ navigator.geolocation.getCurrentPosition(
 			});
 	},
 	(error) => {
-		console.log(error);
+		console.error(error);
+		// If geolocation is off, use Pristina as the default city
+		searchInputs[0].value = 'Pristina';
+		searchInputs[1].value = 'Pristina';
+		fetchWeatherData('Pristina');
 	}
 );
 
@@ -612,3 +705,6 @@ function renderResults(results) {
 	searchResults.classList.add('search-show');
 	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
+
+hideMain();
+showLoader();

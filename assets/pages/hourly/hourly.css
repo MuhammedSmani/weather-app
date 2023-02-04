@@ -1,24 +1,36 @@
 @import '/main.css';
 @import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
+@import '/assets/pages/contact/modalContact.css';
+@import '/assets/styles/loader.css';
+
+.all {
+	display: flex;
+	justify-content: center;
+}
+
+.all__container {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 80% 20%;
+}
 
 /* HOURLY SECTION */
 
 .hourly__section {
 	display: flex;
 	justify-content: center;
-	margin-top: 4rem;
+	/* margin-top: 4rem; */
 }
 .hourly__container {
 	width: 100%;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 	border-radius: 0.5rem;
+	background-color: var(--body-color);
 }
 .hourly__content {
 	display: flex;
 	flex-direction: column;
-	background-color: #ffffff;
-	border-radius: 0.5rem;
 }
 .hourly__content i {
 	font-size: var(--big-font-size);
@@ -34,15 +46,10 @@
 .hourly__title p:nth-child(3) {
 	padding: 1rem 0;
 }
-.hourly__date {
-	/* border-bottom: solid 1px var(--fourth-color); */
-}
+
 .hourly__date h2 {
 	padding: 1rem;
 	border-top: solid 1px var(--fourth-color);
-}
-.hourly__description {
-	/* padding: 0 1rem; */
 }
 
 .hourly__description_three {
@@ -123,4 +130,60 @@
 .hourly__button a:hover {
 	background-color: #fff;
 	color: var(--sixth-color);
+}
+
+/*==================== WEATHER NEWS ASIDE ====================*/
+.weather__news__aside__box h2 {
+	padding: 1rem;
+	font-weight: var(--font-semi-bold);
+	color: var(--text-color);
+	background-color: #fff;
+	border-top-right-radius: 0.5rem;
+	border-top-left-radius: 0.5rem;
+}
+
+.weather__news__aside__box {
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+	/* width: 30%; */
+	margin: 1.5rem 0 1.5rem 0;
+	border-radius: 0.5rem;
+}
+.weather__news__aside__cards {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	background-color: var(--body-color);
+	padding: 1rem 1rem 2rem 1rem;
+	gap: 1.5rem;
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+}
+.weather__news__aside__card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	cursor: pointer;
+}
+.weather__news__aside__card:nth-child(4) {
+	display: none;
+}
+.weather__news__aside__card a {
+	color: var(--text-color);
+}
+.weather__news__aside__card:hover .§ {
+	filter: brightness(85%);
+}
+.weather__news__aside__card:hover .weather-news-title {
+	text-decoration: underline;
+}
+
+.image__wrapper {
+	aspect-ratio: 16/9;
+}
+
+.weather-news-image {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }

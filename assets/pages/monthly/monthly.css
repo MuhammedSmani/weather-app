@@ -1,6 +1,9 @@
 @import '/main.css';
 @import '/assets/components/header/header.css';
 @import '/assets/components/footer/footer.css';
+@import '/assets/pages/contact/modalContact.css';
+@import '/assets/styles/loader.css';
+
 /* @import '/assets/components/footer/footer.css'; */
 
 body {
