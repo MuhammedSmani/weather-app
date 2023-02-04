@@ -523,6 +523,27 @@ function updateSearchParams(city) {
 	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
 }
 
+// Show Loader
+const loader = document.querySelector('.sun__logo_wrapper');
+function showLoader() {
+	loader.style.display = 'flex';
+}
+
+const main = document.getElementById('main');
+
+function showMain() {
+	main.style.display = 'block';
+}
+
+function hideMain() {
+	main.style.display = 'none';
+}
+
+// Hide loader
+function hideLoader() {
+	loader.style.display = 'none';
+}
+
 // Fetch Weather data based on city
 function fetchWeatherData(city) {
 	fetch(
@@ -534,6 +555,8 @@ function fetchWeatherData(city) {
 			updateMainPageButton(city);
 			getHourlyRealtime(data);
 			getHourlyPage(data);
+			hideLoader();
+			showMain();
 		});
 }
 
@@ -568,9 +591,9 @@ navigator.geolocation.getCurrentPosition(
 	(error) => {
 		console.error(error);
 		// If geolocation is off, use Pristina as the default city
-		searchInputs[0].value = "Pristina";
-		searchInputs[1].value = "Pristina";
-		fetchWeatherData("Pristina");
+		searchInputs[0].value = 'Pristina';
+		searchInputs[1].value = 'Pristina';
+		fetchWeatherData('Pristina');
 	}
 );
 
@@ -682,3 +705,6 @@ function renderResults(results) {
 	searchResults.classList.add('search-show');
 	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
+
+hideMain();
+showLoader();

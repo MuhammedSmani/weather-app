@@ -20,6 +20,26 @@ function getHourlyRealtime(data) {
 	monthlyRealtime.innerHTML = `As of ${hours}:${minutes} ${ampm} CET`;
 	hourlyCityName.innerHTML = `- ${data.location.name}, ${data.location.country}`;
 }
+// Show Loader
+const loader = document.querySelector('.sun__logo_wrapper');
+function showLoader() {
+	loader.style.display = 'flex';
+}
+
+const main = document.getElementById('main');
+
+function showMain() {
+	main.style.display = 'block';
+}
+
+function hideMain() {
+	main.style.display = 'none';
+}
+
+// Hide loader
+function hideLoader() {
+	loader.style.display = 'none';
+}
 
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/
 
@@ -160,6 +180,8 @@ function fetchWeatherData(city) {
 			updateNavbarLinks(city);
 			getMonthlyPage(data);
 			getHourlyRealtime(data);
+			hideLoader();
+			showMain();
 		});
 }
 
@@ -194,9 +216,9 @@ navigator.geolocation.getCurrentPosition(
 	(error) => {
 		console.error(error);
 		// If geolocation is off, use Pristina as the default city
-		searchInputs[0].value = "Pristina";
-		searchInputs[1].value = "Pristina";
-		fetchWeatherData("Pristina");
+		searchInputs[0].value = 'Pristina';
+		searchInputs[1].value = 'Pristina';
+		fetchWeatherData('Pristina');
 	}
 );
 
@@ -308,3 +330,6 @@ function renderResults(results) {
 	searchResults.classList.add('search-show');
 	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
+
+hideMain();
+showLoader();

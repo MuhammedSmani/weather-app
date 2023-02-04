@@ -1,307 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./hourly.css" />
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-    />
-    <title>Weather - Hourly ♥</title>
-    <script src="../.././../index.js" defer></script>
-    <script src="./hourly.js" defer></script>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <div class="nav__container container">
-          <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            class="logo"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 1087.1 189.9"
-            style="enable-background: new 0 0 1087.1 189.9"
-            xml:space="preserve"
-          >
-            <g id="Layer_1">
-              <g>
-                <g>
-                  <circle style="fill: #c1d3fe" cx="171.5" cy="54.8" r="54.8" />
-                  <path
-                    style="fill: #e2eafc"
-                    d="M258.8,131.3c0,32.3-26.2,58.6-58.6,58.6H83.4C37.3,189.9,0,152.5,0,106.4C0,60.4,37.3,23,83.4,23
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./hourly.css" />
+		<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+		<title>Weather - Hourly ♥</title>
+		<script src="../.././../index.js" defer></script>
+		<script src="./hourly.js" defer></script>
+	</head>
+	<body>
+		<header class="header">
+			<nav class="nav">
+				<div class="nav__container container">
+					<svg
+						version="1.1"
+						xmlns="http://www.w3.org/2000/svg"
+						class="logo"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						x="0px"
+						y="0px"
+						viewBox="0 0 1087.1 189.9"
+						style="enable-background: new 0 0 1087.1 189.9"
+						xml:space="preserve"
+					>
+						<g id="Layer_1">
+							<g>
+								<g>
+									<circle style="fill: #c1d3fe" cx="171.5" cy="54.8" r="54.8" />
+									<path
+										style="fill: #e2eafc"
+										d="M258.8,131.3c0,32.3-26.2,58.6-58.6,58.6H83.4C37.3,189.9,0,152.5,0,106.4C0,60.4,37.3,23,83.4,23
 				c38.7,0,71.3,26.4,80.7,62.1c10-7.8,22.5-12.5,36.1-12.5C232.6,72.7,258.8,98.9,258.8,131.3z"
-                  />
-                </g>
-                <g>
-                  <g>
-                    <path
-                      style="fill: #e2eafc"
-                      d="M388.8,33.4c-1.1-1.1-2.5-1.6-4.2-1.6c-1.7,0-3.2,0.5-4.4,1.6c-1.2,1-1.8,2.5-1.8,4.3
+									/>
+								</g>
+								<g>
+									<g>
+										<path
+											style="fill: #e2eafc"
+											d="M388.8,33.4c-1.1-1.1-2.5-1.6-4.2-1.6c-1.7,0-3.2,0.5-4.4,1.6c-1.2,1-1.8,2.5-1.8,4.3
 					c0,1.7,0.6,3.2,1.8,4.3c1.2,1.1,2.6,1.7,4.4,1.7c1.7,0,3.1-0.6,4.2-1.8c1.1-1.2,1.6-2.6,1.6-4.2
 					C390.4,35.9,389.9,34.5,388.8,33.4z"
-                    />
-                    <path
-                      style="fill: #e2eafc"
-                      d="M407.5,58.9v65.4h11.1V58.9H407.5z M417.4,33.4c-1.1-1.1-2.6-1.6-4.3-1.6c-1.7,0-3.1,0.5-4.3,1.6
+										/>
+										<path
+											style="fill: #e2eafc"
+											d="M407.5,58.9v65.4h11.1V58.9H407.5z M417.4,33.4c-1.1-1.1-2.6-1.6-4.3-1.6c-1.7,0-3.1,0.5-4.3,1.6
 					c-1.2,1-1.8,2.5-1.8,4.3c0,1.7,0.6,3.2,1.7,4.3c1.1,1.1,2.6,1.7,4.3,1.7c1.8,0,3.3-0.6,4.4-1.8c1.1-1.2,1.6-2.6,1.6-4.2
 					C419.1,35.9,418.6,34.5,417.4,33.4z"
-                    />
-                    <path
-                      style="fill: #e2eafc"
-                      d="M463,57.8c-8.6,0-14.9,3.1-18.8,9.3l-0.4-8.8h-8.6v66h11V84c0-11.1,4.8-16.8,14.5-17.2
+										/>
+										<path
+											style="fill: #e2eafc"
+											d="M463,57.8c-8.6,0-14.9,3.1-18.8,9.3l-0.4-8.8h-8.6v66h11V84c0-11.1,4.8-16.8,14.5-17.2
 					c2.4-0.3,5.5,0,9.3,0.9l0.4-9.1C468.2,58,465.8,57.8,463,57.8z"
-                    />
-                    <path
-                      style="fill: #e2eafc"
-                      d="M528.8,125.6V85.2c0-3-0.2-5.8-0.6-8.2c-0.4-2.4-1.2-4.9-2.3-7.4c-1.2-2.5-2.8-4.5-4.8-6.2
+										/>
+										<path
+											style="fill: #e2eafc"
+											d="M528.8,125.6V85.2c0-3-0.2-5.8-0.6-8.2c-0.4-2.4-1.2-4.9-2.3-7.4c-1.2-2.5-2.8-4.5-4.8-6.2
 					c-2-1.7-4.7-3-8.1-4c-3.4-1-7.4-1.5-12-1.5c-8.6,0-15.5,2.4-20.7,7.3l5.6,5.6c4.3-2.7,9.3-4,15-3.9c3.4,0.1,6.2,0.5,8.5,1.4
 					c2.3,0.8,4.1,2,5.2,3.5c1.2,1.5,2,3.1,2.4,4.8c0.4,1.7,0.7,3.6,0.7,5.9c-5.4-0.8-9.9-1.2-13.4-1.2c-18.5-0.2-27.8,7.1-27.8,21.8
 					c0,4,0.7,7.5,2.1,10.4c1.4,3,3.3,5.3,5.7,7c2.4,1.7,5.1,3,8,3.8c2.9,0.8,6.2,1.3,9.7,1.4H528.8z M517.7,116.9
 					c-4.6,0-8.7,0-13.8,0c-11.4,0-17.1-4.6-17.1-13.8c0-9.2,6.2-13.8,18.5-13.8c3.3,0,7.4,0.3,12.4,0.9V116.9z"
-                    />
-                    <path
-                      style="fill: #e2eafc"
-                      d="M558.6,44.5c2-2.3,4.8-3.6,8.2-3.8c1.4-0.2,3.4,0,6,0.4v-9c-2.2-0.4-4.4-0.5-6.7-0.5
+										/>
+										<path
+											style="fill: #e2eafc"
+											d="M558.6,44.5c2-2.3,4.8-3.6,8.2-3.8c1.4-0.2,3.4,0,6,0.4v-9c-2.2-0.4-4.4-0.5-6.7-0.5
 					c-2.2,0-4.3,0.2-6.3,0.7c-2,0.5-4,1.3-5.9,2.3c-1.9,1.1-3.5,2.5-4.9,4.1c-1.3,1.7-2.4,3.7-3.3,6.3c-0.8,2.5-1.2,5.4-1.2,8.5
 					v70.9h11V67.6h16v-8.6h-16v-4C555.5,50.3,556.5,46.8,558.6,44.5z"
-                    />
-                    <path
-                      style="fill: #e2eafc"
-                      d="M631.2,125.6V85.2c0-3-0.2-5.8-0.6-8.2c-0.4-2.4-1.2-4.9-2.4-7.4c-1.2-2.5-2.8-4.5-4.8-6.2
+										/>
+										<path
+											style="fill: #e2eafc"
+											d="M631.2,125.6V85.2c0-3-0.2-5.8-0.6-8.2c-0.4-2.4-1.2-4.9-2.4-7.4c-1.2-2.5-2.8-4.5-4.8-6.2
 					c-2-1.7-4.7-3-8.1-4c-3.4-1-7.4-1.5-12-1.5c-8.6,0-15.5,2.4-20.7,7.3l5.6,5.6c4.3-2.7,9.3-4,15-3.9c3.4,0.1,6.2,0.5,8.5,1.4
 					c2.3,0.8,4,2,5.2,3.5c1.2,1.5,2,3.1,2.4,4.8c0.4,1.7,0.6,3.6,0.6,5.9c-5.4-0.8-9.9-1.2-13.4-1.2c-18.5-0.2-27.8,7.1-27.8,21.8
 					c0,4,0.7,7.5,2.1,10.4c1.4,3,3.3,5.3,5.7,7c2.4,1.7,5.1,3,8,3.8c2.9,0.8,6.1,1.3,9.7,1.4H631.2z M620.1,116.9c-6,0-8.7,0-13.8,0
 					c-11.4,0-17.1-4.6-17.1-13.8c0-9.2,6.2-13.8,18.5-13.8c3.3,0,7.4,0.3,12.4,0.9V116.9z"
-                    />
-                    <path
-                      style="fill: #c1d3fe"
-                      d="M730.7,33l-13.4,70.6l-14-70.6h-16.8l-13.9,70.6L659,33h-18l20.2,91.3h22.6L695,72.5l10.3,51.8
+										/>
+										<path
+											style="fill: #c1d3fe"
+											d="M730.7,33l-13.4,70.6l-14-70.6h-16.8l-13.9,70.6L659,33h-18l20.2,91.3h22.6L695,72.5l10.3,51.8
 					h23.5L748.9,33H730.7z"
-                    />
-                    <path
-                      style="fill: #c1d3fe"
-                      d="M808.5,97.8V83.3c0-7.9-2.1-14.2-6.4-18.7c-4.3-4.6-10.7-6.9-19.2-6.9c-5.8,0-10.8,1.1-14.9,3.2
+										/>
+										<path
+											style="fill: #c1d3fe"
+											d="M808.5,97.8V83.3c0-7.9-2.1-14.2-6.4-18.7c-4.3-4.6-10.7-6.9-19.2-6.9c-5.8,0-10.8,1.1-14.9,3.2
 					c-4.1,2.1-7.2,5.1-9.3,8.9c-2.1,3.8-3.1,8.3-3.1,13.6V101c0,7,2.2,12.8,6.6,17.5c4.4,4.7,11,7,19.8,7c10.3,0,18.2-3.3,23.6-9.8
 					l-9.3-7.2c-3.7,3-8.1,4.5-13.4,4.4c-3.4-0.1-6.1-1-8-2.6c-2-1.6-2.9-4.2-2.9-7.6v-5H808.5z M772.4,83c0-8.1,3.5-12.1,10.4-12.1
 					c3,0,5.5,1,7.3,2.9c1.8,2,2.7,5,2.7,9.1v4.4h-20.5V83z"
-                    />
-                    <path
-                      style="fill: #c1d3fe"
-                      d="M869.6,125.4V85c0-18.2-9.4-27.3-28.1-27.3c-9.2,0.1-16.7,3.3-22.4,9.7l8.4,7.9
+										/>
+										<path
+											style="fill: #c1d3fe"
+											d="M869.6,125.4V85c0-18.2-9.4-27.3-28.1-27.3c-9.2,0.1-16.7,3.3-22.4,9.7l8.4,7.9
 					c4.4-3,9.1-4.3,13.8-4c4.3,0.1,7.3,1.1,9,3.1c1.7,2,2.6,4.7,2.6,8.2c-3.8-0.6-7.3-0.9-10.3-0.9c-2.7-0.1-5.2,0-7.6,0.4
 					c-2.4,0.4-4.7,1-7.1,2c-2.4,1-4.4,2.2-6.1,3.7c-1.7,1.5-3.1,3.6-4.2,6.1c-1.1,2.6-1.6,5.5-1.6,8.9c0,3.9,0.7,7.4,2,10.3
 					c1.3,3,3.2,5.3,5.5,7c2.3,1.7,4.9,3,7.7,3.9c2.8,0.8,5.9,1.2,9.2,1.2H869.6z M852.9,112.6c-6,0-6,0-9.5,0c-8,0-12-3.2-12-9.6
 					c0-6.4,4.3-9.7,12.9-9.7c2.3,0,5.1,0.2,8.6,0.7V112.6z"
-                    />
-                    <path
-                      style="fill: #c1d3fe"
-                      d="M905.3,111.7c-2.7-0.8-4.6-2.3-5.7-4.5c-1.1-2.2-1.7-5.2-1.7-8.8v-26h13.6V58.9h-13.6V43h-16.7
+										/>
+										<path
+											style="fill: #c1d3fe"
+											d="M905.3,111.7c-2.7-0.8-4.6-2.3-5.7-4.5c-1.1-2.2-1.7-5.2-1.7-8.8v-26h13.6V58.9h-13.6V43h-16.7
 					v58.3c0,3.2,0.4,6.1,1.2,8.7c0.8,2.6,2,4.8,3.4,6.6c1.4,1.8,3.1,3.3,5.1,4.6c2,1.3,4.1,2.2,6.3,2.9c2.2,0.6,4.5,1.1,6.9,1.4
 					c2.5,0.4,5.7,0.3,9.6-0.3v-13.2C910.3,112.4,907.5,112.3,905.3,111.7z"
-                    />
-                    <path
-                      style="fill: #c1d3fe"
-                      d="M976.4,70.4c-1.4-3.1-3.2-5.5-5.5-7.2c-2.3-1.7-4.8-3-7.6-3.8c-2.7-0.8-5.6-1.2-8.7-1.2
+										/>
+										<path
+											style="fill: #c1d3fe"
+											d="M976.4,70.4c-1.4-3.1-3.2-5.5-5.5-7.2c-2.3-1.7-4.8-3-7.6-3.8c-2.7-0.8-5.6-1.2-8.7-1.2
 					c-5-0.1-9.6,0.8-13.7,2.7V33h-16.7v91.3h16.7V72.7c3.3-1.3,6.8-2,10.6-2c3.7,0,6.3,0.9,7.8,2.8c1.6,1.9,2.3,4.8,2.3,8.8v42h16.7
 					V81.3C978.4,77.1,977.7,73.5,976.4,70.4z"
-                    />
-                    <path
-                      style="fill: #c1d3fe"
-                      d="M1040.9,97.8V83.3c0-7.9-2.1-14.2-6.4-18.7c-4.3-4.6-10.7-6.9-19.2-6.9c-5.8,0-10.8,1.1-14.9,3.2
+										/>
+										<path
+											style="fill: #c1d3fe"
+											d="M1040.9,97.8V83.3c0-7.9-2.1-14.2-6.4-18.7c-4.3-4.6-10.7-6.9-19.2-6.9c-5.8,0-10.8,1.1-14.9,3.2
 					c-4.1,2.1-7.2,5.1-9.3,8.9c-2,3.8-3.1,8.3-3.1,13.6V101c0,7,2.2,12.8,6.6,17.5c4.4,4.7,11,7,19.8,7c10.3,0,18.2-3.3,23.6-9.8
 					l-9.3-7.2c-3.7,3-8.1,4.5-13.5,4.4c-3.4-0.1-6.1-1-8-2.6c-2-1.6-2.9-4.2-2.9-7.6v-5H1040.9z M1004.7,83
 					c0-8.1,3.5-12.1,10.4-12.1c3,0,5.5,1,7.3,2.9c1.8,2,2.7,5,2.7,9.1v4.4h-20.5V83z"
-                    />
-                    <path
-                      style="fill: #c1d3fe"
-                      d="M1080.5,57.9c-3.7,0-6.9,0.6-9.5,1.6c-2.6,1.1-5,3-7.2,5.7l-0.7-7.3h-12.8v66.4h16.7V84.5
+										/>
+										<path
+											style="fill: #c1d3fe"
+											d="M1080.5,57.9c-3.7,0-6.9,0.6-9.5,1.6c-2.6,1.1-5,3-7.2,5.7l-0.7-7.3h-12.8v66.4h16.7V84.5
 					c0-8.1,3.2-12.5,9.5-13.2c2.3-0.5,5.7-0.3,10.3,0.7l0.1-13.4C1085.1,58.1,1082.9,57.9,1080.5,57.9z"
-                    />
-                  </g>
-                  <path
-                    style="fill: #e2eafc"
-                    d="M389.9,137.7L389.9,137.7l0,2c0,4.9-1.4,8.9-4.1,11.9c-2.7,3.1-6.4,5.2-10.9,6.2
+										/>
+									</g>
+									<path
+										style="fill: #e2eafc"
+										d="M389.9,137.7L389.9,137.7l0,2c0,4.9-1.4,8.9-4.1,11.9c-2.7,3.1-6.4,5.2-10.9,6.2
 				c-0.3,0.1-0.7,0.2-1.1,0.3l-2.9-8.6c0.9-0.2,1.8-0.5,2.7-0.8c3.6-1.7,5.3-5.3,5.3-10.8v-0.2h0l0-78.7h11L389.9,137.7z"
-                  />
-                  <path
-                    style="fill: #e2eafc"
-                    d="M362,58.9h-8.7l-0.3,3.4c-5-3-10.9-4.4-17.7-4.4c-3.2,0-6.3,0.4-9.1,1.2c-2.9,0.8-5.5,2.1-8,3.7
+									/>
+									<path
+										style="fill: #e2eafc"
+										d="M362,58.9h-8.7l-0.3,3.4c-5-3-10.9-4.4-17.7-4.4c-3.2,0-6.3,0.4-9.1,1.2c-2.9,0.8-5.5,2.1-8,3.7
 				c-2.4,1.6-4.4,4-5.8,7c-1.4,3-2.2,6.5-2.2,10.5v21.5c0,4,0.7,7.5,2,10.5c1.3,3,3.1,5.3,5.3,7c2.3,1.7,4.8,2.9,7.6,3.7
 				c2.8,0.8,5.8,1.2,9,1.2c6.5,0,12.1-1.1,16.8-3.4v7.6c0,0.1,0,9.1,0,9.2h0c-0.2,7-3.3,11.1-9.3,12.3l2.8,8.3
 				c4.5-0.7,8.3-2.5,11.3-5.2c0.2-0.1,0.3-0.3,0.5-0.5c2.9-2.8,4.7-6.5,5.4-11.1c0.2-1.2,0.3-2.5,0.3-3.9h0c0-0.3,0-9.6,0-9.9V58.9z
 				 M350.9,113.2c-4.4,1.9-9.3,2.9-14.6,2.9c-10.1,0-15.1-4.9-15.1-14.7V80.2c0.1-4.5,1.5-7.9,4.3-10.2s6.6-3.4,11.3-3.4
 				c5.2,0,9.9,1,14.1,3.1V113.2z"
-                  />
-                </g>
-              </g>
-            </g>
-            <g id="Layer_2"></g>
-          </svg>
-          <form class="nav__search search-form" action="">
-            <div>
-              <input
-                type="text"
-                class="search search-input"
-                name="city"
-                placeholder="Search city..."
-                autocomplete="off"
-              />
-            </div>
-            <div class="search-results"></div>
-          </form>
-          <!-- <div class="div">+</div> -->
-          <div class="nav__open_menu">
-            <input
-              class="open__menu_checkbox"
-              id="active"
-              type="checkbox"
-              onclick="togNav()"
-            />
-            <div>
-              <span class="first__span"></span>
-              <span class="last__span"></span>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <nav class="nav__two">
-        <div class="nav__two_container container">
-          <div class="nav__menu">
-            <ul class="nav__list">
-              <li class="nav__item today-page">Today</li>
-              <li class="nav__item hourly-page">Hourly</li>
-              <li class="nav__item sevenday-page">7 Day</li>
-              <li class="nav__item weekend-page">Weekend</li>
-              <li class="nav__item monthly-page">Monthly</li>
-              <li class="nav__item airquality-page">Air Quality</li>
-              <li class="nav__item radar-page">Radar</li>
-              <li class="nav__item">
-                <a href="../weather-news/weather-news.html" class="nav__link"
-                  >News</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- ******************* NAV MOBILE ******************* -->
-      <nav id="mySidenav" class="sidenav">
-        <div class="nav__menu_mobile" id="menu">
-          <form class="nav__search search-form" action="">
-            <div>
-              <input
-                type="text"
-                class="search search-input"
-                name="city"
-                placeholder="Search city..."
-                autocomplete="off"
-              />
-            </div>
-            <div class="search-results"></div>
-          </form>
-          <div class="nav__text_buttons">
-            <ul class="nav__list_mobile">
-              <li class="nav__item today-page">Today</li>
-              <li class="nav__item hourly-page">Hourly</li>
-              <li class="nav__item sevenday-page">7 Day</li>
-              <li class="nav__item weekend-page">Weekend</li>
-              <li class="nav__item monthly-page">Monthly</li>
-              <li class="nav__item airquality-page">Air Quality</li>
-              <li class="nav__item radar-page">Radar</li>
-              <li class="nav__item">
-                <a href="../weather-news/weather-news.html" class="nav__link"
-                  >News</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+									/>
+								</g>
+							</g>
+						</g>
+						<g id="Layer_2"></g>
+					</svg>
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
+					<!-- <div class="div">+</div> -->
+					<div class="nav__open_menu">
+						<input
+							class="open__menu_checkbox"
+							id="active"
+							type="checkbox"
+							onclick="togNav()"
+						/>
+						<div>
+							<span class="first__span"></span>
+							<span class="last__span"></span>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<nav class="nav__two">
+				<div class="nav__two_container container">
+					<div class="nav__menu">
+						<ul class="nav__list">
+							<li class="nav__item today-page">Today</li>
+							<li class="nav__item hourly-page">Hourly</li>
+							<li class="nav__item sevenday-page">7 Day</li>
+							<li class="nav__item weekend-page">Weekend</li>
+							<li class="nav__item monthly-page">Monthly</li>
+							<li class="nav__item airquality-page">Air Quality</li>
+							<li class="nav__item radar-page">Radar</li>
+							<li class="nav__item">
+								<a href="../weather-news/weather-news.html" class="nav__link"
+									>News</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- ******************* NAV MOBILE ******************* -->
+			<nav id="mySidenav" class="sidenav">
+				<div class="nav__menu_mobile" id="menu">
+					<form class="nav__search search-form" action="">
+						<div>
+							<input
+								type="text"
+								class="search search-input"
+								name="city"
+								placeholder="Search city..."
+								autocomplete="off"
+							/>
+						</div>
+						<div class="search-results"></div>
+					</form>
+					<div class="nav__text_buttons">
+						<ul class="nav__list_mobile">
+							<li class="nav__item today-page">Today</li>
+							<li class="nav__item hourly-page">Hourly</li>
+							<li class="nav__item sevenday-page">7 Day</li>
+							<li class="nav__item weekend-page">Weekend</li>
+							<li class="nav__item monthly-page">Monthly</li>
+							<li class="nav__item airquality-page">Air Quality</li>
+							<li class="nav__item radar-page">Radar</li>
+							<li class="nav__item">
+								<a href="../weather-news/weather-news.html" class="nav__link"
+									>News</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div class="sun__logo_wrapper">
+			<span id="sun-logo"><i class="uil uil-sun"></i></span>
+		</div>
+		<main>
+			<!-- <section class="all section"> -->
+			<!-- <div class="all__container container"> -->
+			<section class="hourly__section section" id="hourly-section">
+				<div class="hourly__container container">
+					<div class="hourly__content">
+						<div class="hourly__title">
+							<h1 class="content__title">
+								Hourly Weather
+								<span class="hourly__city_name">- Pristina, Kosovo</span>
+							</h1>
+							<p id="hourly-realtime">As of 3:44 pm CET</p>
+						</div>
 
-    <main>
-      <!-- <section class="all section"> -->
-      <!-- <div class="all__container container"> -->
-      <section class="hourly__section section" id="hourly-section">
-        <div class="hourly__container container">
-          <div class="hourly__content">
-            <div class="hourly__title">
-              <h1 class="content__title">
-                Hourly Weather
-                <span class="hourly__city_name">- Pristina, Kosovo</span>
-              </h1>
-              <p id="hourly-realtime">As of 3:44 pm CET</p>
-            </div>
+						<div class="hourly__date">
+							<h2 class="hourly__first_day content__title">Saturday, December 24</h2>
+							<div class="hourly__description"></div>
+						</div>
+						<div class="hourly__date hourly__date_two">
+							<h2 class="hourly__second_day content__title"></h2>
+							<div class="hourly__description hourly__description_two"></div>
+						</div>
+						<div class="hourly__date hourly__date_three">
+							<h2 class="hourly__third_day content__title"></h2>
+							<div class="hourly__description hourly__description_three"></div>
 
-            <div class="hourly__date">
-              <h2 class="hourly__first_day content__title">
-                Saturday, December 24
-              </h2>
-              <div class="hourly__description"></div>
-            </div>
-            <div class="hourly__date hourly__date_two">
-              <h2 class="hourly__second_day content__title"></h2>
-              <div class="hourly__description hourly__description_two"></div>
-            </div>
-            <div class="hourly__date hourly__date_three">
-              <h2 class="hourly__third_day content__title"></h2>
-              <div class="hourly__description hourly__description_three"></div>
-
-              <div class="hourly__button" id="hourly-button">
-                <a href="../sevenday/sevenday.html">7 Day Weather</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- <aside class="weather__news__aside__box">
+							<div class="hourly__button" id="hourly-button">
+								<a href="../sevenday/sevenday.html">7 Day Weather</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- <aside class="weather__news__aside__box">
 						<h2>Weather News</h2>
 						<div class="weather__news__aside__cards"></div>
 					</aside> -->
-      <!-- </div> -->
-      <!-- </section> -->
-    </main>
+			<!-- </div> -->
+			<!-- </section> -->
+		</main>
 
-    <section class="social__media__section">
-      <div class="container">
-        <p>Get connected to us on social networks</p>
-        <div class="social__media__icons">
-          <a href="https://www.facebook.com"
-            ><i class="uil uil-facebook"></i
-          ></a>
-          <a href="https://www.instagram.com"
-            ><i class="uil uil-instagram"></i
-          ></a>
-          <a href="https://www.twitter.com"><i class="uil uil-twitter"></i></a>
-          <a href="https://www.youtube.com"><i class="uil uil-youtube"></i></a>
-        </div>
-      </div>
-    </section>
-    <footer class="footer">
-      <div class="footer__content container">
-        <div class="footer__apps">
-          <p>Download Weather App</p>
-          <a href="#"><img src="../../images/app-store-badge.svg" /></a>
-          <a href="#"
-            ><img src="../../images/Google_Play_Store_badge_EN.svg"
-          /></a>
-        </div>
-        <p class="footer__copyright">
-          &#169; 2022 - 2023 Weather by LIFE from Gjirafa
-        </p>
-        <p class="footer__info">
-          Weather is a team of Frontend Developers that has been practising
-          weather web development in LIFE courses.<br />
-          Headquarters in Gjirafa, KS. <i class="uil uil-sun"></i>
-        </p>
-      </div>
-    </footer>
-    <script src="/assets/components/header/header.js"></script>
-  </body>
+		<section class="social__media__section">
+			<div class="container">
+				<p>Get connected to us on social networks</p>
+				<div class="social__media__icons">
+					<a href="https://www.facebook.com"><i class="uil uil-facebook"></i></a>
+					<a href="https://www.instagram.com"><i class="uil uil-instagram"></i></a>
+					<a href="https://www.twitter.com"><i class="uil uil-twitter"></i></a>
+					<a href="https://www.youtube.com"><i class="uil uil-youtube"></i></a>
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="footer__content container">
+				<div class="footer__apps">
+					<p>Download Weather App</p>
+					<a href="#"><img src="../../images/app-store-badge.svg" /></a>
+					<a href="#"><img src="../../images/Google_Play_Store_badge_EN.svg" /></a>
+				</div>
+				<p class="footer__copyright">&#169; 2022 - 2023 Weather by LIFE from Gjirafa</p>
+				<p class="footer__info">
+					Weather is a team of Frontend Developers that has been practising weather web
+					development in LIFE courses.<br />
+					Headquarters in Gjirafa, KS. <i class="uil uil-sun"></i>
+				</p>
+			</div>
+		</footer>
+		<script src="/assets/components/header/header.js"></script>
+	</body>
 </html>

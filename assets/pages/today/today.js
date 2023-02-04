@@ -36,21 +36,21 @@ const conditionText = document.getElementById('condition-text');
 const conditionIcon = document.querySelectorAll('.condition-icon');
 const icons = {
 	'Light rain': `<i class="uil uil-cloud-rain"></i>`,
-	'Sunny': `<i class="uil uil-brightness"></i>`,
-	'Mist': `<i class="uil uil-clouds"></i>`,
-	'Overcast': `<i class="uil uil-cloud"></i>`,
+	Sunny: `<i class="uil uil-brightness"></i>`,
+	Mist: `<i class="uil uil-clouds"></i>`,
+	Overcast: `<i class="uil uil-cloud"></i>`,
 	'Moderate rain': `<i class="uil uil-cloud-rain"></i>`,
 	'Partly cloudy': `<i class="uil uil-cloud-sun"></i>`,
-	'Clear': `<i class="uil uil-moon"></i>`,
-	'Fog': `<i class="uil uil-cloud-wind"></i>`,
-	'Cloudy': `<i class="uil uil-clouds"></i>`,
+	Clear: `<i class="uil uil-moon"></i>`,
+	Fog: `<i class="uil uil-cloud-wind"></i>`,
+	Cloudy: `<i class="uil uil-clouds"></i>`,
 	'Patchy rain possible': `<i class="uil uil-cloud-sun-rain-alt"></i>`,
 	'Light drizzle': `<i class="uil uil-cloud-showers-heavy"></i>`,
 	'Light rain shower': `<i class="uil uil-cloud-sun-tear"></i>`,
 	'Heavy snow': `<i class="uil uil-cloud-meatball"></i>`,
 	'Moderate or heavy snow showers': `<i class="uil uil-cloud-sun-hail"></i>`,
 	'Patchy light snow': `<i class="uil uil-cloud-sun-meatball"></i>`,
-	'Other': `<i class="uil-sun"></i>`,
+	Other: `<i class="uil-sun"></i>`,
 };
 
 // Function for showing the Icons depending on the Text
@@ -428,9 +428,9 @@ navigator.geolocation.getCurrentPosition(
 	(error) => {
 		console.error(error);
 		// If geolocation is off, use Pristina as the default city
-		searchInputs[0].value = "Pristina";
-		searchInputs[1].value = "Pristina";
-		fetchWeatherData("Pristina");
+		searchInputs[0].value = 'Pristina';
+		searchInputs[1].value = 'Pristina';
+		fetchWeatherData('Pristina');
 	}
 );
 
@@ -545,7 +545,7 @@ function renderResults(results) {
 
 /*==================== INTRO ANIMATION ====================*/
 
-updateNavbarLinks(city);
+// updateNavbarLinks(city);
 
 hideMain();
 showLoader();

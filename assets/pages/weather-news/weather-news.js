@@ -114,6 +114,27 @@ function getWeatherNewsAside(data) {
 	});
 }
 
+// Show Loader
+const loader = document.querySelector('.sun__logo_wrapper');
+function showLoader() {
+	loader.style.display = 'flex';
+}
+
+const main = document.getElementById('main');
+
+function showMain() {
+	main.style.display = 'block';
+}
+
+function hideMain() {
+	main.style.display = 'none';
+}
+
+// Hide loader
+function hideLoader() {
+	loader.style.display = 'none';
+}
+
 /*==================== GET WEATHER NEWS FUNCTION ====================*/
 
 function getWeatherNews() {
@@ -124,6 +145,8 @@ function getWeatherNews() {
 			getWeatherTopStoryImage(data);
 			openWeatherUrl(data);
 			getWeatherNewsAside(data);
+			hideLoader();
+			showMain();
 		});
 	} catch (error) {
 		console.log('Error Occured: ', error);
@@ -233,3 +256,6 @@ function renderResults(results) {
 	searchResults.classList.add('search-show');
 	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
+
+hideMain();
+showLoader();
