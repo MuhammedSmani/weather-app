@@ -14,35 +14,6 @@
 		padding: 1rem 0 !important;
 	}
 
-	.nav__menu,
-	.nav__buttons {
-		display: none;
-	}
-
-	.header {
-		flex-direction: row;
-	}
-
-	.nav__open_menu {
-		display: flex;
-	}
-
-	.nav__open_menu {
-		display: flex;
-	}
-
-	.nav__two {
-		display: none;
-	}
-
-	.nav .nav__search {
-		display: none;
-	}
-
-	.nav .nav__cf {
-		display: none;
-	}
-
 	.realtime {
 		margin-top: 80px;
 	}

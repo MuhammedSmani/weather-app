@@ -237,7 +237,7 @@ const searchInputs = document.querySelectorAll('.search-input');
 const searchParams = new URLSearchParams(window.location.search);
 
 searchInputs[0].addEventListener('submit', getCityValue);
-searchInputs[1].addEventListener('submit', getCityValue);
+// searchInputs[1].addEventListener('submit', getCityValue);
 
 // Get the city name value in search input
 function getCityValue(event) {
@@ -290,7 +290,7 @@ navigator.geolocation.getCurrentPosition(
 					return;
 				// Set city name in input field
 				searchInputs[0].value = city;
-				searchInputs[1].value = city;
+				// searchInputs[1].value = city;
 				localStorage.setItem('city', city);
 				// Update the URL with the city value
 				updateSearchParams(city);
@@ -301,7 +301,7 @@ navigator.geolocation.getCurrentPosition(
 		console.error(error);
 		// If geolocation is off, use Pristina as the default city
 		searchInputs[0].value = 'Pristina';
-		searchInputs[1].value = 'Pristina';
+		// searchInputs[1].value = 'Pristina';
 		fetchWeatherData('Pristina');
 	}
 );
@@ -310,7 +310,7 @@ navigator.geolocation.getCurrentPosition(
 const cityFromUrl = searchParams.get('city');
 if (cityFromUrl) {
 	searchInputs[0].value = cityFromUrl;
-	searchInputs[1].value = cityFromUrl;
+	// searchInputs[1].value = cityFromUrl;
 	fetchWeatherData(cityFromUrl);
 }
 

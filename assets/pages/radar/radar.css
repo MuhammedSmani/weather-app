@@ -69,26 +69,8 @@
 	padding: 6px 21px 0 0;
 }
 
-.low-temp-icon {
-	color: var(--second-color);
-	font-size: 1.5rem;
-	left: 28px;
-	top: 18px;
-	background-color: var(--sixth-color);
-	border-radius: 100%;
-	text-align: center;
-}
-
-.medium-temp-icon {
-	color: var(--second-color);
-	font-size: 1.5rem;
-	left: 28px;
-	top: 18px;
-	background-color: var(--sixth-color);
-	border-radius: 100%;
-	text-align: center;
-}
-
+.low-temp-icon,
+.medium-temp-icon,
 .high-temp-icon {
 	color: var(--second-color);
 	font-size: 1.5rem;
