@@ -25,7 +25,7 @@ const mapIcons = document.getElementById('mapicons');
 const tempIcons = document.getElementById('tempicons');
 
 var map = L.map('map');
-var cities = [
+let cities = [
 	'London',
 	'Pristina',
 	'Moscow',
@@ -361,55 +361,7 @@ if (cityFromUrl) {
 	searchInputs[0].value = cityFromUrl;
 	getRadarData(cityFromUrl);
 }
-// Declaring an array that contains a list of cities
-let searchable = [
-	'London',
-	'Pristina',
-	'Moscow',
-	'Paris',
-	'Berlin',
-	'Berne',
-	'Sofia',
-	'Madrid',
-	'Ljubljana',
-	'Tirana',
-	'Sarajevo',
-	'Athens',
-	'Rome',
-	'Zagreb',
-	'Stockholm',
-	'Valletta',
-	'Chisinau',
-	'Skopje',
-	'Luxembourg',
-	'Vilnius',
-	'Vaduz',
-	'Riga',
-	'Dublin',
-	'Reykjavik',
-	'Budapest',
-	'Vatican City',
-	'Helsinki',
-	'Tallinn',
-	'Copenhagen',
-	'Prague',
-	'Vienna',
-	'Minsk',
-	'Andorra La Vella',
-	'Monaco',
-	'Vilnius',
-	'Podgorica',
-	'Amsterdam',
-	'Oslo',
-	'Warsaw',
-	'Lisbon',
-	'Bucharest',
-	'Belgrade',
-	'San Marino',
-	'Bratislava',
-	'Prague',
-	'Kiev',
-];
+
 
 // const searchInputs = document.querySelectorAll('.search-input');
 const searchField = document.querySelector('.search');
@@ -423,8 +375,8 @@ searchInputs.forEach((searchInput) => {
 		let resultInput = searchInput.value;
 		// If the search input has a value
 		if (resultInput.length) {
-			// Filtering the 'searchable' array for items that include the current search input value
-			results = searchable.filter((item) => {
+			// Filtering the 'cities' array for items that include the current search input value
+			results = cities.filter((item) => {
 				return item.toLowerCase().includes(resultInput.toLowerCase());
 			});
 			//If there's no match, clearing the search results

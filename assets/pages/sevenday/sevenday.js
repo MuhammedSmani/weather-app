@@ -25,21 +25,21 @@ function showData(data) {
 		let formattedDate = dayOfWeek + ' ' + date.getUTCDate();
 
 		weeklyDescription.innerHTML += `  <div class="weekly__main" id="weekly-${index}" >
-    <div>
+    <div class="elona">
         <span>${formattedDate}</span>
     </div>
-    <div>
+    <div class="elona">
         <span><b>${Math.round(day.day.maxtemp_c)}°</b></span><span>/${Math.round(
 			day.day.mintemp_c
 		)}°</span>
     </div>
-    <div>
+    <div class="elona">
         <i class="uil uil-cloud"></i> <span>${day.day.condition.text}</span>
     </div>
-    <div>
+    <div class="elona">
         <i class="uil uil-raindrops"> </i><span>64%</span>
     </div>
-    <div>
+    <div class="elona">
         <i class="uil uil-wind"></i> <span>NW 5 km/h</span>
     </div>
     <div class="weekly-arrow" data-index=${index}>
@@ -153,6 +153,8 @@ function showData(data) {
 	});
 	const weeklyArrows = document.querySelectorAll('.weekly-arrow');
 	const weeklyHidden = document.querySelectorAll('.weekly__hidden');
+	const weeklyElona = document.querySelectorAll('.elona');
+
 
 	weeklyArrows.forEach((arrow, index) => {
 		arrow.addEventListener('click', () => {
@@ -171,6 +173,7 @@ function showData(data) {
 	const currentHour = date123.getHours();
 	const dayHiddenDivs = document.getElementsByClassName('day-hidden');
 	const nightHiddenDivs = document.getElementsByClassName('night-hidden');
+	
 
 	if (currentHour >= 18) {
 		for (let i = 0; i < dayHiddenDivs.length; i++) {
@@ -201,7 +204,7 @@ function showTitleData(data) {
 	minutes = minutes < 10 ? `0${minutes}` : minutes;
 
 	weeklyTitle.innerHTML += `
-  <p class="content__title">7 Day Weather - <span id="city">${data.location.name}, ${data.location.country}</span></p>
+  <p class="content__title">7 Day Weather<span id="city"> - ${data.location.name}, ${data.location.country}</span></p>
   <p>As of <span id="weekly-time">${hours}:${minutes} ${ampm}</span>  CET</p>
   `;
 }
