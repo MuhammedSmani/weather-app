@@ -19,8 +19,8 @@ function togNav() {
 	var mySidenav = document.getElementById('mySidenav');
 	var firstSpan = document.querySelector('.first__span');
 	var lastSpan = document.querySelector('.last__span');
-	if (mySidenav.style.height == '650px') {
-		mySidenav.style.height = '0px';
+	if (mySidenav.style.width == '200px') {
+		mySidenav.style.width = '0px';
 		menuContent.style.opacity = '0';
 		menuContent.style.transitionDelay = '0s';
 		mySidenav.style.transitionDelay = '.1s';
@@ -29,7 +29,7 @@ function togNav() {
 		firstSpan.classList.add('top__not_active');
 		lastSpan.classList.add('bot__not_active');
 	} else {
-		mySidenav.style.height = '650px';
+		mySidenav.style.width = '200px';
 		menuContent.style.opacity = '1';
 		menuContent.style.transitionDelay = '.1s';
 		mySidenav.style.transitionDelay = '0s';

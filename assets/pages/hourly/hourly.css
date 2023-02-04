@@ -53,6 +53,8 @@
 .hourly__main div:nth-child(2) span {
 	font-size: var(--h1-font-size);
 	font-weight: var(--font-semi-bold);
+	width: 20%;
+	text-align: right;
 }
 
 .hourly__main .hourly-arrow {
