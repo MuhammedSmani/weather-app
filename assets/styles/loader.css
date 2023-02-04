@@ -19,7 +19,7 @@
 	justify-content: center;
 }
 #sun-logo {
-	color: var(--fifth-color);
+	color: var(--body-color);
 	font-size: 6rem;
 	animation: lds-hourglass 8s infinite;
 }
