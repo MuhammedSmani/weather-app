@@ -7,6 +7,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
+	position: relative;
 }
 
 #map {
@@ -16,6 +17,7 @@
 	position: relative;
 	border-radius: 0.5rem;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+	position: relative;
 }
 
 .leaflet-popup-content {
@@ -99,18 +101,18 @@
 
 #open-modal {
 	/* width: 30%; */
-	background-color: var(--body-color);
+	background-color: rgba(253, 253, 253, 0.5);
+	backdrop-filter: blur(20px);
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-	/* position: absolute; */
-	/* right: 1rem; */
-	/* bottom: 1rem; */
-	/* z-index: 401 !important; */
+	position: absolute;
+	left: 50%;
+	bottom: 1rem;
+	transform: translateX(-50%);
+	width: 96%;
+	z-index: 401 !important;
 	border-radius: 0.5rem;
-	display: flex;
-	flex-direction: column;
 	/* justify-content: space-between; */
 	gap: 1.5rem;
-	align-items: flex-start;
 	padding: 1rem;
 	/* min-width: 20rem; */
 }
@@ -122,6 +124,7 @@
 	width: 100%;
 	flex-wrap: wrap;
 	cursor: pointer;
+	height: 100%;
 }
 
 .map-buttons div {
@@ -154,7 +157,7 @@
 
 .temp-icons-content i {
 	font-size: 2rem;
-	color: var(--third-color);
+	color: var(--fifth-color);
 }
 
 .temp-icons-content span {
@@ -174,8 +177,6 @@
 }
 
 #tempicons {
-	margin-top: 1rem;
-
 	height: 5rem;
 	width: 5rem;
 	background-image: url('https://thumbs.dreamstime.com/b/europe-icon-vector-polygonal-map-continent-geometric-style-purple-low-poly-gradient-dark-background-175398578.jpg');

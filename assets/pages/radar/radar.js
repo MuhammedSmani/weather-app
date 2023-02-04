@@ -225,13 +225,13 @@ function showDataOnMap(data) {
 	markers.push(marker);
 }
 
-// mapIcons.addEventListener('click', (event) => {
-// 	event.preventDefault();
-// 	getMapIcons();
-// 	map.setView([48.15, 17.02], 5);
-// 	mapIconsInfo.style.display = 'flex';
-// 	tempIconsInfo.style.display = 'none';
-// });
+mapIcons.addEventListener('click', (event) => {
+	event.preventDefault();
+	getMapIcons();
+	map.setView([48.15, 17.02], 5);
+	// mapIconsInfo.style.display = 'flex';
+	tempIconsInfo.style.display = 'none';
+});
 
 function getMapIcons() {
 	while (markers.length) {
