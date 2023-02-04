@@ -257,7 +257,7 @@ function getMapIcons() {
 					marker.bindPopup(
 						`<h2>${city}<span class="temperature"><b>  ${Math.round(
 							data.current.temp_c
-						)}°C</b></span></h2>`
+						)}°C</b></span><span></h2><h2>Feels like ${data.current.feelslike_c}°</h2></span>`
 					);
 					markers.push(marker);
 				}

@@ -37,10 +37,7 @@ function showData(data) {
         <i class="uil uil-cloud"></i> <span>${day.day.condition.text}</span>
     </div>
     <div class="elona">
-        <i class="uil uil-raindrops"> </i><span>64%</span>
-    </div>
-    <div class="elona">
-        <i class="uil uil-wind"></i> <span>NW 5 km/h</span>
+        <i class="uil uil-wind"></i> <span>${day.day.maxwind_kph}  km/h</span>
     </div>
     <div class="weekly-arrow" data-index=${index}>
     <i class="uil uil-angle-down"></i>
@@ -50,16 +47,17 @@ function showData(data) {
   <div class="day-hidden"> 
   <div class="hidden-content-firstdiv">
   <div class="hidden-content-inner-div">
+  <div>
   <h2> <b>${formattedDate}</b><span> | Day</span></h2>
     <h1><b>${Math.round(day.day.maxtemp_c)}°</b></h1>
     <p>${day.day.condition.text}</p>
     </div>
     <div class="wind-rain">
     <div>
-    <i class="uil uil-wind"></i> <span>NW ${day.day.maxwind_kph} km/h</span>
+	<i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
     </div>
     <div> 
-     <i class=" uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
+	<i class="uil uil-snowflake"></i> <span>${day.day.daily_chance_of_snow}%</span>
      </div>
   </div>
   </div>
@@ -98,6 +96,7 @@ function showData(data) {
     </div>
 </li>  </ul>
   </div>
+  </div>
   <div class="night-hidden"> 
   <div class="hidden-content-firstdiv">
   <div class="hidden-content-inner-div">
@@ -107,12 +106,13 @@ function showData(data) {
     </div>
 
     <div class="wind-rain">
-   <div>
-   <i class="uil uil-wind"></i> <span>NW ${day.day.maxwind_kph} km/h</span>
-   </div>
-   <div> 
-    <i class=" uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
+    <div>
+	<i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
     </div>
+    <div> 
+	<i class="uil uil-snowflake"></i> <span>${day.day.daily_chance_of_snow}%</span>
+     </div>
+  </div>
     </div>
     </div>
   <ul class="weekly__hidden__info">
