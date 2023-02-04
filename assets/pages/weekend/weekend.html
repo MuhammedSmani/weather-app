@@ -10,7 +10,7 @@
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
     <script src="/index.js" defer></script>
-    <script src="weekend.js" defer></script>
+    <script src="/assets/pages/weekend/weekend.js" defer></script>
     <title>Weather - Weekend</title>
   </head>
   <body>
@@ -232,166 +232,55 @@
           <div class="this-weekend">
             <div class="realtime__city">
               <p class="content__title">Weekend Weather</p>
-              <span>-</span>
-              <p class="content__para" id="search-name">
+              <span class="content__title">-</span>
+              <p class="content__title" id="search-name">
                 Tirana, Tirana,Albania
               </p>
             </div>
-            <h6 class="weekend-text">As of 10:53 am CET</h6>
+            <h6 class="weekend-text" id="hourly-realtime"></h6>
             <h4 class="this-title">This Weekend</h4>
-            <div class="current-weekend">
-              <div class="summary">
-                <div class="for-weekend">
-                  <div class="weekend-days">
-                    <h3>Fri 30</h3>
-                    <div class="grade">
-                      <span>17°</span>
-                      <span>
-                        /
-                        <span>8°</span>
-                      </span>
-                    </div>
-                    <div class="logo">
-                      <i class="uil uil-cloud"></i>
-                      <span>Mostly sunny</span>
-                    </div>
-                    <div class="percentage">
-                      <span>0%</span>
-                    </div>
-                    <div class="wind">
-                      <span>Wind</span>
-                      <span>0 km/h</span>
-                    </div>
-                    <div class="arrow">
-                      <i class="uil uil-arrow-down"></i>
-                    </div>
-                    <div class="close_arrow hidden">
-                      <i class="uil uil-arrow-up"></i>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown hidden">
-                  <div class="dropdown-grade">
-                    <span> Friday 30 | Day </span>
-                    <div class="daily-content">
-                      <h2>17°</h2>
-                      <i class="uil uil-cloud-sun-rain"></i>
-                      <div class="logo-dropdown">
-                        <span>0 km/h</span>
-                        <span>Mostly sunny</span>
-                      </div>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor, sit amet consectetur
-                      <br />
-                      Voluptatibus ad quaerat, laudantium
-                      <br />
-                      cumque odio earum possimu
-                    </p>
-                  </div>
-                  <div class="dropdown-grade">
-                    <div class="dropdown-grade">
-                      <span> Fri 30 | Day </span>
-                      <div class="daily-content">
-                        <h2>17°</h2>
-                        <i class="uil uil-cloud-sun-rain"></i>
-                        <div class="logo-dropdown">
-                          <span>0 km/h</span>
-                          <span>Mostly sunny</span>
-                        </div>
-                      </div>
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur
-                        <br />
-                        Voluptatibus ad quaerat, laudantium
-                        <br />
-                        cumque odio earum possimu
-                      </p>
-                    </div>
-                  </div>
-                  <div class="dropdown-info">
-                    <div class="humidity broder-bottom">
-                      <!-- logo of drop of water -->
-                      <i class="uil uil-tear"></i>
-                      <div class="index">
-                        <span>Humidity</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                    <!-- <div class="sunset"></div> -->
-                    <div class="humidity broder-bottom">
-                      <!-- logo of drop of water -->
-                      <i class="uil uil-tear"></i>
-                      <div class="index">
-                        <span>Humidity</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                    <div class="humidity">
-                      <!-- logo of drop of water -->
-                      <i class="uil uil-tear"></i>
-                      <div class="index">
-                        <span>Humidity</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                    <div class="humidity">
-                      <!-- logo of drop of water -->
-                      <i class="uil uil-tear"></i>
-                      <div class="index">
-                        <span>Humidity</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="dropdown-info">
-                    <div class="humidity">
-                      <!-- logo of drop of water -->
-                      <i class="uil uil-tear"></i>
-                      <div class="index">
-                        <span>Humidity</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                    <div class="humidity">
-                      <!-- logo of drop of water -->
-                      <i class="uil uil-tear"></i>
-                      <div class="index">
-                        <span>Humidity</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                    <div class="humidity">
-                      <!-- logo of drop of water -->
-                      <i class="uil uil-tear"></i>
-                      <div class="index">
-                        <span>Humidity</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                    <div class="humidity">
-                      <!-- logo of drop of water -->
-                      <i class="uil uil-tear"></i>
-                      <div class="index">
-                        <span>Humidity</span>
-                        <span>0%</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <h4 class="this-title title-margin">Next Weekend</h4>
-            <div class="next-weekend">
-              ...Summary for next friday/saturday/sunday should be here
-              <div class="summary"></div>
-              <div class="summary"></div>
-              <div class="summary"></div>
-            </div>
+            <div class="current-weekend"></div>
           </div>
         </div>
       </div>
+      <div class="contact-button">
+        <a class="contact-btn" id="button">Contact</a>
+      </div>
     </main>
+    <section class="social__media__section">
+      <div class="container">
+        <p>Get connected to us on social networks</p>
+        <div class="social__media__icons">
+          <a href="https://www.facebook.com"
+            ><i class="uil uil-facebook"></i
+          ></a>
+          <a href="https://www.instagram.com"
+            ><i class="uil uil-instagram"></i
+          ></a>
+          <a href="https://www.twitter.com"><i class="uil uil-twitter"></i></a>
+          <a href="https://www.youtube.com"><i class="uil uil-youtube"></i></a>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer__content container">
+        <div class="footer__apps">
+          <p>Download Weather App</p>
+          <a href="#"><img src="../../images/app-store-badge.svg" /></a>
+          <a href="#"
+            ><img src="../../images/Google_Play_Store_badge_EN.svg"
+          /></a>
+        </div>
+        <p class="footer__copyright">
+          &#169; 2022 - 2023 Weather by LIFE from Gjirafa
+        </p>
+        <p class="footer__info">
+          Weather is a team of Frontend Developers that has been practising
+          weather web development in LIFE courses.<br />
+          Headquarters in Gjirafa, KS. <i class="uil uil-sun"></i>
+        </p>
+      </div>
+    </footer>
     <!-- <footer id="footer"></footer> -->
     <script src="/assets/components/header/header.js"></script>
     <!-- <script src="/assets/components/footer/footer.js"></script> -->

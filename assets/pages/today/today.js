@@ -36,21 +36,21 @@ const conditionText = document.getElementById('condition-text');
 const conditionIcon = document.querySelectorAll('.condition-icon');
 const icons = {
 	'Light rain': `<i class="uil uil-cloud-rain"></i>`,
-	Sunny: `<i class="uil uil-brightness"></i>`,
-	Mist: `<i class="uil uil-clouds"></i>`,
-	Overcast: `<i class="uil uil-cloud"></i>`,
+	'Sunny': `<i class="uil uil-brightness"></i>`,
+	'Mist': `<i class="uil uil-clouds"></i>`,
+	'Overcast': `<i class="uil uil-cloud"></i>`,
 	'Moderate rain': `<i class="uil uil-cloud-rain"></i>`,
 	'Partly cloudy': `<i class="uil uil-cloud-sun"></i>`,
-	Clear: `<i class="uil uil-moon"></i>`,
-	Fog: `<i class="uil uil-cloud-wind"></i>`,
-	Cloudy: `<i class="uil uil-clouds"></i>`,
+	'Clear': `<i class="uil uil-moon"></i>`,
+	'Fog': `<i class="uil uil-cloud-wind"></i>`,
+	'Cloudy': `<i class="uil uil-clouds"></i>`,
 	'Patchy rain possible': `<i class="uil uil-cloud-sun-rain-alt"></i>`,
 	'Light drizzle': `<i class="uil uil-cloud-showers-heavy"></i>`,
 	'Light rain shower': `<i class="uil uil-cloud-sun-tear"></i>`,
 	'Heavy snow': `<i class="uil uil-cloud-meatball"></i>`,
 	'Moderate or heavy snow showers': `<i class="uil uil-cloud-sun-hail"></i>`,
 	'Patchy light snow': `<i class="uil uil-cloud-sun-meatball"></i>`,
-	Other: `<i class="uil uil-rainbow"></i>`,
+	'Other': `<i class="uil-sun"></i>`,
 };
 
 // Function for showing the Icons depending on the Text
@@ -236,37 +236,6 @@ function getHourlyForecast(data) {
 	const numOfHours = 5;
 	const currentHour = new Date().getHours();
 
-	// for (let i = 0; i < numOfHours; i++) {
-	// 	let hourlyTime = forecastHoursData[currentHour + i].time;
-	// 	const hourlyTemp = Math.round(forecastHoursData[currentHour + i].temp_c);
-	// 	const hourlyRainChance = forecastHoursData[currentHour + i].chance_of_rain;
-	// 	const hourlyIconUrl = forecastHoursData[currentHour + i].condition.icon;
-	// 	const hourlyIconName = hourlyIconUrl.split('/').pop();
-	// 	const hourlyIcon = getIconClass(hourlyIconName);
-	// 	if (i === 0) {
-	// 		hourlyTime = 'Now';
-	// 	} else {
-	// 		let hour = (currentHour + i) % 24;
-	// 		let period = 'am';
-
-	// 		if (hour === 0) {
-	// 			hour = 12;
-	// 		} else if (hour >= 12) {
-	// 			period = 'pm';
-	// 			if (hour > 12) {
-	// 				hour -= 12;
-	// 			}
-	// 		}
-	// 		hourlyTime = `${hour} ${period}`;
-	// 	}
-	// 	const html = generateHourlyForecastHTML(
-	// 		hourlyTime,
-	// 		hourlyTemp,
-	// 		hourlyRainChance,
-	// 		hourlyIcon
-	// 	);
-	// 	hourlyForecast.innerHTML += html;
-	// }
 	for (let i = 0; i < numOfHours; i++) {
 		let hourlyData = forecastHoursData[currentHour + i];
 		if (!hourlyData) continue;
@@ -458,6 +427,10 @@ navigator.geolocation.getCurrentPosition(
 	},
 	(error) => {
 		console.error(error);
+		// If geolocation is off, use Pristina as the default city
+		searchInputs[0].value = "Pristina";
+		searchInputs[1].value = "Pristina";
+		fetchWeatherData("Pristina");
 	}
 );
 
@@ -572,18 +545,7 @@ function renderResults(results) {
 
 /*==================== INTRO ANIMATION ====================*/
 
-// const weatherAnimation = document.querySelector('.weather__animation');
-// const sunLogo = document.getElementById('sun-logo')
-
-// setTimeout(() => {
-//   sunLogo.style.display = 'none';
-// }, 3000);
-
-// setTimeout(() => {
-//     weatherAnimation.style.display = 'none';
-// }, 3000);
-
-// updateNavbarLinks(city);
+updateNavbarLinks(city);
 
 hideMain();
 showLoader();

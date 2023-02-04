@@ -1,28 +1,4 @@
 "use strict";
-function onDropdown() {
-  const dropdowns = document.querySelectorAll(".dropdown");
-  const arrows = document.querySelectorAll(".arrow");
-  const closeArrows = document.querySelectorAll(".close_arrow");
-  const weekendDays = document.querySelectorAll(".weekend-days");
-
-  function toggleDropdown(dropdown, arrow, closeArrow) {
-    dropdown.classList.toggle("hidden");
-    arrow.classList.toggle("hidden");
-    closeArrow.classList.toggle("hidden");
-  }
-
-  arrows.forEach((arrow, i) => {
-    arrow.addEventListener("click", () =>
-      toggleDropdown(dropdowns[i], arrow, closeArrows[i])
-    );
-  });
-
-  closeArrows.forEach((closeArrow, i) => {
-    closeArrow.addEventListener("click", () =>
-      toggleDropdown(dropdowns[i], arrows[i], closeArrow)
-    );
-  });
-}
 
 // const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=London&days=14&aqi=yes&alerts=yes`;
 
@@ -43,6 +19,9 @@ function getWeekendData(data) {
   const city = data.location.name + ", " + data.location.country;
   const searchName = document.querySelector("#search-name");
   searchName.innerHTML = city;
+  const hourRealtime = document.querySelector("#hourly-realtime");
+  const time = new Date().toLocaleTimeString();
+  hourRealtime.innerHTML = "As of " + time;
   const filteredData = data.forecast.forecastday.filter((x) => {
     const dt = new Date(x.date);
     const day = dt.getUTCDay();
@@ -82,46 +61,43 @@ function getWeekendData(data) {
     const windSpeed = Math.round(maxwind_kph);
     const description = text;
     const weatherDiv = `
-      <div class="summary">
-      <div class="for-weekend">
-      <div class="weekend-days">
-          <h3>${dayName}</h3>
-          <div class="grade">
+		<div class="summary">
+		<div class="for-weekend">
+		<div class="weekend-days">
+		<h3>${dayName}</h3>
+		<div class="grade">
               <span>${temperature}°</span>
               <span>
-                  /
+							/
                   <span>8°</span>
               </span>
-          </div>
-          <div class="logo">
+							</div>
+							<div class="logo">
               <i class="uil uil-cloud"></i>
               <span>${description}</span>
-          </div>
-          <div class="percentage">
+							</div>
+							<div class="percentage">
               <span>0%</span>
           </div>
           <div class="wind">
-              <span>Wind</span>
+					<span>Wind</span>
               <span>${windSpeed} km/h</span>
-          </div>
-          <div class="arrow hidden">
-              <i class="uil uil-arrow-down"></i>
-          </div>
-          <div class="close_arrow hidden">
-              <i class="uil uil-arrow-up"></i>
-          </div>
-      </div>
-      </div>
-      <div class="dropdown">
-      <div class="dropdown-grade">
-          <span> ${dayName} | Day </span>
-          <div class="daily-content">
-          <h2>${temperature}°</h2>
-          <i class="uil uil-cloud-sun-rain"></i>
-          <div class="logo-dropdown">
+							</div>
+							<div class="arrow">
+              <i class="uil uil-angle-down"></i>
+							</div>
+							</div>
+							</div>
+							<div class="dropdown hidden">
+							<div class="dropdown-grade">
+							<span> ${dayName} | Day </span>
+							<div class="daily-content">
+							<h2>${temperature}°</h2>
+							<i class="uil uil-cloud-sun-rain"></i>
+							<div class="logo-dropdown">
               <span>${windSpeed} km/h</span>
               <span>${description}</span>
-          </div>
+							</div>
           </div>
           <p>
           Lorem ipsum dolor, sit amet consectetur
@@ -130,23 +106,36 @@ function getWeekendData(data) {
           <br />
           cumque odio earum possimu
           </p>
-      </div>
-      <div class="dropdown-info">
-        ${humidities.map((humidity) => {
-          return `<div class="humidity broder-bottom">
+					</div>
+					<div class="dropdown-info">
+					${humidities.map((humidity) => {
+            return `<div class="humidity broder-bottom">
           <i class="uil uil-tear"></i>
           <div class="index">
               <span>Humidity</span>
               <span>${humidity}%</span>
           </div>
           </div>`;
-        })}
+          })}
       </div>
       </div>
-  </div>`;
+			</div>`;
     currentWeekend.innerHTML += weatherDiv;
   });
+  // add event listener for dropdown
+  const arrows = document.querySelectorAll(".arrow");
+  // onclick
+  arrows.forEach((arrow) => {
+    arrow.addEventListener("click", () => {
+      // find div with class dropdown
+      arrow.parentElement.parentElement.parentElement
+        .querySelector(".dropdown")
+        .classList.toggle("hidden");
+    });
+  });
 }
+
+// const arrows = document.querySelectorAll(".arrow");
 
 // fetchWeather();
 
@@ -300,7 +289,11 @@ navigator.geolocation.getCurrentPosition(
       });
   },
   (error) => {
-    console.log(error);
+    console.error(error);
+		// If geolocation is off, use Pristina as the default city
+		searchInputs[0].value = "Pristina";
+		searchInputs[1].value = "Pristina";
+		fetchWeatherData("Pristina");
   }
 );
 

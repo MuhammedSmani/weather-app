@@ -1,6 +1,7 @@
 @import '/main.css';
 @import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
+@import '/assets/pages/contact/modalContact.css';
 
 /* SEVENDAY SECTION */
 
@@ -13,11 +14,12 @@
 	width: 100%;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 	border-radius: 0.5rem;
-	background-color: #ffffff;
 }
 .weekly__content {
 	display: flex;
 	flex-direction: column;
+	background-color: #ffffff;
+	border-radius: 0.5rem;
 }
 .weekly__content i {
 	font-size: var(--big-font-size);

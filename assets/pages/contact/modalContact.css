@@ -1,0 +1,24 @@
+.contact-button a {
+  color: var(--text-color);
+  background-color: #f2f2f2;
+  border-radius: 2rem;
+  background-size: 100% 5px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  padding: 0.4rem 1rem;
+  background-color: var(--fifth-color);
+  color: white;
+  text-transform: uppercase;
+  position: fixed;
+  bottom: 40px;
+  right: 35px;
+  z-index: 100;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-button a:hover {
+  background-color: var(--sixth-color);
+}
