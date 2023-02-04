@@ -1,22 +1,22 @@
 /*==================== UPDATE MAIN PAGE BUTTONS ====================*/
 
-const weeklyButton = document.getElementById('weekly-button');
+const weeklyButton = document.getElementById("weekly-button");
 
 function updateMainPageButton(city) {
-	weeklyButton.innerHTML = `<a href="../weekend/weekend.html?city=${city}">Weekend Weather</a>`;
+  weeklyButton.innerHTML = `<a href="../weekend/weekend.html?city=${city}">Weekend Weather</a>`;
 }
 
 // const weeklyDescription = document.getElementById('weekly-main');
-const weeklyDescription = document.querySelector('.weekly__description');
+const weeklyDescription = document.querySelector(".weekly__description");
 
-const weeklyTitle = document.querySelector('.weekly__title');
+const weeklyTitle = document.querySelector(".weekly__title");
 
-const form = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
+const form = document.getElementById("search-form");
+const searchInput = document.getElementById("search-input");
 
-weeklyDescription.innerHTML = '';
+weeklyDescription.innerHTML = "";
 
-let daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 function showData(data) {
 	data.forecast.forecastday.forEach((day, index) => {
@@ -27,14 +27,14 @@ function showData(data) {
 		const dailyIconName = dailyIconUrl.split('/').pop();
 		const dailyIcon = getIconClass(dailyIconName);
 
-		weeklyDescription.innerHTML += `  <div class="weekly__main" id="weekly-${index}" >
+    weeklyDescription.innerHTML += `  <div class="weekly__main" id="weekly-${index}" >
     <div class="elona">
         <span>${formattedDate}</span>
     </div>
-    <div class="elona">
-        <span><b>${Math.round(day.day.maxtemp_c)}°</b></span><span>/${Math.round(
-			day.day.mintemp_c
-		)}°</span>
+    <div>
+        <span><b>${Math.round(
+          day.day.maxtemp_c
+        )}°</b></span><span>/${Math.round(day.day.mintemp_c)}°</span>
     </div>
     <div class="elona">
 	<i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
@@ -61,7 +61,9 @@ function showData(data) {
 	<i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
     </div>
     <div> 
-	<i class="uil uil-snowflake"></i> <span>${day.day.daily_chance_of_snow}%</span>
+     <i class=" uil uil-raindrops"></i> <span>${
+       day.day.daily_chance_of_rain
+     }%</span>
      </div>
   </div>
   </div>
@@ -80,7 +82,9 @@ function showData(data) {
         <i class="uil uil-sun"></i>
         <div class="weekly__hidden__info__text">
             <span class="weekly__uv__index">UV Index</span>
-            <span class="weekly__uv__index__temp"><b>${day.day.uv} of 10</b></span>
+            <span class="weekly__uv__index__temp"><b>${
+              day.day.uv
+            } of 10</b></span>
         </div>
     </li>
     <li>
@@ -89,7 +93,9 @@ function showData(data) {
     <i class="uil uil-sunset"></i>
     <div class="weekly__hidden__info__text">
             <span class="weekly__sunrise">Sunrise</span>
-            <span class="weekly__sunrise__data"><b>${day.astro.sunrise}</b></span>
+            <span class="weekly__sunrise__data"><b>${
+              day.astro.sunrise
+            }</b></span>
         </div>
     </li>
     <li>
@@ -110,13 +116,14 @@ function showData(data) {
     </div>
 
     <div class="wind-rain">
-    <div>
-	<i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
+   <div>
+   <i class="uil uil-wind"></i> <span>NW ${day.day.maxwind_kph} km/h</span>
+   </div>
+   <div> 
+    <i class=" uil uil-raindrops"></i> <span>${
+      day.day.daily_chance_of_rain
+    }%</span>
     </div>
-    <div> 
-	<i class="uil uil-snowflake"></i> <span>${day.day.daily_chance_of_snow}%</span>
-     </div>
-  </div>
     </div>
     </div>
   <ul class="weekly__hidden__info">
@@ -133,14 +140,18 @@ function showData(data) {
         <i class="uil uil-sun"></i>
         <div class="weekly__hidden__info__text">
             <span class="weekly__uv__index">UV Index</span>
-            <span class="weekly__uv__index__temp"><b>${day.day.uv} of 10</b></span>
+            <span class="weekly__uv__index__temp"><b>${
+              day.day.uv
+            } of 10</b></span>
         </div>
     </li>
     <li>
     <i class="uil uil-moonset"></i>
         <div class="weekly__hidden__info__text">
             <span class="weekly__moonrise">Moonrise</span>
-            <span class="weekly__moonrise__data"><b>${day.astro.moonrise}</b></span>
+            <span class="weekly__moonrise__data"><b>${
+              day.astro.moonrise
+            }</b></span>
         </div>
     </li>
     <li>
@@ -154,281 +165,280 @@ function showData(data) {
           </div>
           </div>
   </div>`;
-	});
-	const weeklyArrows = document.querySelectorAll('.weekly-arrow');
-	const weeklyHidden = document.querySelectorAll('.weekly__hidden');
+  });
+  const weeklyArrows = document.querySelectorAll(".weekly-arrow");
+  const weeklyHidden = document.querySelectorAll(".weekly__hidden");
 
+  weeklyArrows.forEach((arrow, index) => {
+    arrow.addEventListener("click", () => {
+      if (weeklyHidden[index].style.display === "flex") {
+        weeklyHidden[index].style.display = "none";
+      } else {
+        weeklyHidden.forEach((hidden) => {
+          hidden.style.display = "none";
+        });
+        weeklyHidden[index].style.display = "flex";
+      }
+    });
+  });
 
-	weeklyArrows.forEach((arrow, index) => {
-		arrow.addEventListener('click', () => {
-			if (weeklyHidden[index].style.display === 'flex') {
-				weeklyHidden[index].style.display = 'none';
-			} else {
-				weeklyHidden.forEach((hidden) => {
-					hidden.style.display = 'none';
-				});
-				weeklyHidden[index].style.display = 'flex';
-			}
-		});
-	});
+  const date123 = new Date();
+  const currentHour = date123.getHours();
+  const dayHiddenDivs = document.getElementsByClassName("day-hidden");
+  const nightHiddenDivs = document.getElementsByClassName("night-hidden");
 
-	const date123 = new Date();
-	const currentHour = date123.getHours();
-	const dayHiddenDivs = document.getElementsByClassName('day-hidden');
-	const nightHiddenDivs = document.getElementsByClassName('night-hidden');
-	
+  if (currentHour >= 18) {
+    for (let i = 0; i < dayHiddenDivs.length; i++) {
+      dayHiddenDivs[i].style.display = "none";
+    }
 
-	if (currentHour >= 18) {
-		for (let i = 0; i < dayHiddenDivs.length; i++) {
-			dayHiddenDivs[i].style.display = 'none';
-		}
-
-		for (let i = 0; i < nightHiddenDivs.length; i++) {
-			nightHiddenDivs[i].style.maxWidth = '100%';
-			nightHiddenDivs[i].style.width = '100%';
-		}
-	}
+    for (let i = 0; i < nightHiddenDivs.length; i++) {
+      nightHiddenDivs[i].style.maxWidth = "100%";
+      nightHiddenDivs[i].style.width = "100%";
+    }
+  }
 }
 
 // Function for showing the Title data
 function showTitleData(data) {
-	const timeString = data.location.localtime;
-	const time = new Date(timeString);
+  const timeString = data.location.localtime;
+  const time = new Date(timeString);
 
-	let hours = time.getHours();
-	let minutes = time.getMinutes();
-	let ampm = 'AM';
+  let hours = time.getHours();
+  let minutes = time.getMinutes();
+  let ampm = "AM";
 
-	if (hours > 12) {
-		hours -= 12;
-		ampm = 'PM';
-	}
+  if (hours > 12) {
+    hours -= 12;
+    ampm = "PM";
+  }
 
-	minutes = minutes < 10 ? `0${minutes}` : minutes;
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
 
-	weeklyTitle.innerHTML += `
+  weeklyTitle.innerHTML += `
   <p class="content__title">7 Day Weather<span id="city"> - ${data.location.name}, ${data.location.country}</span></p>
   <p>As of <span id="weekly-time">${hours}:${minutes} ${ampm}</span>  CET</p>
   `;
 }
 
 // Show Loader
-const loader = document.querySelector('.sun__logo_wrapper');
+const loader = document.querySelector(".sun__logo_wrapper");
 function showLoader() {
-	loader.style.display = 'flex';
+  loader.style.display = "flex";
 }
 
-const main = document.getElementById('main');
+const main = document.getElementById("main");
 
 function showMain() {
-	main.style.display = 'block';
+  main.style.display = "block";
 }
 
 function hideMain() {
-	main.style.display = 'none';
+  main.style.display = "none";
 }
 
 // Hide loader
 function hideLoader() {
-	loader.style.display = 'none';
+  loader.style.display = "none";
 }
 
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/
 
 // Constants
-const apiKey = '9ce000ab2ee94bf8bfd111052222012';
+const apiKey = "9ce000ab2ee94bf8bfd111052222012";
 const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&days=10&aqi=yes&alerts=yes`;
-const searchForm = document.querySelector('.search-form');
-const searchInputs = document.querySelectorAll('.search-input');
+const searchForm = document.querySelector(".search-form");
+const searchInputs = document.querySelectorAll(".search-input");
 const searchParams = new URLSearchParams(window.location.search);
 
-searchInputs[0].addEventListener('submit', getCityValue);
+searchInputs[0].addEventListener("submit", getCityValue);
 // searchInputs[1].addEventListener('submit', getCityValue);
-
 
 // Update Search parameters
 function updateSearchParams(city) {
-	searchParams.set('city', city);
-	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
-	updateNavbarLinks(city);
-
+  searchParams.set("city", city);
+  window.history.pushState(
+    {},
+    "",
+    `${window.location.pathname}?${searchParams.toString()}`
+  );
+  updateNavbarLinks(city);
 }
 
 // Get the city name value in search input
 function getCityValue(event) {
-	event.preventDefault();
-	const city = event.target.value;
-	updateSearchParams(city);
-	fetchWeatherData(city);
+  event.preventDefault();
+  const city = event.target.value;
+  updateSearchParams(city);
+  fetchWeatherData(city);
 }
-
 
 // Fetch Weather data based on city
 function fetchWeatherData(city) {
-	fetch(
-		`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`
-	)
-		.then((response) => response.json())
-		.then((data) => {
-			updateNavbarLinks(city);
-			updateMainPageButton(city);
-			showTitleData(data);
-			showData(data);
-			hideLoader();
-			showMain();
-		});
+  fetch(
+    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      updateNavbarLinks(city);
+      updateMainPageButton(city);
+      showTitleData(data);
+      showData(data);
+      hideLoader();
+      showMain();
+    });
 }
 
 // Fetch Weather data based on the Geolocation
 navigator.geolocation.getCurrentPosition(
-	(position) => {
-		let lat = position.coords.latitude;
-		let lng = position.coords.longitude;
+  (position) => {
+    let lat = position.coords.latitude;
+    let lng = position.coords.longitude;
 
-		// Fetch weather data based on current location
-		fetch(
-			`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`
-		)
-			.then((response) => response.json())
-			.then((data) => {
-				const city = data.location.name;
-				if (
-					localStorage.getItem('city') &&
-					localStorage.getItem('city') === city &&
-					window.location.search
-				)
-					return;
-				// Set city name in input field
-				searchInputs[0].value = city;
-				// searchInputs[1].value = city;
-				// Update the URL with the city value
-				updateSearchParams(city);
-				// Set city value in local storage
-				localStorage.setItem('city', city);
-			});
-	},
-	(error) => {
-		const cityFromUrl = searchParams.get('city');
-		if (!cityFromUrl) {
-			// If there is no city value in the URL, set the default city to 'Pristina'
-			searchInputs[0].value = 'Pristina';
-			updateSearchParams('Pristina');
-		} else {
-			console.error(error);
-			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
-			searchInputs[0].value = cityFromUrl;
-			updateSearchParams(cityFromUrl);
-		}
-	}
+    // Fetch weather data based on current location
+    fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const city = data.location.name;
+        if (
+          localStorage.getItem("city") &&
+          localStorage.getItem("city") === city &&
+          window.location.search
+        )
+          return;
+        // Set city name in input field
+        searchInputs[0].value = city;
+        // searchInputs[1].value = city;
+        // Update the URL with the city value
+        updateSearchParams(city);
+        // Set city value in local storage
+        localStorage.setItem("city", city);
+      });
+  },
+  (error) => {
+    const cityFromUrl = searchParams.get("city");
+    if (!cityFromUrl) {
+      // If there is no city value in the URL, set the default city to 'Pristina'
+      searchInputs[0].value = "Pristina";
+      updateSearchParams("Pristina");
+    } else {
+      console.error(error);
+      // If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+      searchInputs[0].value = cityFromUrl;
+      updateSearchParams(cityFromUrl);
+    }
+  }
 );
 
 // Get the city name from the URL
-const cityFromUrl = searchParams.get('city');
+const cityFromUrl = searchParams.get("city");
 if (cityFromUrl) {
-	searchInputs[0].value = cityFromUrl;
-	// searchInputs[1].value = cityFromUrl;
-	fetchWeatherData(cityFromUrl);
+  searchInputs[0].value = cityFromUrl;
+  // searchInputs[1].value = cityFromUrl;
+  fetchWeatherData(cityFromUrl);
 }
 
 /*==================== AUTOCOMPLETE SEARCH FORM ====================*/
 
 // Declaring an array that contains a list of cities
 let searchable = [
-	'London',
-	'Pristina',
-	'Moscow',
-	'Paris',
-	'Berlin',
-	'Berne',
-	'Sofia',
-	'Madrid',
-	'Ljubljana',
-	'Tirana',
-	'Sarajevo',
-	'Athens',
-	'Rome',
-	'Zagreb',
-	'Stockholm',
-	'Valletta',
-	'Chisinau',
-	'Skopje',
-	'Luxembourg',
-	'Vilnius',
-	'Vaduz',
-	'Riga',
-	'Dublin',
-	'Reykjavik',
-	'Budapest',
-	'Vatican City',
-	'Helsinki',
-	'Tallinn',
-	'Copenhagen',
-	'Prague',
-	'Vienna',
-	'Minsk',
-	'Andorra La Vella',
-	'Monaco',
-	'Vilnius',
-	'Podgorica',
-	'Amsterdam',
-	'Oslo',
-	'Warsaw',
-	'Lisbon',
-	'Bucharest',
-	'Belgrade',
-	'San Marino',
-	'Bratislava',
-	'Prague',
-	'Kiev',
+  "London",
+  "Pristina",
+  "Moscow",
+  "Paris",
+  "Berlin",
+  "Berne",
+  "Sofia",
+  "Madrid",
+  "Ljubljana",
+  "Tirana",
+  "Sarajevo",
+  "Athens",
+  "Rome",
+  "Zagreb",
+  "Stockholm",
+  "Valletta",
+  "Chisinau",
+  "Skopje",
+  "Luxembourg",
+  "Vilnius",
+  "Vaduz",
+  "Riga",
+  "Dublin",
+  "Reykjavik",
+  "Budapest",
+  "Vatican City",
+  "Helsinki",
+  "Tallinn",
+  "Copenhagen",
+  "Prague",
+  "Vienna",
+  "Minsk",
+  "Andorra La Vella",
+  "Monaco",
+  "Vilnius",
+  "Podgorica",
+  "Amsterdam",
+  "Oslo",
+  "Warsaw",
+  "Lisbon",
+  "Bucharest",
+  "Belgrade",
+  "San Marino",
+  "Bratislava",
+  "Prague",
+  "Kiev",
 ];
 
 // const searchInputs = document.querySelectorAll('.search-input');
-const searchField = document.querySelector('.search');
-const searchResults = document.querySelector('.search-results');
+const searchField = document.querySelector(".search");
+const searchResults = document.querySelector(".search-results");
 
 searchInputs.forEach((searchInput) => {
-	searchInput.addEventListener('keyup', () => {
-		// Initializing an empty array to store search results
-		let results = [];
-		// Storing the current value of the search input
-		let resultInput = searchInput.value;
-		// If the search input has a value
-		if (resultInput.length) {
-			// Filtering the 'searchable' array for items that include the current search input value
-			results = searchable.filter((item) => {
-				return item.toLowerCase().includes(resultInput.toLowerCase());
-			});
-			//If there's no match, clearing the search results
-			if (!results.length) {
-				searchResults.classList.remove('search-show');
-				searchResults.innerHTML = '';
-				return;
-			}
-		} else {
-			searchResults.classList.remove('search-show');
-			searchResults.innerHTML = '';
-			return;
-		}
+  searchInput.addEventListener("keyup", () => {
+    // Initializing an empty array to store search results
+    let results = [];
+    // Storing the current value of the search input
+    let resultInput = searchInput.value;
+    // If the search input has a value
+    if (resultInput.length) {
+      // Filtering the 'searchable' array for items that include the current search input value
+      results = searchable.filter((item) => {
+        return item.toLowerCase().includes(resultInput.toLowerCase());
+      });
+      //If there's no match, clearing the search results
+      if (!results.length) {
+        searchResults.classList.remove("search-show");
+        searchResults.innerHTML = "";
+        return;
+      }
+    } else {
+      searchResults.classList.remove("search-show");
+      searchResults.innerHTML = "";
+      return;
+    }
 
-		renderResults(results);
-	});
+    renderResults(results);
+  });
 });
 
 //Function that renders the search results
 function renderResults(results) {
-	if (!results.length) {
-		return searchResults.classList.remove('search-show');
-	}
-	//Mapping the filtered results to create the HTML for each result
-	let searchContent = results
-		.map((item) => {
-			return `<li><a href="../../../assets/pages/sevenday/sevenday.html?city=${item}">${item}</a></li>`;
-		})
-		//Joining the HTML of all results into a single string
-		.join('');
+  if (!results.length) {
+    return searchResults.classList.remove("search-show");
+  }
+  //Mapping the filtered results to create the HTML for each result
+  let searchContent = results
+    .map((item) => {
+      return `<li><a href="../../../assets/pages/sevenday/sevenday.html?city=${item}">${item}</a></li>`;
+    })
+    //Joining the HTML of all results into a single string
+    .join("");
 
-	searchResults.classList.add('search-show');
-	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
+  searchResults.classList.add("search-show");
+  searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
 
 hideMain();

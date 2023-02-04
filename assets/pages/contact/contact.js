@@ -1,53 +1,44 @@
-"use strict";
+/*==================== CONTACT FORM ====================*/
+const contactButton = document.querySelector(".contact-btn");
+const contactForm = document.querySelector(".contact-form");
+const overlay = document.querySelector(".overlay");
 
-var modal = document.getElementById("modal");
-var span = document.getElementsByClassName("close")[0];
-
-document
-  .getElementById("contact-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    var formData = new FormData(event.target);
-
-    fetch("https://formspree.io/f/xqkoaajz", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          modal.style.display = "block";
-        } else {
-          alert("There was an error sending the email. Please try again.");
-        }
-      });
-  });
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+contactButton.addEventListener("click", () => {
+  contactForm.classList.toggle("hidden");
+  overlay.classList.toggle("hidden");
+  if (contactForm.classList.contains("hidden")) {
+    contactButton.textContent = "Contact";
+  } else {
+    contactButton.innerHTML = '<i class="uil uil-multiply"></i>';
   }
-};
+});
 
-// document.getElementById("modal").style.display = "none"; //set the modal's display property to "none" by default
+document.addEventListener("click", (event) => {
+  if (
+    !contactForm.contains(event.target) &&
+    !contactButton.contains(event.target) &&
+    !overlay.classList.contains("hidden")
+  ) {
+    contactForm.classList.add("hidden");
+    contactButton.textContent = "Contact";
+    overlay.classList.add("hidden");
+  }
+});
 
-// document
-//   .getElementById("contact-form")
-//   .addEventListener("submit", function (event) {
-//     var name = document.getElementById("name").value;
-//     var email = document.getElementById("email").value;
-//     var message = document.getElementById("message").value;
-//     var modal = document.getElementById("modal");
-//     if (!name || !email || !message) {
-//       alert("Please fill out all fields before submitting the form.");
-//     } else {
-//       modal.style.display = "block";
-//     }
-//   });
+/*==================== FORMSPREE ====================*/
+const form1 = document.querySelector("#form");
+
+form1.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Submit the form data to Formspree
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "https://formspree.io/f/xqkoaajz", true);
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      form1.reset();
+    }
+  };
+  xhr.send(new FormData(form1));
+});
