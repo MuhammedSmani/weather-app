@@ -6,6 +6,8 @@
 @import '/assets/styles/loader.css';
 
 /* SEVENDAY SECTION */
+
+
 .weekly__container {
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 	background-color: var(--body-color);
@@ -22,9 +24,8 @@
 .weekly__title {
 	padding: 1rem;
 }
-.weekly__title p:nth-child(3) {
-	padding: 1rem 0;
-}
+.weekly__title p:nth-child(2) {
+font-size: 1.3rem;}
 
 .weekly__main {
 	display: grid;
@@ -43,16 +44,29 @@
 	font-size: 1rem;
 }
 
-.weekly__main .weekly-arrow {
+.content__title{
+	font-size: 2rem;
+}
+
+.content__title span{
+	font-size: 1rem;
+	font-weight: 100;
+}
+
+.weekly-arrow {
 	cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 }
 .weekly__hidden {
-	border-radius: 1rem;
+	border-radius: 1.3rem;
 	margin: 1rem;
 	display: none;
+}
+
+#hidden-0{
+	display: grid;
 }
 .weekly__main .uil-angle-down {
 	cursor: pointer;
@@ -108,19 +122,18 @@
 
 .day-hidden {
 	width: 100%;
-	border: solid 1px var(--fourth-color);
 	padding: 1rem;
 	border-radius: 0.5rem;
+	min-width: 10rem;
+
 }
 
 .night-hidden {
 	width: 100%;
-	border: solid 1px var(--fourth-color);
 	padding: 1rem;
 	border-radius: 0.5rem;
+	min-width: 10rem;
+
 }
-@media (min-width: 19h) {
-	.day-hidden {
-		display: none;
-	}
-}
+
+
