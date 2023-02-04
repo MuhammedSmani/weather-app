@@ -1,12 +1,5 @@
-.weather__today {
-	display: flex;
-	justify-content: center;
-}
-
 .weather__today_container {
-	width: 100%;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-	border-radius: 0.5rem;
 	background-color: var(--body-color);
 }
 
@@ -18,17 +11,10 @@
 .weather__today_city {
 	display: flex;
 	gap: 0.5rem;
-	/* background-color: var(--third-color); */
 	padding: 1rem 1rem;
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 }
-
-/* .weather__today_city p {
-	color: var(--text-color);
-	font-size: var(--h3-font-size);
-	font-weight: var(--font-semi-bold);
-} */
 
 .weather__today_info {
 	display: flex;

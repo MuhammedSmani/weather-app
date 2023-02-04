@@ -1,6 +1,5 @@
 @import url('/main.css');
 @import '/assets/components/header/header.css';
-@import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
 @import '/assets/pages/contact/modalContact.css';
 @import '/assets/styles/loader.css';
@@ -11,7 +10,6 @@
 	height: 24rem;
 	width: 100%;
 	background: url('../../images/weather.jpg');
-	/* background: url('../../images/weather2.png'); */
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: cover;
@@ -21,12 +19,9 @@
 	justify-content: center;
 }
 .air__quality__container {
-	/* max-width: 1200px; */
-	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/* margin: auto; */
 	height: 100%;
 	gap: 1rem;
 	padding: 0;
@@ -39,15 +34,9 @@
 	border-top-left-radius: 0.5rem;
 }
 
-.air__quality__section {
-	display: flex;
-	justify-content: center;
-}
-
 .air__container {
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-	background-color: #ffffff;
-	border-radius: 0.5rem;
+	background-color: var(--body-color);
 }
 
 .air__quality__today,
@@ -110,7 +99,6 @@
 	padding: 2rem;
 	width: 14rem;
 	height: 14rem;
-	/* border-left: 1px solid var(--fourth-color); */
 	border-radius: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 	margin: auto;

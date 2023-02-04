@@ -9,37 +9,6 @@
 @import '/assets/components/footer/footer.css';
 @import '/assets/pages/contact/modalContact.css';
 
-/* main {
-	min-height: 100vh !important;
-} */
-
-/* .lds-hourglass:after {
-	content: ' ';
-	display: block;
-	border-radius: 50%;
-	width: 0;
-	height: 0;
-	margin: 8px;
-	box-sizing: border-box;
-	border: 32px solid var(--fifth-color);
-	border-color: var(--fifth-color) transparent var(--fifth-color) transparent;
-	animation: lds-hourglass 2s infinite;
-} */
-
-/* @keyframes lds-hourglass {
-	0% {
-		transform: rotate(0);
-		animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-	}
-	50% {
-		transform: rotate(900deg);
-		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-	}
-	100% {
-		transform: rotate(1800deg);
-	}
-} */
-
 @media screen and (max-width: 767px) {
 	.section {
 		padding: 1rem 0 !important;
@@ -125,11 +94,6 @@
 		border-bottom: 1px solid var(--fourth-color);
 		/* padding-bottom: 2rem; */
 	}
-
-	/* .todays__forecast_four-all:nth-child(2),
-	.todays__forecast_four-all:nth-child(4) {
-		padding-top: 2rem;
-	} */
 
 	.weather__today_prop-all {
 		grid-template-rows: repeat(8, 1fr);

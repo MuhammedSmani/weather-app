@@ -1,14 +1,6 @@
-.todays__forecast {
-	display: flex;
-	justify-content: center;
-}
-
 .todays__forecast_container {
-	width: 100%;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-	border-radius: 0.5rem;
 	background-color: var(--body-color);
-	/* backdrop-filter: blur(10px); */
 }
 
 .todays__forecast_content {
@@ -19,17 +11,10 @@
 .todays__forecast_city {
 	display: flex;
 	gap: 0.5rem;
-	/* background-color: var(--third-color); */
 	padding: 1rem 1rem;
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 }
-
-/* .todays__forecast_city p {
-	color: var(--text-color);
-	font-size: var(--h3-font-size);
-	font-weight: var(--font-semi-bold);
-} */
 
 .todays__forecast_four {
 	display: grid;
@@ -57,7 +42,6 @@
 }
 
 .todays__forecast_four-all p {
-	/* color: var(--text-color)!important; */
 	font-size: var(--big-font-size);
 	color: var(--fifth-color);
 }
@@ -66,7 +50,6 @@
 	font-size: 6rem;
 	line-height: 0;
 	color: var(--third-color);
-	/* color: #42787f; */
 }
 
 .todays__forecast_rain {

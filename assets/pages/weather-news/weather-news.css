@@ -1,20 +1,9 @@
 @import '/assets/components/header/header.css';
-@import '/assets/pages/today/today.css';
 @import '/assets/components/footer/footer.css';
 @import '/assets/pages/contact/modalContact.css';
 @import '/assets/styles/loader.css';
 
 /*==================== WEATHER NEWS ====================*/
-
-.weather__news__section {
-	display: flex;
-	justify-content: center;
-	margin-top: 60px;
-}
-
-.weather__news__container {
-	padding: 0;
-}
 
 .weather__news__content {
 	display: flex;

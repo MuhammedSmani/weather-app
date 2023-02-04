@@ -6,31 +6,14 @@
 
 /* @import '/assets/components/footer/footer.css'; */
 
-body {
-	/* background: var(--third-color); */
-	/* background: linear-gradient(180deg, var(--third-color) 0%, var(--first-color) 100%); */
-	height: 100%;
-	/* overflow: hidden; */
-}
-
-.calendars {
-	display: flex;
-	justify-content: center;
-}
-
 .calendar__container {
-	width: 100%;
-	padding: 0;
+	background-color: var(--body-color);
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 }
 
 .calendar__content {
 	width: 100%;
 	height: 100%;
-	/* border: 1px solid black; */
-	/* background-color: var(--first-color); */
-	border-radius: 0.5rem;
-	background-color: #fff;
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 }
 
 .calendar__header {
@@ -63,11 +46,6 @@ body {
 .calendar__header i:hover {
 	background-color: #f2f2f2;
 }
-
-/* .calendar__header span i {
-	font-size: var(--h1-font-size);
-	width: 20px;
-} */
 
 .calendar {
 	/* padding: 20px; */
@@ -141,10 +119,6 @@ body {
 	z-index: -1;
 }
 
-/* .days li:hover::before {
-	background-color: #f2f2f2;
-} */
-
 .days li.active p.day::before {
 	background: var(--fifth-color);
 }
@@ -158,22 +132,10 @@ body {
 	display: flex;
 	align-items: flex-end;
 	gap: 0.5rem;
-	/* background-color: var(--sixth-color); */
 	padding: 1rem 1rem;
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 }
-
-/* .realtime__city p:first-child {
-	color: var(--body-color);
-	font-size: var(--h3-font-size);
-	font-weight: var(--font-semi-bold);
-}
-
-.realtime__city p {
-	color: var(--body-color);
-	font-size: var(--normal-font-size);
-} */
 
 .hourly__title {
 	padding: 1rem;

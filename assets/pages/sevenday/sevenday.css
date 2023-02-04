@@ -1,26 +1,18 @@
 @import '/main.css';
-@import '/assets/pages/today/today.css';
+/* @import '/assets/pages/today/today.css'; */
+@import '/assets/components/header/header.css';
 @import '/assets/components/footer/footer.css';
 @import '/assets/pages/contact/modalContact.css';
 @import '/assets/styles/loader.css';
 
 /* SEVENDAY SECTION */
-
-.weekly__section {
-	display: flex;
-	justify-content: center;
-	margin-top: 4rem;
-}
 .weekly__container {
-	width: 100%;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-	border-radius: 0.5rem;
+	background-color: var(--body-color);
 }
 .weekly__content {
 	display: flex;
 	flex-direction: column;
-	background-color: #ffffff;
-	border-radius: 0.5rem;
 }
 .weekly__content i {
 	font-size: var(--big-font-size);
@@ -33,12 +25,7 @@
 .weekly__title p:nth-child(3) {
 	padding: 1rem 0;
 }
-/* .weekly__date h2 {
-  padding: 1rem;
-} */
-/* .weekly__description {
-  padding: 0 1rem;
-} */
+
 .weekly__main {
 	display: grid;
 	grid-template-columns: 2fr 2fr 3fr 2fr 2fr 1fr;
@@ -64,20 +51,20 @@
 }
 .weekly__hidden {
 	border-radius: 1rem;
-	margin: 20px;
+	margin: 1rem;
 	display: none;
 }
 .weekly__main .uil-angle-down {
 	cursor: pointer;
 }
 .weekly__hidden {
-	border-radius: 1rem;
-	justify-content: space-between;
+	border-radius: 0.5rem;
+	grid-template-columns: repeat(2, 1fr);
 	align-items: center;
 	gap: 1rem;
 }
 .weekly__hidden__header {
-	display: flex;
+	display: grid;
 }
 .weekly__hidden__info {
 	display: flex;
@@ -119,27 +106,15 @@
 	background-color: var(--sixth-color);
 }
 
-.header {
-	width: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: var(--z-fixed);
-	background-color: var(--third-color);
-	z-index: 100;
-	-webkit-box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.1);
-	box-shadow: 10px 10px 15px -5px rgba(0, 0, 0, 0.1);
-}
 .day-hidden {
-	max-width: 50%;
+	width: 100%;
 	border: solid 1px var(--fourth-color);
 	padding: 1rem;
 	border-radius: 0.5rem;
 }
 
 .night-hidden {
-	max-width: 50%;
+	width: 100%;
 	border: solid 1px var(--fourth-color);
 	padding: 1rem;
 	border-radius: 0.5rem;

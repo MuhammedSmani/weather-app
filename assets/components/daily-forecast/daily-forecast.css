@@ -1,35 +1,20 @@
-.daily__forecast {
-	display: flex;
-	justify-content: center;
-}
-
 .daily__forecast_container {
-	width: 100%;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
-	border-radius: 0.5rem;
 	background-color: var(--body-color);
 }
 
 .daily__forecast_content {
 	display: flex;
 	flex-direction: column;
-	/* border-radius: 1rem; */
 }
 
 .daily__forecast_city {
 	display: flex;
 	gap: 0.5rem;
-	/* background-color: var(--third-color); */
 	padding: 1rem 1rem;
 	border-top-left-radius: 1rem;
 	border-top-right-radius: 1rem;
 }
-
-/* .todays__forecast_city p {
-	color: var(--text-color);
-	font-size: var(--h3-font-size);
-	font-weight: var(--font-semi-bold);
-} */
 
 .daily__forecast_five {
 	display: grid;
@@ -98,18 +83,3 @@
 	justify-content: center;
 	padding: 1rem;
 }
-
-/* .todays__forecast_button a {
-	font-size: var(--medium-font-size);
-	color: var(--text-color);
-	font-weight: var(--font-medium);
-	transition: 0.3s ease;
-	padding: 0.5rem 1rem;
-	border-radius: 2rem;
-	border: 1px solid var(--sixth-color);
-}
-
-.todays__forecast_button a:hover {
-	color: var(--body-color);
-	background-color: var(--sixth-color);
-} */

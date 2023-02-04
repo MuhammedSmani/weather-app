@@ -154,39 +154,34 @@ function showData(data) {
 	const weeklyArrows = document.querySelectorAll('.weekly-arrow');
 	const weeklyHidden = document.querySelectorAll('.weekly__hidden');
 
-  weeklyArrows.forEach((arrow, index) => {
-    arrow.addEventListener("click", () => {
-      if (weeklyHidden[index].style.display === "flex") {
-        weeklyHidden[index].style.display = "none";
-      } else {
-        weeklyHidden.forEach((hidden) => {
-          hidden.style.display = "none";
-        });
-        weeklyHidden[index].style.display = "flex";
-      }
-    });
-  });
+	weeklyArrows.forEach((arrow, index) => {
+		arrow.addEventListener('click', () => {
+			if (weeklyHidden[index].style.display === 'grid') {
+				weeklyHidden[index].style.display = 'none';
+			} else {
+				weeklyHidden.forEach((hidden) => {
+					hidden.style.display = 'none';
+				});
+				weeklyHidden[index].style.display = 'grid';
+			}
+		});
+	});
 
-const date123 = new Date();
-const currentHour = date123.getHours();
-const dayHiddenDivs = document.getElementsByClassName("day-hidden");
-const nightHiddenDivs = document.getElementsByClassName("night-hidden");
+	const date123 = new Date();
+	const currentHour = date123.getHours();
+	const dayHiddenDivs = document.getElementsByClassName('day-hidden');
+	const nightHiddenDivs = document.getElementsByClassName('night-hidden');
 
+	if (currentHour >= 18) {
+		for (let i = 0; i < dayHiddenDivs.length; i++) {
+			dayHiddenDivs[i].style.display = 'none';
+		}
 
-if (currentHour >= 18) {
-
-  for (let i = 0; i < dayHiddenDivs.length; i++) {
-    dayHiddenDivs[i].style.display = "none";
-  }
-
-  for (let i = 0; i < nightHiddenDivs.length; i++) {
-    nightHiddenDivs[i].style.maxWidth = "100%";
-    nightHiddenDivs[i].style.width = "100%";
-
-  }
-}
-
-
+		for (let i = 0; i < nightHiddenDivs.length; i++) {
+			nightHiddenDivs[i].style.maxWidth = '100%';
+			nightHiddenDivs[i].style.width = '100%';
+		}
+	}
 }
 
 // Function for showing the Title data
@@ -420,3 +415,5 @@ function renderResults(results) {
 	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
 
+hideMain();
+showLoader();
