@@ -47,7 +47,7 @@ body {
 	background-color: var(--body-color);
 	color: var(--text-color);
 	margin-top: 115px !important;
-	background-color: var(--first-color);
+	background-color: var(--body-color);
 }
 
 /* body::-webkit-scrollbar {
