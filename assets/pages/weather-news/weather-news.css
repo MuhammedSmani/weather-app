@@ -49,7 +49,7 @@
 	font-weight: normal;
 }
 #weather-top-description {
-	font-weight: 600;
+	/* font-weight: 600; */
 	text-align: justify;
 }
 #weather-top-content {
@@ -57,7 +57,8 @@
 }
 .weather__news__button {
 	display: flex;
-	justify-content: end;
+	justify-content: start;
+	margin-top: 1rem;
 }
 
 /*==================== WEATHER NEWS ASIDE ====================*/

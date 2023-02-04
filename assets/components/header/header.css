@@ -28,6 +28,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	flex-wrap: wrap;
 	height: 60px;
 	width: 100%;
 	/* align-items: center; */
@@ -395,6 +396,26 @@
 	}
 
 	.nav .nav__search {
-		display: none;
+		display: block;
+	}
+
+	.nav__search {
+		padding-top: 1rem;
+		width: 100%;
+		order: 1;
+	}
+
+	.nav {
+		height: 100%;
+	}
+
+	.nav__container {
+		height: 100%;
+		padding-bottom: 1rem;
+		padding-top: 0.5rem;
+	}
+
+	.search {
+		width: 100%;
 	}
 }

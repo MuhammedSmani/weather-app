@@ -6,7 +6,6 @@
 	background-color: var(--fourth-color);
 	background: linear-gradient(to left, var(--fifth-color) 0%, var(--third-color) 100%);
 	padding: 0.5rem 0;
-	position: -webkit-sticky;
 	bottom: 0;
 	display: flex;
 	justify-content: center;

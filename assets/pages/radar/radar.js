@@ -91,7 +91,6 @@ const searchInputs = document.querySelectorAll('.search-input');
 const searchParams = new URLSearchParams(window.location.search);
 
 searchInputs[0].addEventListener('submit', getCityValue);
-searchInputs[1].addEventListener('submit', getCityValue);
 
 // Get the city name value in search input
 
@@ -128,7 +127,6 @@ navigator.geolocation.getCurrentPosition(
 					return;
 				// Set city name in input field
 				searchInputs[0].value = city;
-				searchInputs[1].value = city;
 				localStorage.setItem('city', city);
 				// Update the URL with the city value
 				updateSearchParams(city);
@@ -361,7 +359,6 @@ function getLowTemp(data) {
 const cityFromUrl = searchParams.get('city');
 if (cityFromUrl) {
 	searchInputs[0].value = cityFromUrl;
-	searchInputs[1].value = cityFromUrl;
 	getRadarData(cityFromUrl);
 }
 
