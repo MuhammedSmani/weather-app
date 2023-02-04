@@ -15,7 +15,6 @@
 	margin: auto;
 	position: relative;
 	border-radius: 0.5rem;
-	z-index: -1;
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 }
 
