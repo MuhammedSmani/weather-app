@@ -7,6 +7,9 @@
 
 /* SEVENDAY SECTION */
 
+body{
+	background: linear-gradient(var(--sixth-color), var(--second-color));
+	background-attachment: fixed;}
 
 .weekly__container {
 	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
@@ -136,4 +139,8 @@ font-size: 1.3rem;}
 
 }
 
-
+.hidden-content-inner-div{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
