@@ -1,7 +1,8 @@
-@import "/main.css";
-@import "/assets/styles/animation.css";
-@import "/assets/components/header/header.css";
-@import "/assets/components/footer/footer.css";
+@import '/main.css';
+@import '/assets/pages/today/today.css';
+@import '/assets/components/footer/footer.css';
+@import '/assets/pages/contact/modalContact.css';
+@import '/assets/styles/loader.css';
 
 #map {
   height: 40rem;
