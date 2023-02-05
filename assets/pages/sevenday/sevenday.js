@@ -36,7 +36,7 @@ function showData(data) {
 			day.day.mintemp_c
 		)}°</span>
     </div>
-    <div class="elona">
+    <div class="elona condition">
 	<i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
 	<span>${day.day.condition.text}</span>
     </div>
