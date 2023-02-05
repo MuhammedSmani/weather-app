@@ -1,0 +1,47 @@
+/*==================== INTRO ANIMATION ====================*/
+
+.weather__animation {
+	display: block;
+	position: fixed;
+	z-index: 200;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 1);
+	margin: auto;
+}
+.weather__animation__sun {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#sun-logo {
+	color: var(--body-color);
+	font-size: 6rem;
+	animation: lds-hourglass 8s infinite;
+}
+
+.sun__logo_wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: calc(100vh - 115px);
+}
+
+@keyframes lds-hourglass {
+	0% {
+		transform: rotate(0);
+		animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	}
+	50% {
+		transform: rotate(900deg);
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	100% {
+		transform: rotate(1800deg);
+	}
+}

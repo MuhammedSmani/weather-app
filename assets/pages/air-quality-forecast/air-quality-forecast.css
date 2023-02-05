@@ -1,0 +1,262 @@
+@import url('/main.css');
+@import '/assets/components/header/header.css';
+@import '/assets/components/footer/footer.css';
+@import '/assets/pages/contact/modalContact.css';
+@import '/assets/styles/loader.css';
+
+/* ==================== AIR QUALITY ==================== */
+.air__quality__image {
+	height: 24rem;
+	width: 100%;
+	background: url('../../images/weather.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+	margin-top: 60px;
+	color: #fff !important;
+	display: flex;
+	justify-content: center;
+}
+.air__quality__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	gap: 1rem;
+	padding: 0;
+}
+.air__quality__today .content__title {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 1rem;
+	color: #fff;
+	border-top-right-radius: 0.5rem;
+	border-top-left-radius: 0.5rem;
+}
+
+.air__container {
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+	background-color: var(--body-color);
+}
+
+.air__quality__today,
+.all__pollutants {
+	border-radius: 1rem;
+}
+.all__pollutants {
+	border-radius: 0.5rem;
+	padding-bottom: 2rem;
+}
+.all__pollutants h2 {
+	background-color: #fff;
+	padding: 1rem;
+}
+.air__quality__description {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0.1rem;
+	color: var(--text-color);
+}
+.air__quality__info {
+	background-color: #fff;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 2rem 0;
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+}
+.air__quality__circle {
+	min-width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.air__quality__index {
+	font-size: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 7rem;
+	min-height: 7rem;
+	border-radius: 100%;
+}
+.air__quality__text {
+	padding: 2rem;
+}
+.primary__pollutant {
+	display: flex;
+	width: 40%;
+	align-items: center;
+}
+.primary__pollutant__circle {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 2rem;
+	width: 14rem;
+	height: 14rem;
+	border-radius: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	margin: auto;
+}
+.primary__pollutant__circle p {
+	color: #fff;
+}
+.primary__pollutant__text {
+	font-size: var(--big-font-size);
+}
+.all__pollutants__parts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+.all__pollutants__description {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 48%;
+	margin: 1rem 0;
+	gap: 1rem;
+}
+.all__pollutants__circle {
+	min-width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.all__pollutants__index {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 6rem;
+	height: 6rem;
+	border-radius: 100%;
+	font-size: 1.4rem;
+}
+.all__pollutants {
+	padding: 0;
+	position: relative;
+}
+.air__quality__comments {
+	padding: 2rem 2rem 1rem 1rem;
+}
+#air-quality-comments {
+	cursor: pointer;
+	display: inline-block;
+}
+.air__quality__comments i {
+	color: var(--third-color);
+}
+
+/*==================== AIR QUALITY MODAL ====================*/
+.air__quality__modal {
+	position: absolute;
+	z-index: 200;
+	min-height: 100%;
+	min-width: 100%;
+	overflow: none;
+	top: 0;
+	left: 0;
+	transform: translate(13%, 53%);
+}
+.show-modal {
+	display: block;
+}
+.close-modal {
+	display: none;
+}
+.air__quality__close__btn {
+	display: flex;
+	justify-content: right;
+	margin-right: 5px;
+}
+.air__quality__close__btn i {
+	color: var(--title-grey);
+	cursor: pointer;
+	font-size: 1.5rem;
+}
+.air__quality__close__btn i:hover {
+	color: var(--fifth-color);
+}
+.air__quality__modal__box {
+	width: 350px;
+	background-color: var(--first-color);
+	padding: 0 0 1rem 1rem;
+	box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+}
+.air__quality__modal__content {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 2rem;
+}
+.air__quality__left ul li .circle {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border: solid 1px var(--third-color);
+	border-radius: 100%;
+}
+.air__quality__left ul li:nth-child(2) .circle {
+	background-color: green;
+}
+.air__quality__left ul li:nth-child(3) .circle {
+	background-color: yellow;
+}
+.air__quality__left ul li:nth-child(4) .circle {
+	background-color: orange;
+}
+.air__quality__left ul li:nth-child(5) .circle {
+	background-color: red;
+}
+.air__quality__left ul li:nth-child(6) .circle {
+	background-color: brown;
+}
+
+/*==================== AIR QUALITY RESPONSIV ====================*/
+@media screen and (max-width: 767px) {
+	.air__quality__description {
+		flex-direction: column;
+	}
+	.air__quality__text {
+		padding-right: 1rem;
+	}
+	.primary__pollutant {
+		display: none;
+	}
+	.all__pollutants__parts {
+		flex-direction: column;
+	}
+	.all__pollutants__description {
+		width: 100%;
+	}
+	.air__quality__modal {
+		transform: translate(10%, 71%);
+	}
+}
+
+/*==================== CIRCULAR PROGRESS BAR ANIMATION ====================*/
+@keyframes growProgressBar {
+	0%,
+	33% {
+		--pgPercentage: 0;
+	}
+	100% {
+		--pgPercentage: var(--value);
+	}
+}
+@property --pgPercentage {
+	syntax: '<number>';
+	inherits: false;
+	initial-value: 0;
+}
+div[role='progressbar'] {
+	animation: growProgressBar 2s forwards;
+	/* background: 
+	radial-gradient(closest-side, white 82%, transparent 0 99.9%, white 0),
+	conic-gradient(var(--sixth-color) calc(var(--pgPercentage) * 1%), #e7ecf1 0); */
+}

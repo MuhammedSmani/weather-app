@@ -1,0 +1,76 @@
+.todays__forecast_container {
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+	background-color: var(--body-color);
+}
+
+.todays__forecast_content {
+	display: flex;
+	flex-direction: column;
+}
+
+.todays__forecast_city {
+	display: flex;
+	gap: 0.5rem;
+	padding: 1rem 1rem;
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+}
+
+.todays__forecast_four {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	padding: 1rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.todays__forecast_four-all {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+.todays__forecast_four-all:not(:last-child) {
+	border-right: 1px solid var(--fourth-color);
+}
+
+.todays__forecast_four-all p:nth-child(1) {
+	color: var(--text-color);
+	font-size: var(--h3-font-size);
+}
+
+.todays__forecast_four-all p {
+	font-size: var(--big-font-size);
+	color: var(--fifth-color);
+}
+
+.todays__forecast_four-all i {
+	font-size: 6rem;
+	line-height: 0;
+	color: var(--third-color);
+}
+
+.todays__forecast_rain {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.todays__forecast_rain i {
+	font-size: var(--h2-font-size);
+	color: var(--fifth-color);
+}
+
+.todays__forecast_rain p {
+	color: var(--text-color);
+	font-size: var(--h3-font-size);
+}
+
+.todays__forecast_button {
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+}

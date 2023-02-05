@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+	--body-font: 'Poppins', sans-serif;
+
+	--big-font-size: 2rem;
+	--h1-font-size: 1.5rem;
+	--h2-font-size: 1.25rem;
+	--h3-font-size: 1.125rem;
+	--normal-font-size: 0.938rem;
+	--small-font-size: 0.813rem;
+	--smaller-font-size: 0.75rem;
+	--smaller-border-radius: 0.1rem;
+
+	--font-medium: 500;
+	--font-semi-bold: 600;
+	--font-bold: 700;
+
+	--first-color: #e2eafc;
+	--second-color: #d7e3fc;
+	--third-color: #c1d3fe;
+	--fourth-color: #abc4ff;
+	--fifth-color: #757bc8;
+	--sixth-color: #414572;
+	--body-color: #fdfdfd;
+	--body-secondary-color: #f5f5f7;
+	--text-color: #2b2b2b;
+	--title-color: #3c4048;
+}
+
+/*==================== BASE ====================*/
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: var(--body-font);
+	font-size: var(--normal-font-size);
+	color: var(--text-color);
+	margin-top: 114px;
+	background: linear-gradient(var(--sixth-color), var(--second-color));
+	background-attachment: fixed;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+input:focus {
+	outline: none;
+}
+
+main {
+	min-height: calc(100vh - 331px);
+}
+
+.content__title {
+	color: var(--text-color);
+	font-size: var(--h2-font-size);
+	font-weight: var(--font-semi-bold);
+}
+
+.content__para {
+	color: var(--text-color);
+	font-size: var(--h3-font-size);
+}
+
+.button a {
+	font-size: var(--medium-font-size);
+	color: var(--text-color);
+	font-weight: var(--font-medium);
+	transition: 0.3s ease;
+	padding: 0.5rem 1rem;
+	border-radius: 2rem;
+	color: var(--body-color);
+	background-color: var(--fifth-color);
+}
+
+.button a:hover {
+	background-color: var(--sixth-color);
+}
+
+/*==================== REUSABLE CSS CLASSES ====================*/
+
+.section {
+	padding: 1.5rem 0 1.5rem 0;
+	display: flex;
+	justify-content: center;
+}
+
+/*==================== LAYOUT ====================*/
+
+.container {
+	max-width: 1280px;
+	padding: 0 1rem;
+	margin: 0 1.5rem 0 1.5rem;
+	width: 100%;
+	border-radius: 0.5rem;
+}
+
+.grid {
+	display: grid;
+	gap: 1.5rem;
+}
+
+@media screen and (max-width: 767px) {
+	.content__title {
+		color: var(--text-color);
+		font-size: var(--h3-font-size);
+		font-weight: var(--font-semi-bold);
+	}
+
+	.content__para {
+		color: var(--text-color);
+		font-size: var(--normal-font-size);
+	}
+	body {
+		margin-top: 123.5px;
+	}
+}
