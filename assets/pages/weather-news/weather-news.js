@@ -206,8 +206,6 @@ function getWeatherNewsAside(data) {
   });
 }
 
-
-
 /*==================== GET WEATHER NEWS FUNCTION ====================*/
 
 function getWeatherNews() {

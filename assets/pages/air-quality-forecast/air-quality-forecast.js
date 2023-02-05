@@ -242,9 +242,11 @@ function setPm10Category(pm10Num, pm10IndexInt, pm10Category) {
 		pm10Category.innerHTML = `Fair`;
 		pm10valuenow = 2;
 		pm10background = yellow;
+	} else if (pm10Num < 120) {
 		pm10Category.innerHTML = `Poor`;
 		pm10valuenow = 3;
 		pm10background = orange;
+	} else if (pm10Num < 300) {
 		pm10Category.innerHTML = `Very poor`;
 		pm10valuenow = 4;
 		pm10background = red;
@@ -263,7 +265,6 @@ function getPm10Data(data) {
 	var pm10Num = Number(data.current.air_quality.pm10.toFixed(2));
 	pm10Index.innerHTML = pm10Num;
 	setPm10Category(pm10Num, pm10IndexInt, pm10Category);
-	// pm10IndexInt.innerHTML = parseInt(pm10Num);
 }
 
 /*==================== GET SO2 DATA FUNCTIONS ====================*/
@@ -308,27 +309,6 @@ function getSo2Data(data) {
 	const so2Num = Number(data.current.air_quality.so2.toFixed(2));
 	so2Index.innerHTML = so2Num;
 	setSo2Category(so2Num, so2IndexInt, so2Category);
-}
-
-// Show Loader
-const loader = document.querySelector('.sun__logo_wrapper');
-function showLoader() {
-	loader.style.display = 'flex';
-}
-
-const main = document.getElementById('main');
-
-function showMain() {
-	main.style.display = 'block';
-}
-
-function hideMain() {
-	main.style.display = 'none';
-}
-
-// Hide loader
-function hideLoader() {
-	loader.style.display = 'none';
 }
 
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/
@@ -524,6 +504,29 @@ function renderResults(results) {
 
 	searchResults.classList.add('search-show');
 	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
+}
+
+/*==================== INTRO ANIMATION ====================*/
+
+// Show Loader
+const loader = document.querySelector('.sun__logo_wrapper');
+function showLoader() {
+	loader.style.display = 'flex';
+}
+
+const main = document.getElementById('main');
+
+function showMain() {
+	main.style.display = 'block';
+}
+
+function hideMain() {
+	main.style.display = 'none';
+}
+
+// Hide loader
+function hideLoader() {
+	loader.style.display = 'none';
 }
 
 hideMain();
