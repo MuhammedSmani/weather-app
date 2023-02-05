@@ -240,6 +240,7 @@
 		background-color: var(--body-color);
 		position: relative;
 		width: 100%;
+		
 	}
 
 	.temp-icons-content {
@@ -253,4 +254,11 @@
 	.map-icons {
 		font-size: 1.8rem;
 	}
+
+	.leaflet-popup-content-wrapper,
+	.leaflet-popup-tip {
+		-webkit-backdrop-filter: blur(50px);
+	backdrop-filter: blur(50px);
+	-ms-backdrop-filter: blur(50px);
+}
 }
