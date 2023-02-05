@@ -53,6 +53,9 @@ function getWeekendData(data) {
     const { text, icon } = condition;
     const humidities = [hour[0].humidity, hour[12].humidity];
     const temperature = Math.round(avgtemp_c);
+    const dailyIconUrl = day.day.condition.icon;
+		const dailyIconName = dailyIconUrl.split('/').pop();
+		const dailyIcon = getIconClass(dailyIconName);
     // Sat 30, Sun 31, Mon 1
     const dayName = new Date(date).toLocaleDateString("en-UK", {
       weekday: "short",
@@ -73,7 +76,7 @@ function getWeekendData(data) {
               </span>
 							</div>
 							<div class="logo">
-              <i class="uil uil-cloud"></i>
+              <i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
               <span>${description}</span>
 							</div>
 							<div class="percentage">
@@ -312,18 +315,20 @@ navigator.geolocation.getCurrentPosition(
       });
   },
   (error) => {
-    const cityFromUrl = searchParams.get("city");
-    if (!cityFromUrl) {
-      // If there is no city value in the URL, set the default city to 'Pristina'
-      searchInputs[0].value = "Pristina";
-      updateSearchParams("Pristina");
-    } else {
-      console.error(error);
-      // If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
-      searchInputs[0].value = cityFromUrl;
-      updateSearchParams(cityFromUrl);
-    }
-  }
+		const cityFromUrl = searchParams.get('city');
+		if (!cityFromUrl) {
+			// If there is no city value in the URL, set the default city to 'Pristina'
+			searchInputs[0].value = 'Pristina';
+			updateSearchParams('Pristina');
+			fetchWeatherData('Pristina');
+
+		} else {
+			console.error(error);
+			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+			searchInputs[0].value = cityFromUrl;
+			updateSearchParams(cityFromUrl);
+		}
+	}
 );
 
 // Get the city name from the URL

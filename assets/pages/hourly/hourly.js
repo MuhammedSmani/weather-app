@@ -227,7 +227,7 @@ function getHourlyPage(data) {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${data.forecast.forecastday[0].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[0].hour[i].precip_mm} mm</b></span
 												>
 											</div>
 										</li>
@@ -321,7 +321,7 @@ function getHourlyPage(data) {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${data.forecast.forecastday[1].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[1].hour[i].precip_mm}mm</b></span
 												>
 											</div>
 										</li>
@@ -409,7 +409,7 @@ function getHourlyPage(data) {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${data.forecast.forecastday[2].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[2].hour[i].precip_mm} mm</b></span
 												>
 											</div>
 										</li>
@@ -533,6 +533,8 @@ navigator.geolocation.getCurrentPosition(
 			// If there is no city value in the URL, set the default city to 'Pristina'
 			searchInputs[0].value = 'Pristina';
 			updateSearchParams('Pristina');
+			fetchWeatherData('Pristina');
+
 		} else {
 			console.error(error);
 			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value

@@ -431,6 +431,8 @@ navigator.geolocation.getCurrentPosition(
 			// If there is no city value in the URL, set the default city to 'Pristina'
 			searchInputs[0].value = 'Pristina';
 			updateSearchParams('Pristina');
+			fetchWeatherData('Pristina');
+
 		} else {
 			console.error(error);
 			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
