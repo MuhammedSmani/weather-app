@@ -76,7 +76,7 @@
 	border-radius: 0.3rem;
 	z-index: 1;
 	background-color: var(--second-color);
-	/* aspect-ratio: 1; */
+	aspect-ratio: 1;
 	padding: 1rem;
 	display: flex;
 	gap: 1rem;
@@ -161,5 +161,8 @@
 
 	.calendar .days i {
 		font-size: var(--h3-font-size);
+	}
+	.calendar .days li {
+		aspect-ratio: none;
 	}
 }
