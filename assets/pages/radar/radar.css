@@ -48,6 +48,11 @@
 	font-weight: 700;
 }
 
+.leaflet-popup-content h4 {
+	color: var(--sixth-color);
+	font-size: 1rem;
+}
+
 .leaflet-popup-content h2:nth-of-type(2) {
 	color: var(--fifth-color);
 }
@@ -179,18 +184,12 @@
 #tempicons::after {
 	content: 'Temperatures';
 	font-size: 1rem;
-	/* position: absolute;
-	bottom: -15px;
-	left: -15px; */
 	text-align: center;
 }
 
 #mapicons::after {
 	content: 'Conditions';
 	font-size: 1rem;
-	/* position: absolute;
-	bottom: -15px;
-	left: -12px; */
 	text-align: center;
 }
 .leaflet-container {
