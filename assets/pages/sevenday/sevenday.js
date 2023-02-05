@@ -23,18 +23,22 @@ function showData(data) {
 		let date = new Date(day.date);
 		let dayOfWeek = daysOfWeek[date.getUTCDay()];
 		let formattedDate = dayOfWeek + ' ' + date.getUTCDate();
+		const dailyIconUrl = day.day.condition.icon;
+		const dailyIconName = dailyIconUrl.split('/').pop();
+		const dailyIcon = getIconClass(dailyIconName);
 
 		weeklyDescription.innerHTML += `  <div class="weekly__main" id="weekly-${index}" >
     <div class="elona">
         <span>${formattedDate}</span>
     </div>
-    <div class="elona">
-        <span><b class="temp__title">${Math.round(
-			day.day.maxtemp_c
-		)}°</b></span><span>/${Math.round(day.day.mintemp_c)}°</span>
+    <div>
+        <span><b>${Math.round(day.day.maxtemp_c)}°</b></span><span>/${Math.round(
+			day.day.mintemp_c
+		)}°</span>
     </div>
-    <div class="elona condition">
-        <i class="uil uil-cloud"></i> <span>${day.day.condition.text}</span>
+    <div class="elona">
+	<i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
+	<span>${day.day.condition.text}</span>
     </div>
     <div class="elona wind">
         <i class="uil uil-wind"></i> <span>${day.day.maxwind_kph}  km/h</span>
@@ -50,14 +54,13 @@ function showData(data) {
   <div>
   <h2> <b>${formattedDate}</b><span> | Day</span></h2>
     <h1><b>${Math.round(day.day.maxtemp_c)}°</b></h1>
-    <p>${day.day.condition.text}</p>
     </div>
     <div class="wind-rain">
     <div>
 	<i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
     </div>
     <div> 
-	<i class="uil uil-snowflake"></i> <span>${day.day.daily_chance_of_snow}%</span>
+     <i class=" uil uil-snowflake"></i> <span>${day.day.daily_chance_of_snow}%</span>
      </div>
   </div>
   </div>
@@ -102,17 +105,15 @@ function showData(data) {
   <div class="hidden-content-inner-div">
   <div>    <h1> <b>${formattedDate}</b><span> | Night</span></h1>
     <h1><b>${Math.round(day.day.mintemp_c)}°</b></h1>
-    <p>${day.day.condition.text}</p>
     </div>
 
     <div class="wind-rain">
-    <div>
-	<i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
+   <div>
+   <i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
+   </div>
+   <div> 
+    <i class=" uil uil-snowflake"></i> <span>${day.day.daily_chance_of_snow}%</span>
     </div>
-    <div> 
-	<i class="uil uil-snowflake"></i> <span>${day.day.daily_chance_of_snow}%</span>
-     </div>
-  </div>
     </div>
     </div>
   <ul class="weekly__hidden__info">
@@ -153,17 +154,16 @@ function showData(data) {
 	});
 	const weeklyArrows = document.querySelectorAll('.weekly-arrow');
 	const weeklyHidden = document.querySelectorAll('.weekly__hidden');
-	const weeklyElona = document.querySelectorAll('.elona');
 
 	weeklyArrows.forEach((arrow, index) => {
 		arrow.addEventListener('click', () => {
-			if (weeklyHidden[index].style.display === 'grid') {
+			if (weeklyHidden[index].style.display === 'flex') {
 				weeklyHidden[index].style.display = 'none';
 			} else {
 				weeklyHidden.forEach((hidden) => {
 					hidden.style.display = 'none';
 				});
-				weeklyHidden[index].style.display = 'grid';
+				weeklyHidden[index].style.display = 'flex';
 			}
 		});
 	});
@@ -240,18 +240,19 @@ const searchParams = new URLSearchParams(window.location.search);
 searchInputs[0].addEventListener('submit', getCityValue);
 // searchInputs[1].addEventListener('submit', getCityValue);
 
+// Update Search parameters
+function updateSearchParams(city) {
+	searchParams.set('city', city);
+	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
+	updateNavbarLinks(city);
+}
+
 // Get the city name value in search input
 function getCityValue(event) {
 	event.preventDefault();
 	const city = event.target.value;
 	updateSearchParams(city);
 	fetchWeatherData(city);
-}
-
-// Update Search parameters
-function updateSearchParams(city) {
-	searchParams.set('city', city);
-	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
 }
 
 // Fetch Weather data based on city
@@ -292,18 +293,26 @@ navigator.geolocation.getCurrentPosition(
 				// Set city name in input field
 				searchInputs[0].value = city;
 				// searchInputs[1].value = city;
-				localStorage.setItem('city', city);
 				// Update the URL with the city value
 				updateSearchParams(city);
+				// Set city value in local storage
+				localStorage.setItem('city', city);
 				fetchWeatherData(city);
 			});
 	},
 	(error) => {
-		console.error(error);
-		// If geolocation is off, use Pristina as the default city
-		searchInputs[0].value = 'Pristina';
-		// searchInputs[1].value = 'Pristina';
-		fetchWeatherData('Pristina');
+		const cityFromUrl = searchParams.get('city');
+		if (!cityFromUrl) {
+			// If there is no city value in the URL, set the default city to 'Pristina'
+			searchInputs[0].value = 'Pristina';
+			updateSearchParams('Pristina');
+			fetchWeatherData('Pristina');
+		} else {
+			console.error(error);
+			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+			searchInputs[0].value = cityFromUrl;
+			updateSearchParams(cityFromUrl);
+		}
 	}
 );
 

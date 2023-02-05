@@ -108,6 +108,9 @@ function getHourlyPage(data) {
 		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
 		const options = { hour: 'numeric', hour12: true };
 		const timeString = time.toLocaleString('en-US', options);
+		const hourlyIconUrl = data.forecast.forecastday[0].hour[i].condition.icon;
+		const hourlyIconName = hourlyIconUrl.split('/').pop();
+		const hourlyIcon = getIconClass(hourlyIconName);
 
 		hourlyDescription.innerHTML += `
           <div class="hourly__main">
@@ -117,9 +120,8 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[0].hour[i].temp_c)}°</span>
 									</div>
-									<div class="condition"><i class="uil uil-cloud"></i> <span>${
-										data.forecast.forecastday[0].hour[i].condition.text
-									}</span></div>
+									<div class="condition">	<i class="uil ${hourlyIcon ? hourlyIcon : iconsMapping['xxx.png']}"></i>
+									<span>${data.forecast.forecastday[0].hour[i].condition.text}</span></div>
 									<div class="rain"><i class="uil uil-raindrops"> </i><span>${
 										data.forecast.forecastday[0].hour[i].will_it_rain
 									}%</span></div>
@@ -186,7 +188,7 @@ function getHourlyPage(data) {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${data.forecast.forecastday[0].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[0].hour[i].precip_mm} mm</b></span
 												>
 											</div>
 										</li>
@@ -200,6 +202,9 @@ function getHourlyPage(data) {
 		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
 		const options = { hour: 'numeric', hour12: true };
 		const timeString = time.toLocaleString('en-US', options);
+		const hourlyIconUrl1 = data.forecast.forecastday[1].hour[i].condition.icon;
+		const hourlyIconName1 = hourlyIconUrl1.split('/').pop();
+		const hourlyIcon1 = getIconClass(hourlyIconName1);
 		hourlyDescriptionTwo.innerHTML += `
           <div class="hourly__main">
 									<div>
@@ -208,9 +213,11 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[1].hour[i].temp_c)}°</span>
 									</div>
-									<div class="condition"><i class="uil uil-cloud"></i><span>${
-										data.forecast.forecastday[1].hour[i].condition.text
-									}</span></div>
+									<div class="condition"><i class="uil ${
+										hourlyIcon1 ? hourlyIcon1 : iconsMapping['xxx.png']
+									}"></i> <span>${
+			data.forecast.forecastday[1].hour[i].condition.text
+		}</span></div>
 									<div class="rain"><i class="uil uil-raindrops"> </i><span>${
 										data.forecast.forecastday[1].hour[i].will_it_rain
 									}%</span></div>
@@ -277,7 +284,7 @@ function getHourlyPage(data) {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${data.forecast.forecastday[1].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[1].hour[i].precip_mm}mm</b></span
 												>
 											</div>
 										</li>
@@ -285,6 +292,9 @@ function getHourlyPage(data) {
 								</div>
 							</div>
           `;
+		const hourlyIconUrl2 = data.forecast.forecastday[2].hour[i].condition.icon;
+		const hourlyIconName2 = hourlyIconUrl2.split('/').pop();
+		const hourlyIcon2 = getIconClass(hourlyIconName2);
 		hourlyDescriptionThree.innerHTML += `
           <div class="hourly__main">
 									<div>
@@ -293,9 +303,11 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[2].hour[i].temp_c)}°</span>
 									</div>
-									<div class="condition"><i class="uil uil-cloud"></i> <span >${
-										data.forecast.forecastday[2].hour[i].condition.text
-									}</span></div>
+									<div class="condition"><i class="uil ${
+										hourlyIcon2 ? hourlyIcon2 : iconsMapping['xxx.png']
+									}"></i> <span>${
+			data.forecast.forecastday[2].hour[i].condition.text
+		}</span></div>
 									<div class="rain"><i class="uil uil-raindrops"> </i><span>${
 										data.forecast.forecastday[2].hour[i].will_it_rain
 									}%</span></div>
@@ -362,7 +374,7 @@ function getHourlyPage(data) {
 													>Rain Amount</span
 												>
 												<span class="hourly__rain__amount__temp"
-													><b>${data.forecast.forecastday[2].hour[i].chance_of_rain} mm</b></span
+													><b>${data.forecast.forecastday[2].hour[i].precip_mm} mm</b></span
 												>
 											</div>
 										</li>
@@ -480,10 +492,18 @@ navigator.geolocation.getCurrentPosition(
 			});
 	},
 	(error) => {
-		console.error(error);
-		// If geolocation is off, use Pristina as the default city
-		searchInputs[0].value = 'Pristina';
-		fetchWeatherData('Pristina');
+		const cityFromUrl = searchParams.get('city');
+		if (!cityFromUrl) {
+			// If there is no city value in the URL, set the default city to 'Pristina'
+			searchInputs[0].value = 'Pristina';
+			updateSearchParams('Pristina');
+			fetchWeatherData('Pristina');
+		} else {
+			console.error(error);
+			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+			searchInputs[0].value = cityFromUrl;
+			updateSearchParams(cityFromUrl);
+		}
 	}
 );
 

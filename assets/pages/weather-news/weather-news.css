@@ -4,7 +4,6 @@
 @import '/assets/styles/loader.css';
 
 /*==================== WEATHER NEWS ====================*/
-
 .weather__news__content {
 	display: flex;
 	justify-content: space-between;
@@ -63,7 +62,7 @@
 
 /*==================== WEATHER NEWS ASIDE ====================*/
 .weather__news__aside__box {
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+	/* box-shadow: 0 3px 10px rgb(0 0 0 / 0.1); */
 	width: 30%;
 	border-radius: 0.5rem;
 }

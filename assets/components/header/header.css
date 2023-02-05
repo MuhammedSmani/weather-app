@@ -261,6 +261,11 @@
 	padding: 0.5rem 1rem;
 	font-family: var(--body-font);
 }
+
+.search {
+	margin-bottom: 0px !important;
+}
+
 .nav__search {
 	position: relative;
 }

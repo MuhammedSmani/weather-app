@@ -102,8 +102,11 @@ function getMonthlyPage(data) {
 
 			if ((isToday || todayPassed) && forecastDay < data.forecast.forecastday.length) {
 				let dayTemp = Math.round(data.forecast.forecastday[forecastDay].day.avgtemp_c);
+				const dailyIconUrl = data.forecast.forecastday[forecastDay].day.condition.icon;
+		const dailyIconName = dailyIconUrl.split('/').pop();
+		const dailyIcon = getIconClass(dailyIconName);
 				liTag += `
-                <i class="uil uil-cloud"></i>
+                <i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
                 <p class="forecast">${dayTemp}°</p>
                         `;
 				forecastDay++;
@@ -212,10 +215,19 @@ navigator.geolocation.getCurrentPosition(
 			});
 	},
 	(error) => {
-		console.error(error);
-		// If geolocation is off, use Pristina as the default city
-		searchInputs[0].value = 'Pristina';
-		fetchWeatherData('Pristina');
+		const cityFromUrl = searchParams.get('city');
+		if (!cityFromUrl) {
+			// If there is no city value in the URL, set the default city to 'Pristina'
+			searchInputs[0].value = 'Pristina';
+			updateSearchParams('Pristina');
+			fetchWeatherData('Pristina');
+
+		} else {
+			console.error(error);
+			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+			searchInputs[0].value = cityFromUrl;
+			updateSearchParams(cityFromUrl);
+		}
 	}
 );
 
