@@ -350,27 +350,6 @@ function updateSearchParams(city) {
 	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
 }
 
-// Show Loader
-const loader = document.querySelector('.sun__logo_wrapper');
-function showLoader() {
-	loader.style.display = 'flex';
-}
-
-const main = document.getElementById('main');
-
-function showMain() {
-	main.style.display = 'block';
-}
-
-function hideMain() {
-	main.style.display = 'none';
-}
-
-// Hide loader
-function hideLoader() {
-	loader.style.display = 'none';
-}
-
 // Fetch Weather data based on city
 async function fetchWeatherData(city) {
 	const response = await fetch(
@@ -553,7 +532,26 @@ function renderResults(results) {
 
 /*==================== INTRO ANIMATION ====================*/
 
-// updateNavbarLinks(city);
+// Show loader
+const loader = document.querySelector('.sun__logo_wrapper');
+function showLoader() {
+	loader.style.display = 'flex';
+}
+
+const main = document.getElementById('main');
+
+function showMain() {
+	main.style.display = 'block';
+}
+
+function hideMain() {
+	main.style.display = 'none';
+}
+
+// Hide loader
+function hideLoader() {
+	loader.style.display = 'none';
+}
 
 hideMain();
 showLoader();
