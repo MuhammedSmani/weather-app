@@ -383,6 +383,7 @@ function getHourlyPage(data) {
 	const hourlyHidden = document.querySelectorAll('.hourly__hidden');
 	// console.log(hourlyArrows);
 
+	hourlyHidden[0].style.display = 'block';
 	hourlyArrows.forEach((arrow, index) => {
 		arrow.addEventListener('click', () => {
 			if (hourlyHidden[index].style.display === 'block') {
