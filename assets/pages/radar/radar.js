@@ -1,23 +1,4 @@
-// // Show Loader
-// const loader = document.querySelector('.sun__logo_wrapper');
-// function showLoader() {
-// 	loader.style.display = 'flex';
-// }
 
-// const main = document.getElementById('main');
-
-// function showMain() {
-// 	main.style.display = 'block';
-// }
-
-// function hideMain() {
-// 	main.style.display = 'none';
-// }
-
-// // Hide loader
-// function hideLoader() {
-// 	loader.style.display = 'none';
-// }
 
 const form = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
@@ -154,20 +135,6 @@ function getCityValue(event) {
 	getRadarData(city);
 }
 
-
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   const searchKeyword = searchInput.value;
-
-//     getRadarData(searchKeyword)
-
-// });
-
-
-{
-	/* <h1 class="temperature"><b>${Math.round(tempUnit == 'C' ? data.current.temp_c : data.current.temp_f)}°C</b> */
-}
-
 function getRadarData(city) {
 	while (markers.length) {
 		let marker = markers.pop();
@@ -180,6 +147,8 @@ function getRadarData(city) {
 		.then((data) => {
 			updateNavbarLinks(city);
 			showDataOnMap(data);
+			showMain();
+			hideLoader();
 		});
 }
 
@@ -401,3 +370,27 @@ function renderResults(results) {
 	searchResults.classList.add('search-show');
 	searchResults.innerHTML = `<ul>${searchContent}</ul>`;
 }
+
+// Show Loader
+const loader = document.querySelector('.sun__logo_wrapper');
+function showLoader() {
+	loader.style.display = 'flex';
+}
+
+const main = document.getElementById('main');
+
+function showMain() {
+	main.style.display = 'block';
+}
+
+function hideMain() {
+	main.style.display = 'none';
+}
+
+// Hide loader
+function hideLoader() {
+	loader.style.display = 'none';
+}
+
+hideMain();
+showLoader();
