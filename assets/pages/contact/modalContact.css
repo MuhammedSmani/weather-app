@@ -18,7 +18,7 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   border: 2px solid var(--fifth-color);
-  z-index: 1001 !important;
+  z-index: 10001 !important;
 }
 
 .contact-button a:hover {
@@ -38,7 +38,7 @@
   border: 1px solid lightgray;
   border-radius: 10px;
   box-shadow: 2px 2px 5px lightgray;
-  z-index: 1001 !important;
+  z-index: 10001 !important;
 }
 
 form {
@@ -103,5 +103,5 @@ button[type="submit"]:hover {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
-  z-index: 1000;
+  z-index: 10000;
 }

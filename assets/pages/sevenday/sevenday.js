@@ -54,15 +54,14 @@ function showData(data) {
   <div>
   <h2> <b>${formattedDate}</b><span> | Day</span></h2>
     <h1><b>${Math.round(day.day.maxtemp_c)}°</b></h1>
-    <p>${day.day.condition.text}</p>
     </div>
     <div class="wind-rain">
     <div>
 	<i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
     </div>
     <div> 
-     <i class=" uil uil-raindrops"></i> <span>${
-       day.day.daily_chance_of_rain
+     <i class=" uil uil-snowflake"></i> <span>${
+       day.day.daily_chance_of_snow
      }%</span>
      </div>
   </div>
@@ -112,16 +111,15 @@ function showData(data) {
   <div class="hidden-content-inner-div">
   <div>    <h1> <b>${formattedDate}</b><span> | Night</span></h1>
     <h1><b>${Math.round(day.day.mintemp_c)}°</b></h1>
-    <p>${day.day.condition.text}</p>
     </div>
 
     <div class="wind-rain">
    <div>
-   <i class="uil uil-wind"></i> <span>NW ${day.day.maxwind_kph} km/h</span>
+   <i class="uil uil-raindrops"></i> <span>${day.day.daily_chance_of_rain}%</span>
    </div>
    <div> 
-    <i class=" uil uil-raindrops"></i> <span>${
-      day.day.daily_chance_of_rain
+    <i class=" uil uil-snowflake"></i> <span>${
+      day.day.daily_chance_of_snow
     }%</span>
     </div>
     </div>
@@ -315,21 +313,25 @@ navigator.geolocation.getCurrentPosition(
         updateSearchParams(city);
         // Set city value in local storage
         localStorage.setItem("city", city);
+        fetchWeatherData(city);
+
       });
   },
   (error) => {
-    const cityFromUrl = searchParams.get("city");
-    if (!cityFromUrl) {
-      // If there is no city value in the URL, set the default city to 'Pristina'
-      searchInputs[0].value = "Pristina";
-      updateSearchParams("Pristina");
-    } else {
-      console.error(error);
-      // If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
-      searchInputs[0].value = cityFromUrl;
-      updateSearchParams(cityFromUrl);
-    }
-  }
+		const cityFromUrl = searchParams.get('city');
+		if (!cityFromUrl) {
+			// If there is no city value in the URL, set the default city to 'Pristina'
+			searchInputs[0].value = 'Pristina';
+			updateSearchParams('Pristina');
+			fetchWeatherData('Pristina');
+
+		} else {
+			console.error(error);
+			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+			searchInputs[0].value = cityFromUrl;
+			updateSearchParams(cityFromUrl);
+		}
+	}
 );
 
 // Get the city name from the URL

@@ -38,6 +38,7 @@ form1.addEventListener("submit", (e) => {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       form1.reset();
+      alert("Thank you for your message!");
     }
   };
   xhr.send(new FormData(form1));
