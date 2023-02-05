@@ -15,7 +15,7 @@
 	z-index: 9999;
 }
 
-.header a:first-of-type {
+.header a .logo {
 	display: flex;
 	justify-content: center;
 	align-items: center;
