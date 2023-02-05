@@ -48,14 +48,20 @@ function getWeekendData(data) {
   console.log(thisWeekend);
   thisWeekend.forEach((day) => {
     const { date, day: dayData, hour } = day;
-    const { maxtemp_c, mintemp_c, avgtemp_c, maxwind_kph } = dayData;
+    const { maxtemp_c, mintemp_c, avgtemp_c, maxwind_kph, uv } = dayData;
     const { condition } = hour[0];
     const { text, icon } = condition;
-    const humidities = [hour[0].humidity, hour[12].humidity];
+    const humidities = [hour[0].humidity];
+    // the data about uv, sunrise, sunset
+    console.log("Day", day);
+    const sunrises = [day.astro.sunrise];
+    const sunsets = [day.astro.sunset];
+    const uv1 = [uv];
+
     const temperature = Math.round(avgtemp_c);
     const dailyIconUrl = day.day.condition.icon;
-		const dailyIconName = dailyIconUrl.split('/').pop();
-		const dailyIcon = getIconClass(dailyIconName);
+    const dailyIconName = dailyIconUrl.split("/").pop();
+    const dailyIcon = getIconClass(dailyIconName);
     // Sat 30, Sun 31, Mon 1
     const dayName = new Date(date).toLocaleDateString("en-UK", {
       weekday: "short",
@@ -76,14 +82,17 @@ function getWeekendData(data) {
               </span>
 							</div>
 							<div class="logo">
-              <i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
+               <i class="uil ${
+                 dailyIcon ? dailyIcon : iconsMapping["xxx.png"]
+               }"></i>
               <span>${description}</span>
 							</div>
 							<div class="percentage">
-              <span>0%</span>
+              <i class="uil uil-raindrops"></i>
+              <span>${humidities}%</span>
           </div>
           <div class="wind">
-					<span>Wind</span>
+					<i class="uil uil-wind"></i>
               <span>${windSpeed} km/h</span>
 							</div>
 							<div class="arrow">
@@ -93,33 +102,60 @@ function getWeekendData(data) {
 							</div>
 							<div class="dropdown hidden">
 							<div class="dropdown-grade">
-							<span> ${dayName} | Day </span>
 							<div class="daily-content">
+							<span> ${dayName}</span>
+              <span>|</span>
 							<h2>${temperature}°</h2>
-							<i class="uil uil-cloud-sun-rain"></i>
-							<div class="logo-dropdown">
+              <div class="logo">
+              <i class="uil uil-cloud-sun-rain"></i>
+							</div>
+              <div class="logo12">
+              <i class="uil uil-wind"></i>
+              <div class="logo-dropdown">
               <span>${windSpeed} km/h</span>
               <span>${description}</span>
+                </div>
 							</div>
           </div>
-          <p>
-          Lorem ipsum dolor, sit amet consectetur
-          <br />
-          Voluptatibus ad quaerat, laudantium
-          <br />
-          cumque odio earum possimu
-          </p>
-					</div>
+
 					<div class="dropdown-info">
 					${humidities.map((humidity) => {
-            return `<div class="humidity broder-bottom">
-          <i class="uil uil-tear"></i>
-          <div class="index">
-              <span>Humidity</span>
-              <span>${humidity}%</span>
-          </div>
-          </div>`;
+            return `<div class="humidity broder-bottom logo" id="logo">
+            <i class="uil uil-tear"></i>
+            <div class="index">
+            <span>Humidity</span>
+            <span>${humidity}%</span>
+            </div>
+            </div>`;
           })}
+            ${uv1.map((uv) => {
+              return `<div class="uv broder-bottom logo" id="logo">
+              <i class="uil uil-sun"></i>
+              <div class="index">
+              <span>UV</span>
+              <span>${uv}</span>
+              </div>
+              </div>`;
+            })}
+            ${sunrises.map((sunrise) => {
+              return `<div class="sunrise broder-bottom logo">
+              <i class="uil uil-sun"></i>
+              <div class="index">
+              <span>Sunrise</span>
+              <span>${sunrise}</span>
+              </div>
+              </div>`;
+            })}
+            ${sunsets.map((sunset) => {
+              return `<div class="sunset logo">
+              <i class="uil uil-sunset"></i>
+              <div class="index">
+              <span>Sunset</span>
+              <span>${sunset}</span>
+              </div>
+              </div>`;
+            })}
+          </div>
       </div>
       </div>
 			</div>`;
@@ -315,20 +351,19 @@ navigator.geolocation.getCurrentPosition(
       });
   },
   (error) => {
-		const cityFromUrl = searchParams.get('city');
-		if (!cityFromUrl) {
-			// If there is no city value in the URL, set the default city to 'Pristina'
-			searchInputs[0].value = 'Pristina';
-			updateSearchParams('Pristina');
-			fetchWeatherData('Pristina');
-
-		} else {
-			console.error(error);
-			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
-			searchInputs[0].value = cityFromUrl;
-			updateSearchParams(cityFromUrl);
-		}
-	}
+    const cityFromUrl = searchParams.get("city");
+    if (!cityFromUrl) {
+      // If there is no city value in the URL, set the default city to 'Pristina'
+      searchInputs[0].value = "Pristina";
+      updateSearchParams("Pristina");
+      fetchWeatherData("Pristina");
+    } else {
+      console.error(error);
+      // If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+      searchInputs[0].value = cityFromUrl;
+      updateSearchParams(cityFromUrl);
+    }
+  }
 );
 
 // Get the city name from the URL

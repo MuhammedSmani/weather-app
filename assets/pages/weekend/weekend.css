@@ -56,10 +56,11 @@ body {
 
 .weekend-days {
   display: grid;
-  grid-template-columns: 1fr 1fr 4fr 1fr 2fr 1fr;
-  margin: 1.5rem 0;
-  border-top: 1px solid var(--border-color);
-  padding-top: 1rem;
+  grid-template-columns: 1fr 1fr 3fr 2fr 2fr 1fr;
+  /* margin: 1.5rem 0; */
+  border-bottom: 1px solid var(--fourth-color);
+  padding: 0.5rem 1rem;
+  align-items: center;
 }
 
 .dropdown {
@@ -69,47 +70,78 @@ body {
 }
 
 .daily-content {
-  display: grid;
+  display: flex;
+  justify-content: space-around;
   /* justify-content: space-between; */
-  /* align-items: center; */
-  grid-template-columns: 1fr 1fr 4fr;
+  align-items: center;
 }
 
+.dropdown-grade {
+  border: 1px solid var(--fourth-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+}
 .dropdown-info {
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
   grid-template-rows: 1fr 1fr;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--fourth-color);
   border-radius: 0.5rem;
   padding: 1rem;
-  margin: 0.5rem 0;
+  row-gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .humidity {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-}
-
-.humidity.broder-bottom {
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-}
-
-.index {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .sunset {
   border-bottom: 1px solid var(--border-color);
 }
 
+.logo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 2rem;
+}
+
+.logo i,
+.percentage i,
+.wind i,
+.logo12 i {
+  font-size: var(--big-font-size);
+  color: var(--fifth-color);
+}
+
+.wind,
+.percentage,
+.logo,
+.grade {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
 .logo-dropdown {
   display: flex;
   align-items: flex-start;
-
   flex-direction: column;
+}
+
+.logo12 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 @media screen and (max-width: 1023px) {
@@ -132,4 +164,9 @@ body {
   font-size: var(--big-font-size);
   color: var(--fifth-color);
   padding-right: 1rem;
+}
+
+.grade span:first-child {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
