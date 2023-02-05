@@ -48,11 +48,6 @@ footer {
 	gap: 1rem;
 	font-size: var(--small-font-size);
 }
-/* .footer__apps,
-.footer__info,
-.footer__copyright {
-	width: 33%;
-} */
 .footer__apps {
 	text-align: left;
 }

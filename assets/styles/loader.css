@@ -45,36 +45,3 @@
 		transform: rotate(1800deg);
 	}
 }
-
-/* @media (prefers-reduced-motion: no-preference) {
-	#sun-logo {
-		animation: Sun-logo-spin infinite 25s linear, Sun-logo-opacity 3s linear;
-	}
-	.weather__animation {
-		animation: Weather-animation-none 3s linear;
-	}
-}
-@keyframes Sun-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
-@keyframes Weather-animation-none {
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-	}
-}
-@keyframes Sun-logo-opacity {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-	}
-} */

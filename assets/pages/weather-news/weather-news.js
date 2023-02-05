@@ -5,9 +5,7 @@ const weatherTopAuthor = document.getElementById("weather-top-author");
 const weatherTopSource = document.getElementById("weather-top-source");
 const weatherTopDate = document.getElementById("weather-top-date");
 const weatherTopImage = document.getElementById("weather-top-image");
-const weatherTopDescription = document.getElementById(
-  "weather-top-description"
-);
+const weatherTopDescription = document.getElementById("weather-top-description");
 const weatherTopContent = document.getElementById("weather-top-content");
 const readMoreButton = document.querySelector(".weather__news__button");
 const readMoreAnchor = document.querySelector("#weather-top-url");
@@ -42,6 +40,96 @@ function fetchWeatherNews() {
       );
       return data;
     });
+}
+
+/*==================== GET WEATHER DATA FUNCTIONS ====================*/
+
+// Constants
+const apiKey = '9ce000ab2ee94bf8bfd111052222012';
+const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&days=10&aqi=yes&alerts=yes`;
+const searchForm = document.querySelector('.search-form');
+const searchInputs = document.querySelectorAll('.search-input');
+const searchParams = new URLSearchParams(window.location.search);
+
+searchInputs[0].addEventListener('submit', getCityValue);
+// searchInputs[1].addEventListener('submit', getCityValue);
+
+// Get the city name value in search input
+async function getCityValue(event) {
+	event.preventDefault();
+	const city = event.target.value;
+	updateSearchParams(city);
+	await fetchWeatherData(city);
+}
+
+// Update Search parameters
+function updateSearchParams(city) {
+	searchParams.set('city', city);
+	window.history.pushState({}, '', `${window.location.pathname}?${searchParams.toString()}`);
+}
+
+// Fetch Weather data based on city
+async function fetchWeatherData(city) {
+	const response = await fetch(
+		`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=yes&alerts=yes`
+	);
+	const data = await response.json();
+	updateNavbarLinks(city);
+}
+
+// Fetch Weather data based on the Geolocation
+navigator.geolocation.getCurrentPosition(
+	async (position) => {
+		let lat = position.coords.latitude;
+		let lng = position.coords.longitude;
+		let data;
+		// Fetch weather data based on current location
+		try {
+			const response = await fetch(
+				`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lng}&days=10&aqi=yes&alerts=yes`
+			);
+			data = await response.json();
+		} catch (error) {
+			console.error(error);
+		}
+		const city = data.location.name;
+		if (
+			localStorage.getItem('city') &&
+			localStorage.getItem('city') === city &&
+			window.location.search
+		)
+			return;
+
+		// Set city name in input field
+		searchInputs[0].value = city;
+		// searchInputs[1].value = city;
+		localStorage.setItem('city', city);
+
+		// Update the URL with the city value
+		updateSearchParams(city);
+		fetchWeatherData(city);
+	},
+	(error) => {
+		const cityFromUrl = searchParams.get('city');
+		if (!cityFromUrl) {
+			// If there is no city value in the URL, set the default city to 'Pristina'
+			searchInputs[0].value = 'Pristina';
+			updateSearchParams('Pristina');
+		} else {
+			console.error(error);
+			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
+			searchInputs[0].value = cityFromUrl;
+			updateSearchParams(cityFromUrl);
+		}
+	}
+);
+
+// Get the city name from the URL
+const cityFromUrl = searchParams.get('city');
+if (cityFromUrl) {
+	searchInputs[0].value = cityFromUrl;
+	// searchInputs[1].value = cityFromUrl;
+	fetchWeatherData(cityFromUrl);
 }
 
 /*==================== GET WEATHER TOP STORY ====================*/
@@ -118,26 +206,7 @@ function getWeatherNewsAside(data) {
   });
 }
 
-// Show Loader
-const loader = document.querySelector(".sun__logo_wrapper");
-function showLoader() {
-  loader.style.display = "flex";
-}
 
-const main = document.getElementById("main");
-
-function showMain() {
-  main.style.display = "block";
-}
-
-function hideMain() {
-  main.style.display = "none";
-}
-
-// Hide loader
-function hideLoader() {
-  loader.style.display = "none";
-}
 
 /*==================== GET WEATHER NEWS FUNCTION ====================*/
 
@@ -213,7 +282,7 @@ let searchable = [
 
 // const searchInputs = document.querySelectorAll('.search-input');
 const searchField = document.querySelector(".search");
-const searchInputs = document.querySelectorAll(".search-input");
+// const searchInputs = document.querySelectorAll(".search-input");
 const searchResults = document.querySelector(".search-results");
 
 searchInputs.forEach((searchInput) => {
@@ -259,6 +328,29 @@ function renderResults(results) {
 
   searchResults.classList.add("search-show");
   searchResults.innerHTML = `<ul>${searchContent}</ul>`;
+}
+
+/*==================== SHOW AND HIDE LOADER ====================*/
+
+// Show loader
+const loader = document.querySelector(".sun__logo_wrapper");
+function showLoader() {
+  loader.style.display = "flex";
+}
+
+const main = document.getElementById("main");
+
+function showMain() {
+  main.style.display = "block";
+}
+
+function hideMain() {
+  main.style.display = "none";
+}
+
+// Hide loader
+function hideLoader() {
+  loader.style.display = "none";
 }
 
 hideMain();

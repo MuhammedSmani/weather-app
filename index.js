@@ -13,6 +13,7 @@ function updateNavbarLinks(city) {
       text: "Air Quality",
     },
     { class: "radar-page", path: "radar", text: "Radar" },
+    { class: "news-page", path: "weather-news", text: "News" }
   ];
 
   pages.forEach((page) => {
