@@ -178,18 +178,12 @@
 #tempicons::after {
 	content: 'Temperatures';
 	font-size: 1rem;
-	/* position: absolute;
-	bottom: -15px;
-	left: -15px; */
 	text-align: center;
 }
 
 #mapicons::after {
 	content: 'Conditions';
 	font-size: 1rem;
-	/* position: absolute;
-	bottom: -15px;
-	left: -12px; */
 	text-align: center;
 }
 .leaflet-container {

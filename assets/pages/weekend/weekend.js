@@ -19,14 +19,11 @@ function getWeekendData(data) {
 		const dt = new Date(x.date);
 		const day = dt.getUTCDay();
 		const today = new Date().getUTCDay();
-
-		console.log(x.date, day, 'Date');
 		return day === 5 || day === 6 || day === 0;
 	});
 
 	// Loop through the weekend data and generate the HTML
 	const thisWeekend = filteredData.slice(0, 3);
-	console.log(thisWeekend);
 	thisWeekend.forEach((day) => {
 		const { date, day: dayData, hour } = day;
 		const { maxtemp_c, mintemp_c, avgtemp_c, maxwind_kph, uv } = dayData;
@@ -34,7 +31,6 @@ function getWeekendData(data) {
 		const { text, icon } = condition;
 		const humidities = [hour[0].humidity];
 		// the data about uv, sunrise, sunset
-		console.log('Day', day);
 		const sunrises = [day.astro.sunrise];
 		const sunsets = [day.astro.sunset];
 		const uv1 = [uv];
