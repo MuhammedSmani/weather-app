@@ -246,4 +246,11 @@
 		padding-top: 1rem;
 		grid-template-columns: repeat(1, 1fr);
 	}
+
+	.low-temp-icon,
+	.medium-temp-icon,
+	.high-temp-icon,
+	.map-icons {
+		font-size: 1.8rem;
+	}
 }
