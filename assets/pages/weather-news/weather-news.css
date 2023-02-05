@@ -109,7 +109,6 @@
 @media screen and (max-width: 767px) {
 	.weather__news__top__box {
 		max-width: 100%;
-		margin-top: 4rem;
 	}
 	.weather__news__content {
 		flex-direction: column;

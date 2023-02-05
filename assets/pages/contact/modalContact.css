@@ -41,12 +41,12 @@
   z-index: 10001 !important;
 }
 
-form {
+#contact-form form {
   display: flex;
   flex-direction: column;
 }
 
-label {
+#contact-form label {
   margin-top: 10px;
 }
 

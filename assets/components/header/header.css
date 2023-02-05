@@ -252,6 +252,8 @@
 	border: 1px solid var(--first-color);
 	width: 19rem;
 	min-width: 200px;
+	margin-bottom: 0px !important;
+	position: relative;
 }
 .search input[type='search'] {
 	font-size: var(--medium-font-size);
@@ -261,17 +263,9 @@
 	padding: 0.5rem 1rem;
 	font-family: var(--body-font);
 }
-
-.search {
-	margin-bottom: 0px !important;
-}
-
-.nav__search {
-	position: relative;
-}
 .search-show {
 	position: absolute;
-	width: 19rem;
+	width: 12.5rem;
 	background: #fff;
 	padding: 0.1rem 0.5rem;
 	border-radius: 0.5rem;
@@ -332,7 +326,9 @@
 	.search {
 		width: 100%;
 	}
-
+	.search-show {
+		width: 20rem;
+	}
 	.nav__item {
 		padding: 0;
 	}
