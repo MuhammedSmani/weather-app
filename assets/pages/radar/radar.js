@@ -85,7 +85,6 @@ L.tileLayer('https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png', {
 
 // Constants
 
-
 navigator.geolocation.getCurrentPosition(
 	(position) => {
 		let lat = position.coords.latitude;
@@ -130,7 +129,6 @@ navigator.geolocation.getCurrentPosition(
 		}
 	}
 );
-
 
 
 const apiKey = '9ce000ab2ee94bf8bfd111052222012';
@@ -249,7 +247,7 @@ function getMapIcons() {
 					marker.bindPopup(
 						`<h2>${city}<span class="temperature"><b>  ${Math.round(
 							data.current.temp_c
-						)}°C</b></span><span></h2><h2>Feels like ${data.current.feelslike_c}°</h2></span>`
+						)}°C</b></span><span></h2><h3>Feels like ${Math.round(data.current.feelslike_c)}°C</h3></span>`
 					);
 					markers.push(marker);
 				}
