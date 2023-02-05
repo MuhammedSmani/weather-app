@@ -45,8 +45,7 @@ body {
 	font-family: var(--body-font);
 	font-size: var(--normal-font-size);
 	color: var(--text-color);
-	margin-top: 114px !important;
-	/* background-color: var(--body-color); */
+	margin-top: 114px;
 	background: linear-gradient(var(--sixth-color), var(--second-color));
 	background-attachment: fixed;
 }
@@ -72,11 +71,6 @@ main {
 	min-height: calc(100vh - 331px);
 }
 
-/* main {
-	position: relative;
-	top: 144px;
-} */
-
 .content__title {
 	color: var(--text-color);
 	font-size: var(--h2-font-size);
@@ -95,18 +89,12 @@ main {
 	transition: 0.3s ease;
 	padding: 0.5rem 1rem;
 	border-radius: 2rem;
-	/* border: 1px solid var(--sixth-color); */
-
 	color: var(--body-color);
 	background-color: var(--fifth-color);
 }
 
 .button a:hover {
-	/* color: var(--body-color); */
 	background-color: var(--sixth-color);
-	/* 
-	color: var(--text-color);
-	background-color: #fff; */
 }
 
 /*==================== REUSABLE CSS CLASSES ====================*/
@@ -132,35 +120,7 @@ main {
 	gap: 1.5rem;
 }
 
-/*==================== FOOTER ====================*/
-
-/* footer {
-	background-color: var(--body-color);
-	text-align: center;
-	padding: 1rem 0;
-	margin-top: 1rem;
-} */
 @media screen and (max-width: 767px) {
-	/* .nav__menu,
-	.nav__buttons {
-		display: none;
-	}
-
-	.header {
-		flex-direction: row;
-	}
-
-	.nav__open_menu {
-		display: flex;
-	}
-
-	.nav__two {
-		display: none;
-	}
-
-	.nav .nav__search {
-		display: none;
-	} */
 	.content__title {
 		color: var(--text-color);
 		font-size: var(--h3-font-size);
@@ -170,5 +130,8 @@ main {
 	.content__para {
 		color: var(--text-color);
 		font-size: var(--normal-font-size);
+	}
+	body {
+		margin-top: 123.5px;
 	}
 }

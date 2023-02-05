@@ -1,19 +1,18 @@
 @import '/main.css';
 @import '/assets/styles/loader.css';
 @import '/assets/components/header/header.css';
-@import '/assets/components/today-image/today-image.css';
-@import '/assets/components/todays-forecast/todays-forecast.css';
-@import '/assets/components/weather-today/weather-today.css';
-@import '/assets/components/hourly-forecast/hourly-forecast.css';
-@import '/assets/components/daily-forecast/daily-forecast.css';
+@import '/assets/pages/today/styles/today-image.css';
+@import '/assets/pages/today/styles/todays-forecast.css';
+@import '/assets/pages/today/styles/weather-today.css';
+@import '/assets/pages/today/styles/hourly-forecast.css';
+@import '/assets/pages/today/styles/daily-forecast.css';
 @import '/assets/components/footer/footer.css';
 @import '/assets/pages/contact/modalContact.css';
 
-body{
+body {
 	background: linear-gradient(var(--sixth-color), var(--second-color));
-	background-attachment: fixed;}
-
-
+	background-attachment: fixed;
+}
 
 @media screen and (max-width: 767px) {
 	.section {
@@ -49,7 +48,6 @@ body{
 		grid-auto-flow: column;
 		grid-template-rows: repeat(2, 1fr);
 		grid-template-columns: repeat(2, 1fr);
-		/* row-gap: 2rem; */
 		align-items: flex-start;
 	}
 

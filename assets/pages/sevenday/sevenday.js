@@ -29,14 +29,14 @@ function showData(data) {
         <span>${formattedDate}</span>
     </div>
     <div class="elona">
-        <span><b>${Math.round(day.day.maxtemp_c)}°</b></span><span>/${Math.round(
-			day.day.mintemp_c
-		)}°</span>
+        <span><b class="temp__title">${Math.round(
+			day.day.maxtemp_c
+		)}°</b></span><span>/${Math.round(day.day.mintemp_c)}°</span>
     </div>
-    <div class="elona">
+    <div class="elona condition">
         <i class="uil uil-cloud"></i> <span>${day.day.condition.text}</span>
     </div>
-    <div class="elona">
+    <div class="elona wind">
         <i class="uil uil-wind"></i> <span>${day.day.maxwind_kph}  km/h</span>
     </div>
     <div class="weekly-arrow" data-index=${index}>
@@ -155,7 +155,6 @@ function showData(data) {
 	const weeklyHidden = document.querySelectorAll('.weekly__hidden');
 	const weeklyElona = document.querySelectorAll('.elona');
 
-
 	weeklyArrows.forEach((arrow, index) => {
 		arrow.addEventListener('click', () => {
 			if (weeklyHidden[index].style.display === 'grid') {
@@ -173,7 +172,6 @@ function showData(data) {
 	const currentHour = date123.getHours();
 	const dayHiddenDivs = document.getElementsByClassName('day-hidden');
 	const nightHiddenDivs = document.getElementsByClassName('night-hidden');
-	
 
 	if (currentHour >= 18) {
 		for (let i = 0; i < dayHiddenDivs.length; i++) {

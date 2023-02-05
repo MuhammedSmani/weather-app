@@ -28,13 +28,13 @@ body {
 .weekly__title {
 	padding: 1rem;
 }
-.weekly__title p:nth-child(2) {
+/* .weekly__title p:nth-child(2) {
 	font-size: 1.3rem;
-}
+} */
 
 .weekly__main {
 	display: grid;
-	grid-template-columns: 2fr 2fr 3fr 2fr 1fr;
+	grid-template-columns: 1fr 2fr 4fr 2fr 0.5fr;
 	border-top: solid 1px var(--fourth-color);
 	padding: 0.5rem 1rem;
 }
@@ -50,12 +50,11 @@ body {
 }
 
 .content__title {
-	font-size: 2rem;
+	font-size: var(--h2-font-size);
 }
 
 .content__title span {
-	font-size: 1rem;
-	font-weight: 100;
+	font-size: var(--h2-font-size);
 }
 
 .weekly-arrow {
@@ -112,18 +111,6 @@ body {
 	padding: 1rem;
 	border-top: solid 1px var(--fourth-color);
 }
-.weekly__button a {
-	color: var(--text-color);
-	font-weight: var(--font-medium);
-	transition: 0.3s ease;
-	padding: 0.5rem 1rem;
-	border-radius: 2rem;
-	border: 1px solid var(--sixth-color);
-}
-.weekly__button a:hover {
-	color: var(--body-color);
-	background-color: var(--sixth-color);
-}
 
 .day-hidden {
 	width: 100%;
@@ -148,4 +135,77 @@ body {
 .wind-rain div {
 	display: flex;
 	align-items: center;
+}
+
+.uil-angle-down {
+	padding: 0 !important;
+}
+
+@media screen and (max-width: 767px) {
+	.section {
+		padding: 1rem 0 !important;
+	}
+
+	.condition span {
+		display: none;
+	}
+
+	.condition i {
+		padding: 0;
+	}
+
+	.weekly__main {
+		grid-template-columns: 1fr 1fr 0.5fr 1fr 0.5fr;
+	}
+	.weekly__hidden {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.wind {
+		display: none !important;
+	}
+
+	.weekly__main {
+		grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
+	}
+
+	.temp__title {
+		font-size: var(--h2-font-size);
+	}
+
+	.weekly__section i {
+		font-size: var(--h1-font-size);
+	}
+	.weekly__hidden__info li {
+		width: 100%;
+	}
+	.weekly__hidden__info li:nth-child(3) {
+		border-bottom: solid 1px var(--fourth-color);
+	}
+	.hidden-content-inner-div {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	.wind-rain {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		width: 100%;
+		padding-bottom: 1rem;
+	}
+}
+
+@media screen and (max-width: 340px) {
+	.weekly__main {
+		grid-template-columns: 1fr 0.5fr 0.5fr;
+	}
+
+	.condition {
+		display: none !important;
+	}
 }

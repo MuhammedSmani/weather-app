@@ -6,9 +6,6 @@ function updateMainPageButton(city) {
 	hourlyButton.innerHTML = `<a href="../sevenday/sevenday.html?city=${city}">7 Day Weather</a>`;
 }
 
-// const hourlyArrows = document.querySelectorAll('.hourly-arrow');
-// const hourlyHidden = document.querySelectorAll('.hourly__hidden');
-
 const hourlyDate = document.querySelector('.hourly__date');
 const hourlyFirstDay = document.querySelector('.hourly__first_day');
 const hourlySecondDay = document.querySelector('.hourly__second_day');
@@ -39,39 +36,6 @@ var otherIcon = `<i class="uil uil-rainbow"></i>`;
 
 const form = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
-
-// hourlyArrows.forEach((arrow, index) => {
-// 	arrow.addEventListener('click', () => {
-// 		if (hourlyHidden[index].style.display === 'block') {
-// 			hourlyHidden[index].style.display = 'none';
-// 		} else {
-// 			hourlyHidden.forEach((hidden) => {
-// 				hidden.style.display = 'none';
-// 			});
-// 			hourlyHidden[index].style.display = 'block';
-// 		}
-// 	});
-// });
-
-// form.addEventListener('submit', (event) => {
-// 	event.preventDefault();
-// 	const searchKeyword = searchInput.value;
-
-// window.onload = fetchWeatherData(city);
-
-// function render() {
-// 	fetch(
-// 		`https://api.weatherapi.com/v1/forecast.json?key=9ce000ab2ee94bf8bfd111052222012&q=Pristina&days=10&aqi=yes&alerts=yes`
-// 	)
-// 		.then((response) => response.json())
-// 		.then((data) => {
-// 			// Show the city name on every section of the Home Page
-
-// 			// let response = data;
-
-// 			getHourlyPage(data);
-// 		});
-// }
 
 function getHourlyRealtime(data) {
 	const hourlyRealtime = document.getElementById('hourly-realtime');
@@ -139,7 +103,6 @@ function getHourlyPage(data) {
 	hourlyCityName.innerHTML = `- ${data.location.name}, ${data.location.country}`;
 
 	let currentHour = new Date().getHours();
-	// console.log(currentHour);
 
 	for (i = currentHour; i < 24; i++) {
 		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
@@ -154,13 +117,13 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[0].hour[i].temp_c)}°</span>
 									</div>
-									<div><i class="uil uil-cloud"></i> <span>${
+									<div class="condition"><i class="uil uil-cloud"></i> <span>${
 										data.forecast.forecastday[0].hour[i].condition.text
 									}</span></div>
-									<div><i class="uil uil-raindrops"> </i><span>${
+									<div class="rain"><i class="uil uil-raindrops"> </i><span>${
 										data.forecast.forecastday[0].hour[i].will_it_rain
 									}%</span></div>
-									<div><i class="uil uil-wind"></i> <span>NW ${
+									<div class="wind"><i class="uil uil-wind"></i> <span>NW ${
 										data.forecast.forecastday[0].hour[i].wind_kph
 									} kph</span></div>
 									<div class="hourly-arrow">
@@ -245,13 +208,13 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[1].hour[i].temp_c)}°</span>
 									</div>
-									<div><i class="uil uil-cloud"></i> <span>${
+									<div class="condition"><i class="uil uil-cloud"></i><span>${
 										data.forecast.forecastday[1].hour[i].condition.text
 									}</span></div>
-									<div><i class="uil uil-raindrops"> </i><span>${
+									<div class="rain"><i class="uil uil-raindrops"> </i><span>${
 										data.forecast.forecastday[1].hour[i].will_it_rain
 									}%</span></div>
-									<div><i class="uil uil-wind"></i> <span>NW ${
+									<div class="wind"><i class="uil uil-wind"></i> <span>NW ${
 										data.forecast.forecastday[1].hour[i].wind_kph
 									} kph</span></div>
 									<div class="hourly-arrow">
@@ -330,13 +293,13 @@ function getHourlyPage(data) {
 									<div>
 										<span>${Math.round(data.forecast.forecastday[2].hour[i].temp_c)}°</span>
 									</div>
-									<div><i class="uil uil-cloud"></i> <span>${
+									<div class="condition"><i class="uil uil-cloud"></i> <span >${
 										data.forecast.forecastday[2].hour[i].condition.text
 									}</span></div>
-									<div><i class="uil uil-raindrops"> </i><span>${
+									<div class="rain"><i class="uil uil-raindrops"> </i><span>${
 										data.forecast.forecastday[2].hour[i].will_it_rain
 									}%</span></div>
-									<div><i class="uil uil-wind"></i> <span>NW ${
+									<div class="wind"><i class="uil uil-wind"></i> <span>NW ${
 										data.forecast.forecastday[2].hour[i].wind_kph
 									} kph</span></div>
 									<div class="hourly-arrow">
@@ -436,7 +399,6 @@ const searchInputs = document.querySelectorAll('.search-input');
 const searchParams = new URLSearchParams(window.location.search);
 
 searchInputs[0].addEventListener('submit', getCityValue);
-// searchInputs[1].addEventListener('submit', getCityValue);
 
 // Get the city name value in search input
 function getCityValue(event) {
@@ -521,7 +483,6 @@ navigator.geolocation.getCurrentPosition(
 		console.error(error);
 		// If geolocation is off, use Pristina as the default city
 		searchInputs[0].value = 'Pristina';
-		// searchInputs[1].value = 'Pristina';
 		fetchWeatherData('Pristina');
 	}
 );
@@ -586,7 +547,6 @@ let searchable = [
 	'Kiev',
 ];
 
-// const searchInputs = document.querySelectorAll('.search-input');
 const searchField = document.querySelector('.search');
 const searchResults = document.querySelector('.search-results');
 

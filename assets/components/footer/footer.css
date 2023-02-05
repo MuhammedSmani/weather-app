@@ -12,6 +12,7 @@
 }
 .social__media__section .container {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 	min-height: 40px;
@@ -95,5 +96,36 @@ footer img {
 	}
 	.footer__info {
 		text-align: left;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.social__media__section {
+		padding: 1rem 0 1rem 0;
+	}
+
+	.social__media__section .container {
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.social__media__section .container p {
+		order: 1;
+	}
+
+	.footer__content {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.footer__content div {
+		display: flex;
+		gap: 0.5rem;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.footer__content p {
+		text-align: center;
 	}
 }

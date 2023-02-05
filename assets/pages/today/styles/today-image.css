@@ -1,11 +1,9 @@
-/* @import '/main.css'; */
-
 /*==================== TODAY IMAGE ==================== */
 
 .today__image {
 	height: 24rem;
 	width: 100%;
-	background: url('../../images/weather2.png');
+	background: url('/assets/images/weather2.png');
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: cover;
@@ -16,14 +14,11 @@
 	width: 100%;
 }
 .today__image__container {
-	/* max-width: 1200px; */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	/* margin: 0; */
 	height: 100%;
 	width: 100%;
-	/* gap: 1rem; */
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 0.5rem;
 }
@@ -31,7 +26,6 @@
 	display: flex;
 	align-items: center;
 	gap: 1rem;
-	/* width: 55%; */
 	width: 100%;
 }
 .today__realtime {
