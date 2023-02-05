@@ -126,6 +126,7 @@ navigator.geolocation.getCurrentPosition(
 			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
 			searchInputs[0].value = cityFromUrl;
 			updateSearchParams(cityFromUrl);
+
 		}
 	}
 );
@@ -187,13 +188,16 @@ function getRadarData(city) {
 function showDataOnMap(data) {
 	const apilat = data.location.lat;
 	const apilng = data.location.lon;
+	const dailyIconUrl = data.current.condition.icon;
+		const dailyIconName = dailyIconUrl.split('/').pop();
+		const dailyIcon = getIconClass(dailyIconName);
 	let output = '';
 	output += `
         <h2>${data.location.name}</h2>
-        <h1 class="temperature"><b>${Math.round(data.current.temp_c)}°C</b>
+        <h1 class="temperature"><b>${Math.round(data.current.temp_c)}°</b>
         <h2>${data.current.condition.text}</h2>
         <h2>Feels like ${Math.round(data.current.feelslike_c)}°C</h2>
-         <img src="${data.current.condition.icon}">
+		<i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
     `;
 
 	customIcon = L.icon({
