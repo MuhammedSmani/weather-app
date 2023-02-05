@@ -96,10 +96,6 @@ function getHourlyPage(data) {
 
 	hourlyThirdDay.innerHTML = `${dayNameThree}, ${monthNameThree} ${dateNumberThree}`;
 
-	//
-
-	//
-
 	hourlyCityName.innerHTML = `- ${data.location.name}, ${data.location.country}`;
 
 	let currentHour = new Date().getHours();
@@ -484,7 +480,6 @@ navigator.geolocation.getCurrentPosition(
 					return;
 				// Set city name in input field
 				searchInputs[0].value = city;
-				// searchInputs[1].value = city;
 				localStorage.setItem('city', city);
 				// Update the URL with the city value
 				updateSearchParams(city);
@@ -511,7 +506,6 @@ navigator.geolocation.getCurrentPosition(
 const cityFromUrl = searchParams.get('city');
 if (cityFromUrl) {
 	searchInputs[0].value = cityFromUrl;
-	// searchInputs[1].value = cityFromUrl;
 	fetchWeatherData(cityFromUrl);
 }
 

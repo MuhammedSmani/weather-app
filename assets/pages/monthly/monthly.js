@@ -1,3 +1,11 @@
+/*==================== UPDATE MAIN PAGE BUTTONS ====================*/
+
+const weeklyButton = document.getElementById('monthly-button');
+
+function updateMainPageButton(city) {
+	weeklyButton.innerHTML = `<a href="../air-quality-forecast/air-quality-forecast.html?city=${city}">Air Quality</a>`;
+}
+
 function getHourlyRealtime(data) {
 	const monthlyRealtime = document.getElementById('monthly-realtime');
 	const hourlyCityName = document.querySelector('.hourly__city_name');
@@ -44,12 +52,6 @@ function hideLoader() {
 /*==================== GET WEATHER DATA FUNCTIONS ====================*/
 
 function getMonthlyPage(data) {
-	// const activeNum = document.querySelector('.active');
-	// activeNum.innerHTML = `${Math.round(data.forecast.forecastday[0].day.avgtemp_c)}°`;
-	// console.log(`${Math.round(data.forecast.forecastday[0].day.avgtemp_c)}`);
-
-	// console.log(data);
-
 	const daysTag = document.querySelector('.days'),
 		currentDate = document.querySelector('.current-date'),
 		prevNextIcon = document.querySelectorAll('.calendar__header i');
@@ -89,7 +91,6 @@ function getMonthlyPage(data) {
                   </li>`;
 		}
 		for (let i = 1; i <= lastDateofMonth; i++) {
-			// console.log(date.getDate(), new Date().getMonth(), new Date().getFullYear());
 			let isToday =
 				i === date.getDate() &&
 				currMonth === new Date().getMonth() &&
@@ -103,8 +104,8 @@ function getMonthlyPage(data) {
 			if ((isToday || todayPassed) && forecastDay < data.forecast.forecastday.length) {
 				let dayTemp = Math.round(data.forecast.forecastday[forecastDay].day.avgtemp_c);
 				const dailyIconUrl = data.forecast.forecastday[forecastDay].day.condition.icon;
-		const dailyIconName = dailyIconUrl.split('/').pop();
-		const dailyIcon = getIconClass(dailyIconName);
+				const dailyIconName = dailyIconUrl.split('/').pop();
+				const dailyIcon = getIconClass(dailyIconName);
 				liTag += `
                 <i class="uil ${dailyIcon ? dailyIcon : iconsMapping['xxx.png']}"></i>
                 <p class="forecast">${dayTemp}°</p>
@@ -184,6 +185,7 @@ function fetchWeatherData(city) {
 			getHourlyRealtime(data);
 			hideLoader();
 			showMain();
+			updateMainPageButton(city);
 		});
 }
 
@@ -221,7 +223,6 @@ navigator.geolocation.getCurrentPosition(
 			searchInputs[0].value = 'Pristina';
 			updateSearchParams('Pristina');
 			fetchWeatherData('Pristina');
-
 		} else {
 			console.error(error);
 			// If geolocation is off and there is a city value in the URL, set the city name in the input field and update the URL with the city value
