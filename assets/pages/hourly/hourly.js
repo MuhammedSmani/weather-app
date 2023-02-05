@@ -145,7 +145,7 @@ function getHourlyPage(data) {
 		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
 		const options = { hour: 'numeric', hour12: true };
 		const timeString = time.toLocaleString('en-US', options);
-		const hourlyIconUrl = data.forecast.forecastday[0].hour[currentHour + i].condition.icon;
+		const hourlyIconUrl = data.forecast.forecastday[0].hour[i].condition.icon;
 		const hourlyIconName = hourlyIconUrl.split('/').pop();
 		const hourlyIcon = getIconClass(hourlyIconName);
 
@@ -241,7 +241,7 @@ function getHourlyPage(data) {
 		const time = new Date(`${data.forecast.forecastday[0].hour[i].time}`);
 		const options = { hour: 'numeric', hour12: true };
 		const timeString = time.toLocaleString('en-US', options);
-		const hourlyIconUrl1 = data.forecast.forecastday[1].hour[currentHour + i].condition.icon;
+		const hourlyIconUrl1 = data.forecast.forecastday[1].hour[i].condition.icon;
 		const hourlyIconName1 = hourlyIconUrl1.split('/').pop();
 		const hourlyIcon1 = getIconClass(hourlyIconName1);
 		hourlyDescriptionTwo.innerHTML += `
@@ -329,7 +329,7 @@ function getHourlyPage(data) {
 								</div>
 							</div>
           `;
-		  const hourlyIconUrl2 = data.forecast.forecastday[2].hour[currentHour + i].condition.icon;
+		  const hourlyIconUrl2 = data.forecast.forecastday[2].hour[i].condition.icon;
 		const hourlyIconName2 = hourlyIconUrl2.split('/').pop();
 		const hourlyIcon2 = getIconClass(hourlyIconName2);
 		hourlyDescriptionThree.innerHTML += `
