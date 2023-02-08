@@ -43,6 +43,8 @@
         grid-template-columns: 1fr 1fr;
       }
 
+  
+
         /* .weekend-days h3{ */
         /* font-size: 12px;} */
 }
@@ -55,6 +57,11 @@
       .weekend-days{
         display: flex !important;
         justify-content: space-between;
+      }
+
+      .contact-form{
+        left: 30px;
+        font-size: 12px;
       }
     }
 
@@ -69,10 +76,6 @@
             flex-direction: column;
         }
 
-        .contact-form{
-            left: 30px;
-            font-size: 12px;
-        }
 
         .realtime__city p:nth-child(1),
         .realtime__city span{
